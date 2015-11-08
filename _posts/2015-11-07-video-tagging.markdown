@@ -9,9 +9,9 @@ jQuery and JavaScript solutions for HTML5 and YouTube custom video tagging.
 {% highlight javascript %}
 // jQuery HTML 5 video tagging
 $(function() {
-	$("video").on("play", function() {
-		// custom tag here...
-	});
+  $("video").on("play", function() {
+    // custom tag here...
+  });
 })
 {% endhighlight %}
 
@@ -24,21 +24,21 @@ firstTag.parentNode.insertBefore(tag, firstTag);
 
 var player;
 function onYouTubeIframeAPIReady() {
-	player = new YT.Player("player", {
-		height: "390",
-		width: "640",
-		videoId: "YT_ID",
-		events: {
-			"onReady": onPlayerReady
-		}
-	});
+  player = new YT.Player("player", {
+    height: "390",
+    width: "640",
+    videoId: "YT_ID",
+    events: {
+      "onReady": onPlayerReady
+    }
+  });
 }
 
 function onPlayerReady() {
-	player.addEventListener("onStateChange", function(e) {
-		if (e.data == 1) {
-			// custom tag here...
-		};
-	});
+  player.addEventListener("onStateChange", function(e) {
+    if (e.data == 1) {
+      // custom tag here...
+    };
+  });
 }
 {% endhighlight %}
