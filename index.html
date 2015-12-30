@@ -2,3 +2,15 @@
 layout: default
 ---
 
+<div class="main">
+	{% for post in site.posts %}
+	<div class="post-list">
+		<span class="post-date">
+		{{ post.date | date: "%b %-d, %Y" }}:
+		</span>
+		<span class="post-title">
+			<a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+		</span>
+	</div>
+	{% endfor %}
+</div>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang Wiki</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="js/main.js"></script>
+</head>
+	<body>
+		<div class="container">
+			<div class="row">
+	<div class="col-xs-12">
+		<ol class="breadcrumb">
+			<li class="active"><i class="fa fa-home fa-2x"></i></li>
+			<li><a href="#">About</a></li>
+			<li><a href="#">Posts</a></li>
+		</ol>
+	</div>
+</div>
+
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="row">
+						<div class="col-xs-12 col-sm-3 col-md-3">
+							<div class="profile">
+	<div class="profile-img">
+		<img class="img-responsive" src="/img/jason.jpg" alt="Picture of Jason Tang" />
+	</div>
+	<div class="profile-info">
+		<p>Hey! Welcome to my Wiki page.</p>
+		<p>I love learning new stuff.</p>
+		<p>And... I am awkward!</p>
+		<p class="profile-fa">
+			<a href="#"><i class="fa fa-github fa-2x"></i></a>
+			<a href="#"><i class="fa fa-linkedin fa-2x"></i></a>
+		</p>
+	</div>
+</div>
+						</div>
+						<div class="col-xs-12 col-sm-9 col-md-9">
+							<p>jQuery and JavaScript solutions for HTML5 and YouTube custom video tagging.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// jQuery HTML 5 video tagging</span>
+<span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s2">"video"</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s2">"play"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// custom tag here...</span>
+  <span class="p">});</span>
+<span class="p">})</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// JavaScript YouTube tagging</span>
+<span class="kd">var</span> <span class="nx">tag</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"script"</span><span class="p">);</span>
+<span class="nx">tag</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s2">"https://www.youtube.com/iframe_api"</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">firstTag</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">"script"</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+<span class="nx">firstTag</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">tag</span><span class="p">,</span> <span class="nx">firstTag</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">player</span><span class="p">;</span>
+<span class="kd">function</span> <span class="nx">onYouTubeIframeAPIReady</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">player</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">YT</span><span class="p">.</span><span class="nx">Player</span><span class="p">(</span><span class="s2">"player"</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">height</span><span class="p">:</span> <span class="s2">"390"</span><span class="p">,</span>
+    <span class="na">width</span><span class="p">:</span> <span class="s2">"640"</span><span class="p">,</span>
+    <span class="na">videoId</span><span class="p">:</span> <span class="s2">"YT_ID"</span><span class="p">,</span>
+    <span class="na">events</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"onReady"</span><span class="p">:</span> <span class="nx">onPlayerReady</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">onPlayerReady</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">player</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"onStateChange"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">data</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// custom tag here...</span>
+    <span class="p">};</span>
+  <span class="p">});</span>
+<span class="p">}</span></code></pre></figure>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	
+</html>

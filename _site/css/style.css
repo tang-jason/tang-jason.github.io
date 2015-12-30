@@ -1,0 +1,33 @@
+.breadcrumb {
+	text-align: center;
+	padding: 15px;
+	background-color: #ffffff;
+}
+.breadcrumb li a {
+	text-decoration: none;
+}
+.breadcrumb li a:hover {
+	color: #ce2c38;
+	transition: 0.5s;
+}
+.glyphicon {
+	color: #ce2c38;
+}
+.profile-img img {
+	border-radius: 50%;
+	margin-bottom: 20px;
+}
+.profile-info {
+	text-align: center;
+}
+.profile-fa a i {
+	margin-right: 15px;
+	color: #ce2c38;
+}
+.profile-fa a i:hover {
+	opacity: 0.8;
+}
+.post-list {
+	padding-bottom: 10px; 
+}
+
