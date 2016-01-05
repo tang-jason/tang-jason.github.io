@@ -2,23 +2,19 @@
 layout: default
 ---
 
-<div class="jt-page-banner">
-	<h2>{ home }</h2>
-</div>
+<h2 class="page-banner">{ home }</h2>
 
-<div class="jt-main">
-	<div class="row">
-		{% for post in site.posts %}
-		<div class="col-xs-12 col-lg-3">
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<h3 class="panel-title">{{ post.date | date: "%b %-d, %Y" }}</h3>
-				</div>
-				<div class="panel-body">
-					<a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-				</div>
+<div class="row">
+	{% for post in site.posts %}
+	<div class="col-xs-12 col-lg-3">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">{{ post.date | date: "%b %-d, %Y" }}</h3>
+			</div>
+			<div class="panel-body">
+				<a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
 			</div>
 		</div>
-		{% endfor %}
 	</div>
+	{% endfor %}
 </div>
