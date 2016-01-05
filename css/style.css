@@ -1,33 +1,68 @@
-.breadcrumb {
+html, body {
+	font-family: 'Oswald', sans-serif;
+}
+.container {
+	width: 100%;
+}
+/* navigation */
+.jt-nav-wrapper {
+	background-color: black;
+	color: white;
+}
+.jt-nav-wrapper header {
+	border-bottom: 1px solid #404040;
+	padding-bottom: 0.3em;
+	overflow: hidden;
+	padding-top: 2em;
+}
+.jt-nav-wrapper header h1 {
 	text-align: center;
-	padding: 15px;
-	background-color: #ffffff;
 }
-.breadcrumb li a {
-	text-decoration: none;
-}
-.breadcrumb li a:hover {
-	color: #ce2c38;
-	transition: 0.5s;
-}
-.glyphicon {
-	color: #ce2c38;
-}
-.profile-img img {
+.jt-nav-wrapper header img {
 	border-radius: 50%;
-	margin-bottom: 20px;
+	width: 72px;
+	height: 72px;
+	float: left;
+	margin-bottom: 0.5em;
 }
-.profile-info {
-	text-align: center;
+.jt-nav-wrapper ul {
+	padding: 0em;
 }
-.profile-fa a i {
-	margin-right: 15px;
-	color: #ce2c38;
+.jt-nav-wrapper ul li {
+	list-style: none;
+	text-transform: uppercase;
 }
-.profile-fa a i:hover {
-	opacity: 0.8;
+.jt-nav-wrapper ul li a {
+	text-decoration: none;
+	color: white;
+	padding: 1em 1em 1em 0em;
+	width: 100%;
+	display: block;
 }
-.post-list {
-	padding-bottom: 10px; 
-}
+	.jt-nav-wrapper ul li a i {
+		padding-right: 1em;
+		padding-left: 1em;
+	}
+	.jt-nav-wrapper ul li a:hover {
+		background-color: #404040;
+	}
 
+/* Index */
+.jt-body-content {
+	width: 100%;
+}
+.jt-body-content .jt-page-banner {
+	background-color: black;
+	padding: 1.8em 0em 2em 1em;
+}
+	.jt-body-content .jt-page-banner h2 {
+		text-transform: uppercase;
+		color: white;
+		margin: 0em;
+		border-bottom: 1px solid #404040;
+		text-align: center;
+		padding: 1em 0em 0.8em 0em;
+	}
+.col-md-9 { /* override bootstrap */
+	padding: 0em;
+}
