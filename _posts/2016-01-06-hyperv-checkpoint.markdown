@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Hyper-V CheckPoint"
-date: 2016-01-06 1:40:25 -0800
+date: 2016-01-06
 ---
 
 Hyper-V CheckPoint in PowerShell

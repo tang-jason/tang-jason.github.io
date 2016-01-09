@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang Wiki</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="js/main.js"></script>
+</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-sm-3 col-md-3 jt-nav-wrapper">
+					<header>
+	<img class="img-responsive" src="/img/jason.jpg" alt="Picture of Jason Tang" />
+	<h1 class="visible-lg visible-xs">Jason Tang</h1>
+</header>
+<nav>
+	<ul>
+		<li>
+			<a href="#">
+				<i class="glyphicon glyphicon-home"></i>
+				<span>home</span>
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<i class="glyphicon glyphicon-user"></i>
+				<span>profile</span>
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<i class="glyphicon glyphicon-list"></i>
+				<span>projects</span>
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<i class="glyphicon glyphicon-list-alt"></i>
+				<span>resume</span>
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<i class="glyphicon glyphicon-book"></i>
+				<span>library</span>
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<i class="fa fa-github-square"></i>
+				<span>github</span>
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<i class="fa fa-linkedin-square"></i>
+				<span>linkedin</span>
+			</a>
+		</li>
+	</ul>
+</nav>
+
+				</div>
+				<p>Single Global Variable Example</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">var myApp = (function() {
+	function func = {...};
+	return {...}
+})();</code></pre></figure>
+
+<p>Literal Object Notation</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">var myApp = {
+	models : {}, // obj
+	views : {}, // obj
+	controllers : function() { // function
+		sub-controller : {} // obj
+	}	
+};</code></pre></figure>
+
+<p>Namespacing pattern 01</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">// commom way to check the namespace existence. If already defined, use that instance, otherwise assign a new object.
+var myApp = myApp || {};
+
+// attach &#39;accessibility&#39; namespace to myApp and perform a check.
+myApp.accessibility = myApp.accessibility || {};
+
+// anonymous function or closure
+(function() {
+	myApp.accessibility.updateAccessibility = function() {...};
+	myApp.accessibility.removeAccessibility = function() {...};
+})();
+
+// You can check the namespace existence using the following.
+Option 1: var myApp = myApp || {}; // common way to do it
+Option 2  if(!myApp) myApp = {};
+Option 3: var myApp = myApp = myApp || {} // more thorough
+Option 4: myApp || (myApp = {}); // considered a good practice
+Option 5: var myApp = myApp === undefined ? {} : myApp; // more thorough</code></pre></figure>
+
+<p>Namespacing pattern 02 - nested namespacing</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">// perform a check
+var myApp = myApp || {};
+
+// perform a similar check when defining children
+myApp.models = myApp.models || {};
+
+myApp.views = myApp.views || {};
+myApp.views.landescape = myApp.views.landescape || {};
+
+myApp.controllers = myApp.controllers || {};
+
+myApp.utilities = myApp.utilities || {};
+myApp.utilities.destroy = myApp.utilities.destroy || {};
+
+// see a list of namespacing by console it out
+console.log(myApp);</code></pre></figure>
+
+<p>Namespacing parttern 03 - passing namespace to closure</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">// perform a check
+var myApp = myApp === undefined ? {} : myApp; // using tenary operator
+
+(function(o) { // namespace reference. o = myApp (true)
+	o.foo = &quot;foo&quot;; // public property
+	o.bar = function() { // public method
+		console.log(&quot;bar&quot;);
+	};
+	var moo = &quot;moo&quot;; private property
+	function speak() {
+		console.log(&quot;I can speak!&quot;);
+	};
+})(myApp); // passing in a namespace</code></pre></figure>
+
+
+			</div>
+		</div>
+	</body>
+	<!-- <div class="footer">
+	<p class="">Copyright &copy; <span class="year"></span> Jason Tang, all right reserved</p>
+</div> -->
+</html>
