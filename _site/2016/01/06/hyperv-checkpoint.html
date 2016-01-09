@@ -71,36 +71,16 @@
 </nav>
 
 				</div>
-				<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
-	<h2 class="page-banner">{ home }</h2>
-	<div class="row">
-		
-		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<h3 class="panel-title">Jan 6, 2016</h3>
-				</div>
-				<div class="panel-body">
-					<a href="/2016/01/06/hyperv-checkpoint.html">Hyper-V CheckPoint</a>
-				</div>
-			</div>
-		</div>
-		
-		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<h3 class="panel-title">Nov 7, 2015</h3>
-				</div>
-				<div class="panel-body">
-					<a href="/2015/11/07/video-tagging.html">Video Tagging</a>
-				</div>
-			</div>
-		</div>
-		
-	</div>
-</div>
+				<p>Hyper-V CheckPoint in PowerShell</p>
 
+<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell"><span class="c1"># Create checkpoint</span>
+Checkpoint-VM -VMName <span class="o">{</span>vm name<span class="o">}</span> -SnapshotName <span class="o">{</span>whatever<span class="o">}</span>
 
+<span class="c1"># Remove checkpoint</span>
+Remove-VMSnapshot -VMName <span class="k">*</span>
+
+<span class="c1"># command</span>
+<span class="nb">Get-Command</span> -Module Hyper-V -Name <span class="k">*</span>checkpoint<span class="k">*</span>, <span class="k">*</span>snapshot<span class="k">*</span></code></pre></figure>
 
 			</div>
 		</div>

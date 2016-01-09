@@ -30,6 +30,7 @@ html, body {
 	padding: 1em 1em 1em 0em;
 	width: 100%;
 	display: block;
+	transition: 0.7s;
 }
 	.jt-nav-wrapper ul li a i {
 		padding-right: 1em;
