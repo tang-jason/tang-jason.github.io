@@ -4,6 +4,11 @@ title: "JavaScript Namespacing"
 date: 2016-01-09
 ---
 
+What is namespacing?
+
+In many programming languages, namespacing is a technique employed to avoid collisions with other objects or variables in the global namespace. 
+
+
 Single Global Variable Example
 
 {% highlight javascript %}
@@ -87,4 +92,41 @@ var myApp = myApp === undefined ? {} : myApp; // using tenary operator
 		console.log("I can speak!");
 	};
 })(myApp); // passing in a namespace
+{% endhighlight %}
+
+
+Automated Nested Namespacing
+
+{% highlight javascript %}
+var myApp = myApp || {};
+
+function extend(ns, ns_string) {
+	var parts = ns_string.split("."),
+		parent = ns,
+		pl, i;
+
+	if (parts[0] == "myApp") {
+		parts = parts.slice(1);
+	};
+
+	pl = parts.length;
+	for (i = 0; i < pl; i++) {
+		if (typeof parent[parts[i]] == "undefined") {
+			parent[parts[i]] = {};
+		}
+		parent = parent[parts[i]];
+	}
+	return parent;
+};
+
+// extend myApp with a deeply nested namespace.
+var mod = extend(myApp, "myApp.module.module2");
+
+// output to console
+console.log(mod);
+
+extend(myApp, "models.views.controllers");
+
+console.log(myApp);
+
 {% endhighlight %}

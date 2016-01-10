@@ -71,7 +71,11 @@
 </nav>
 
 				</div>
-				<p>Single Global Variable Example</p>
+				<p>What is namespacing?</p>
+
+<p>In many programming languages, namespacing is a technique employed to avoid collisions with other objects or variables in the global namespace.</p>
+
+<p>Single Global Variable Example</p>
 
 <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">var myApp = (function() {
 	function func = {...};
@@ -144,6 +148,38 @@ var myApp = myApp === undefined ? {} : myApp; // using tenary operator
 	};
 })(myApp); // passing in a namespace</code></pre></figure>
 
+<p>Automated Nested Namespacing</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">var myApp = myApp || {};
+
+function extend(ns, ns_string) {
+	var parts = ns_string.split(&quot;.&quot;),
+		parent = ns,
+		pl, i;
+
+	if (parts[0] == &quot;myApp&quot;) {
+		parts = parts.slice(1);
+	};
+
+	pl = parts.length;
+	for (i = 0; i &lt; pl; i++) {
+		if (typeof parent[parts[i]] == &quot;undefined&quot;) {
+			parent[parts[i]] = {};
+		}
+		parent = parent[parts[i]];
+	}
+	return parent;
+};
+
+// extend myApp with a deeply nested namespace.
+var mod = extend(myApp, &quot;myApp.module.module2&quot;);
+
+// output to console
+console.log(mod);
+
+extend(myApp, &quot;models.views.controllers&quot;);
+
+console.log(myApp);</code></pre></figure>
 
 			</div>
 		</div>
