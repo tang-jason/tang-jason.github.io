@@ -32,7 +32,6 @@ html, body {
 	padding: 15px;
 }
 .jt-container .jt-header-wrapper {
-	display: block;
 	/*border: 1px solid red;*/
 	overflow: hidden;
 }
@@ -76,6 +75,9 @@ html, body {
 .jt-container .jt-header-wrapper nav li a:hover {
 	color: #ce2c38;
 }
+.jt-container .jt-header-wrapper nav li a i {
+	margin-right: 5px;
+}
 .jt-container .jt-header-wrapper .hamburger a i {
 	display: none;
 	float: right;
@@ -114,9 +116,23 @@ html, body {
 	}
 }
 
+@media all and (max-width: 510px) {
+	.jt-container .jt-header-wrapper nav ul {
+		display: none;
+		overflow: hidden;
+		/*border: 1px solid red;*/
+	}
+	.jt-container .jt-header-wrapper nav ul li {
+		/*border: 1px solid yellow;*/
+		display: inline-block;
+		width: 100%;
+	}
+}
+
 @media all and (max-width: 370px) {
 	.jt-container .jt-header-wrapper header h1,
 	.jt-container .jt-header-wrapper header p {
 		display: none;
 	}
+	
 }
