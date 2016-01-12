@@ -16,13 +16,22 @@
 	<script src="js/main.js"></script>
 </head>
 	<body>
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-12 col-sm-3 col-md-3 jt-nav-wrapper">
-					<header>
-	<img class="img-responsive" src="/img/jason.jpg" alt="Picture of Jason Tang" />
-	<h1 class="visible-lg visible-xs">Jason Tang</h1>
+		<div class="jt-video-wrapper">
+			<video autoplay loop>
+				<source src="video/video.mp4" type="video/mp4" class="jt-video-background">
+				Your browser does not support HTML5 video.
+			</video>
+		</div>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<header>
+	<img class="img-responsive" src="/img/profile.jpg" alt="Picture of Jason Tang" />
+	<h1>Jason Tang</h1>
+	<p>Software Engineer</p>
 </header>
+<div class="hamburger">
+	<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+</div>
 <nav>
 	<ul>
 		<li>
@@ -55,7 +64,8 @@
 				<span>library</span>
 			</a>
 		</li>
-		<li>
+
+		<!-- <li>
 			<a href="#">
 				<i class="fa fa-github-square"></i>
 				<span>github</span>
@@ -66,11 +76,12 @@
 				<i class="fa fa-linkedin-square"></i>
 				<span>linkedin</span>
 			</a>
-		</li>
+		</li> -->
 	</ul>
 </nav>
 
-				</div>
+			</div>
+			<div class="jt-content-wrapper">
 				<p>jQuery and JavaScript solutions for HTML5 and YouTube custom video tagging.</p>
 
 <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">// jQuery HTML 5 video tagging
@@ -108,9 +119,11 @@ function onPlayerReady() {
 
 
 			</div>
-		</div>
-	</body>
-	<!-- <div class="footer">
+			<div class="jt-footer-wrapper">
+				<!-- <div class="footer">
 	<p class="">Copyright &copy; <span class="year"></span> Jason Tang, all right reserved</p>
 </div> -->
+			</div>
+		</div>
+	</body>
 </html>

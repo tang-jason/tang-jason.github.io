@@ -111,7 +111,7 @@ function extend(ns, ns_string) {
 
 	pl = parts.length;
 	for (i = 0; i < pl; i++) {
-		if (typeof parent[parts[i]] == "undefined") {
+		if (typeof parent[parts[i]] == "undefined") { // note: an undeclared variable cannot be used in a comparsion without 'typeof' operator
 			parent[parts[i]] = {};
 		}
 		parent = parent[parts[i]];
