@@ -91,8 +91,15 @@ html, body {
 
 /* Index */
 .jt-container .jt-content-wrapper {
-	/*border: 1px solid red;*/
+	margin-top: 40px;
 	display: block;
+}
+.jt-post-wrapper {
+	max-width: 40%;
+}
+.jt-post-wrapper .jt-post-title {
+	border-bottom: 1px solid #404040;
+	padding-bottom: 10px;
 }
 
 /* media quieres */
@@ -116,6 +123,10 @@ html, body {
 	}
 	.jt-container .jt-header-wrapper .hamburger {
 		display: block;
+	}
+	/* index */
+	.jt-post-wrapper {
+		max-width: 100%;
 	}
 }
 
