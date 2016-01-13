@@ -35,46 +35,46 @@
 <nav>
 	<ul>
 		<li>
-			<a href="#">
+			<a href="/index.html">
 				<i class="glyphicon glyphicon-home"></i>
-				<span>home</span>
+				home
 			</a>
 		</li>
 		<li>
-			<a href="#">
+			<a href="/profile.html">
 				<i class="glyphicon glyphicon-user"></i>
-				<span>profile</span>
+				profile
 			</a>
 		</li>
 		<li>
-			<a href="#">
+			<a href="/projects.html">
 				<i class="glyphicon glyphicon-list"></i>
-				<span>projects</span>
+				projects
 			</a>
 		</li>
 		<li>
-			<a href="#">
+			<a href="/resume.html">
 				<i class="glyphicon glyphicon-list-alt"></i>
-				<span>resume</span>
+				resume
 			</a>
 		</li>
 		<li>
-			<a href="#">
+			<a href="/library.html">
 				<i class="glyphicon glyphicon-book"></i>
-				<span>library</span>
+				library
 			</a>
 		</li>
 
 		<!-- <li>
 			<a href="#">
 				<i class="fa fa-github-square"></i>
-				<span>github</span>
+				github
 			</a>
 		</li>
 		<li>
 			<a href="#">
 				<i class="fa fa-linkedin-square"></i>
-				<span>linkedin</span>
+				linkedin
 			</a>
 		</li> -->
 	</ul>
@@ -88,109 +88,109 @@
 
 <p>Single Global Variable Example</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">var myApp = (function() {
-	function func = {...};
-	return {...}
-})();</code></pre></figure>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">myApp</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kd">function</span> <span class="nx">func</span> <span class="o">=</span> <span class="p">{...};</span>
+	<span class="k">return</span> <span class="p">{...}</span>
+<span class="p">})();</span></code></pre></figure>
 
 <p>Literal Object Notation</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">var myApp = {
-	models : {}, // obj
-	views : {}, // obj
-	controllers : function() { // function
-		sub-controller : {} // obj
-	}	
-};</code></pre></figure>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">myApp</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="na">models</span> <span class="p">:</span> <span class="p">{},</span> <span class="c1">// obj</span>
+	<span class="na">views</span> <span class="p">:</span> <span class="p">{},</span> <span class="c1">// obj</span>
+	<span class="na">controllers</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="c1">// function</span>
+		<span class="nx">sub</span><span class="o">-</span><span class="na">controller</span> <span class="p">:</span> <span class="p">{}</span> <span class="c1">// obj</span>
+	<span class="p">}</span>	
+<span class="p">};</span></code></pre></figure>
 
 <p>Namespacing pattern 01</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">// commom way to check the namespace existence. If already defined, use that instance, otherwise assign a new object.
-var myApp = myApp || {};
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// commom way to check the namespace existence. If already defined, use that instance, otherwise assign a new object.</span>
+<span class="kd">var</span> <span class="nx">myApp</span> <span class="o">=</span> <span class="nx">myApp</span> <span class="o">||</span> <span class="p">{};</span>
 
-// attach &#39;accessibility&#39; namespace to myApp and perform a check.
-myApp.accessibility = myApp.accessibility || {};
+<span class="c1">// attach 'accessibility' namespace to myApp and perform a check.</span>
+<span class="nx">myApp</span><span class="p">.</span><span class="nx">accessibility</span> <span class="o">=</span> <span class="nx">myApp</span><span class="p">.</span><span class="nx">accessibility</span> <span class="o">||</span> <span class="p">{};</span>
 
-// anonymous function or closure
-(function() {
-	myApp.accessibility.updateAccessibility = function() {...};
-	myApp.accessibility.removeAccessibility = function() {...};
-})();
+<span class="c1">// anonymous function or closure</span>
+<span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">myApp</span><span class="p">.</span><span class="nx">accessibility</span><span class="p">.</span><span class="nx">updateAccessibility</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{...};</span>
+	<span class="nx">myApp</span><span class="p">.</span><span class="nx">accessibility</span><span class="p">.</span><span class="nx">removeAccessibility</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{...};</span>
+<span class="p">})();</span>
 
-// You can check the namespace existence using the following.
-Option 1: var myApp = myApp || {}; // common way to do it
-Option 2  if(!myApp) myApp = {};
-Option 3: var myApp = myApp = myApp || {} // more thorough
-Option 4: myApp || (myApp = {}); // considered a good practice
-Option 5: var myApp = myApp === undefined ? {} : myApp; // more thorough</code></pre></figure>
+<span class="c1">// You can check the namespace existence using the following.</span>
+<span class="nx">Option</span> <span class="mi">1</span><span class="err">:</span> <span class="kd">var</span> <span class="nx">myApp</span> <span class="o">=</span> <span class="nx">myApp</span> <span class="o">||</span> <span class="p">{};</span> <span class="c1">// common way to do it</span>
+<span class="nx">Option</span> <span class="mi">2</span>  <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">myApp</span><span class="p">)</span> <span class="nx">myApp</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="nx">Option</span> <span class="mi">3</span><span class="err">:</span> <span class="kd">var</span> <span class="nx">myApp</span> <span class="o">=</span> <span class="nx">myApp</span> <span class="o">=</span> <span class="nx">myApp</span> <span class="o">||</span> <span class="p">{}</span> <span class="c1">// more thorough</span>
+<span class="nx">Option</span> <span class="mi">4</span><span class="err">:</span> <span class="nx">myApp</span> <span class="o">||</span> <span class="p">(</span><span class="nx">myApp</span> <span class="o">=</span> <span class="p">{});</span> <span class="c1">// considered a good practice</span>
+<span class="nx">Option</span> <span class="mi">5</span><span class="err">:</span> <span class="kd">var</span> <span class="nx">myApp</span> <span class="o">=</span> <span class="nx">myApp</span> <span class="o">===</span> <span class="kc">undefined</span> <span class="p">?</span> <span class="p">{}</span> <span class="p">:</span> <span class="nx">myApp</span><span class="p">;</span> <span class="c1">// more thorough</span></code></pre></figure>
 
 <p>Namespacing pattern 02 - nested namespacing</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">// perform a check
-var myApp = myApp || {};
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// perform a check</span>
+<span class="kd">var</span> <span class="nx">myApp</span> <span class="o">=</span> <span class="nx">myApp</span> <span class="o">||</span> <span class="p">{};</span>
 
-// perform a similar check when defining children
-myApp.models = myApp.models || {};
+<span class="c1">// perform a similar check when defining children</span>
+<span class="nx">myApp</span><span class="p">.</span><span class="nx">models</span> <span class="o">=</span> <span class="nx">myApp</span><span class="p">.</span><span class="nx">models</span> <span class="o">||</span> <span class="p">{};</span>
 
-myApp.views = myApp.views || {};
-myApp.views.landescape = myApp.views.landescape || {};
+<span class="nx">myApp</span><span class="p">.</span><span class="nx">views</span> <span class="o">=</span> <span class="nx">myApp</span><span class="p">.</span><span class="nx">views</span> <span class="o">||</span> <span class="p">{};</span>
+<span class="nx">myApp</span><span class="p">.</span><span class="nx">views</span><span class="p">.</span><span class="nx">landescape</span> <span class="o">=</span> <span class="nx">myApp</span><span class="p">.</span><span class="nx">views</span><span class="p">.</span><span class="nx">landescape</span> <span class="o">||</span> <span class="p">{};</span>
 
-myApp.controllers = myApp.controllers || {};
+<span class="nx">myApp</span><span class="p">.</span><span class="nx">controllers</span> <span class="o">=</span> <span class="nx">myApp</span><span class="p">.</span><span class="nx">controllers</span> <span class="o">||</span> <span class="p">{};</span>
 
-myApp.utilities = myApp.utilities || {};
-myApp.utilities.destroy = myApp.utilities.destroy || {};
+<span class="nx">myApp</span><span class="p">.</span><span class="nx">utilities</span> <span class="o">=</span> <span class="nx">myApp</span><span class="p">.</span><span class="nx">utilities</span> <span class="o">||</span> <span class="p">{};</span>
+<span class="nx">myApp</span><span class="p">.</span><span class="nx">utilities</span><span class="p">.</span><span class="nx">destroy</span> <span class="o">=</span> <span class="nx">myApp</span><span class="p">.</span><span class="nx">utilities</span><span class="p">.</span><span class="nx">destroy</span> <span class="o">||</span> <span class="p">{};</span>
 
-// see a list of namespacing by console it out
-console.log(myApp);</code></pre></figure>
+<span class="c1">// see a list of namespacing by console it out</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myApp</span><span class="p">);</span></code></pre></figure>
 
 <p>Namespacing parttern 03 - passing namespace to closure</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">// perform a check
-var myApp = myApp === undefined ? {} : myApp; // using tenary operator
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// perform a check</span>
+<span class="kd">var</span> <span class="nx">myApp</span> <span class="o">=</span> <span class="nx">myApp</span> <span class="o">===</span> <span class="kc">undefined</span> <span class="p">?</span> <span class="p">{}</span> <span class="p">:</span> <span class="nx">myApp</span><span class="p">;</span> <span class="c1">// using tenary operator</span>
 
-(function(o) { // namespace reference. o = myApp (true)
-	o.foo = &quot;foo&quot;; // public property
-	o.bar = function() { // public method
-		console.log(&quot;bar&quot;);
-	};
-	var moo = &quot;moo&quot;; private property
-	function speak() {
-		console.log(&quot;I can speak!&quot;);
-	};
-})(myApp); // passing in a namespace</code></pre></figure>
+<span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">o</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// namespace reference. o = myApp (true)</span>
+	<span class="nx">o</span><span class="p">.</span><span class="nx">foo</span> <span class="o">=</span> <span class="s2">"foo"</span><span class="p">;</span> <span class="c1">// public property</span>
+	<span class="nx">o</span><span class="p">.</span><span class="nx">bar</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="c1">// public method</span>
+		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"bar"</span><span class="p">);</span>
+	<span class="p">};</span>
+	<span class="kd">var</span> <span class="nx">moo</span> <span class="o">=</span> <span class="s2">"moo"</span><span class="p">;</span> <span class="kr">private</span> <span class="nx">property</span>
+	<span class="kd">function</span> <span class="nx">speak</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"I can speak!"</span><span class="p">);</span>
+	<span class="p">};</span>
+<span class="p">})(</span><span class="nx">myApp</span><span class="p">);</span> <span class="c1">// passing in a namespace</span></code></pre></figure>
 
 <p>Automated Nested Namespacing</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">var myApp = myApp || {};
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">myApp</span> <span class="o">=</span> <span class="nx">myApp</span> <span class="o">||</span> <span class="p">{};</span>
 
-function extend(ns, ns_string) {
-	var parts = ns_string.split(&quot;.&quot;),
-		parent = ns,
-		pl, i;
+<span class="kd">function</span> <span class="nx">extend</span><span class="p">(</span><span class="nx">ns</span><span class="p">,</span> <span class="nx">ns_string</span><span class="p">)</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">parts</span> <span class="o">=</span> <span class="nx">ns_string</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">"."</span><span class="p">),</span>
+		<span class="nx">parent</span> <span class="o">=</span> <span class="nx">ns</span><span class="p">,</span>
+		<span class="nx">pl</span><span class="p">,</span> <span class="nx">i</span><span class="p">;</span>
 
-	if (parts[0] == &quot;myApp&quot;) {
-		parts = parts.slice(1);
-	};
+	<span class="k">if</span> <span class="p">(</span><span class="nx">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"myApp"</span><span class="p">)</span> <span class="p">{</span>
+		<span class="nx">parts</span> <span class="o">=</span> <span class="nx">parts</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+	<span class="p">};</span>
 
-	pl = parts.length;
-	for (i = 0; i &lt; pl; i++) {
-		if (typeof parent[parts[i]] == &quot;undefined&quot;) { // note: an undeclared variable cannot be used in a comparsion without &#39;typeof&#39; operator
-			parent[parts[i]] = {};
-		}
-		parent = parent[parts[i]];
-	}
-	return parent;
-};
+	<span class="nx">pl</span> <span class="o">=</span> <span class="nx">parts</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+	<span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">pl</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">parent</span><span class="p">[</span><span class="nx">parts</span><span class="p">[</span><span class="nx">i</span><span class="p">]]</span> <span class="o">==</span> <span class="s2">"undefined"</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// note: an undeclared variable cannot be used in a comparsion without 'typeof' operator</span>
+			<span class="nx">parent</span><span class="p">[</span><span class="nx">parts</span><span class="p">[</span><span class="nx">i</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{};</span>
+		<span class="p">}</span>
+		<span class="nx">parent</span> <span class="o">=</span> <span class="nx">parent</span><span class="p">[</span><span class="nx">parts</span><span class="p">[</span><span class="nx">i</span><span class="p">]];</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="nx">parent</span><span class="p">;</span>
+<span class="p">};</span>
 
-// extend myApp with a deeply nested namespace.
-var mod = extend(myApp, &quot;myApp.module.module2&quot;);
+<span class="c1">// extend myApp with a deeply nested namespace.</span>
+<span class="kd">var</span> <span class="nx">mod</span> <span class="o">=</span> <span class="nx">extend</span><span class="p">(</span><span class="nx">myApp</span><span class="p">,</span> <span class="s2">"myApp.module.module2"</span><span class="p">);</span>
 
-// output to console
-console.log(mod);
+<span class="c1">// output to console</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">mod</span><span class="p">);</span>
 
-extend(myApp, &quot;models.views.controllers&quot;);
+<span class="nx">extend</span><span class="p">(</span><span class="nx">myApp</span><span class="p">,</span> <span class="s2">"models.views.controllers"</span><span class="p">);</span>
 
-console.log(myApp);</code></pre></figure>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myApp</span><span class="p">);</span></code></pre></figure>
 
 			</div>
 			<div class="jt-footer-wrapper">

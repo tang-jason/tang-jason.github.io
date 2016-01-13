@@ -35,46 +35,46 @@
 <nav>
 	<ul>
 		<li>
-			<a href="#">
+			<a href="/index.html">
 				<i class="glyphicon glyphicon-home"></i>
-				<span>home</span>
+				home
 			</a>
 		</li>
 		<li>
-			<a href="#">
+			<a href="/profile.html">
 				<i class="glyphicon glyphicon-user"></i>
-				<span>profile</span>
+				profile
 			</a>
 		</li>
 		<li>
-			<a href="#">
+			<a href="/projects.html">
 				<i class="glyphicon glyphicon-list"></i>
-				<span>projects</span>
+				projects
 			</a>
 		</li>
 		<li>
-			<a href="#">
+			<a href="/resume.html">
 				<i class="glyphicon glyphicon-list-alt"></i>
-				<span>resume</span>
+				resume
 			</a>
 		</li>
 		<li>
-			<a href="#">
+			<a href="/library.html">
 				<i class="glyphicon glyphicon-book"></i>
-				<span>library</span>
+				library
 			</a>
 		</li>
 
 		<!-- <li>
 			<a href="#">
 				<i class="fa fa-github-square"></i>
-				<span>github</span>
+				github
 			</a>
 		</li>
 		<li>
 			<a href="#">
 				<i class="fa fa-linkedin-square"></i>
-				<span>linkedin</span>
+				linkedin
 			</a>
 		</li> -->
 	</ul>
@@ -84,38 +84,38 @@
 			<div class="jt-content-wrapper">
 				<p>jQuery and JavaScript solutions for HTML5 and YouTube custom video tagging.</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">// jQuery HTML 5 video tagging
-$(function() {
-  $(&quot;video&quot;).on(&quot;play&quot;, function() {
-    // custom tag here...
-  });
-})</code></pre></figure>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// jQuery HTML 5 video tagging</span>
+<span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s2">"video"</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s2">"play"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// custom tag here...</span>
+  <span class="p">});</span>
+<span class="p">})</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">// JavaScript YouTube tagging
-var tag = document.createElement(&quot;script&quot;);
-tag.src = &quot;https://www.youtube.com/iframe_api&quot;;
-var firstTag = document.getElementsByTagName(&quot;script&quot;)[0];
-firstTag.parentNode.insertBefore(tag, firstTag);
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// JavaScript YouTube tagging</span>
+<span class="kd">var</span> <span class="nx">tag</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"script"</span><span class="p">);</span>
+<span class="nx">tag</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s2">"https://www.youtube.com/iframe_api"</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">firstTag</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">"script"</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+<span class="nx">firstTag</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">tag</span><span class="p">,</span> <span class="nx">firstTag</span><span class="p">);</span>
 
-var player;
-function onYouTubeIframeAPIReady() {
-  player = new YT.Player(&quot;player&quot;, {
-    height: &quot;390&quot;,
-    width: &quot;640&quot;,
-    videoId: &quot;YT_ID&quot;,
-    events: {
-      &quot;onReady&quot;: onPlayerReady
-    }
-  });
-}
+<span class="kd">var</span> <span class="nx">player</span><span class="p">;</span>
+<span class="kd">function</span> <span class="nx">onYouTubeIframeAPIReady</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">player</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">YT</span><span class="p">.</span><span class="nx">Player</span><span class="p">(</span><span class="s2">"player"</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">height</span><span class="p">:</span> <span class="s2">"390"</span><span class="p">,</span>
+    <span class="na">width</span><span class="p">:</span> <span class="s2">"640"</span><span class="p">,</span>
+    <span class="na">videoId</span><span class="p">:</span> <span class="s2">"YT_ID"</span><span class="p">,</span>
+    <span class="na">events</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"onReady"</span><span class="p">:</span> <span class="nx">onPlayerReady</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
 
-function onPlayerReady() {
-  player.addEventListener(&quot;onStateChange&quot;, function(e) {
-    if (e.data == 1) {
-      // custom tag here...
-    };
-  });
-}</code></pre></figure>
+<span class="kd">function</span> <span class="nx">onPlayerReady</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">player</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"onStateChange"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">data</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// custom tag here...</span>
+    <span class="p">};</span>
+  <span class="p">});</span>
+<span class="p">}</span></code></pre></figure>
 
 
 			</div>

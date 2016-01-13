@@ -35,46 +35,46 @@
 <nav>
 	<ul>
 		<li>
-			<a href="#">
+			<a href="/index.html">
 				<i class="glyphicon glyphicon-home"></i>
-				<span>home</span>
+				home
 			</a>
 		</li>
 		<li>
-			<a href="#">
+			<a href="/profile.html">
 				<i class="glyphicon glyphicon-user"></i>
-				<span>profile</span>
+				profile
 			</a>
 		</li>
 		<li>
-			<a href="#">
+			<a href="/projects.html">
 				<i class="glyphicon glyphicon-list"></i>
-				<span>projects</span>
+				projects
 			</a>
 		</li>
 		<li>
-			<a href="#">
+			<a href="/resume.html">
 				<i class="glyphicon glyphicon-list-alt"></i>
-				<span>resume</span>
+				resume
 			</a>
 		</li>
 		<li>
-			<a href="#">
+			<a href="/library.html">
 				<i class="glyphicon glyphicon-book"></i>
-				<span>library</span>
+				library
 			</a>
 		</li>
 
 		<!-- <li>
 			<a href="#">
 				<i class="fa fa-github-square"></i>
-				<span>github</span>
+				github
 			</a>
 		</li>
 		<li>
 			<a href="#">
 				<i class="fa fa-linkedin-square"></i>
-				<span>linkedin</span>
+				linkedin
 			</a>
 		</li> -->
 	</ul>
@@ -84,14 +84,14 @@
 			<div class="jt-content-wrapper">
 				<p>Hyper-V CheckPoint in PowerShell</p>
 
-<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell"># Create checkpoint
-Checkpoint-VM -VMName {vm name} -SnapshotName {whatever}
+<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell"><span class="c1"># Create checkpoint</span>
+Checkpoint-VM -VMName <span class="o">{</span>vm name<span class="o">}</span> -SnapshotName <span class="o">{</span>whatever<span class="o">}</span>
 
-# Remove checkpoint
-Remove-VMSnapshot -VMName *
+<span class="c1"># Remove checkpoint</span>
+Remove-VMSnapshot -VMName <span class="k">*</span>
 
-# command
-Get-Command -Module Hyper-V -Name *checkpoint*, *snapshot*</code></pre></figure>
+<span class="c1"># command</span>
+<span class="nb">Get-Command</span> -Module Hyper-V -Name <span class="k">*</span>checkpoint<span class="k">*</span>, <span class="k">*</span>snapshot<span class="k">*</span></code></pre></figure>
 
 			</div>
 			<div class="jt-footer-wrapper">

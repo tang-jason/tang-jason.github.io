@@ -78,14 +78,14 @@ html, body {
 .jt-container .jt-header-wrapper nav li a i {
 	margin-right: 5px;
 }
-.jt-container .jt-header-wrapper .hamburger a i {
-	display: none;
+.jt-container .jt-header-wrapper .hamburger {
 	float: right;
 	margin-top: 30px;
 	padding: 5px;
+	display: none;
 	transition: 0.3s linear;
 }
-.jt-container .jt-header-wrapper .hamburger a i:hover {
+.jt-container .jt-header-wrapper .hamburger:hover {
 	color: #ce2c38;
 }
 
@@ -114,7 +114,7 @@ html, body {
 	.jt-container .jt-header-wrapper nav ul {
 		display: none;
 	}
-	.jt-container .jt-header-wrapper .hamburger a i {
+	.jt-container .jt-header-wrapper .hamburger {
 		display: block;
 	}
 }
