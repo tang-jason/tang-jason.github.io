@@ -1,7 +1,8 @@
 ---
-layout: default
+layout: post
 title: "Hyper-V CheckPoint"
 date: 2016-01-06
+lang: en-us
 ---
 
 Hyper-V CheckPoint in PowerShell

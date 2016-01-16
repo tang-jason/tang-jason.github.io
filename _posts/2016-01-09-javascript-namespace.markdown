@@ -1,7 +1,8 @@
 ---
-layout: default
+layout: post
 title: "JavaScript Namespacing"
 date: 2016-01-09
+lang: en-us
 ---
 
 What is namespacing?

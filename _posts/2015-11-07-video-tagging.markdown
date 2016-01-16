@@ -1,7 +1,8 @@
 ---
-layout: default
+layout: post
 title:  "Video Tagging"
 date:   2015-11-07 17:15:25 -0800
+lang: en-us
 ---
 
 jQuery and JavaScript solutions for HTML5 and YouTube custom video tagging.

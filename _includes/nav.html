@@ -6,41 +6,41 @@
 				<h1>Jason Tang</h1>
 				<p>Software Engineer</p>
 			</header>
-		</div>
-		<div class="col-xs-12 col-md-8">
 			<div class="hamburger">
 				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
 			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
 			<nav>
 				<ul>
 					<li>
 						<a href="{{ site.baseurl }}/index.html">
 							<i class="glyphicon glyphicon-home"></i>
-							home
+							{{ site.data.navigation[page.lang].home }}
 						</a>
 					</li>
 					<li>
 						<a href="{{ site.baseurl }}/profile.html">
 							<i class="glyphicon glyphicon-user"></i>
-							profile
+							{{ site.data.navigation[page.lang].profile }}
 						</a>
 					</li>
 					<li>
 						<a href="{{ site.baseurl }}/projects.html">
 							<i class="glyphicon glyphicon-list"></i>
-							projects
+							{{ site.data.navigation[page.lang].projects }}
 						</a>
 					</li>
 					<li>
 						<a href="{{ site.baseurl }}/resume.html">
 							<i class="glyphicon glyphicon-list-alt"></i>
-							resume
+							{{ site.data.navigation[page.lang].resume }}
 						</a>
 					</li>
 					<li>
 						<a href="{{ site.baseurl }}/library.html">
 							<i class="glyphicon glyphicon-book"></i>
-							library
+							{{ site.data.navigation[page.lang].library }}
 						</a>
 					</li>
 				</ul>
