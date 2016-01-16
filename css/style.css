@@ -15,7 +15,7 @@ html, body {
 	bottom: 0;
 	right: 0;
 	overflow: hidden;
-	opacity: 0.6;
+	opacity: 0.3;
 	z-index: -100;
 }
 .jt-video-wrapper .jt-video-background {
@@ -55,8 +55,8 @@ html, body {
 	/*border: 1px solid teal;*/
 }
 .jt-container .jt-header-wrapper nav {
-	float: right;
-	padding: 15px;
+	/*float: right;*/
+	padding: 15px 15px 15px 0;
 	/*border: 1px solid black;*/
 }
 .jt-container .jt-header-wrapper nav ul {
@@ -132,15 +132,14 @@ html, body {
 	color: #ce2c38;
 }
 .jt-page-wrapper {
-
+	padding-left: 15px;
 }
 
 
 /* media quieres */
-@media all and (max-width: 760px) {
-	.jt-container .jt-header-wrapper header h1,
-	.jt-container .jt-header-wrapper header p {
-		display: none;
+@media all and (max-width: 993px) {
+	.jt-page-wrapper {
+		padding-left: 0px;
 	}
 }
 
@@ -148,23 +147,19 @@ html, body {
 	.jt-video-wrapper {
 		display: none;
 	}
-	.jt-container .jt-header-wrapper header h1,
-	.jt-container .jt-header-wrapper header p {
-		display: block;
-	}
-	.jt-container .jt-header-wrapper nav ul {
+	/*.jt-container .jt-header-wrapper nav ul {
 		display: none;
-	}
-	.jt-container .jt-header-wrapper .hamburger {
+	}*/
+	/*.jt-container .jt-header-wrapper .hamburger {
 		display: block;
-	}
+	}*/
 	/* index */
 	.jt-post-wrapper {
 		max-width: 100%;
 	}
 }
 
-@media all and (max-width: 510px) {
+@media all and (max-width: 540px) {
 	.jt-container .jt-header-wrapper nav ul {
 		display: none;
 		overflow: hidden;
