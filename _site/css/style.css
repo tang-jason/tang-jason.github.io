@@ -4,6 +4,9 @@ html, body {
 	padding: 0;
 	height: 100%;
 }
+.container {
+	max-width: 100%;
+}
 /* video background */
 .jt-video-wrapper {
 	position: fixed;
@@ -129,7 +132,7 @@ html, body {
 	color: #ce2c38;
 }
 .jt-page-wrapper {
-	
+
 }
 
 
