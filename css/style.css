@@ -134,6 +134,12 @@ html, body {
 .jt-page-wrapper {
 	padding-left: 15px;
 }
+.btn-primary {
+	transition: 0.3s linear;
+}
+.btn-primary:hover {
+	background-color: #ce2c38;
+}
 
 
 /* media quieres */
