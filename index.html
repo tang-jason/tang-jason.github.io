@@ -4,6 +4,7 @@ title: Home
 lang: en-us
 ---
 
+<!-- video background -->
 <div class="jt-video-wrapper">
 	<video autoplay loop>
 		<source src="video/video.mp4" type="video/mp4" class="jt-video-background">
@@ -11,34 +12,15 @@ lang: en-us
 	</video>
 </div>
 
+<!-- posts -->
 <div class="jt-post-wrapper">
-	<h2 class="jt-post-title">Latest posts</h2>
-	{% for post in site.posts %}
-	<h3 class="jt-post-body">
+	<h2 class="jt-post-header">Latest Posts</h2>
+	{% for post in site.posts limit:5 %}
+	<div class="jt-post-body">
 		<a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-	</h3>
-	<p class="jt-post-date">
-		{{ post.date | date: "%b %-d, %Y" }}
-	</p>
+		<p class="jt-post-date">{{ post.date | date: "%b %-d, %Y" }}</p>
+	</div>
 	{% endfor %}
 </div>
-
-<!-- <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
-	<h2 class="page-banner">{ home }</h2>
-	<div class="row">
-		{% for post in site.posts %}
-		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<h3 class="panel-title">{{ post.date | date: "%b %-d, %Y" }}</h3>
-				</div>
-				<div class="panel-body">
-					<a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-				</div>
-			</div>
-		</div>
-		{% endfor %}
-	</div>
-</div> -->
 
 

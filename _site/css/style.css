@@ -97,9 +97,25 @@ html, body {
 .jt-post-wrapper {
 	max-width: 40%;
 }
-.jt-post-wrapper .jt-post-title {
+.jt-post-wrapper .jt-post-header {
 	border-bottom: 1px solid #404040;
 	padding-bottom: 10px;
+}
+.jt-post-wrapper .jt-post-body {
+	font-size: 15px;
+	overflow: hidden;
+}
+.jt-post-wrapper .jt-post-body a {
+	text-decoration: none;
+	float: left;
+	margin-right: 10px;
+	transition: 0.3s linear;
+}
+.jt-post-wrapper .jt-post-body a:hover {
+	color: #ce2c38;
+}
+.jt-post-wrapper .jt-post-body p {
+	float: right;
 }
 
 /* media quieres */
