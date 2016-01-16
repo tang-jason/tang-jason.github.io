@@ -141,6 +141,12 @@ html, body {
 	background-color: #ce2c38;
 }
 
+/* footer */
+.footer {
+	float: right;
+	margin-top: 30px;
+}
+
 
 /* media quieres */
 @media all and (max-width: 993px) {

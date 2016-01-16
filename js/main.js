@@ -1,23 +1,8 @@
-var myApp = (function() {
-
-	// private method
-	
-
-	return {
-
-	}
-
-})();
-
-// document.ready
 $(function() {
+	$(".year").text(new Date().getFullYear());
 
 	$(".hamburger").on("click", function(e) {
 		e.preventDefault();
 		$(".jt-header-wrapper nav ul").slideToggle();
 	});
-
-	//myApp.navigation.menuLink();
 });
-
-//console.log(myApp.navigation.menuLink());
