@@ -76,11 +76,15 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-xs-12">
-	<p>What is namespacing?</p>
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">JavaScript Namespacing</li>
+	</ol>
+	<h1 id="what-is-namespacing">What is namespacing?</h1>
 
 <p>In many programming languages, namespacing is a technique employed to avoid collisions with other objects or variables in the global namespace.</p>
 
-<p>Single Global Variable Example</p>
+<h4 id="single-global-variable-example">Single Global Variable Example</h4>
 
 <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">myApp</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
 	<span class="kd">function</span> <span class="nx">func</span> <span class="o">=</span> <span class="p">{...};</span>
@@ -97,7 +101,7 @@
 	<span class="p">}</span>	
 <span class="p">};</span></code></pre></figure>
 
-<p>Namespacing pattern 01</p>
+<h4 id="namespacing-pattern-01">Namespacing pattern 01</h4>
 
 <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// commom way to check the namespace existence. If already defined, use that instance, otherwise assign a new object.</span>
 <span class="kd">var</span> <span class="nx">myApp</span> <span class="o">=</span> <span class="nx">myApp</span> <span class="o">||</span> <span class="p">{};</span>
@@ -118,7 +122,7 @@
 <span class="nx">Option</span> <span class="mi">4</span><span class="err">:</span> <span class="nx">myApp</span> <span class="o">||</span> <span class="p">(</span><span class="nx">myApp</span> <span class="o">=</span> <span class="p">{});</span> <span class="c1">// considered a good practice</span>
 <span class="nx">Option</span> <span class="mi">5</span><span class="err">:</span> <span class="kd">var</span> <span class="nx">myApp</span> <span class="o">=</span> <span class="nx">myApp</span> <span class="o">===</span> <span class="kc">undefined</span> <span class="p">?</span> <span class="p">{}</span> <span class="p">:</span> <span class="nx">myApp</span><span class="p">;</span> <span class="c1">// more thorough</span></code></pre></figure>
 
-<p>Namespacing pattern 02 - nested namespacing</p>
+<h4 id="namespacing-pattern-02---nested-namespacing">Namespacing pattern 02 - nested namespacing</h4>
 
 <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// perform a check</span>
 <span class="kd">var</span> <span class="nx">myApp</span> <span class="o">=</span> <span class="nx">myApp</span> <span class="o">||</span> <span class="p">{};</span>
@@ -137,7 +141,7 @@
 <span class="c1">// see a list of namespacing by console it out</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myApp</span><span class="p">);</span></code></pre></figure>
 
-<p>Namespacing parttern 03 - passing namespace to closure</p>
+<h4 id="namespacing-parttern-03---passing-namespace-to-closure">Namespacing parttern 03 - passing namespace to closure</h4>
 
 <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// perform a check</span>
 <span class="kd">var</span> <span class="nx">myApp</span> <span class="o">=</span> <span class="nx">myApp</span> <span class="o">===</span> <span class="kc">undefined</span> <span class="p">?</span> <span class="p">{}</span> <span class="p">:</span> <span class="nx">myApp</span><span class="p">;</span> <span class="c1">// using tenary operator</span>
@@ -153,7 +157,7 @@
 	<span class="p">};</span>
 <span class="p">})(</span><span class="nx">myApp</span><span class="p">);</span> <span class="c1">// passing in a namespace</span></code></pre></figure>
 
-<p>Automated Nested Namespacing</p>
+<h4 id="automated-nested-namespacing">Automated Nested Namespacing</h4>
 
 <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">myApp</span> <span class="o">=</span> <span class="nx">myApp</span> <span class="o">||</span> <span class="p">{};</span>
 

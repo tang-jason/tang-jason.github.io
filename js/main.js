@@ -6,7 +6,6 @@ myApp.navigation = myApp.navigation || {};
 	function privateMenuToggle() {
 		$(window).resize(function() {
 			if (window.innerWidth >= 540) {
-				console.log(">= 540");
 				$("nav ul").show();
 			} else {
 				$("nav ul").hide();

@@ -78,18 +78,61 @@
 						<div class="col-xs-12">
 	<ol class="breadcrumb">
 		<li><a href="/index.html">Home</a></li>
-		<li class="active">Hyper-V CheckPoint</li>
+		<li class="active">Markdown Usage Basic</li>
 	</ol>
-	<p>Hyper-V CheckPoint in PowerShell</p>
+	<h1 id="markdown-basic">Markdown Basic</h1>
 
-<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell"><span class="c1"># Create checkpoint</span>
-Checkpoint-VM -VMName <span class="o">{</span>vm name<span class="o">}</span> -SnapshotName <span class="o">{</span>whatever<span class="o">}</span>
+<p>Basic usages of markdown. A good list can be found <a href="https://daringfireball.net/projects/markdown/syntax">here</a></p>
 
-<span class="c1"># Remove checkpoint</span>
-Remove-VMSnapshot -VMName <span class="k">*</span>
+<h4 id="h1---h6-headings">H1 - H6 Headings</h4>
 
-<span class="c1"># command</span>
-<span class="nb">Get-Command</span> -Module Hyper-V -Name <span class="k">*</span>checkpoint<span class="k">*</span>, <span class="k">*</span>snapshot<span class="k">*</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-markdown" data-lang="markdown">// use pound sign for headings
+<span class="gh"># Heading 1</span>
+<span class="gu">## Heading 2</span>
+<span class="gu">### Heading 3</span>
+<span class="gu">#### Heading 4</span>
+<span class="gu">##### Heading 5</span>
+<span class="gu">###### Heading 6</span></code></pre></figure>
+
+<h4 id="blockqoute">Blockqoute</h4>
+
+<figure class="highlight"><pre><code class="language-markdown" data-lang="markdown">// blockqoute and nested blockqoute
+<span class="gt">&gt; first level blockqoute</span>
+<span class="gt">&gt;</span>
+<span class="gt">&gt;&gt; second level nested blockqoute</span>
+<span class="gt">&gt;</span>
+<span class="gt">&gt;&gt;&gt; third level nested blockqoute</span></code></pre></figure>
+
+<blockquote>
+  <p>first level blockqoute</p>
+
+  <blockquote>
+    <p>second level nested blockqoute</p>
+  </blockquote>
+
+  <blockquote>
+    <blockquote>
+      <p>third level nested blockqoute</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h4 id="ordered-list-item">Ordered List Item</h4>
+
+<figure class="highlight"><pre><code class="language-markdown" data-lang="markdown">// just start it in number
+<span class="p">1.</span> first list item</code></pre></figure>
+
+<ol>
+  <li>first list item.</li>
+  <li>second list item.</li>
+  <li>thrid list item.</li>
+</ol>
+
+<h4 id="tab-to-create-code-block">TAB to create code block</h4>
+
+<pre><code>function publicMethod() { privateMethod() };
+</code></pre>
+
 
 </div>
 					</div>

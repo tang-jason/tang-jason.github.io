@@ -37,6 +37,7 @@ html, body {
 .jt-container .jt-header-wrapper {
 	/*border: 1px solid red;*/
 	overflow: hidden;
+	margin-bottom: 15px;
 }
 .jt-container .jt-header-wrapper header {
 	/*border: 1px solid black;*/

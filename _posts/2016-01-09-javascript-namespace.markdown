@@ -5,12 +5,12 @@ date: 2016-01-09
 lang: en-us
 ---
 
-What is namespacing?
+# What is namespacing?
 
 In many programming languages, namespacing is a technique employed to avoid collisions with other objects or variables in the global namespace. 
 
 
-Single Global Variable Example
+#### Single Global Variable Example
 
 {% highlight javascript %}
 var myApp = (function() {
@@ -31,7 +31,7 @@ var myApp = {
 };
 {% endhighlight %}
 
-Namespacing pattern 01
+#### Namespacing pattern 01
 
 {% highlight javascript %}
 // commom way to check the namespace existence. If already defined, use that instance, otherwise assign a new object.
@@ -55,7 +55,7 @@ Option 5: var myApp = myApp === undefined ? {} : myApp; // more thorough
 
 {% endhighlight %}
 
-Namespacing pattern 02 - nested namespacing
+#### Namespacing pattern 02 - nested namespacing
 
 {% highlight javascript %}
 // perform a check
@@ -77,7 +77,7 @@ console.log(myApp);
 
 {% endhighlight %}
 
-Namespacing parttern 03 - passing namespace to closure
+#### Namespacing parttern 03 - passing namespace to closure
 
 {% highlight javascript %}
 // perform a check
@@ -96,7 +96,7 @@ var myApp = myApp === undefined ? {} : myApp; // using tenary operator
 {% endhighlight %}
 
 
-Automated Nested Namespacing
+#### Automated Nested Namespacing
 
 {% highlight javascript %}
 var myApp = myApp || {};
