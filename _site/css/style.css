@@ -94,7 +94,7 @@ html, body {
 
 /* Index */
 .jt-container .jt-content-wrapper {
-	margin-top: 40px;
+	/*margin-top: 40px;*/
 	display: block;
 }
 .jt-post-wrapper {
@@ -161,7 +161,7 @@ html, body {
 	}
 }
 
-@media all and (max-width: 540px) {
+@media all and (max-width: 550px) {
 	.jt-container .jt-header-wrapper nav ul {
 		display: none;
 		overflow: hidden;
@@ -178,5 +178,14 @@ html, body {
 	.jt-container .jt-header-wrapper header h1,
 	.jt-container .jt-header-wrapper header p {
 		display: none;
+	}
+	.jt-container .jt-header-wrapper nav ul li {
+		display: inline-block; 
+		width: 100%;
+		text-align: center;
+	}
+	.jt-container .jt-header-wrapper nav ul li a i {
+		margin-left: 20px;
+		float: left;
 	}
 }
