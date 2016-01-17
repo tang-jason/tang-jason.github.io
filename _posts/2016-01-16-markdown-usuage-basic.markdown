@@ -11,7 +11,7 @@ Basic usages of markdown. A good list can be found [here][markdown url]
 
 #### H1 - H6 Headings
 
-{% highlight markdown %}
+{% highlight javascript %}
 // use pound sign for headings
 # Heading 1
 ## Heading 2
@@ -23,7 +23,7 @@ Basic usages of markdown. A good list can be found [here][markdown url]
 
 #### Blockqoute
 
-{% highlight markdown %}
+{% highlight javascript %}
 // blockqoute and nested blockqoute
 > first level blockqoute
 >
@@ -40,7 +40,7 @@ Basic usages of markdown. A good list can be found [here][markdown url]
 
 #### Ordered List Item
 
-{% highlight markdown %}
+{% highlight javascript %}
 // just start it in number
 1. first list item
 {% endhighlight %}

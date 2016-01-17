@@ -11,7 +11,7 @@ Using jQuery resize() method to simpliy get the window inner width and determine
 
 #### resize() method
 
-{% highlight jquery %}
+{% highlight javascript %}
 $(window).resize(function() {
 	if (window.innerWidth >= 540) {
 		$("nav ul").show();
