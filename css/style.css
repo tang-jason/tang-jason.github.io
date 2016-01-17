@@ -169,6 +169,9 @@ html, body {
 	.jt-container .jt-header-wrapper .hamburger {
 		display: block;
 	}
+	.footer {
+		text-align: center;
+	}
 }
 
 @media all and (max-width: 370px) {
@@ -176,5 +179,4 @@ html, body {
 	.jt-container .jt-header-wrapper header p {
 		display: none;
 	}
-	
 }
