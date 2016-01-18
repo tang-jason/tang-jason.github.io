@@ -9,6 +9,9 @@ lang: en-us
 
 In many programming languages, namespacing is a technique to avoid collisions with other objects or variables in the global namespace. Different design namespacing partterns.
 
+You can find a good namespacing design patterns article [here][jsNamespacing].
+
+For more immediately invoked-function expression [here][iife].
 
 #### Single Global Variable Example
 
@@ -237,3 +240,7 @@ console.log(myApp05.collections.setVal(25));
 
 myApp05.collections.create.createMethod();
 {% endhighlight %}
+
+
+[jsNamespacing]: https://addyosmani.com/blog/essential-js-namespacing/
+[iife]: http://benalman.com/news/2010/11/immediately-invoked-function-expression/

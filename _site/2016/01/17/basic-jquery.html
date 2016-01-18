@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | Basic jQuery usages</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="js/main.js"></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<img class="img-responsive" src="/img/profile.jpg" alt="Picture of Jason Tang" />
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">Basic jQuery usages</li>
+	</ol>
+	<h1 id="basic-jquery-usages">Basic jQuery usages</h1>
+
+<p>Refresh on some basic jQuery methods and usages.</p>
+
+<h4 id="how-to-create-element-and-text">How to create element and text</h4>
+
+<p><u>createElement()</u> = create an HTML element</p>
+
+<p><u>createTextNode()</u> = create a text node</p>
+
+<p><u>appendChild()</u> = appends a node as the last child of a node</p>
+
+<p><u>insertuefore()</u> = inert an element uefore a targeted element</p>
+
+<p><u>childNodes()</u> = returns a collection of a node’s child nodes, as a NodeList object</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// step 1: create an element</span>
+<span class="kd">var</span> <span class="nx">newElement</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"li"</span><span class="p">);</span>
+
+<span class="c1">// step 2: create text node</span>
+<span class="kd">var</span> <span class="nx">newText</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createTextNode</span><span class="p">(</span><span class="s2">"Coffee"</span><span class="p">);</span>
+
+<span class="c1">// step 3: append the text to li</span>
+<span class="nx">newElement</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">newText</span><span class="p">);</span>
+
+<span class="c1">// step 4: get the ul element to insert a text node</span>
+<span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">"ul"</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+
+<span class="c1">// step 5: insert li before the first child of ul</span>
+<span class="nx">list</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">newElement</span><span class="p">,</span> <span class="nx">list</span><span class="p">.</span><span class="nx">childNodes</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span></code></pre></figure>
+
+<h4 id="wrapping-elements">Wrapping elements</h4>
+
+<p><u>wrap()</u> = wraps each of the selected elements</p>
+
+<p><u>wrapInner()</u> = wraps the content of each selected element</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// wrap all h1 element with i element</span>
+<span class="c1">// output: &lt;i&gt;&lt;h1&gt;...&lt;/h1&gt;&lt;/i&gt;</span>
+<span class="nx">$</span><span class="p">(</span><span class="s2">"h1"</span><span class="p">).</span><span class="nx">wrap</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"i"</span><span class="p">));</span>
+
+<span class="c1">// wrap the content of selected elment</span>
+<span class="c1">// output: &lt;li&gt;&lt;a href="#"&gt;&lt;/a&gt;&lt;/li&gt;</span>
+<span class="nx">$</span><span class="p">(</span><span class="s2">"li"</span><span class="p">).</span><span class="nx">wrapInner</span><span class="p">(</span><span class="s2">"&lt;a/&gt;"</span><span class="p">);</span> <span class="c1">// using a string argument is eaiser</span>
+<span class="nx">$</span><span class="p">(</span><span class="s2">"ul li a"</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"href"</span><span class="p">,</span> <span class="s2">"#"</span><span class="p">);</span></code></pre></figure>
+
+<h4 id="append-vs-appendto">append() vs appendTo()</h4>
+
+<pre><code>$(target).append(content);
+$(content).appendTo(target);
+</code></pre>
+
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>
