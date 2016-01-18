@@ -17,7 +17,7 @@ Refresh on some basic jQuery methods and usages.
 
 <u>appendChild()</u> = appends a node as the last child of a node
 
-<u>insertuefore()</u> = inert an element uefore a targeted element
+<u>insertBefore()</u> = inert an element uefore a targeted element
 
 <u>childNodes()</u> = returns a collection of a node's child nodes, as a NodeList object
 
@@ -55,8 +55,25 @@ $("li").wrapInner("<a/>"); // using a string argument is eaiser
 $("ul li a").attr("href", "#");
 {% endhighlight %}
 
+
 #### append() vs appendTo()
 
 	$(target).append(content);
 	$(content).appendTo(target);
 
+
+#### resize() method
+
+Use resize() to detects and determines what to do at a specific page breakpoint
+
+{% highlight javascript %}
+$(window).resize(function() {
+	if (window.innerWidth >= 550) {
+		$("nav ul").show();
+		$(".hamburger").hide();
+	} else {
+		$(".hamburger").show();
+		$("nav ul").hide();
+	}
+});
+{% endhighlight %} 
