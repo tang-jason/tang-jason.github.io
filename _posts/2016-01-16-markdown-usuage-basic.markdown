@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Markdown Usage Basic"
-date: 2016-1-16
+date: 2016-01-16
 lang: en-us
 ---
 
