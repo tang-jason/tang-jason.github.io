@@ -58,8 +58,17 @@ $("ul li a").attr("href", "#");
 
 #### append() vs appendTo()
 
-	$(target).append(content);
-	$(content).appendTo(target);
+	// $(target).append(content);
+	$("h1").append("Hello World!");
+
+	// $(content).appendTo(target);
+	$("p").appendTo("h1");
+	$("<p>hello</p>").appendTo("h1");
+
+	// If the selected this way is inserted into a single location 
+	// elsewhere in the DOM, it will be moved into the targer (not clone) 
+	// and new set consisting of the inserted elmement is returned.
+	$("p").appendTo($(".class"));
 
 
 #### resize() method
@@ -75,5 +84,19 @@ $(window).resize(function() {
 		$(".hamburger").show();
 		$("nav ul").hide();
 	}
+});
+{% endhighlight %} 
+
+
+#### hover() method
+
+This method has in and out function
+
+{% highlight javascript %}
+// 1st handler is the inFunction (mouse hover) and the 2nd handler is outFunction (mouse out)
+$("a").hover(function() {
+	$(this).css("color", "#ffffff");
+}, function() {
+	$(this).css("color", "");
 });
 {% endhighlight %} 

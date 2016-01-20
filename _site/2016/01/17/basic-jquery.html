@@ -13,7 +13,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
-	<script src="js/main.js"></script>
+	<script src="/js/main.js"></script>
 </head>
 	<body>
 		<div class="jt-container">
@@ -128,8 +128,17 @@
 
 <h4 id="append-vs-appendto">append() vs appendTo()</h4>
 
-<pre><code>$(target).append(content);
-$(content).appendTo(target);
+<pre><code>// $(target).append(content);
+$("h1").append("Hello World!");
+
+// $(content).appendTo(target);
+$("p").appendTo("h1");
+$("&lt;p&gt;hello&lt;/p&gt;").appendTo("h1");
+
+// If the selected this way is inserted into a single location 
+// elsewhere in the DOM, it will be moved into the targer (not clone) 
+// and new set consisting of the inserted elmement is returned.
+$("p").appendTo($(".class"));
 </code></pre>
 
 <h4 id="resize-method">resize() method</h4>
@@ -144,6 +153,17 @@ $(content).appendTo(target);
 		<span class="nx">$</span><span class="p">(</span><span class="s2">".hamburger"</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
 		<span class="nx">$</span><span class="p">(</span><span class="s2">"nav ul"</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
 	<span class="p">}</span>
+<span class="p">});</span></code></pre></figure>
+
+<h4 id="hover-method">hover() method</h4>
+
+<p>This method has in and out function</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// 1st handler is the inFunction (mouse hover) and the 2nd handler is outFunction (mouse out)</span>
+<span class="nx">$</span><span class="p">(</span><span class="s2">"a"</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">"color"</span><span class="p">,</span> <span class="s2">"#ffffff"</span><span class="p">);</span>
+<span class="p">},</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">"color"</span><span class="p">,</span> <span class="s2">""</span><span class="p">);</span>
 <span class="p">});</span></code></pre></figure>
 
 

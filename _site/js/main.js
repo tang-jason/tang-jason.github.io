@@ -33,12 +33,14 @@ myApp.navigation = myApp.navigation || {};
 			$(".btn-primary").hover(function() {
 				$(this).css({
 					"background-color" : "#ce2c38",
-					"color" : "#ffffff"
+					"color" : "#ffffff",
+					"border-color" : "#ce2c38"
 				});
 			}, function() {
 				$(this).css({
 					"background-color" : "",
-					"color" : ""
+					"color" : "",
+					"border-color" : ""
 				});
 			});
 		},
@@ -52,7 +54,7 @@ var init = function() {
 	// cached reference
 	var appNav = myApp.navigation
 	var appToggle = myApp.navigation.toggle;
-	
+
 	appToggle.hamburgerToggle()
 	appToggle.menuToggle();
 
