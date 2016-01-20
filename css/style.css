@@ -76,9 +76,9 @@ html, body {
 	text-decoration: none;
 	transition: 0.3s linear;
 }
-.jt-container .jt-header-wrapper nav li a:hover {
+/*.jt-container .jt-header-wrapper nav li a:hover {
 	color: #ce2c38;
-}
+}*/
 .jt-container .jt-header-wrapper nav li a i {
 	margin-right: 5px;
 }
@@ -89,9 +89,9 @@ html, body {
 	display: none;
 	transition: 0.3s linear;
 }
-.jt-container .jt-header-wrapper .hamburger:hover {
+/*.jt-container .jt-header-wrapper .hamburger:hover {
 	color: #ce2c38;
-}
+}*/
 
 /* Index */
 .jt-container .jt-content-wrapper {
@@ -116,9 +116,9 @@ html, body {
 	margin-right: 10px;
 	transition: 0.3s linear;
 }
-.jt-post-wrapper .jt-post-body a:hover {
+/*.jt-post-wrapper .jt-post-body a:hover {
 	color: #ce2c38;
-}
+}*/
 .jt-post-wrapper .jt-post-body p {
 	float: right;
 }
@@ -129,26 +129,26 @@ html, body {
 	transition: 0.3s linear;
 	text-decoration: none;
 }
-.jt-social-accounts div a:hover {
+/*.jt-social-accounts div a:hover {
 	color: #ce2c38;
-}
+}*/
 .jt-page-wrapper {
 	padding-left: 15px;
 }
 .btn-primary {
 	transition: 0.3s linear;
 }
-.btn-primary:hover {
+/*.btn-primary:hover {
 	background-color: #ce2c38;
-}
+}*/
 
 .breadcrumb li a {
 	transition: 0.3s linear;
 	text-decoration: none;
 }
-.breadcrumb li a:hover {
+/*.breadcrumb li a:hover {
 	color: #ce2c38;
-}
+}*/
 
 /* footer */
 .footer {
