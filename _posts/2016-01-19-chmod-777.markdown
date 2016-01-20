@@ -1,0 +1,29 @@
+---
+layout: post
+title: "What is chmod 777?"
+date: 2016-01-19
+lang: en-us
+---
+
+#### {{ page.title }}
+
+To make it easy to understand, we can break it into two parts.
+
+<u>chmod</u>: this command is meant to perform an action, which is to change the file permission.
+
+<u>777</u>: All three users (owner, group, public) can perform all three operations (read/write/execute) on a file.
+
+	// computer only understands numbers.
+
+	No permission – 0
+	Execute – 1
+	Write – 2
+	Write and Execute – 3
+	Read – 4
+	Read and Execute – 5
+	Read and Write – 6
+	Read, Write, and Execute – 7
+
+chmod 777, in other word that <u>7</u>(owner)<u>7</u>(group)<u>7</u>(public) have read, write, execute permission. 
+
+You can also use the -R (recursive) if your targeted folder has sub-folders. E.g. <u>chmod -R 777</u>
