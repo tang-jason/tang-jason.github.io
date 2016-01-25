@@ -1,10 +1,10 @@
 var myApp = myApp || {};
 myApp.navigation = myApp.navigation || {};
 
-(function() {
+(function () {
 	// private functions
 	function privateMenuToggle() {
-		$(window).resize(function() {
+		$(window).resize(function () {
 			if (window.innerWidth >= 550) {
 				$("nav ul").show();
 				$(".hamburger").hide();

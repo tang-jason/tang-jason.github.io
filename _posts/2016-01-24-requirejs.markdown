@@ -123,7 +123,7 @@ define("module3", ["jquery", "module1", "module2"], function($, module1, module2
 });
 {% endhighlight %}
 
-### Step 6 ####
+#### Step 6 ####
 
 Create an app module to use the simplified wrapper design pattern.
 

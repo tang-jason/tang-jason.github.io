@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | JavaScript Hoisting</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">JavaScript Hoisting</li>
+	</ol>
+	<h1 id="javascript-hoisting">JavaScript Hoisting</h1>
+
+<p>When a variable is declared, the declaration statment gets hoisted to the top of the function. This is the same for functions.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">hoisted</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">i</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+
+  <span class="c1">// output: 5</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
+  <span class="c1">// output: type error, testOne is not a function</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">testOne</span><span class="p">());</span>
+  <span class="c1">// output: "I am test two"</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">testTWo</span><span class="p">());</span>
+
+  <span class="kd">var</span> <span class="nx">testOne</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s2">"I am test one"</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kd">function</span> <span class="nx">testTwo</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s2">"I am test two"</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>This is how JavaScript sees your declaration.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">hoisted</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">testOne</span><span class="p">;</span>
+
+  <span class="kd">function</span> <span class="nx">testTwo</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s2">"I am test two"</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kd">var</span> <span class="nx">i</span><span class="p">;</span>
+
+  <span class="nx">i</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+
+  <span class="c1">// output: 5</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
+  <span class="c1">// output: type error, testOne is not a function</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">testOne</span><span class="p">());</span>
+  <span class="c1">// output: "I am test two"</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">testTWo</span><span class="p">());</span>
+
+  <span class="nx">testOne</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s2">"I am test one"</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">i</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>The difference is that the function testOne didn’t get hoisted because it was a variable declaration. Variable “i” gets its declaration hoisted and assigned.</p>
+
+<p>It’s ideal to declare your variables at the top of your function and declare your function next.</p>
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>
