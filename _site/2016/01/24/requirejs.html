@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | Require JS</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<img class="img-responsive" src="/img/profile.jpg" alt="Picture of Jason Tang" />
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">Require JS</li>
+	</ol>
+	<h1 id="require-js">Require JS</h1>
+
+<p>How to use require.js in your project. You can find the <a href="http://requirejs.org/">documentation</a>.</p>
+
+<h4 id="step-1">Step 1</h4>
+
+<p>load your script after requirejs loads.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;head&gt;</span>
+  // data-main attr tells the require.js to load script.js after require.js loads.
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"require.js"</span> <span class="na">data-main=</span><span class="s">"your script.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span></code></pre></figure>
+
+<h4 id="step-2">Step 2</h4>
+
+<p>We can also load the required libraries like jQuery in config.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">require</span><span class="p">.</span><span class="nx">config</span><span class="p">({</span>
+  <span class="na">paths</span> <span class="p">:</span> <span class="p">{</span>
+    <span class="c1">// here we're telling requirejs what to load. In this case, we're loading jQuery.</span>
+    <span class="c1">// requirejs will also add the extension (.js)</span>
+    <span class="na">jquery</span> <span class="p">:</span> <span class="s1">'jquery-2.1.1.min'</span>
+  <span class="p">}</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>To specific what module we’re depending on. RequireJS adds a function named “require()” to the global scope. It loads this dependancy before we can proceed.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// 1st param is the depandency and 2nd param is the callback function</span>
+<span class="c1">// module laoding in requirejs is async</span>
+<span class="nx">require</span><span class="p">([</span><span class="nx">jquery</span><span class="p">],</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// code here</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>Syntax
+	require({dependencyArray}, {callbackFunction});
+	require([“dependency1”, “dependency2”], function() {…});</p>
+
+<h4 id="step-3">Step 3</h4>
+
+<p>Create the module using define() function.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">define</span><span class="p">(</span><span class="s2">"module"</span><span class="p">,</span> <span class="p">[],</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="s2">"use strict"</span><span class="p">;</span>
+  <span class="c1">// code here...</span>
+<span class="p">})</span></code></pre></figure>
+
+<p>Syntax</p>
+
+<pre><code>define({moduleNameString}, {dependencyArray}, {callbackFunction});
+
+// simplified common JS wrapper
+define({moduleNameString}, function(require, export, module) {
+  var {module} = require({moduleName});
+
+  export.{publicMember} = {publicValue};
+})
+</code></pre>
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>

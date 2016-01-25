@@ -1,67 +1,85 @@
 var myApp = myApp || {};
 myApp.navigation = myApp.navigation || {};
 
-
 (function() {
+	// private functions
+	function privateMenuToggle() {
+		$(window).resize(function() {
+			if (window.innerWidth >= 550) {
+				$("nav ul").show();
+				$(".hamburger").hide();
+			} else {
+				$(".hamburger").show();
+				$("nav ul").hide();
+			}
+		});
+	}
+
+	function privateHamburgerToggle() {
+		$(".hamburger").on("click", function(e) {
+			e.preventDefault();
+			$(".jt-header-wrapper nav ul").slideToggle();
+		});
+	}
+
+	function privateLinkHover() {
+		$("a").hover(function() { // inFunction : mouse over
+			$(this).css("color", "#ce2c38");
+		}, function() { // outFunction : mouse out
+			$(this).css("color", "");
+		});
+		$(".btn").css("border-radius", "0px	")
+		$(".btn-primary").hover(function() {
+			$(this).css({
+				"background-color" : "#ce2c38",
+				"color" : "#ffffff",
+				"border-color" : "#ce2c38"
+			});
+		}, function() {
+			$(this).css({
+				"background-color" : "",
+				"color" : "",
+				"border-color" : ""
+			});
+		});
+	}
+
+	function privateGetYear() {
+		$(".year").text(new Date().getFullYear());
+	}
+
+	// public
 	myApp.navigation = {
-		toggle : {
+		navManipulation : {
 			menuToggle : function() {
-				$(window).resize(function() {
-					if (window.innerWidth >= 550) {
-						$("nav ul").show();
-						$(".hamburger").hide();
-					} else {
-						$(".hamburger").show();
-						$("nav ul").hide();
-					}
-				});
+				privateMenuToggle();
 			},
 			hamburgerToggle : function() {
-				$(".hamburger").on("click", function(e) {
-					e.preventDefault();
-					$(".jt-header-wrapper nav ul").slideToggle();
-				});
+				privateHamburgerToggle();
 			}
 		},
-		linkHover : function() {
-			$("a").hover(function() { // inFunction : mouse over
-				$(this).css("color", "#ce2c38");
-			}, function() { // outFunction : mouse out
-				$(this).css("color", "");
-			});
-			$(".btn").css("border-radius", "0px	")
-			$(".btn-primary").hover(function() {
-				$(this).css({
-					"background-color" : "#ce2c38",
-					"color" : "#ffffff",
-					"border-color" : "#ce2c38"
-				});
-			}, function() {
-				$(this).css({
-					"background-color" : "",
-					"color" : "",
-					"border-color" : ""
-				});
-			});
+		linkManipulation : { 
+			linkHover: function() {
+				privateLinkHover(); 
+			}
 		},
-		misc : function() {
-			$(".year").text(new Date().getFullYear());
+		miscManipulation : {
+			getYear : function() {
+				privateGetYear();
+			}
 		}
 	} 
 })();
 
+// initilize the public methods
 var init = function() {
-	// cached reference
-	var appNav = myApp.navigation
-	var appToggle = myApp.navigation.toggle;
-
-	appToggle.hamburgerToggle()
-	appToggle.menuToggle();
-
-	appNav.linkHover();
-	appNav.misc();
+	myApp.navigation.navManipulation.menuToggle();
+	myApp.navigation.navManipulation.hamburgerToggle();
+	myApp.navigation.linkManipulation.linkHover();
+	myApp.navigation.miscManipulation.getYear();
 }
 
+// Call the init method when document is loaded
 $(function() {
 	init();
 });

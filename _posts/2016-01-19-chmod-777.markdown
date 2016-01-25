@@ -5,7 +5,7 @@ date: 2016-01-19
 lang: en-us
 ---
 
-#### {{ page.title }}
+# {{ page.title }}
 
 To make it easy to understand, we can break it into two parts.
 
@@ -27,3 +27,7 @@ To make it easy to understand, we can break it into two parts.
 chmod 777, in other word that <u>7</u>(owner)<u>7</u>(group)<u>7</u>(public) have read, write, execute permission. 
 
 You can also use the -R (recursive) if your targeted folder has sub-folders. E.g. <u>chmod -R 777</u>
+
+#### Resources
+
+[http://www.surfsafely.com/file-permissions-what-does-chmod-777-mean/](http://www.surfsafely.com/file-permissions-what-does-chmod-777-mean/)
