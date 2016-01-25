@@ -43,7 +43,7 @@ require.config({
 
 To create a module using define(). The first parameter is the module name. Second parameter is the dependency array. Thrid parameter is the callback function.
 
-Let's this module doesn't have any dependencies, so we leave the 2nd parameter empty.
+Let's say this module doesn't have any dependencies, so we leave the 2nd parameter empty.
 
 {% highlight javascript %}
 
@@ -77,8 +77,8 @@ define("module1", [], function() {
 Create another module but this module is calling the jquery dependency.
 
 {% highlight javascript %}
-// because we're using jquery within this moudle, we need to pass in the jquery dependency.
-define("module2", [jquery], function($) {
+// because we're using jquery within this module, we need to pass in the jquery dependency.
+define("module2", ["jquery"], function($) {
   $(".container h1").css("background-color", "red");
 
   // private methods
@@ -100,12 +100,12 @@ define("module2", [jquery], function($) {
 
 #### Step 5 ####
 
-Create a moudle that have dependencies of module1 and module2.
+Create a module that have dependencies of module1 and module2.
 
-Priviously, we created two modules (module1 and module2). Each of these dependencies have its own methods. Now, in this module, we're going to utilize these methods.
+Previously, we created two modules (module1 and module2). Each of these dependencies have its own methods. Now, in this module, we're going to utilize these methods.
 
 {% highlight javascript %}
-define("module3", ["jquery", "module1", "module2"], function() {
+define("module3", ["jquery", "module1", "module2"], function($, module1, module2) {
   // private methods
   function privateUtilities() {
     module1.save();
@@ -161,5 +161,7 @@ require(["app"], function(app) {
 {% endhighlight %}
 
 #### Module dependencies diagram ####
+
+These design patterns are pretty similar to JavaScript Self-invoked function design patterns. Instead of using IIFE, it utlizes define() and require(). You can find these design patterns [here]({{site.baseurl}}/2016/01/09/javascript-namespace.html).
 
 <img class="img-responsive" src="{{ site.baseurl }}/img/dependencies.png" alt="module dependency diagram" />

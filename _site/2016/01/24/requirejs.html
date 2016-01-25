@@ -114,7 +114,7 @@
 
 <p>To create a module using define(). The first parameter is the module name. Second parameter is the dependency array. Thrid parameter is the callback function.</p>
 
-<p>Let’s this module doesn’t have any dependencies, so we leave the 2nd parameter empty.</p>
+<p>Let’s say this module doesn’t have any dependencies, so we leave the 2nd parameter empty.</p>
 
 <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">define</span><span class="p">(</span><span class="s2">"module1"</span><span class="p">,</span> <span class="p">[],</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="c1">// private variable and method</span>
@@ -144,8 +144,8 @@
 
 <p>Create another module but this module is calling the jquery dependency.</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// because we're using jquery within this moudle, we need to pass in the jquery dependency.</span>
-<span class="nx">define</span><span class="p">(</span><span class="s2">"module2"</span><span class="p">,</span> <span class="p">[</span><span class="nx">jquery</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// because we're using jquery within this module, we need to pass in the jquery dependency.</span>
+<span class="nx">define</span><span class="p">(</span><span class="s2">"module2"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"jquery"</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">$</span><span class="p">(</span><span class="s2">".container h1"</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">"background-color"</span><span class="p">,</span> <span class="s2">"red"</span><span class="p">);</span>
 
   <span class="c1">// private methods</span>
@@ -166,11 +166,11 @@
 
 <h4 id="step-5">Step 5</h4>
 
-<p>Create a moudle that have dependencies of module1 and module2.</p>
+<p>Create a module that have dependencies of module1 and module2.</p>
 
-<p>Priviously, we created two modules (module1 and module2). Each of these dependencies have its own methods. Now, in this module, we’re going to utilize these methods.</p>
+<p>Previously, we created two modules (module1 and module2). Each of these dependencies have its own methods. Now, in this module, we’re going to utilize these methods.</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">define</span><span class="p">(</span><span class="s2">"module3"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"jquery"</span><span class="p">,</span> <span class="s2">"module1"</span><span class="p">,</span> <span class="s2">"module2"</span><span class="p">],</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">define</span><span class="p">(</span><span class="s2">"module3"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"jquery"</span><span class="p">,</span> <span class="s2">"module1"</span><span class="p">,</span> <span class="s2">"module2"</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">,</span> <span class="nx">module1</span><span class="p">,</span> <span class="nx">module2</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// private methods</span>
   <span class="kd">function</span> <span class="nx">privateUtilities</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">module1</span><span class="p">.</span><span class="nx">save</span><span class="p">();</span>
@@ -221,6 +221,8 @@
 <span class="p">});</span></code></pre></figure>
 
 <h4 id="module-dependencies-diagram">Module dependencies diagram</h4>
+
+<p>These design patterns are pretty similar to JavaScript Self-invoked function design patterns. Instead of using IIFE, it utlizes define() and require(). You can find these design patterns <a href="/2016/01/09/javascript-namespace.html">here</a>.</p>
 
 <p><img class="img-responsive" src="/img/dependencies.png" alt="module dependency diagram" /></p>
 
