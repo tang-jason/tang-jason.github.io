@@ -23,19 +23,22 @@ myApp.navigation = myApp.navigation || {};
 	}
 
 	function privateLinkHover() {
-		$("a").hover(function() { // inFunction : mouse over
-			$(this).css("color", "#ce2c38");
-		}, function() { // outFunction : mouse out
+		$("a").hover(function() { // inFunction : mouse enter
+			$(this).css({
+				"color" : "#ce2c38",
+				"text-decoration" : "none"
+			});
+		}, function() { // outFunction : mouse leave
 			$(this).css("color", "");
 		});
-		$(".btn").css("border-radius", "0px	")
-		$(".btn-primary").hover(function() {
+		$(".btn").css("border-radius", "0px	");
+		$(".btn-primary").hover(function() { // inFunction
 			$(this).css({
 				"background-color" : "#ce2c38",
 				"color" : "#ffffff",
 				"border-color" : "#ce2c38"
 			});
-		}, function() {
+		}, function() { // outFunction
 			$(this).css({
 				"background-color" : "",
 				"color" : "",

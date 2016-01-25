@@ -22,7 +22,7 @@
 	<div class="row">
 		<div class="col-xs-12 col-md-4">
 			<header>
-				<img class="img-responsive" src="/img/profile.jpg" alt="Picture of Jason Tang" />
+				<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
 				<h1>Jason Tang</h1>
 				<p><i class="fa fa-windows"></i> Software Engineer</p>
 			</header>
@@ -86,57 +86,143 @@
 
 <h4 id="step-1">Step 1</h4>
 
-<p>load your script after requirejs loads.</p>
+<p>load your script after requirejs loads. “data-main” is the entry point of your script.js.</p>
 
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;head&gt;</span>
   // data-main attr tells the require.js to load script.js after require.js loads.
   <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"require.js"</span> <span class="na">data-main=</span><span class="s">"your script.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+  // example
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.22/require.min.js"</span> <span class="na">data-main=</span><span class="s">"js/main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;/head&gt;</span></code></pre></figure>
 
 <h4 id="step-2">Step 2</h4>
 
-<p>We can also load the required libraries like jQuery in config.</p>
+<p>Set up the library path (baseUrl). This is where you store your dependencies, like jQuery.</p>
 
 <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">require</span><span class="p">.</span><span class="nx">config</span><span class="p">({</span>
+  <span class="c1">// I put my jquery copy in this path location.</span>
+  <span class="na">baseUrl</span><span class="p">:</span> <span class="s2">"js/lib"</span><span class="p">,</span>
   <span class="na">paths</span> <span class="p">:</span> <span class="p">{</span>
     <span class="c1">// here we're telling requirejs what to load. In this case, we're loading jQuery.</span>
-    <span class="c1">// requirejs will also add the extension (.js)</span>
+    <span class="c1">// requirejs will also add the .js extention automatically.</span>
     <span class="na">jquery</span> <span class="p">:</span> <span class="s1">'jquery-2.1.1.min'</span>
   <span class="p">}</span>
 <span class="p">});</span></code></pre></figure>
 
-<p>To specific what module we’re depending on. RequireJS adds a function named “require()” to the global scope. It loads this dependancy before we can proceed.</p>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// 1st param is the depandency and 2nd param is the callback function</span>
-<span class="c1">// module laoding in requirejs is async</span>
-<span class="nx">require</span><span class="p">([</span><span class="nx">jquery</span><span class="p">],</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="c1">// code here</span>
-<span class="p">});</span></code></pre></figure>
-
-<p>Syntax
-	require({dependencyArray}, {callbackFunction});
-	require([“dependency1”, “dependency2”], function() {…});</p>
-
 <h4 id="step-3">Step 3</h4>
 
-<p>Create the module using define() function.</p>
+<p>To create a module using define(). The first parameter is the module name. Second parameter is the dependency array. Thrid parameter is the callback function.</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">define</span><span class="p">(</span><span class="s2">"module"</span><span class="p">,</span> <span class="p">[],</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="s2">"use strict"</span><span class="p">;</span>
-  <span class="c1">// code here...</span>
-<span class="p">})</span></code></pre></figure>
+<p>Let’s this module doesn’t have any dependencies, so we leave the 2nd parameter empty.</p>
 
-<p>Syntax</p>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">define</span><span class="p">(</span><span class="s2">"module1"</span><span class="p">,</span> <span class="p">[],</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// private variable and method</span>
+  <span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="s2">"require JS"</span><span class="p">;</span>
 
-<pre><code>define({moduleNameString}, {dependencyArray}, {callbackFunction});
+  <span class="kd">function</span> <span class="nx">privateSave</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// code here...</span>
+  <span class="p">}</span>
 
-// simplified common JS wrapper
-define({moduleNameString}, function(require, export, module) {
-  var {module} = require({moduleName});
+  <span class="kd">function</span> <span class="nx">privateLoad</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// code here...</span>
+  <span class="p">}</span>
 
-  export.{publicMember} = {publicValue};
-})
-</code></pre>
+  <span class="kd">function</span> <span class="nx">privateClear</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// code here...</span>
+  <span class="p">}</span>
+
+  <span class="c1">// public</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">save</span><span class="p">:</span> <span class="nx">privateSave</span><span class="p">,</span>
+    <span class="na">load</span><span class="p">:</span> <span class="nx">privateLoad</span><span class="p">,</span>
+    <span class="na">clear</span><span class="p">:</span> <span class="nx">privateClear</span>
+  <span class="p">}</span>
+<span class="p">});</span></code></pre></figure>
+
+<h4 id="step-4">Step 4</h4>
+
+<p>Create another module but this module is calling the jquery dependency.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// because we're using jquery within this moudle, we need to pass in the jquery dependency.</span>
+<span class="nx">define</span><span class="p">(</span><span class="s2">"module2"</span><span class="p">,</span> <span class="p">[</span><span class="nx">jquery</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s2">".container h1"</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">"background-color"</span><span class="p">,</span> <span class="s2">"red"</span><span class="p">);</span>
+
+  <span class="c1">// private methods</span>
+  <span class="kd">function</span> <span class="nx">privateCreate</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// code here...</span>
+  <span class="p">}</span>
+
+  <span class="kd">function</span> <span class="nx">privateRead</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// code here...</span>
+  <span class="p">}</span>
+
+  <span class="c1">// public</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">create</span><span class="p">:</span> <span class="nx">privateCreate</span><span class="p">,</span>
+    <span class="na">read</span><span class="p">:</span> <span class="nx">privateRead</span>
+  <span class="p">}</span>
+<span class="p">});</span></code></pre></figure>
+
+<h4 id="step-5">Step 5</h4>
+
+<p>Create a moudle that have dependencies of module1 and module2.</p>
+
+<p>Priviously, we created two modules (module1 and module2). Each of these dependencies have its own methods. Now, in this module, we’re going to utilize these methods.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">define</span><span class="p">(</span><span class="s2">"module3"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"jquery"</span><span class="p">,</span> <span class="s2">"module1"</span><span class="p">,</span> <span class="s2">"module2"</span><span class="p">],</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// private methods</span>
+  <span class="kd">function</span> <span class="nx">privateUtilities</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">module1</span><span class="p">.</span><span class="nx">save</span><span class="p">();</span>
+    <span class="nx">module1</span><span class="p">.</span><span class="nx">load</span><span class="p">();</span>
+    <span class="nx">module1</span><span class="p">.</span><span class="nx">clear</span><span class="p">();</span>
+
+    <span class="nx">module2</span><span class="p">.</span><span class="nx">creat</span><span class="p">();</span>
+    <span class="nx">module2</span><span class="p">.</span><span class="nx">read</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="c1">// public</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">utilities</span><span class="p">:</span> <span class="nx">privateUtilities</span>
+  <span class="p">}</span>
+<span class="p">});</span></code></pre></figure>
+
+<h3 id="step-6">Step 6</h3>
+
+<p>Create an app module to use the simplified wrapper design pattern.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// app is the name of the module. 1st param of the callback is jquery. 2nd param is the module3. 3rd param is optional.</span>
+<span class="nx">define</span><span class="p">(</span><span class="s2">"app"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">require</span><span class="p">,</span> <span class="kr">export</span><span class="p">,</span> <span class="nx">module</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">$</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"jquery"</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">module3</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"module3"</span><span class="p">);</span>
+
+  <span class="c1">// private methods</span>
+  <span class="kd">function</span> <span class="nx">registerEventHandlers</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// local scope</span>
+    <span class="kd">function</span> <span class="nx">getUtilities</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">module3</span><span class="p">.</span><span class="nx">utilities</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="c1">// let's say we have this id in our DOM</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s2">"#utilities-button"</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span> <span class="nx">getUtilities</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="c1">// public</span>
+  <span class="kr">export</span><span class="p">.</span><span class="nx">init</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">registerEventHandlers</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">});</span></code></pre></figure>
+
+<h4 id="step-7">Step 7</h4>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// require a module which is "app".</span>
+<span class="nx">require</span><span class="p">([</span><span class="s2">"app"</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">app</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">app</span><span class="p">.</span><span class="nx">init</span><span class="p">();</span>
+<span class="p">});</span></code></pre></figure>
+
+<h4 id="module-dependencies-diagram">Module dependencies diagram</h4>
+
+<p><img class="img-responsive" src="/img/dependencies.png" alt="module dependency diagram" /></p>
 
 </div>
 					</div>
