@@ -4,4 +4,26 @@ title: library
 lang: en-us
 ---
 
-<h1>Library page</h1>
+<!-- recent posts -->
+{% include recent-post.html %}
+
+<div class="col-xs-12 col-md-8">
+	<div class="row jt-page-wrapper">
+		<div class="col-xs-12">
+			<h1>Topics</h1>
+		</div>
+		{% for post in site.posts %}
+		<div class="col-xs-12">
+			<ul class="jt-lib-posts">
+				<li>
+					<a class="jt-lib-link" href="{{ post.url }}">
+						<span class="jt-lib-title">{{ post.title }}</span>
+						<span class="jt-lib-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+					</a>
+					
+				</li>
+			</ul>
+		</div>
+		{% endfor %}
+	</div>
+</div>

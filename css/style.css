@@ -10,6 +10,7 @@ h4 {
 .container {
 	max-width: 100%;
 }
+
 /* video background */
 .jt-video-wrapper {
 	position: fixed;
@@ -34,16 +35,13 @@ h4 {
 	max-width: 900px;
 	height: 100%;
 	margin: auto;
-	/*border: 1px solid red;*/
 	padding: 15px;
 }
 .jt-container .jt-header-wrapper {
-	/*border: 1px solid red;*/
 	overflow: hidden;
 	margin-bottom: 15px;
 }
 .jt-container .jt-header-wrapper header {
-	/*border: 1px solid black;*/
 	float: left;
 }
 .jt-container .jt-header-wrapper header img {
@@ -56,12 +54,9 @@ h4 {
 }
 .jt-container .jt-header-wrapper header h1 {
 	float: left;
-	/*border: 1px solid teal;*/
 }
 .jt-container .jt-header-wrapper nav {
-	/*float: right;*/
 	padding: 15px 15px 15px 0;
-	/*border: 1px solid black;*/
 }
 .jt-container .jt-header-wrapper nav ul {
 	padding-left: 0;
@@ -70,18 +65,13 @@ h4 {
 	list-style: none;
 	display: block;
 	float: left;
-	/*border: 1px solid red;*/
 }
 .jt-container .jt-header-wrapper nav li a {
 	display: block;
-	/*border: 1px solid green;*/
 	padding: 15px;
 	text-decoration: none;
 	transition: 0.3s linear;
 }
-/*.jt-container .jt-header-wrapper nav li a:hover {
-	color: #ce2c38;
-}*/
 .jt-container .jt-header-wrapper nav li a i {
 	margin-right: 5px;
 }
@@ -92,20 +82,12 @@ h4 {
 	display: none;
 	transition: 0.3s linear;
 }
-/*.jt-container .jt-header-wrapper .hamburger:hover {
-	color: #ce2c38;
-}*/
 
 /* Index */
 .jt-container .jt-content-wrapper {
-	/*margin-top: 40px;*/
 	display: block;
 }
-.jt-post-wrapper {
-	/*border: 1px solid red;*/
-}
 .jt-post-wrapper .jt-post-header {
-	/*border: 1px solid red;*/
 	border-bottom: 1px solid #000000;
 	padding-bottom: 15px;
 }
@@ -119,9 +101,6 @@ h4 {
 	margin-right: 10px;
 	transition: 0.3s linear;
 }
-/*.jt-post-wrapper .jt-post-body a:hover {
-	color: #ce2c38;
-}*/
 .jt-post-wrapper .jt-post-body p {
 	float: right;
 }
@@ -132,26 +111,34 @@ h4 {
 	transition: 0.3s linear;
 	text-decoration: none;
 }
-/*.jt-social-accounts div a:hover {
-	color: #ce2c38;
-}*/
 .jt-page-wrapper {
 	padding-left: 15px;
 }
 .btn-primary {
 	transition: 0.3s linear;
 }
-/*.btn-primary:hover {
-	background-color: #ce2c38;
-}*/
-
 .breadcrumb li a {
 	transition: 0.3s linear;
 	text-decoration: none;
 }
-/*.breadcrumb li a:hover {
-	color: #ce2c38;
-}*/
+
+/* library */
+ul.jt-lib-posts {
+	padding-left: 0;
+}
+.jt-lib-posts li {
+	list-style: none;
+}
+.jt-lib-posts li .jt-lib-link {
+	
+}
+.jt-lib-posts li .jt-lib-title {
+	float: left;
+	margin-bottom: 10px;
+}
+.jt-lib-posts li .jt-lib-date {
+	float: right;
+}
 
 /* footer */
 .footer {

@@ -1,0 +1,29 @@
+<!-- posts -->
+<div class="col-xs-12 col-md-4 jt-post-wrapper">
+	<div class="row">
+		<div class="col-xs-12">
+			<h2 class="jt-post-header">Latest posts</h2>
+			{% for post in site.posts limit:5 %}
+			<div class="jt-post-body">
+				<a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+				<p class="jt-post-date">{{ post.date | date: "%b %-d, %Y" }}</p>
+			</div>
+			{% endfor %}
+		</div>
+		<div class="col-xs-12 jt-social-accounts">
+			<h2 class="jt-post-header">Find me @...</h2>
+			<div>
+				<a target="_blank" href="https://github.com/tang-jason">
+					<i class="fa fa-github-square fa-2x"></i>
+					<span class="jt-social-text">GitHub</span>
+				</a>	
+			</div>
+			<div>
+				<a target="_blank" href="https://www.linkedin.com/in/jason-tang-5a6064109">
+					<i class="fa fa-linkedin-square fa-2x"></i>
+					<span class="jt-social-text">LinkedIn</span>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>

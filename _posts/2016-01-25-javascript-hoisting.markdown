@@ -7,7 +7,7 @@ lang: en-us
 
 # {{ page.title }} #
 
-When a variable is declared, the declaration statment gets hoisted to the top of the function. This is the same for functions.
+Hoisting is the mechanism in JavaScript where variables are moved to the top of the script and then run. This is because, JavaScript doesn't have lexical scoping. 
 
 {% highlight javascript %}
 function hoisted() {
