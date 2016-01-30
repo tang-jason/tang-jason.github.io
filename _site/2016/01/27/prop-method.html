@@ -126,7 +126,7 @@
 
 <h4 id="example-2">Example 2</h4>
 
-<p>The above is using .change() it’s a shortcut of .on() and the above can be done this way.</p>
+<p>The above is using .change() it’s a shorthand of .on() and the above can be done this way.</p>
 
 <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// HTML setup</span>
 <span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"example2"</span><span class="o">&gt;</span>
@@ -165,6 +165,48 @@
 		);
 	}
 	$(".example2 input").on("change", handler);
+</script>
+
+<h4 id="example-3">Example 3</h4>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// HTML setup</span>
+<span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"example3"</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="nx">select</span> <span class="nx">multiple</span><span class="o">=</span><span class="s2">"multiple"</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">option</span> <span class="nx">selected</span><span class="o">=</span><span class="s2">"selected"</span><span class="o">&gt;</span><span class="nx">Apple</span><span class="o">&lt;</span><span class="sr">/option</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">option</span><span class="o">&gt;</span><span class="nx">Banana</span><span class="o">&lt;</span><span class="sr">/option</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">option</span><span class="o">&gt;</span><span class="nx">Cherry</span><span class="o">&lt;</span><span class="sr">/option</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="sr">/select</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>
+<span class="c1">// jQuery</span>
+<span class="nx">$</span><span class="p">(</span><span class="s2">".example3 select"</span><span class="p">).</span><span class="nx">change</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">string</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s2">".example3 select option:selected"</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">string</span> <span class="o">+=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">text</span><span class="p">()</span> <span class="o">+</span> <span class="s2">" "</span><span class="p">;</span>
+  <span class="p">});</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s2">".example3 div"</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="nx">string</span><span class="p">);</span>
+<span class="p">}).</span><span class="nx">change</span><span class="p">();</span></code></pre></figure>
+
+<p>Result</p>
+
+<div class="example3">
+	<select multiple="multiple">
+		<option selected="selected">Apple</option>
+		<option>Banana</option>
+		<option>Cherry</option>
+	</select>
+	<div></div>
+</div>
+
+<script>
+$(".example3 select").change(function() {
+	var string = "";
+	$(".example3 select option:selected").each(function() {
+		string += $(this).text() + " ";
+	});
+	$(".example3 div").text(string);
+}).change();
 </script>
 
 

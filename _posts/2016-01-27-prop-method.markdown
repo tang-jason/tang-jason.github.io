@@ -53,7 +53,7 @@ Result:
 
 #### Example 2 ####
 
-The above is using .change() it's a shortcut of .on() and the above can be done this way.
+The above is using .change() it's a shorthand of .on() and the above can be done this way.
 
 {% highlight javascript %}
 // HTML setup
@@ -96,12 +96,49 @@ Result:
 	$(".example2 input").on("change", handler);
 </script>
 
+#### Example 3 ####
 
+{% highlight javascript %}
+// HTML setup
+<div class="example3">
+  <select multiple="multiple">
+    <option selected="selected">Apple</option>
+    <option>Banana</option>
+    <option>Cherry</option>
+  </select>
+  <div></div>
+</div>
 
+// jQuery
+$(".example3 select").change(function() {
+  var string = "";
+  $(".example3 select option:selected").each(function() {
+    string += $(this).text() + " ";
+  });
+  $(".example3 div").text(string);
+}).change();
+{% endhighlight %}
 
+Result
 
+<div class="example3">
+	<select multiple="multiple">
+		<option selected="selected">Apple</option>
+		<option>Banana</option>
+		<option>Cherry</option>
+	</select>
+	<div></div>
+</div>
 
-
+<script>
+$(".example3 select").change(function() {
+	var string = "";
+	$(".example3 select option:selected").each(function() {
+		string += $(this).text() + " ";
+	});
+	$(".example3 div").text(string);
+}).change();
+</script>
 
 
 
