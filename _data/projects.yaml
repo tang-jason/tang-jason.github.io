@@ -1,0 +1,20 @@
+- name: Jason Tang Portfolio
+  image: /img/portfolio.png
+  lang: Javascript, JQuery, Boostrap, Jekyll, HTML5, CSS3
+  alt: picture of Jason Tang Portfolio
+  url: "http://tang-jason.github.io/"
+  description: Hosted on GitHub and written in Jekyll (site generator). Because no data is stored in the database which resulted in high performance and secure. It's also utilizing background video only on the home page.
+
+- name: West Horseshoe Bay Resturant
+  image: /img/whb.png
+  lang: Javascript, jQuery, Boostrap, AngularJS, HTML5, CSS3
+  alt: picture of west horseshoe bay resturant
+  url: "http://westhorseshoebay.com/"
+  description: A small single web application for a Vancouver based Chinese resturant. It's mobile, tablet, and PC friendly. Which it plays well on different devices. The site is designed in a single web application form which is lightweight and enchanced performance.
+  
+- name: Kent Chinese Alliance Church
+  image: /img/kcac.png
+  lang: WordPress CMS, Bootrap, HTML5, CSS3
+  alt: picture of Kent Chinese Alliance Church
+  url: "http://new.kcachurch.org/"
+  description: A project for a non-profit organization. This web application is utlizing WordPress CMS which enable non-technical staff to create, edit, publish content. It's using Boostrap as rendering engine to plays nicely on different devices. 
