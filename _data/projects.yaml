@@ -3,7 +3,7 @@
   lang: Javascript, JQuery, Boostrap, Jekyll, HTML5, CSS3
   alt: picture of Jason Tang Portfolio
   url: "http://tang-jason.github.io/"
-  description: Hosted on GitHub and written in Jekyll (site generator). Because no data is stored in the database which resulted in high performance and secure. It's also utilizing background video only on the home page.
+  description: Hosted on GitHub and written in Jekyll (site generator). Because no data is stored in the database which resulted in high performance and security. It's also utilizing background video only on the home page.
 
 - name: West Horseshoe Bay Resturant
   image: /img/whb.png
