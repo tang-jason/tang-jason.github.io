@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | JavaScript Prototype</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">JavaScript Prototype</li>
+	</ol>
+	<h1 id="javascript-prototype">JavaScript Prototype</h1>
+
+<h4 id="step-1">Step 1</h4>
+
+<pre><code>function Cat(name, color) {
+  this.name = name;
+  this.color = color;
+}
+</code></pre>
+
+<p>When we first created the cat function, JavaScript also created another object in memory. At this point, it’s just an empty object.</p>
+
+<h4 id="step-2">Step 2</h4>
+
+<pre><code>Cat.prototype.age = 3;
+</code></pre>
+
+<p>We can manipulate the function’s prototype object like above. When we add the age to the Cat’s prototype. It adds that property to the Cat object. Remember we haven’t even created the a Cat object from our function yet. This object is just a hidden prototype object that JavaScript created behind the scenes.</p>
+
+<h4 id="step-3">Step 3</h4>
+
+<pre><code>var fluffy = new Cat("Fluffy", "white");
+</code></pre>
+
+<p>The “new” keyword takes care of creating a new object. And it also created a new proto (<u>__proto__:Cat</u>) property to the new object. And that property is a pointer to the Cat function’s prototype. Then the “new” keyword executes the Cat function, and the “this” keyword in this context is pointing to our new fluffy object. So it adds the name and color properties to the new object.</p>
+
+<h4 id="step-4">Step 4</h4>
+
+<pre><code>function Cat(name, color) {
+  this.name = name;
+  this.color = color;
+}
+
+Cat.prototype.age = 3;
+
+var fluffy = new Cat("fluffy", "white");
+
+console.log(fluffy.age); // return value 3
+</code></pre>
+
+<p>At this point, only prototype has the property “age” but not the fluffy object. If we ask for fluffy’s age. JavaScript will first check fluffy’s properties to see if age is exists. If not, it will check the prototype parent properties. Which in this case, it will return <u>age = 3</u>.</p>
+
+<h4 id="step-5">Step 5</h4>
+
+<pre><code>function Cat(name, color) {
+  this.name = name;
+  this.color = color;
+}
+
+Cat.prototype.age = 3;
+
+var fluffy = new Cat("fluffy", "white");
+
+fluffy.age = 5;
+
+console.log(fluffy.age); // return value 5
+</code></pre>
+
+<p>We can add the age property to fluffy instance and when we ask for fluffy’s age. It will return the value of 5 because JavaScript will first check the fluffy instance if it has a age property. If it has, it will return the age value. So the instance properties will override the proptotype properties.</p>
+
+<h4 id="step-6">Step 6</h4>
+
+<blockquote>
+  <p><u>A function's prototype:</u> A function’s prototype is the object <strong>instance</strong> that will become the prototype for all objects created using this function as a constructor.</p>
+</blockquote>
+
+<blockquote>
+  <p><u>An object's prototype:</u> An object’s prototype is the object <strong>instance</strong> from which the object is inherited.</p>
+</blockquote>
+
+<h4 id="diagram-1">Diagram 1</h4>
+
+<p><img class="img-responsive" src="/img/graphicalOverviewOfPrototypes.png" alt="Graphical Overview of Prototypes" /></p>
+
+<h3 id="changing-prototypes">Changing Prototypes</h3>
+
+<pre><code>function Cat(name, color) {
+  this.name = name;
+  this.color = color;
+}
+
+Cat.prototype.age = 3;
+
+var fluffy = new Cat("Fluffy", "white");
+
+console.log(fluffy.age); // return age value 3
+
+Cat.prototype = { age : 5 }
+
+var snowBell = new Cat("Snowbell", "brown");
+
+console.log(snowBell.age); // return age value 5
+</code></pre>
+
+<p>When we create the new instance of a cat. It created a new object and set it prototype (<strong>proto</strong>) to the current prototype of the Cat function. This highlights the fact that prototypes really are the objects that live in memory.</p>
+
+<h4 id="diagram-2">Diagram 2</h4>
+
+<p><img class="img-responsive" src="/img/changePrototype.png" alt="Changing prototypes" /></p>
+
+<h4 id="notes">Notes</h4>
+
+<pre><code>Cat.size = "big";
+</code></pre>
+
+<p>You cannot add a new property to a prototype the same way as you add a new property to an existing object, because the prototype is not an existing object.</p>
+
+<pre><code>function Cat(name, color) {
+  this.name = name;
+  this.color = color;
+  this.size = "big";
+}
+</code></pre>
+
+<p>To add a new property to a constructor, you must add it to the constructor function.</p>
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>

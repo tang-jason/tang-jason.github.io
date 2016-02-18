@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | JavaScript File API</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">JavaScript File API</li>
+	</ol>
+	<h1 id="javascript-file-api">JavaScript File API</h1>
+
+<p>How to use File API on input file type. There are several interfaces for accessing files from a ‘local’ filesystem.</p>
+
+<ol>
+  <li><u>File</u>: which includes readonly informational attributes about a file such as its name and the date of the last modification (on disk) of the file.</li>
+  <li><u>FileList</u>: which represents an array of individually selected files from the underlying system.</li>
+  <li><u>FileReader</u>: which provides methods to read a File or a Blob, and an event model to obtain the results of these reads.</li>
+  <li><u>Blog</u>: which represents immutable raw binary data, and allows access to ranges of bytes within the Blob object as a separate Blob.</li>
+</ol>
+
+<h4 id="file-api-browser-compatibility-check">File API Browser Compatibility Check</h4>
+
+<pre><code>if (window.File &amp;&amp; window.FileList &amp;&amp; window.FileReader &amp;&amp; window.Blob) {
+  // File API is fully supported
+}
+</code></pre>
+
+<h4 id="different-ways-to-get-filelist-object">Different ways to get FileList object</h4>
+
+<pre><code>// using the .get() method
+var file = $(".inputFile").get(0).files;
+
+// using the access notation
+var file = $(".inputFile")[0].files;
+
+// using the function
+$(".inputFile").on("change", app.onFile);
+app.onFile = function(event) {
+  var file = event.target.files[0];
+}
+</code></pre>
+
+<h4 id="filelist-members">FileList members</h4>
+
+<p><u>name</u>: File name</p>
+
+<p><u>size</u>: File size</p>
+
+<p><u>type</u>: File type</p>
+
+<p><u>lastModified</u>: File lastModified</p>
+
+<p><u>lastModifiedDate</u>: File lastModifiedDate</p>
+
+<pre><code>var file = $(".inputFile").get(0).files;
+console.log(file.name);
+console.log(file.size);
+console.log(file.lastModified);
+</code></pre>
+
+<h4 id="selecting-multiple-files">Selecting multiple files</h4>
+
+<pre><code>&lt;input type="file" class="inputFile" multiple /&gt;
+</code></pre>
+
+<h4 id="accept-specify-file-extension">Accept specify file extension</h4>
+
+<pre><code>&lt;input type="file" class="inputFile" accept="image/*" /&gt;
+
+&lt;input type="file" class="inputFile" accept=".txt" /&gt;
+</code></pre>
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | Application Cache</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">Application Cache</li>
+	</ol>
+	<h1 id="application-cache">Application Cache</h1>
+<p>HTML5 provides an application caching mechanism that lets web-based applications run offline. Developers can use the Application Cache (AppCache) interface to specify resources that the browser should cache and make available to offline users. Applications that are cached load and work correctly even if users click the refresh button when they are offline.</p>
+
+<p>Resources:
+<a href="http://www.html5rocks.com/en/tutorials/appcache/beginner/"> [ 1 ] </a>
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Using_the_application_cache"> [ 2 ] </a></p>
+
+<h4 id="application-cache-appcache">Application Cache (AppCache)</h4>
+
+<p>Using AppCache gives the these advantages.</p>
+
+<ol>
+  <li><u>Offline browsing</u>: user can navigate even they’re offline.</li>
+  <li><u>Speed</u>: cached references are local, and therefore load faster.</li>
+  <li><u>Reduce server load</u>: browser only downloads the resources that have changed from the server.</li>
+</ol>
+
+<h4 id="functionalities">Functionalities</h4>
+
+<ol>
+  <li>Allow developers to specify which files should cached for offline users.</li>
+</ol>
+
+<h4 id="step-one">Step One</h4>
+
+<p>To enable the AppCache for your web based application, include the <u>manifest</u> attribute on the HTML tag.</p>
+
+<pre><code>&lt;html manifest="site.appcache"&gt;
+  // code here...
+&lt;/html&gt;
+</code></pre>
+
+<p>The <u>manifest</u> attribute should be included for every pages that you want the browser to cached the page.</p>
+
+<p>You can view the these URLs by go to <u>chrome://appcache-internals</u> in Chrome.</p>
+
+<h4 id="step-two">Step Two</h4>
+
+<p>Add “cache-manifest” to .htaccess</p>
+
+<pre><code>AddType text/cache-manifest .appcache
+</code></pre>
+
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>

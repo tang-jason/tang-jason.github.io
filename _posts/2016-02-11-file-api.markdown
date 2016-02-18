@@ -1,0 +1,62 @@
+---
+layout: post
+title: "JavaScript File API"
+date: 2016-02-11
+lang: en-us
+---
+
+# {{ page.title }}
+
+How to use File API on input file type. There are several interfaces for accessing files from a 'local' filesystem.
+
+1. <u>File</u>: which includes readonly informational attributes about a file such as its name and the date of the last modification (on disk) of the file.
+2. <u>FileList</u>: which represents an array of individually selected files from the underlying system. 
+3. <u>FileReader</u>: which provides methods to read a File or a Blob, and an event model to obtain the results of these reads.
+4. <u>Blog</u>: which represents immutable raw binary data, and allows access to ranges of bytes within the Blob object as a separate Blob.
+
+#### File API Browser Compatibility Check ####
+
+	if (window.File && window.FileList && window.FileReader && window.Blob) {
+	  // File API is fully supported
+	}
+
+#### Different ways to get FileList object ####
+
+	// using the .get() method
+	var file = $(".inputFile").get(0).files;
+
+	// using the access notation
+	var file = $(".inputFile")[0].files;
+
+	// using the function
+	$(".inputFile").on("change", app.onFile);
+	app.onFile = function(event) {
+	  var file = event.target.files[0];
+	}
+
+#### FileList members ####
+
+<u>name</u>: File name
+
+<u>size</u>: File size
+
+<u>type</u>: File type
+
+<u>lastModified</u>: File lastModified
+
+<u>lastModifiedDate</u>: File lastModifiedDate
+
+	var file = $(".inputFile").get(0).files;
+	console.log(file.name);
+	console.log(file.size);
+	console.log(file.lastModified);
+
+#### Selecting multiple files ####
+
+	<input type="file" class="inputFile" multiple />
+
+#### Accept specify file extension ####
+
+	<input type="file" class="inputFile" accept="image/*" />
+
+	<input type="file" class="inputFile" accept=".txt" />
