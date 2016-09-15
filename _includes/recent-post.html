@@ -3,7 +3,7 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<h2 class="jt-post-header">Latest posts</h2>
-			{% for post in site.posts limit:5 %}
+			{% for post in site.posts limit:8 %}
 			<div class="jt-post-body">
 				<a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
 				<p class="jt-post-date">{{ post.date | date: "%b %-d, %Y" }}</p>
