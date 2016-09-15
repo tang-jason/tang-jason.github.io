@@ -84,6 +84,115 @@
 	</ol>
 	<h1 id="c-fundamentals">C# Fundamentals</h1>
 
+<h3 id="methods">Methods</h3>
+
+<ol>
+  <li>Method define behavior</li>
+  <li>Every method has a ‘return’ type</li>
+  <li>Mark a method as ‘internal’ to make it available to all the code inside of the same project</li>
+  <li>Mark a method as ‘public’ to make it available everywhere</li>
+  <li>Mark a method as ‘private’ to make it available only to the code inside of the same class</li>
+  <li>Every method has zero or more parameters</li>
+  <li>Every method has a signature</li>
+</ol>
+
+<p>Example:</p>
+
+<pre><code>// 'public' is the access modifer
+// 'void' is the return type
+// 'int butt' is the parameter
+public void KickAss(int butt) 
+{
+  // code here...
+}
+</code></pre>
+
+<p>C# compiler will throw an error if you have two method identical. You can’t have the same method but different signature</p>
+
+<pre><code>// When you are inside a static member of a type you can only reach other static memebers of that same type.
+// float result
+static void WriteResult(string description, float result) 
+{
+  // code here...
+}
+
+// legal because the signature is different
+static void Writeresult(string description, int result) 
+{
+  // code here...
+}
+</code></pre>
+
+<p>Type cast</p>
+
+<pre><code>// (int) will cast the float to int
+WriteResult("Highest", (int)stats.HighestGrade)
+</code></pre>
+
+<p>Formatting string</p>
+
+<pre><code>// string formatting
+Console.WriteLine("{0}: {1}", description, result);
+// this will print out the '$' currency
+Console.WriteLine("{0}: {1:C}", description, result);
+</code></pre>
+
+<h3 id="fields-and-properties">Fields and Properties</h3>
+
+<ol>
+  <li>Fields are variables of a class (Can be read-only)</li>
+  <li>A property can define a get and /or set accessor (Often used to expose and control fields)</li>
+</ol>
+
+<p>Field example</p>
+
+<pre><code>// convention: lowercase and/or underline prefix for priate use
+private string _name;
+</code></pre>
+
+<p>Property example</p>
+
+<pre><code>// Convention: uppercase for public use
+public string Name {
+  get { return _name }
+  set 
+  { 
+    if (!String.IsNullOrEmpty(value)) 
+    {
+      _name = value;
+    }
+  }
+}
+</code></pre>
+
+<p>Auto-implemented property example</p>
+
+<pre><code>public string name { get; set; }
+</code></pre>
+
+<h3 id="delegates">Delegates</h3>
+
+<ol>
+  <li>A variable that references a method</li>
+  <li>
+    <p>A delegate is a type that references methods</p>
+
+    <p>public delegate void Writer(string message);</p>
+
+    <p>// Logger class
+ public class Logger()
+ {
+   public void WriteMessage(string message)
+   {
+     Console.WriteLine(message);
+   }
+ }</p>
+
+    <p>Logger logger = new Logger();
+ Writer writer = new Writer(logger.WriteMessage);
+ writer(“Hello!”);</p>
+  </li>
+</ol>
 
 </div>
 					</div>
