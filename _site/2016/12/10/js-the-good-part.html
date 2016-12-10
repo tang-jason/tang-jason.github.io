@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | Book: JS The Good Part</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">Book: JS The Good Part</li>
+	</ol>
+	<h1 id="book-js-the-good-part">Book: JS The Good Part</h1>
+
+<h4 id="string"><code>String</code></h4>
+
+<p>Strings are immutable. Once it is made, a string can never be changed.</p>
+
+<p>Strings containing exactly the sdame characters in the same order are considered to be the same string.</p>
+
+<pre><code>// true
+"d" + "o" + "g" === "dog"
+</code></pre>
+
+<h4 id="forin"><code>for...in</code></h4>
+
+<p>It is usually neccessary to test object.hasOwnProperty(variable) to determine whether the property name is truly a member of the object or was found instead on the prototype chain</p>
+
+<pre><code>for (var prop in obj) {
+  if (obj.hasOwnProperty(prop)) {
+    ...
+  }
+}
+</code></pre>
+
+<h4 id="throw"><code>throw</code></h4>
+
+<p>Throw an error in the console</p>
+
+<pre><code> throw new Error("You have an error...");
+</code></pre>
+
+<h4 id="object-literals"><code>Object Literals</code></h4>
+
+<p>Quotes around a property’s name in an object literal are optional if the name would be a legal JavaScript name and not a reserved word.</p>
+
+<pre><code>var empty_obj = {};
+
+var names = {
+  "first-name": "John",
+  "last-name": "Smith"
+}
+</code></pre>
+
+<h4 id="or-"><code>OR ||</code></h4>
+
+<table>
+  <tbody>
+    <tr>
+      <td>The</td>
+      <td> </td>
+      <td>operator can be used to fill in default values.</td>
+    </tr>
+  </tbody>
+</table>
+
+<pre><code>var middle = stooge["middle-name"] || "(none)";
+var status = flight.status || "unknown";
+</code></pre>
+
+<h4 id="reference"><code>Reference</code></h4>
+
+<p>Objects are passed around by reference. They are never copied.</p>
+
+<pre><code>var x = stooge;
+x.nickname = "Curly";
+
+// nick is 'Curly' because x and stooge are references to the same object
+var nick = stooge.nickname; 
+
+// a, b, and c each refer to a different empty object 
+var a = {}, b = {}, c = {};
+
+// a, b, and c all refer to the same empty object
+a = b = c = {};
+</code></pre>
+
+<h4 id="prototype"><code>Prototype</code></h4>
+
+<p>Every object is linked to a prototype object from which it can inherit properties. All objects created from object literals are linked to object.prototype.</p>
+
+<h4 id="global-abatement"><code>Global Abatement</code></h4>
+
+<p>single global variable for your application. This significantly reduce the chance of bad interactions with other application., widges, or libraries.</p>
+
+<pre><code>MyApp = {};
+
+MyApp.names = {
+  "first-name": "John",
+  "last-name": "Smith"
+};
+</code></pre>
+
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>
