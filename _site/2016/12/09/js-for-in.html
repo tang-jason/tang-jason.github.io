@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<title>Jason Tang | JS: Immutable objects</title>
+	<title>Jason Tang | JS: Problems with for...in</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="">
@@ -80,63 +80,81 @@
 						<div class="col-xs-12">
 	<ol class="breadcrumb">
 		<li><a href="/index.html">Home</a></li>
-		<li class="active">JS: Immutable objects</li>
+		<li class="active">JS: Problems with for...in</li>
 	</ol>
-	<h1 id="js-immutable-objects">JS: Immutable objects</h1>
+	<h1 id="js-problems-with-forin">JS: Problems with for…in</h1>
 
-<h3 id="immutable-objects-with-objectfreeze">Immutable objects with “Object.freeze”</h3>
+<p>JavaScript <code>for...in</code> iterates enumberable properties of an object.</p>
 
-<p>Common technique in JavaScript is the use of an object to hold configuration values and we can sometimes accidentally modified the value. To avoid this, we can use “Object.freeze”.</p>
+<h4 id="forin-can-be-used-in-object-and-array"><code>for...in</code> can be used in object and array</h4>
 
-<h4 id="using-objectfreeze">Using Object.freeze()</h4>
+<pre><code>// book object
+var booksObj = {
+  b1: "normal book",
+  b2: "great book",
+  b3: "awesome book"
+};
 
-<pre><code>var artist = {
-  name: "Hello Kitty",
-  album: "A pretty cat"
+// book array
+var booksArray = ["normal book", "great book", "awesome book"]
+
+var bookHubObj = "";
+var bookHubArray = "";
+
+for (var key in booksObj) {
+  bookHubObj += booksObj[key] + "\n";
 }
 
-// make the object immutable (cannot modify)
-Object.freeze(artist);
-
-function annouce (artist) {
-  // assigning the name rather than testing equality
-  if (artist.name = "Bye kitty") {
-    console.log("meow meow");
-  }
-  else {
-    console.log(artist.name);
-  }
+for (var key in booksArray) {
+  bookHubArray += booksArray[key] + "\n";
 }
 
-// output: meow meow
-annouce(artist);
-
-// output: {name: "Hello kitty", album: "A pretty cat"} &lt;= no modification to the object
-console.log(artist);
+// output: normal book, great book, awesome book
+console.log(bookHubObj);
+console.log(bookHubArray);
 </code></pre>
 
-<h4 id="using-ojbectisfroze">Using Ojbect.isFroze()</h4>
-<p>In ‘strict’ mode, this will throw an error. Use ‘isFroze’ to check</p>
+<h4 id="problem-forin-iterates-over-an-object-prototype-properties-if-those-properties-are-enumberable">Problem: <code>for...in</code> iterates over an object prototype properties if those properties are enumberable.</h4>
 
-<pre><code>var artist = {
-  name: "Hello kitty",
-  album: "A pretty cat"
+<pre><code>Object.prototype.cat = "Tiramisu";
+
+var dogs = {
+  dog1: "Tico",
+  dog2: "Luna",
+  dog3: "Toby"
 }
 
-(function() {
-  "use strict";
+var dogHub = [];
 
-  // output: wink wink
-  if (Ojbect.isFroze(artist)) {
-    console.log("wink wink");
-  }
-})();
+for (var key in dogs) {
+  dogHub.push(dogs[key]);
+}
+
+// output: ["Tico", "Luna", "Toby", "Tiramisu"]
+console.log(dogHub);
 </code></pre>
 
-<h4 id="browser-compatibility">Browser compatibility</h4>
-<p><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze#Browser_compatibility">Object.freeze()</a> - Made object immutable</p>
+<h4 id="solution-hasownproperty">Solution: <code>hasOwnProperty</code></h4>
 
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/isFrozen#Browser_compatibility">Ojbect.isFroze()</a> - Determines if an object is frozen. Return a boolean value.</p>
+<pre><code>Object.prototype.cat = "Tiramisu";
+
+var dogs = {
+  dog1: "Tico",
+  dog2: "Luna",
+  dog3: "Toby"
+}
+
+var dogHub = [];
+
+for (var key in dogs) {
+  if (dogs.hasOwnProperty(key)) {
+    dogHub.push(dogs[key]);
+  }
+}
+
+// output: ["Tico", "Luna", "Toby"]
+console.log(dogHub);
+</code></pre>
 
 </div>
 					</div>

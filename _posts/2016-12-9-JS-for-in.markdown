@@ -1,0 +1,77 @@
+---
+layout: post
+title: "JS: Problems with for...in"
+date: 2016-12-09
+lang: en-us
+---
+
+# {{page.title}}
+
+JavaScript `for...in` iterates enumberable properties of an object.
+
+#### `for...in` can be used in object and array
+
+	// book object
+	var booksObj = {
+	  b1: "normal book",
+	  b2: "great book",
+	  b3: "awesome book"
+	};
+
+	// book array
+	var booksArray = ["normal book", "great book", "awesome book"]
+
+	var bookHubObj = "";
+	var bookHubArray = "";
+
+	for (var key in booksObj) {
+	  bookHubObj += booksObj[key] + "\n";
+	}
+
+	for (var key in booksArray) {
+	  bookHubArray += booksArray[key] + "\n";
+	}
+
+	// output: normal book, great book, awesome book
+	console.log(bookHubObj);
+	console.log(bookHubArray);
+
+#### Problem: `for...in` iterates over an object prototype properties if those properties are enumberable. 
+
+	Object.prototype.cat = "Tiramisu";
+
+	var dogs = {
+	  dog1: "Tico",
+	  dog2: "Luna",
+	  dog3: "Toby"
+	}
+
+	var dogHub = [];
+
+	for (var key in dogs) {
+	  dogHub.push(dogs[key]);
+	}
+
+	// output: ["Tico", "Luna", "Toby", "Tiramisu"]
+	console.log(dogHub);
+
+#### Solution: `hasOwnProperty`
+
+	Object.prototype.cat = "Tiramisu";
+
+	var dogs = {
+	  dog1: "Tico",
+	  dog2: "Luna",
+	  dog3: "Toby"
+	}
+
+	var dogHub = [];
+
+	for (var key in dogs) {
+	  if (dogs.hasOwnProperty(key)) {
+	    dogHub.push(dogs[key]);
+	  }
+	}
+
+	// output: ["Tico", "Luna", "Toby"]
+	console.log(dogHub);
