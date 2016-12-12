@@ -173,6 +173,37 @@ MyApp.names = {
 };
 </code></pre>
 
+<h4 id="arguments"><code>arguments</code></h4>
+
+<p>If a function is called with too many arguments (more than declared), these arguments can be reached using the arguments object.</p>
+
+<pre><code>function add() {
+  for (var i = 0; i &lt; arguments.length; i++) {
+    // output: 1, 2, 3, 4
+    console.log(arguments[i]);
+  }
+}
+
+add(1, 2, 3, 4);
+</code></pre>
+
+<h4 id="the-method-invocation-pattern"><code>The method invocation pattern</code></h4>
+
+<p>When a function is stored as property in an object, it’s called <code>method</code>. When method is invoked, this is bound to that object.</p>
+
+<pre><code>var obj = {
+  value: 0,
+  increment: function(inc) {
+    this.value += typeof inc === "number" ? inc : 1;
+  }
+}
+
+// output: 1
+obj.increment();
+
+// output: 20
+console.log(obj.increment(20));
+</code></pre>
 
 </div>
 					</div>

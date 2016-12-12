@@ -81,3 +81,33 @@ single global variable for your application. This significantly reduce the chanc
 	  "last-name": "Smith"
 	};
 
+#### `arguments`
+
+If a function is called with too many arguments (more than declared), these arguments can be reached using the arguments object.
+
+	function add() {
+	  for (var i = 0; i < arguments.length; i++) {
+	    // output: 1, 2, 3, 4
+	    console.log(arguments[i]);
+	  }
+	}
+
+	add(1, 2, 3, 4);
+
+#### `The method invocation pattern`
+
+When a function is stored as property in an object, it's called `method`. When method is invoked, this is bound to that object.
+
+	
+	var obj = {
+	  value: 0,
+	  increment: function(inc) {
+	    this.value += typeof inc === "number" ? inc : 1;
+	  }
+	}
+
+	// output: 1
+	obj.increment();
+
+	// output: 20
+	console.log(obj.increment(20));
