@@ -111,3 +111,49 @@ When a function is stored as property in an object, it's called `method`. When m
 
 	// output: 20
 	console.log(obj.increment(20));
+
+#### `The constructor invocation pattern`
+
+JavaScript is a `prototypal` inheritance language. That means that objects can inherit properties directly from other objects. The language is class-free. 
+
+	// create a constructor function call Quo.
+	// it makes an object with a status property.
+	var Quo = function (string) {
+	  this.status = string;
+	}
+
+	// give all instances of Quo a public method
+	// called get_status
+	Quo.prototype.get_status = function() {
+	  return this.status;
+	}
+
+	// make an instance of Quo
+	var myQuo = new Quo("superman");
+
+	// output: superman
+	console.log(myQuo.get_status());
+
+Use of this style of constructor functions is not recommended.
+
+#### `Arguments`
+
+this is not a particularly useful pattern and because of a design error, arguments is not really an array. It's an array-link object. 
+
+	var sum = function() {
+	  var total = 0;
+	  
+	  for (var i = 0; i < arguments.length; i++) {
+	    total += arguments[i]
+	  }
+
+	  return total;
+	}
+
+	// output: 15
+	console.log(sum(1, 2, 3, 4, 5));
+
+#### `Return`
+
+The return statement can be used to cause the function to return early. A function always returns a value. If the return value is not specified, the undefined is returned. 
+
