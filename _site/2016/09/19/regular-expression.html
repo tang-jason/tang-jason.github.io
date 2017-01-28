@@ -90,18 +90,21 @@
 
 <p>Regular experession literal: Use this for the performance.</p>
 
-<pre><code>var regex = /ab+c/;
+<div class="highlighter-rouge"><pre class="highlight"><code>var regex = /ab+c/;
 </code></pre>
+</div>
 
 <p>Constructor function of the ‘RegExp’ object:</p>
 
-<pre><code>RegExp regex = new RegExp("ab+c");
+<div class="highlighter-rouge"><pre class="highlight"><code>RegExp regex = new RegExp("ab+c");
 </code></pre>
+</div>
 
 <p>In C# the regular expression constructor would looks like this:</p>
 
-<pre><code>Regex regex = new Regex("ab+c");
+<div class="highlighter-rouge"><pre class="highlight"><code>Regex regex = new Regex("ab+c");
 </code></pre>
+</div>
 
 <h3 id="special-characters---">Special characters: “ \ “</h3>
 
@@ -109,15 +112,17 @@
 
 <p>example: ‘b’ without a preceding ‘' generally matches lowercase ‘b’s wherever they occur. But ‘\b’ by itself doesn’t match any character</p>
 
-<pre><code>/\b/
+<div class="highlighter-rouge"><pre class="highlight"><code>/\b/
 </code></pre>
+</div>
 
 <p>a backslash that precedes a ‘special’ character indiciates that the next character is ‘not special’</p>
 
 <p>example: match string with ‘a*’</p>
 
-<pre><code>/a\*/
+<div class="highlighter-rouge"><pre class="highlight"><code>/a\*/
 </code></pre>
+</div>
 
 <p>*note: Do not forget to escape \ itself while using the RegExp(“pattern”) notation because \ is also an escape character in strings.</p>
 
@@ -127,8 +132,9 @@
 
 <p>example: /^A/ does not match the ‘A’ in “an A”, but does match the ‘A’ in “An E”</p>
 
-<pre><code>/^A/
+<div class="highlighter-rouge"><pre class="highlight"><code>/^A/
 </code></pre>
+</div>
 
 <h3 id="special-character----1">Special character: “ $ “</h3>
 
@@ -136,8 +142,9 @@
 
 <p>example: /t$/ does not match the ‘t’ in “eater”, but does match it in “eat”</p>
 
-<pre><code>/t$/
+<div class="highlighter-rouge"><pre class="highlight"><code>/t$/
 </code></pre>
+</div>
 
 <h3 id="special-character----2">Special character: “ * “</h3>
 
@@ -145,8 +152,9 @@
 
 <p>example: /bo*/ matches ‘boooo’ in “A ghost booooed” and ‘b’ in “A bird warbled”, but nothing in “A goat grunted”</p>
 
-<pre><code>/bo*/
+<div class="highlighter-rouge"><pre class="highlight"><code>/bo*/
 </code></pre>
+</div>
 
 <h3 id="special-character----3">Special character: “ + “</h3>
 
@@ -154,8 +162,9 @@
 
 <p>example: /a+/ matches the ‘a’ in “candy” and all the a’s in “caaaaaaandy”, but nothing in “cndy”</p>
 
-<pre><code>/a+/
+<div class="highlighter-rouge"><pre class="highlight"><code>/a+/
 </code></pre>
+</div>
 
 </div>
 					</div>

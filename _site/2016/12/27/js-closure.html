@@ -84,13 +84,13 @@
 	</ol>
 	<h1 id="javascript-closure">JavaScript Closure</h1>
 
-<p>Closure are functions that refer to independent variables. In other words, these functions <code>remember</code> the environment in which they were created.</p>
+<p>Closure are functions that refer to independent variables. In other words, these functions <code class="highlighter-rouge">remember</code> the environment in which they were created.</p>
 
-<h4 id="lexical-scoping"><code>Lexical Scoping</code></h4>
+<h4 id="lexical-scoping"><code class="highlighter-rouge">Lexical Scoping</code></h4>
 
 <p>In JavaScript, the scope of a variable is defined by its location within the source code and nested function have access to variables declared in their outer scope.</p>
 
-<pre><code>function init() {
+<div class="highlighter-rouge"><pre class="highlight"><code>function init() {
   var name = "Tico";
 
   function displayName() {
@@ -102,12 +102,13 @@
 
 init();
 </code></pre>
+</div>
 
-<h4 id="closure"><code>Closure</code></h4>
+<h4 id="closure"><code class="highlighter-rouge">Closure</code></h4>
 
-<p>A <code>Closure</code> is the combination of a function and the lexical environment within which that function was declared. <code>myFunc</code> is a reference to the instance of the function <code>displayName</code> created when <code>makeFunc</code> is run. the instance of <code>displayName</code> maintains a reference to its lexical environment, within which the variable name exists. Hence when invoking <code>myFunc</code>, the variable name remains available for use and <code>Tico</code> is plassed to console.log.</p>
+<p>A <code class="highlighter-rouge">Closure</code> is the combination of a function and the lexical environment within which that function was declared. <code class="highlighter-rouge">myFunc</code> is a reference to the instance of the function <code class="highlighter-rouge">displayName</code> created when <code class="highlighter-rouge">makeFunc</code> is run. the instance of <code class="highlighter-rouge">displayName</code> maintains a reference to its lexical environment, within which the variable name exists. Hence when invoking <code class="highlighter-rouge">myFunc</code>, the variable name remains available for use and <code class="highlighter-rouge">Tico</code> is plassed to console.log.</p>
 
-<pre><code>function makeFunc() {
+<div class="highlighter-rouge"><pre class="highlight"><code>function makeFunc() {
   var name = "Tico";
 
   function displayName() {
@@ -121,12 +122,13 @@ var myFunc = makeFunc();
 
 myFunc();
 </code></pre>
+</div>
 
-<h4 id="another-closure-example">Another <code>Closure</code> example</h4>
+<h4 id="another-closure-example">Another <code class="highlighter-rouge">Closure</code> example</h4>
 
-<p><code>add5</code> and <code>add10</code> are both <code>Closure</code>. They share the same function body definition, but store different environment. In add5’s environment, x is 5. As far as add10 is concernted, x is 10.</p>
+<p><code class="highlighter-rouge">add5</code> and <code class="highlighter-rouge">add10</code> are both <code class="highlighter-rouge">Closure</code>. They share the same function body definition, but store different environment. In add5’s environment, x is 5. As far as add10 is concernted, x is 10.</p>
 
-<pre><code>function add(x) {
+<div class="highlighter-rouge"><pre class="highlight"><code>function add(x) {
   return function(y) {
     return x + y;
   };
@@ -138,14 +140,15 @@ var add10 = add(10);
 console.log(add5(2)); // output: 7
 console.log(add10(5)); // output: 15
 </code></pre>
+</div>
 
-<h4 id="emulating-private-methods-with-closure"><code>Emulating Private methods with Closure</code></h4>
+<h4 id="emulating-private-methods-with-closure"><code class="highlighter-rouge">Emulating Private methods with Closure</code></h4>
 
-<p>Private methods aren’t just useful for restricting access to code: they also provide a powerful way of managing your global namespace, keeping non-essential methods from cluttering up the public interface to your code. This also known as <code>module pattern</code>.</p>
+<p>Private methods aren’t just useful for restricting access to code: they also provide a powerful way of managing your global namespace, keeping non-essential methods from cluttering up the public interface to your code. This also known as <code class="highlighter-rouge">module pattern</code>.</p>
 
-<p>The <code>Closure</code> example below has its own environment which is shared 3 functions. <code>counter.increment</code>, <code>counter.declared</code>, <code>counter.value</code>. The environment contains two private items. <code>privateCounter</code> and <code>changeBy</code>. Neither of these private items can be accessed ddirectly from outside the anonymous function. Instead, they must be accessed by the three public functions that are returned from the anonymous wrapper.</p>
+<p>The <code class="highlighter-rouge">Closure</code> example below has its own environment which is shared 3 functions. <code class="highlighter-rouge">counter.increment</code>, <code class="highlighter-rouge">counter.declared</code>, <code class="highlighter-rouge">counter.value</code>. The environment contains two private items. <code class="highlighter-rouge">privateCounter</code> and <code class="highlighter-rouge">changeBy</code>. Neither of these private items can be accessed ddirectly from outside the anonymous function. Instead, they must be accessed by the three public functions that are returned from the anonymous wrapper.</p>
 
-<pre><code>var counter = (function() {
+<div class="highlighter-rouge"><pre class="highlight"><code>var counter = (function() {
   var privateCounter = 0;
 
   function changeBy(value) {
@@ -166,10 +169,11 @@ console.log(counter.value()); // output 2;
 counter.decrement(); // output: -1
 console.log(counter.value()); // output: 1
 </code></pre>
+</div>
 
-<p>Notice if we defining an <code>anonymous function</code> that creates a counter, and then call it immedicately and assign the result to the counter variable. We could store this function in a separate variable <code>makeCounter</code> and use it to create several counters.</p>
+<p>Notice if we defining an <code class="highlighter-rouge">anonymous function</code> that creates a counter, and then call it immedicately and assign the result to the counter variable. We could store this function in a separate variable <code class="highlighter-rouge">makeCounter</code> and use it to create several counters.</p>
 
-<pre><code>// notice `()` is removed at the end of the function. It's no longer IIFE
+<div class="highlighter-rouge"><pre class="highlight"><code>// notice `()` is removed at the end of the function. It's no longer IIFE
 var makeCounter = function() {
   var privateCounter = 0;
 
@@ -196,6 +200,7 @@ console.log(counterA.value()); // output: 1
 
 console.log(counterB.value()); // output: 0
 </code></pre>
+</div>
 
 
 </div>

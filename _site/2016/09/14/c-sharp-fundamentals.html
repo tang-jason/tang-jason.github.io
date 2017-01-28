@@ -98,7 +98,7 @@
 
 <p>Example:</p>
 
-<pre><code>// 'public' is the access modifer
+<div class="highlighter-rouge"><pre class="highlight"><code>// 'public' is the access modifer
 // 'void' is the return type
 // 'int butt' is the parameter
 public void KickAss(int butt) 
@@ -106,10 +106,11 @@ public void KickAss(int butt)
   // code here...
 }
 </code></pre>
+</div>
 
 <p>C# compiler will throw an error if you have two method identical. You can’t have the same method but different signature</p>
 
-<pre><code>// When you are inside a static member of a type you can only reach other static memebers of that same type.
+<div class="highlighter-rouge"><pre class="highlight"><code>// When you are inside a static member of a type you can only reach other static memebers of that same type.
 // float result
 static void WriteResult(string description, float result) 
 {
@@ -122,20 +123,23 @@ static void Writeresult(string description, int result)
   // code here...
 }
 </code></pre>
+</div>
 
 <p>Type cast</p>
 
-<pre><code>// (int) will cast the float to int
+<div class="highlighter-rouge"><pre class="highlight"><code>// (int) will cast the float to int
 WriteResult("Highest", (int)stats.HighestGrade)
 </code></pre>
+</div>
 
 <p>Formatting string</p>
 
-<pre><code>// string formatting
+<div class="highlighter-rouge"><pre class="highlight"><code>// string formatting
 Console.WriteLine("{0}: {1}", description, result);
 // this will print out the '$' currency
 Console.WriteLine("{0}: {1:C}", description, result);
 </code></pre>
+</div>
 
 <h3 id="fields-and-properties">Fields and Properties</h3>
 
@@ -146,13 +150,14 @@ Console.WriteLine("{0}: {1:C}", description, result);
 
 <p>Field example</p>
 
-<pre><code>// convention: lowercase and/or underline prefix for priate use
+<div class="highlighter-rouge"><pre class="highlight"><code>// convention: lowercase and/or underline prefix for priate use
 private string _name;
 </code></pre>
+</div>
 
 <p>Property example</p>
 
-<pre><code>// Convention: uppercase for public use
+<div class="highlighter-rouge"><pre class="highlight"><code>// Convention: uppercase for public use
 public string Name {
   get { return _name }
   set 
@@ -164,11 +169,13 @@ public string Name {
   }
 }
 </code></pre>
+</div>
 
 <p>Auto-implemented property example</p>
 
-<pre><code>public string name { get; set; }
+<div class="highlighter-rouge"><pre class="highlight"><code>public string name { get; set; }
 </code></pre>
+</div>
 
 <h3 id="delegates">Delegates</h3>
 

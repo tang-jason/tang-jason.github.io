@@ -88,7 +88,7 @@
 
 <h4 id="set-up-for-post">Set up for “POST”</h4>
 
-<pre><code>$.ajax({
+<div class="highlighter-rouge"><pre class="highlight"><code>$.ajax({
   type : "POST",
   url : url,
   data : data,
@@ -100,6 +100,7 @@
   }
 });
 </code></pre>
+</div>
 
 <p><u>type</u>: An alias for “method” on your form element. String can be “GET” or “POST”.</p>
 
@@ -131,7 +132,7 @@
 
 <p>Let’s put our input fields inside a form element.</p>
 
-<pre><code>&lt;form role="form" class="uploadForm"&gt;
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;form role="form" class="uploadForm"&gt;
   &lt;lable for="inputName"&gt;Name&lt;/label&gt;
   &lt;input class="inputName" type="text" placeholder="Full name" /&gt;
 
@@ -145,6 +146,7 @@
   &lt;input class="inputFile" type="file" accept=".html" enctype="multipart/form-data" /&gt;
 &lt;/form&gt;
 </code></pre>
+</div>
 
 <p>The enctype attribute specifies how the form-data should be encoded when submitting it to the server.</p>
 
@@ -154,7 +156,7 @@
 
 <p>Assuming user already put in his/her data in the input field. Use jQuery to store the data in an object and convert it into json format.</p>
 
-<pre><code>var userName = $(".inputName").text();
+<div class="highlighter-rouge"><pre class="highlight"><code>var userName = $(".inputName").text();
 var userEmail = $(".inputEmail").text();
 var userCompany = $(".inputCompany").text();
 var userFile = App.userFile;
@@ -172,12 +174,13 @@ var formData = new FormData();
 formData.append("UserData", JSON.stringify(App.userData));
 formData.append("File", userFile);
 </code></pre>
+</div>
 
 <h3 id="step-3-sending-data-to-the-endpoint">Step 3: Sending data to the endpoint</h3>
 
 <p>Now we have the data we need and stored in a formData object. We can send the data to the endpoint.</p>
 
-<pre><code>App.endpoint = "https://this-is-your-endpoint-url";
+<div class="highlighter-rouge"><pre class="highlight"><code>App.endpoint = "https://this-is-your-endpoint-url";
 
 $.ajax({
   type : "POST",
@@ -189,18 +192,20 @@ $.ajax({
   error : function() { ... }
 });
 </code></pre>
+</div>
 
 <h4 id="couple-things-to-clarify">Couple things to clarify…</h4>
 
 <p>I’m storing some data in a namespace like <u>App.endpoint</u> and <u>App.userFile</u>.</p>
 
-<pre><code>// create an App object
+<div class="highlighter-rouge"><pre class="highlight"><code>// create an App object
 var App = App === undefined ? {} : App;
 </code></pre>
+</div>
 
 <p>You can get the file in couple way. In this demo I am using <u>change</u> event type.</p>
 
-<pre><code>$("input[type='file']").on("change", function(event) {
+<div class="highlighter-rouge"><pre class="highlight"><code>$("input[type='file']").on("change", function(event) {
   
   var file = event.target.files[0];
 
@@ -208,6 +213,7 @@ var App = App === undefined ? {} : App;
   App.userFile = file;
 });
 </code></pre>
+</div>
 
 
 </div>

@@ -90,23 +90,25 @@
 
 <p>To turn on the strict mode, in JavaScript include this.</p>
 
-<pre><code>"use strict";
+<div class="highlighter-rouge"><pre class="highlight"><code>"use strict";
 </code></pre>
+</div>
 
 <p>Or you can turn on the strict mode per function. Switch strict mode on a global scale will break the legacy code.</p>
 
-<pre><code>function strict() { 
+<div class="highlighter-rouge"><pre class="highlight"><code>function strict() { 
   "use strict";
 
   // code here... 
 }
 </code></pre>
+</div>
 
 <h4 id="variable-must-be-declared">Variable must be declared</h4>
 
 <p>In strict mode, all variables must be declared or you’ll get a reference error.</p>
 
-<pre><code>// wrong
+<div class="highlighter-rouge"><pre class="highlight"><code>// wrong
 function sloppyMode() {
   "use strict";
 
@@ -122,12 +124,13 @@ function strictMode() {
   console.log(strict); // 123
 }
 </code></pre>
+</div>
 
 <h4 id="functions-must-be-declared-at-the-top">Functions must be declared at the top</h4>
 
 <p>In strict mode, you can’t put a function declaration inside a “block”. You’ll get a <u>syntax error</u> if you do. Function can only declared at the top or immediately within outer function.</p>
 
-<pre><code>// wrong
+<div class="highlighter-rouge"><pre class="highlight"><code>// wrong
 function sloppyMode() {
   "use strict";
 
@@ -147,10 +150,11 @@ function strictMode() {
   }
 }
 </code></pre>
+</div>
 
 <p>From the above you can’t create function within a “block”. However, there is a workaround. Create your function in named expression.</p>
 
-<pre><code>// OK
+<div class="highlighter-rouge"><pre class="highlight"><code>// OK
 function strictMode() {
   "use strict";
 
@@ -161,12 +165,13 @@ function strictMode() {
   }
 }
 </code></pre>
+</div>
 
 <h4 id="illegal-manipulations-of-properties">Illegal manipulations of properties</h4>
 
 <p>Attempting to set a value to a read-only perperty will give you an error.</p>
 
-<pre><code>var sloppy = "abc";
+<div class="highlighter-rouge"><pre class="highlight"><code>var sloppy = "abc";
 function sloppyMode() {
   sloppy.length = 4; // no effect, silent failure
   console.log(sloppy.length); // 3
@@ -179,6 +184,7 @@ function strictMode() {
   strict.length = 10; // type error: can not assign to read-only property
 }
 </code></pre>
+</div>
 
 </div>
 					</div>
