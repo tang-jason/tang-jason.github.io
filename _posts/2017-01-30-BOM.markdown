@@ -1,0 +1,15 @@
+---
+layout: post
+title: "Byte Order Mark (BOM)"
+date: 2017-01-30
+lang: en-us
+---
+
+# {{page.title}}
+
+Older versions of UTF-8 mode in `xfst` could not accommodate the initial `Byte Order Mark` that some UTF-8 editors automatically insert to the beginning of a file.
+
+#### `What is a Byte Order Mark?`
+
+Besides UTF-8, there are other UTFs (Unicode Transport Format). In some of them bytes are interpreted differently depending on whether the machine is "big-endian" (Sun, MacOSX on PPC) or "little-endian" (Windows, most Linux machines, and MacOSX on INtel machines). for this reason the Unicode standard specifies that a file may begin with a `BOM`, a sequence of reserved bytes that indicate byte order as well as the type of UTF encoding. But the UTF-8 standard (by far the most common UTF) is the same for both big-endian and little-endian machines. No BOM is needed in a UTF-8 file. Some UTF-8 editors insert a BOM, some don't. It does not indicate byte order; it just serves to indicate that the encoding is UTF-8 rather than something else.
+
