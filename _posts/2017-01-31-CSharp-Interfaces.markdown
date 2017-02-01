@@ -28,3 +28,12 @@ In the example above. Any object that implements IWindow must have a `title` pro
 
 Interface allows you to define the API your software needs without defining any of the implementation details, and because any class or struct inherit from any interface, interface are extremely flexible.
 
+### `Interface Summary`
+
+An interface has the follow properties:
+
+- An interface is like an abstract base class. Any class or struct that implements the interface must implement all its members.
+- An interface can't be instantiated directly. Its members are implemented by any class or struct that implements the interface.
+- Interfaces can contain events, indexers, methods, and properties.
+- Interfaces contain no implementation of methods.
+- A class or struct can implement multiple interfaces. A class can inherit a base class and also implement one or more interfaces.
