@@ -86,7 +86,15 @@
 
 <h3 id="encapsulation"><code class="highlighter-rouge">Encapsulation</code></h3>
 
-<p>Encapsulation helps hide complexity</p>
+<p>Encapsulation helps hide complexity. There are five access modifier.</p>
+
+<ul>
+  <li><b>Public</b>: Any public member can be accessed from outside the class.</li>
+  <li><b>Private</b>: Only functions of the same class can access its private members.</li>
+  <li><b>Protected</b>: Allows a child class to access the members of its base class. (Inheritance)</li>
+  <li><b>Internal</b>: Allows a class to expose its members to other functions and objects in the current assembly.</li>
+  <li><b>Protected internal</b>: Allows a class to hide its members from other class, except a child class within the same application.</li>
+</ul>
 
 <div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="k">public</span> <span class="nf">HelloWorld</span><span class="p">()</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
 
