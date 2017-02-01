@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | C# Three Pillars</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">C# Three Pillars</li>
+	</ol>
+	<h1 id="c-three-pillars">C# Three Pillars</h1>
+
+<h3 id="encapsulation"><code class="highlighter-rouge">Encapsulation</code></h3>
+
+<p>Encapsulation helps hide complexity</p>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="k">public</span> <span class="nf">HelloWorld</span><span class="p">()</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+
+<span class="k">private</span> <span class="kt">string</span> <span class="n">_name</span><span class="p">;</span>
+
+<span class="k">private</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">float</span><span class="p">&gt;</span> <span class="n">names</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<h3 id="inheritance"><code class="highlighter-rouge">Inheritance</code></h3>
+
+<p>Inheritance is a technique where you can define a relationship between two classes such that one class takes on or inherites the memebers of another class. so if class <code class="highlighter-rouge">A</code> has one method, DoWork, then class B can also have that same method, just by inheriting from class A and not writing any additional code, but reusing the code already in the first class. If class B wanted to have an additional method, it can.</p>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">A</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="n">DoWork</span>
+    <span class="p">{</span>
+        <span class="c1">// code here...
+</span>    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">B</span> <span class="p">:</span> <span class="n">A</span>
+<span class="p">{</span>
+    <span class="c1">// code here...
+</span><span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">C</span> <span class="p">:</span> <span class="n">B</span>
+<span class="p">{</span>
+    <span class="c1">// code here...
+</span><span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="polymorphism"><code class="highlighter-rouge">Polymorphism</code></h3>
+
+<p>Polymorphism == many sharpes.</p>
+<ul>
+  <li>One variable can point to different types of objects</li>
+  <li>Objects can behave differently depending on their types</li>
+</ul>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">A</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">virtual</span> <span class="k">void</span> <span class="nf">DoWork</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// code here...
+</span>    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">B</span> <span class="p">:</span> <span class="n">A</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">DoWork</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// optionally call into base...
+</span>        <span class="k">base</span><span class="p">.</span><span class="nf">DoWork</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>
