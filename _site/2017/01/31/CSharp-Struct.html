@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | C# Struct</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">C# Struct</li>
+	</ol>
+	<h4 id="c-struct">C# Struct</h4>
+
+<p>A <code class="highlighter-rouge">struct</code> is a value type data type. It helps you to make a single variable hold related data of various data types. The <code class="highlighter-rouge">struct</code> keyword is used for creating a structure.</p>
+
+<p>Structures are used to represent a record. Suppose you want to keep track of your books in a library. You might want to track the following attributes about each book: title, author, subject, book_id</p>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="k">struct</span> <span class="nc">book</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">title</span><span class="p">;</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">author</span><span class="p">;</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">subject</span><span class="p">;</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">book_id</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>In your <code class="highlighter-rouge">main</code> class</p>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="n">Book</span> <span class="n">book1</span><span class="p">;</span>
+
+<span class="n">book1</span><span class="p">.</span><span class="n">title</span> <span class="p">=</span> <span class="s">"C# Programming"</span><span class="p">;</span>
+<span class="n">book1</span><span class="p">.</span><span class="n">author</span> <span class="p">=</span> <span class="s">"John Smith"</span><span class="p">;</span>
+<span class="n">book1</span><span class="p">.</span><span class="n">subject</span> <span class="p">=</span> <span class="s">"CS"</span><span class="p">;</span>
+<span class="n">book1</span><span class="p">.</span><span class="n">book_id</span> <span class="p">=</span> <span class="m">1234</span><span class="p">;</span>
+
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="err">$</span><span class="s">"Title: {book1.title}. Author: {book1.author}. Subject: {book1.subject}. ID: {book1.book_id}"</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<h3 id="features-of-c-struct"><code class="highlighter-rouge">Features of C# Struct</code></h3>
+
+<ul>
+  <li>Struct can have <code class="highlighter-rouge">method</code>, <code class="highlighter-rouge">fields</code>, <code class="highlighter-rouge">indexers</code>, <code class="highlighter-rouge">properties</code>, <code class="highlighter-rouge">operator methods</code>, <code class="highlighter-rouge">events</code></li>
+  <li>Struct can have defined constructors but not destructor.</li>
+  <li>Unlike classes, struct cannot inherit other struct or classes.</li>
+  <li>Struct cannot be used as a base for other struct or classes.</li>
+  <li>Struct can implement one or more interfaces.</li>
+  <li>Struct members cannot be specific abstract, virtual, or protected.</li>
+</ul>
+
+<h3 id="classes-vs-struct"><code class="highlighter-rouge">Classes vs Struct</code></h3>
+
+<ul>
+  <li>Class is a reference type and struct is a value type.</li>
+  <li>Structs do not support inheritance.</li>
+  <li>Structs cannot have default constructor</li>
+</ul>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="k">struct</span> <span class="nc">Book</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="kt">string</span> <span class="n">title</span><span class="p">;</span>
+    <span class="k">private</span> <span class="kt">string</span> <span class="n">author</span><span class="p">;</span>
+    <span class="k">private</span> <span class="kt">string</span> <span class="n">subject</span><span class="p">;</span>
+    <span class="k">private</span> <span class="kt">int</span> <span class="n">book_id</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">getValues</span><span class="p">(</span><span class="kt">string</span> <span class="n">t</span><span class="p">,</span> <span class="kt">string</span> <span class="n">a</span><span class="p">,</span> <span class="kt">string</span> <span class="n">s</span><span class="p">,</span> <span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">title</span> <span class="p">=</span> <span class="n">t</span><span class="p">;</span>
+        <span class="n">author</span> <span class="p">=</span> <span class="n">a</span><span class="p">;</span>
+        <span class="n">subject</span> <span class="p">=</span> <span class="n">s</span><span class="p">;</span>
+        <span class="n">book_id</span> <span class="p">=</span> <span class="n">id</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">display</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Title: {0}"</span><span class="p">,</span> <span class="n">title</span><span class="p">);</span>
+        <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Author: {0}"</span><span class="p">,</span> <span class="n">author</span><span class="p">);</span>
+        <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Subject: {0}"</span><span class="p">,</span> <span class="n">subject</span><span class="p">);</span>
+        <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Book ID: {0}"</span><span class="p">,</span> <span class="n">book_id</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>In the <code class="highlighter-rouge">Main</code></p>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="n">Book</span> <span class="n">book1</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Book</span><span class="p">();</span>
+<span class="n">Book</span> <span class="n">book2</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Book</span><span class="p">();</span>
+
+<span class="n">book1</span><span class="p">.</span><span class="nf">getValues</span><span class="p">(</span><span class="s">"C Programming"</span><span class="p">,</span> <span class="s">"Nuha Ali"</span><span class="p">,</span> <span class="s">"C Programming Tutorial"</span><span class="p">,</span><span class="m">6495407</span><span class="p">);</span>
+<span class="n">book2</span><span class="p">.</span><span class="nf">getValues</span><span class="p">(</span><span class="s">"Telecom Billing"</span><span class="p">,</span> <span class="s">"Zara Ali"</span><span class="p">,</span> <span class="s">"Telecom Billing Tutorial"</span><span class="p">,</span> <span class="m">6495700</span><span class="p">);</span>
+
+<span class="n">book1</span><span class="p">.</span><span class="nf">display</span><span class="p">();</span>
+
+<span class="n">book2</span><span class="p">.</span><span class="nf">display</span><span class="p">();</span>
+</code></pre>
+</div>
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>
