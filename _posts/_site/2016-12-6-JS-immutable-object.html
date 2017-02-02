@@ -1,0 +1,57 @@
+<h1 id="js-immutable-objects">JS: Immutable objects</h1>
+
+<h3 id="immutable-objects-with-objectfreeze">Immutable objects with “Object.freeze”</h3>
+
+<p>Common technique in JavaScript is the use of an object to hold configuration values and we can sometimes accidentally modified the value. To avoid this, we can use “Object.freeze”.</p>
+
+<h4 id="using-objectfreeze">Using Object.freeze()</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var artist = {
+  name: "Hello Kitty",
+  album: "A pretty cat"
+}
+
+// make the object immutable (cannot modify)
+Object.freeze(artist);
+
+function annouce (artist) {
+  // assigning the name rather than testing equality
+  if (artist.name = "Bye kitty") {
+    console.log("meow meow");
+  }
+  else {
+    console.log(artist.name);
+  }
+}
+
+// output: meow meow
+annouce(artist);
+
+// output: {name: "Hello kitty", album: "A pretty cat"} &lt;= no modification to the object
+console.log(artist);
+</code></pre>
+</div>
+
+<h4 id="using-ojbectisfroze">Using Ojbect.isFroze()</h4>
+<p>In ‘strict’ mode, this will throw an error. Use ‘isFroze’ to check</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var artist = {
+  name: "Hello kitty",
+  album: "A pretty cat"
+}
+
+(function() {
+  "use strict";
+
+  // output: wink wink
+  if (Ojbect.isFroze(artist)) {
+    console.log("wink wink");
+  }
+})();
+</code></pre>
+</div>
+
+<h4 id="browser-compatibility">Browser compatibility</h4>
+<p><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze#Browser_compatibility">Object.freeze()</a> - Made object immutable</p>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/isFrozen#Browser_compatibility">Ojbect.isFroze()</a> - Determines if an object is frozen. Return a boolean value.</p>

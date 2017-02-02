@@ -1,0 +1,76 @@
+<h1 id="js-problems-with-forin">JS: Problems with for…in</h1>
+
+<p>JavaScript <code class="highlighter-rouge">for...in</code> iterates enumberable properties of an object.</p>
+
+<h4 id="forin-can-be-used-in-object-and-array"><code class="highlighter-rouge">for...in</code> can be used in object and array</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// book object
+var booksObj = {
+  b1: "normal book",
+  b2: "great book",
+  b3: "awesome book"
+};
+
+// book array
+var booksArray = ["normal book", "great book", "awesome book"]
+
+var bookHubObj = "";
+var bookHubArray = "";
+
+for (var key in booksObj) {
+  bookHubObj += booksObj[key] + "\n";
+}
+
+for (var key in booksArray) {
+  bookHubArray += booksArray[key] + "\n";
+}
+
+// output: normal book, great book, awesome book
+console.log(bookHubObj);
+console.log(bookHubArray);
+</code></pre>
+</div>
+
+<h4 id="problem-forin-iterates-over-an-object-prototype-properties-if-those-properties-are-enumberable">Problem: <code class="highlighter-rouge">for...in</code> iterates over an object prototype properties if those properties are enumberable.</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Object.prototype.cat = "Tiramisu";
+
+var dogs = {
+  dog1: "Tico",
+  dog2: "Luna",
+  dog3: "Toby"
+}
+
+var dogHub = [];
+
+for (var key in dogs) {
+  dogHub.push(dogs[key]);
+}
+
+// output: ["Tico", "Luna", "Toby", "Tiramisu"]
+console.log(dogHub);
+</code></pre>
+</div>
+
+<h4 id="solution-hasownproperty">Solution: <code class="highlighter-rouge">hasOwnProperty</code></h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Object.prototype.cat = "Tiramisu";
+
+var dogs = {
+  dog1: "Tico",
+  dog2: "Luna",
+  dog3: "Toby"
+}
+
+var dogHub = [];
+
+for (var key in dogs) {
+  if (dogs.hasOwnProperty(key)) {
+    dogHub.push(dogs[key]);
+  }
+}
+
+// output: ["Tico", "Luna", "Toby"]
+console.log(dogHub);
+</code></pre>
+</div>

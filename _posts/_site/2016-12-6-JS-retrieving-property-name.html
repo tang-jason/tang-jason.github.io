@@ -1,0 +1,42 @@
+<h1 id="js-retrieving-property-name">JS: Retrieving property name</h1>
+
+<h3 id="retrieve-object-name-without-hasownproperty">Retrieve object name without “hasOwnProperty”</h3>
+
+<p>Check object property with ‘hasOwnProperty’ before push it to array.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var books = {
+  b1: "Star war",
+  b2: "Lord of the ring"
+}
+
+var bookHub = [];
+
+for (var key in books) {
+  // don't get the names of inherited properties
+  if (books.hasOwnProperty(key)) {
+    bookHub.push(key);
+  }
+}
+
+// output: ["b1", "b2"]
+console.log(bookHub);
+</code></pre>
+</div>
+
+<p>Using ‘Object.keys’</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var books = {
+  b1: "Star war",
+  b2: "Lord of the ring"
+}
+
+var bookHub = Object.keys(books);
+
+// output: ["b1", "b2"]
+console.log(bookHub);
+</code></pre>
+</div>
+
+<h4 id="browser-compatibility">Browser compatibility</h4>
+
+<p><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/keys#Browser_compatibility">Object.key()</a></p>

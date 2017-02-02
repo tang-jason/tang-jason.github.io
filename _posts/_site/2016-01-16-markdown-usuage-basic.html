@@ -1,0 +1,54 @@
+<h1 id="markdown-basic">Markdown Basic</h1>
+
+<p>Basic usages of markdown. A good list can be found <a href="https://daringfireball.net/projects/markdown/syntax">here</a></p>
+
+<h4 id="h1---h6-headings">H1 - H6 Headings</h4>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// use pound sign for headings</span>
+<span class="err">#</span> <span class="nx">Heading</span> <span class="mi">1</span>
+<span class="err">##</span> <span class="nx">Heading</span> <span class="mi">2</span>
+<span class="err">###</span> <span class="nx">Heading</span> <span class="mi">3</span>
+<span class="err">####</span> <span class="nx">Heading</span> <span class="mi">4</span>
+<span class="err">#####</span> <span class="nx">Heading</span> <span class="mi">5</span>
+<span class="err">######</span> <span class="nx">Heading</span> <span class="mi">6</span></code></pre></figure>
+
+<h4 id="blockqoute">Blockqoute</h4>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// blockqoute and nested blockqoute</span>
+<span class="o">&gt;</span> <span class="nx">first</span> <span class="nx">level</span> <span class="nx">blockqoute</span>
+<span class="o">&gt;</span>
+<span class="o">&gt;&gt;</span> <span class="nx">second</span> <span class="nx">level</span> <span class="nx">nested</span> <span class="nx">blockqoute</span>
+<span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nx">third</span> <span class="nx">level</span> <span class="nx">nested</span> <span class="nx">blockqoute</span></code></pre></figure>
+
+<blockquote>
+  <p>first level blockqoute</p>
+
+  <blockquote>
+    <p>second level nested blockqoute</p>
+  </blockquote>
+
+  <blockquote>
+    <blockquote>
+      <p>third level nested blockqoute</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h4 id="ordered-list-item">Ordered List Item</h4>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// just start it in number</span>
+<span class="mi">1</span><span class="p">.</span> <span class="nx">first</span> <span class="nx">list</span> <span class="nx">item</span></code></pre></figure>
+
+<ol>
+  <li>first list item.</li>
+  <li>second list item.</li>
+  <li>thrid list item.</li>
+</ol>
+
+<h4 id="tab-to-create-code-block">TAB to create code block</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>function publicMethod() { privateMethod() };
+</code></pre>
+</div>
+

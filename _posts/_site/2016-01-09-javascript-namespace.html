@@ -1,0 +1,215 @@
+<h1 id="what-is-namespacing">What is namespacing?</h1>
+
+<p>In many programming languages, namespacing is a technique to avoid collisions with other objects or variables in the global namespace. Different design namespacing partterns.</p>
+
+<p>You can find a good namespacing design patterns article <a href="https://addyosmani.com/blog/essential-js-namespacing/">here</a>.</p>
+
+<p>For more immediately invoked-function expression <a href="http://benalman.com/news/2010/11/immediately-invoked-function-expression/">here</a>.</p>
+
+<h4 id="single-global-variable-example">Single Global Variable Example</h4>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">myApp</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+	<span class="c1">// private property</span>
+	<span class="kd">var</span> <span class="nx">privateProperty</span> <span class="o">=</span> <span class="s2">"I am private property"</span><span class="p">;</span>
+
+	<span class="c1">// private function</span>
+	<span class="kd">function</span> <span class="nx">privateMethod</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"I am private method"</span><span class="p">);</span>
+	<span class="p">}</span>
+
+	<span class="c1">// make private property and method to public. Syntax is same as key : value.</span>
+	<span class="k">return</span> <span class="p">{</span>
+		<span class="nx">myApp</span><span class="p">.</span><span class="na">publicProperty</span> <span class="p">:</span> <span class="nx">privateProperty</span><span class="p">,</span>
+		<span class="nx">myApp</span><span class="p">.</span><span class="na">publicMethod</span> <span class="p">:</span> <span class="nx">privateMethod</span><span class="p">()</span>
+	<span class="p">}</span>
+<span class="p">})();</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myApp</span><span class="p">.</span><span class="nx">publicProperty</span><span class="p">);</span>
+<span class="nx">myApp</span><span class="p">.</span><span class="nx">publicMethod</span><span class="p">();</span></code></pre></figure>
+
+<h4 id="public-object-literal">Public Object Literal</h4>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">myApp</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="na">variable</span> <span class="p">:</span> <span class="s2">"I am public variable"</span><span class="p">,</span>
+	<span class="na">publicMethod</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"I am public method"</span><span class="p">);</span>
+	<span class="p">},</span>
+	<span class="c1">// you can create as many objects within object as you want.</span>
+	<span class="na">collections</span> <span class="p">:</span> <span class="p">{</span>
+		<span class="na">controllers</span> <span class="p">:</span> <span class="p">{</span>
+			<span class="c1">// nested object</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// you can add property and method directly to namespace.</span>
+<span class="nx">myApp</span><span class="p">.</span><span class="nx">utilities</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="na">variable</span> <span class="p">:</span> <span class="s2">"added to myApp namespace directly"</span><span class="p">,</span>
+	<span class="na">create</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="c1">// code here...</span>
+	<span class="p">},</span>
+	<span class="na">read</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="c1">// code here...</span>
+	<span class="p">},</span>
+	<span class="na">update</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="c1">// code here...</span>
+	<span class="p">},</span>
+	<span class="na">delete</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="c1">// code here...</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// for performance, you can cache the reference</span>
+<span class="kd">var</span> <span class="nx">utils</span> <span class="o">=</span> <span class="nx">myApp</span><span class="p">.</span><span class="nx">utilities</span><span class="p">;</span>
+
+<span class="c1">// print</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myApp</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myApp</span><span class="p">.</span><span class="nx">utilities</span><span class="p">.</span><span class="nx">variable</span><span class="p">);</span>
+<span class="nx">myApp</span><span class="p">.</span><span class="nx">utilities</span><span class="p">.</span><span class="nx">create</span><span class="p">();</span>
+<span class="nx">myApp</span><span class="p">.</span><span class="nx">utilities</span><span class="p">.</span><span class="nx">read</span><span class="p">();</span></code></pre></figure>
+
+<h4 id="privacy-namespace-design-pattern-01">Privacy Namespace Design Pattern 01</h4>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">myApp01</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+	<span class="c1">// private property</span>
+	<span class="kd">var</span> <span class="nx">privateProperty</span> <span class="o">=</span> <span class="s2">"I am private property 01"</span><span class="p">;</span>
+	<span class="c1">// private method</span>
+	<span class="kd">function</span> <span class="nx">privateMethod</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"I am private method 01"</span><span class="p">);</span>
+	<span class="p">}</span>
+
+	<span class="c1">// public</span>
+	<span class="c1">// use 'return' when the function is named</span>
+	<span class="k">return</span> <span class="p">{</span>
+		<span class="na">publicProperty01</span> <span class="p">:</span> <span class="nx">privateProperty</span><span class="p">,</span>
+		<span class="na">publicMethod01</span> <span class="p">:</span> <span class="nx">privateMethod</span>
+	<span class="p">}</span>
+<span class="p">})();</span>
+
+<span class="c1">// print</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myApp01</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myApp01</span><span class="p">.</span><span class="nx">publicProperty01</span><span class="p">);</span>
+<span class="nx">myApp01</span><span class="p">.</span><span class="nx">publicMethod01</span><span class="p">();</span></code></pre></figure>
+
+<h4 id="privacy-namespace-design-pattern-02">Privacy Namespace Design Pattern 02</h4>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// in larger app, it's always good idea to check the instance. If exists, use it. If not create a new object.</span>
+<span class="c1">// there are many ways to check and below is a common way to check</span>
+<span class="kd">var</span> <span class="nx">myApp02</span> <span class="o">=</span> <span class="nx">myApp02</span> <span class="o">||</span> <span class="p">{};</span>
+
+<span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">myApp02</span><span class="p">.</span><span class="nx">collections</span> <span class="o">=</span> <span class="p">{</span>
+		<span class="na">variable</span> <span class="p">:</span> <span class="s2">"I am a variable 02"</span><span class="p">,</span>
+		<span class="na">method</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+			<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"I am a method 02"</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="na">anotherObject</span> <span class="p">:</span> <span class="p">{</span>
+			<span class="na">anotherMethod</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+				<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"I am another method 02"</span><span class="p">);</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}());</span>
+
+<span class="c1">// print</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myApp02</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myApp02</span><span class="p">.</span><span class="nx">collections</span><span class="p">.</span><span class="nx">variable</span><span class="p">);</span>
+<span class="nx">myApp02</span><span class="p">.</span><span class="nx">collections</span><span class="p">.</span><span class="nx">method</span><span class="p">();</span>
+<span class="nx">myApp02</span><span class="p">.</span><span class="nx">collections</span><span class="p">.</span><span class="nx">anotherobject</span><span class="p">.</span><span class="nx">anotherMethod</span><span class="p">();</span></code></pre></figure>
+
+<h4 id="privacy-namespace-design-pattern-03">Privacy Namespace Design Pattern 03</h4>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// another way to check. This is more thorought.</span>
+<span class="kd">var</span> <span class="nx">myApp03</span> <span class="o">=</span> <span class="nx">myApp03</span> <span class="o">===</span> <span class="kc">undefined</span> <span class="p">?</span> <span class="p">{}</span> <span class="p">:</span> <span class="nx">myApp03</span><span class="p">;</span>
+
+<span class="c1">// notice we passed in a namespace object as a function parameter.</span>
+<span class="p">(</span><span class="kd">function</span><span class="p">(</span> <span class="nx">ns</span> <span class="p">)</span> <span class="p">{</span>
+	<span class="nx">ns</span><span class="p">.</span><span class="nx">variable</span> <span class="o">=</span> <span class="s2">"I am a variable 03"</span>
+	<span class="nx">ns</span><span class="p">.</span><span class="nx">method</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"I am a method 03"</span><span class="p">);</span>
+	<span class="p">},</span>
+	<span class="nx">ns</span><span class="p">.</span><span class="nx">object</span> <span class="o">=</span> <span class="p">{</span>
+		<span class="na">anotherVariable</span> <span class="p">:</span> <span class="s2">"I am another variable 03"</span><span class="p">,</span>
+		<span class="na">anotherMethod</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+			<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"I am another method"</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="na">anotherOjbect</span> <span class="p">:</span> <span class="p">{}</span>
+	<span class="p">}</span>
+<span class="p">})(</span><span class="nx">myApp03</span><span class="p">);</span>
+
+<span class="c1">// print</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myApp03</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myApp03</span><span class="p">.</span><span class="nx">variable</span><span class="p">);</span>
+<span class="nx">myApp03</span><span class="p">.</span><span class="nx">method</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myApp03</span><span class="p">.</span><span class="nx">object</span><span class="p">.</span><span class="nx">anotherVariable</span><span class="p">);</span>
+<span class="nx">myApp03</span><span class="p">.</span><span class="nx">object</span><span class="p">.</span><span class="nx">anotherMethod</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Just an empty object: "</span> <span class="o">+</span> <span class="nx">myApp03</span><span class="p">.</span><span class="nx">object</span><span class="p">.</span><span class="nx">anotherObject</span><span class="p">);</span></code></pre></figure>
+
+<h4 id="privacy-namespace-design-pattern-04">Privacy Namespace Design Pattern 04</h4>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// another way to check. This is also considered more thorought.</span>
+<span class="kd">var</span> <span class="nx">myApp04</span> <span class="o">=</span> <span class="nx">myApp04</span> <span class="o">=</span> <span class="nx">myApp04</span> <span class="o">||</span> <span class="p">{};</span>
+
+<span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+	<span class="c1">// private property</span>
+	<span class="kd">var</span> <span class="nx">privateProperty</span> <span class="o">=</span> <span class="s2">"I am private property 04"</span><span class="p">;</span>
+	<span class="c1">// private method</span>
+	<span class="kd">function</span> <span class="nx">privateMethod</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span> <span class="p">{</span>
+		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"I am private method "</span> <span class="o">+</span> <span class="nx">num</span><span class="p">);</span>
+	<span class="p">};</span>
+	<span class="c1">// private empty object</span>
+	<span class="kd">var</span> <span class="nx">privateObject</span> <span class="o">=</span> <span class="p">{};</span>
+
+	<span class="c1">// make private property/method/object public</span>
+	<span class="nx">myApp04</span><span class="p">.</span><span class="nx">publicProperty</span> <span class="o">=</span> <span class="nx">privateProperty</span><span class="p">;</span>
+	<span class="nx">myApp04</span><span class="p">.</span><span class="nx">publicMethod</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="c1">// invoke private method</span>
+		<span class="nx">privateMethod</span><span class="p">(</span><span class="s2">"04"</span><span class="p">);</span>
+	<span class="p">};</span>
+	<span class="nx">myApp04</span><span class="p">.</span><span class="nx">publicObject</span> <span class="o">=</span> <span class="nx">privateObject</span><span class="p">;</span>
+<span class="p">})();</span>
+
+<span class="c1">// print</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myApp04</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myApp04</span><span class="p">.</span><span class="nx">publicProperty</span><span class="p">);</span>
+<span class="nx">myApp04</span><span class="p">.</span><span class="nx">publicMethod</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myApp04</span><span class="p">.</span><span class="nx">publicObject</span><span class="p">);</span></code></pre></figure>
+
+<h4 id="namespace-injection-design-pattern-05">Namespace injection design pattern 05</h4>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// another way to check. this is considered a good practice</span>
+<span class="kd">var</span> <span class="nx">myApp05</span> <span class="o">=</span> <span class="p">(</span><span class="nx">myApp05</span> <span class="o">||</span> <span class="p">{});</span>
+<span class="nx">myApp05</span><span class="p">.</span><span class="nx">collections</span> <span class="o">=</span> <span class="nx">myApp05</span><span class="p">.</span><span class="nx">collections</span> <span class="o">||</span> <span class="p">{};</span>
+
+<span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+	<span class="c1">// private variable</span>
+	<span class="kd">var</span> <span class="nx">val</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+
+	<span class="k">this</span><span class="p">.</span><span class="nx">getVal</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="nx">val</span><span class="p">;</span>
+	<span class="p">};</span>
+
+	<span class="k">this</span><span class="p">.</span><span class="nx">setVal</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">newVal</span><span class="p">)</span> <span class="p">{</span>
+		<span class="nx">val</span> <span class="o">=</span> <span class="nx">newVal</span><span class="p">;</span>
+	<span class="p">};</span>
+
+	<span class="c1">// add new namespace via myApp05.collections</span>
+	<span class="k">this</span><span class="p">.</span><span class="nx">create</span> <span class="o">=</span> <span class="p">{};</span>
+
+<span class="c1">// notice the '.apply()'. this is not jquery but a core javascript.</span>
+<span class="c1">// It substituting 'this' to 'myApp05.collections'</span>
+<span class="p">}).</span><span class="nx">apply</span><span class="p">(</span><span class="nx">myApp05</span><span class="p">.</span><span class="nx">collections</span><span class="p">);</span>
+
+<span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+	<span class="k">this</span><span class="p">.</span><span class="nx">createMethod</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"I am injected 05"</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">}).</span><span class="nx">apply</span><span class="p">(</span><span class="nx">myApp05</span><span class="p">.</span><span class="nx">collections</span><span class="p">.</span><span class="nx">create</span><span class="p">);</span>
+
+<span class="c1">// print</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myApp05</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myApp05</span><span class="p">.</span><span class="nx">collections</span><span class="p">.</span><span class="nx">getVal</span><span class="p">());</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myApp05</span><span class="p">.</span><span class="nx">collections</span><span class="p">.</span><span class="nx">setVal</span><span class="p">(</span><span class="mi">25</span><span class="p">));</span>
+
+<span class="nx">myApp05</span><span class="p">.</span><span class="nx">collections</span><span class="p">.</span><span class="nx">create</span><span class="p">.</span><span class="nx">createMethod</span><span class="p">();</span></code></pre></figure>
+

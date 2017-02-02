@@ -1,0 +1,10 @@
+<p>Hyper-V CheckPoint in PowerShell</p>
+
+<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell"><span class="c1"># Create checkpoint</span>
+Checkpoint-VM -VMName <span class="o">{</span>vm name<span class="o">}</span> -SnapshotName <span class="o">{</span>whatever<span class="o">}</span>
+
+<span class="c1"># Remove checkpoint</span>
+Remove-VMSnapshot -VMName <span class="k">*</span>
+
+<span class="c1"># command</span>
+<span class="nb">Get-Command</span> -Module Hyper-V -Name <span class="k">*</span>checkpoint<span class="k">*</span>, <span class="k">*</span>snapshot<span class="k">*</span></code></pre></figure>

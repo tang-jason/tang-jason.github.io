@@ -1,0 +1,67 @@
+<h1 id="javascript-file-api">JavaScript File API</h1>
+
+<p>How to use File API on input file type. There are several interfaces for accessing files from a ‘local’ filesystem.</p>
+
+<ol>
+  <li><u>File</u>: which includes readonly informational attributes about a file such as its name and the date of the last modification (on disk) of the file.</li>
+  <li><u>FileList</u>: which represents an array of individually selected files from the underlying system.</li>
+  <li><u>FileReader</u>: which provides methods to read a File or a Blob, and an event model to obtain the results of these reads.</li>
+  <li><u>Blog</u>: which represents immutable raw binary data, and allows access to ranges of bytes within the Blob object as a separate Blob.</li>
+</ol>
+
+<h4 id="file-api-browser-compatibility-check">File API Browser Compatibility Check</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>if (window.File &amp;&amp; window.FileList &amp;&amp; window.FileReader &amp;&amp; window.Blob) {
+  // File API is fully supported
+}
+</code></pre>
+</div>
+
+<h4 id="different-ways-to-get-filelist-object">Different ways to get FileList object</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// using the .get() method
+var file = $(".inputFile").get(0).files;
+
+// using the access notation
+var file = $(".inputFile")[0].files;
+
+// using the function
+$(".inputFile").on("change", app.onFile);
+app.onFile = function(event) {
+  var file = event.target.files[0];
+}
+</code></pre>
+</div>
+
+<h4 id="filelist-members">FileList members</h4>
+
+<p><u>name</u>: File name</p>
+
+<p><u>size</u>: File size</p>
+
+<p><u>type</u>: File type</p>
+
+<p><u>lastModified</u>: File lastModified</p>
+
+<p><u>lastModifiedDate</u>: File lastModifiedDate</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var file = $(".inputFile").get(0).files;
+console.log(file.name);
+console.log(file.size);
+console.log(file.lastModified);
+</code></pre>
+</div>
+
+<h4 id="selecting-multiple-files">Selecting multiple files</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;input type="file" class="inputFile" multiple /&gt;
+</code></pre>
+</div>
+
+<h4 id="accept-specify-file-extension">Accept specify file extension</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;input type="file" class="inputFile" accept="image/*" /&gt;
+
+&lt;input type="file" class="inputFile" accept=".txt" /&gt;
+</code></pre>
+</div>

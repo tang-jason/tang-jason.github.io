@@ -1,0 +1,129 @@
+<h1 id="change-vs-on">.change() vs .on()</h1>
+
+<p>Refresh on the basic usage of .change(), .on(), .is(), .prop() in jQuery.</p>
+
+<h4 id="example-1">Example 1</h4>
+
+<p>.attr() vs .prop() vs .is()</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// HTML setup</span>
+<span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"example1"</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">id</span><span class="o">=</span><span class="s2">"check"</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"checkbox"</span> <span class="nx">checked</span><span class="o">=</span><span class="s2">"checked"</span> <span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="nx">label</span> <span class="k">for</span><span class="o">=</span><span class="s2">"check"</span><span class="o">&gt;</span><span class="nx">click</span> <span class="nx">me</span><span class="o">&lt;</span><span class="sr">/label</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"box"</span><span class="o">&gt;&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>
+
+<span class="c1">// jQuery</span>
+<span class="nx">$</span><span class="p">(</span><span class="s2">"input"</span><span class="p">).</span><span class="nx">change</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">$this</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s2">".example .box"</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span>
+    <span class="s2">".attr( \" checked \"): &lt;b&gt;"</span> <span class="o">+</span> <span class="nx">$this</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"checked"</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"&lt;/b&gt;&lt;br/&gt;"</span> <span class="o">+</span>
+    <span class="s2">".prop( \" checked \"): &lt;b&gt;"</span> <span class="o">+</span> <span class="nx">$this</span><span class="p">.</span><span class="nx">prop</span><span class="p">(</span><span class="s2">"checked"</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"&lt;/b&gt;&lt;br/&gt;"</span> <span class="o">+</span>
+    <span class="s2">".is( \" :checked \" ): &lt;b&gt;"</span> <span class="o">+</span> <span class="nx">$this</span><span class="p">.</span><span class="nx">is</span><span class="p">(</span><span class="s2">":checked"</span><span class="p">)</span> <span class="o">+</span> <span class="o">&lt;</span><span class="sr">/b</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+
+<span class="p">}).</span><span class="nx">change</span><span class="p">();</span></code></pre></figure>
+
+<p>Result:</p>
+<div class="example1">
+	<input id="check" type="checkbox" checked="checked" />
+	<label for="check">check me</label>
+	<div class="box"></div>
+</div>
+<script>
+	$(".example1 input").change(function () {
+		var $input = $(this);
+		$(".example1 .box").html(
+			".attr( \" checked \"): <b>" + $input.attr("checked") + "</b><br/>" +
+		    ".prop( \" checked \"): <b>" + $input.prop("checked") + "</b><br/>" +
+		    ".is( \" :checked \" ): <b>" + $input.is(":checked")
+		);
+	}).change();
+</script>
+
+<h4 id="example-2">Example 2</h4>
+
+<p>The above is using .change() it’s a shorthand of .on() and the above can be done this way.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// HTML setup</span>
+<span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"example2"</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"checkbox"</span> <span class="nx">id</span><span class="o">=</span><span class="s2">"check2"</span> <span class="nx">checked</span><span class="o">=</span><span class="s2">"checked"</span> <span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="nx">label</span> <span class="k">for</span><span class="o">=</span><span class="s2">"check2"</span><span class="o">&gt;</span><span class="nx">Check</span> <span class="nx">me</span><span class="o">&lt;</span><span class="sr">/label</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"box2"</span><span class="o">&gt;&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>
+<span class="c1">// jQuery</span>
+<span class="kd">function</span> <span class="nx">handler</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">$input</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s2">".example1 .box"</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span>
+    <span class="s2">".attr( \" checked \"): &lt;b&gt;"</span> <span class="o">+</span> <span class="nx">$input</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"checked"</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"&lt;/b&gt;&lt;br/&gt;"</span> <span class="o">+</span>
+    <span class="s2">".prop( \" checked \"): &lt;b&gt;"</span> <span class="o">+</span> <span class="nx">$input</span><span class="p">.</span><span class="nx">prop</span><span class="p">(</span><span class="s2">"checked"</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"&lt;/b&gt;&lt;br/&gt;"</span> <span class="o">+</span>
+    <span class="s2">".is( \" :checked \" ): &lt;b&gt;"</span> <span class="o">+</span> <span class="nx">$input</span><span class="p">.</span><span class="nx">is</span><span class="p">(</span><span class="s2">":checked"</span><span class="p">)</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">$</span><span class="p">(</span><span class="s2">".example2 input"</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s2">"change"</span><span class="p">,</span> <span class="nx">handler</span><span class="p">);</span></code></pre></figure>
+
+<p>Result:</p>
+
+<div class="example2">
+	<input id="check" type="checkbox" checked="checked" />
+	<label for="check">check me</label>
+	<div class="box2"></div>
+</div>
+
+<script>
+	function handler() {
+		var $input = $(this);
+		$(".example2 .box2").html(
+			".attr( \" checked \"): <b>" + $input.attr("checked") + "</b><br/>" +
+		    ".prop( \" checked \"): <b>" + $input.prop("checked") + "</b><br/>" +
+		    ".is( \" :checked \" ): <b>" + $input.is(":checked")
+		);
+	}
+	$(".example2 input").on("change", handler);
+</script>
+
+<h4 id="example-3">Example 3</h4>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// HTML setup</span>
+<span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"example3"</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="nx">select</span> <span class="nx">multiple</span><span class="o">=</span><span class="s2">"multiple"</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">option</span> <span class="nx">selected</span><span class="o">=</span><span class="s2">"selected"</span><span class="o">&gt;</span><span class="nx">Apple</span><span class="o">&lt;</span><span class="sr">/option</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">option</span><span class="o">&gt;</span><span class="nx">Banana</span><span class="o">&lt;</span><span class="sr">/option</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">option</span><span class="o">&gt;</span><span class="nx">Cherry</span><span class="o">&lt;</span><span class="sr">/option</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="sr">/select</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>
+<span class="c1">// jQuery</span>
+<span class="nx">$</span><span class="p">(</span><span class="s2">".example3 select"</span><span class="p">).</span><span class="nx">change</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">string</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s2">".example3 select option:selected"</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">string</span> <span class="o">+=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">text</span><span class="p">()</span> <span class="o">+</span> <span class="s2">" "</span><span class="p">;</span>
+  <span class="p">});</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s2">".example3 div"</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="nx">string</span><span class="p">);</span>
+<span class="p">}).</span><span class="nx">change</span><span class="p">();</span></code></pre></figure>
+
+<p>Result</p>
+
+<div class="example3">
+	<select multiple="multiple">
+		<option selected="selected">Apple</option>
+		<option>Banana</option>
+		<option>Cherry</option>
+	</select>
+	<div></div>
+</div>
+
+<script>
+$(".example3 select").change(function() {
+	var string = "";
+	$(".example3 select option:selected").each(function() {
+		string += $(this).text() + " ";
+	});
+	$(".example3 div").text(string);
+}).change();
+</script>
+

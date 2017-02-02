@@ -1,0 +1,87 @@
+<h1 id="basic-jquery-usages">Basic jQuery usages</h1>
+
+<p>Refresh on some basic jQuery methods and usages.</p>
+
+<h4 id="how-to-create-element-and-text">How to create element and text</h4>
+
+<p><u>createElement()</u> = create an HTML element</p>
+
+<p><u>createTextNode()</u> = create a text node</p>
+
+<p><u>appendChild()</u> = appends a node as the last child of a node</p>
+
+<p><u>insertBefore()</u> = inert an element uefore a targeted element</p>
+
+<p><u>childNodes()</u> = returns a collection of a node’s child nodes, as a NodeList object</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// step 1: create an element</span>
+<span class="kd">var</span> <span class="nx">newElement</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"li"</span><span class="p">);</span>
+
+<span class="c1">// step 2: create text node</span>
+<span class="kd">var</span> <span class="nx">newText</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createTextNode</span><span class="p">(</span><span class="s2">"Coffee"</span><span class="p">);</span>
+
+<span class="c1">// step 3: append the text to li</span>
+<span class="nx">newElement</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">newText</span><span class="p">);</span>
+
+<span class="c1">// step 4: get the ul element to insert a text node</span>
+<span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">"ul"</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+
+<span class="c1">// step 5: insert li before the first child of ul</span>
+<span class="nx">list</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">newElement</span><span class="p">,</span> <span class="nx">list</span><span class="p">.</span><span class="nx">childNodes</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span></code></pre></figure>
+
+<h4 id="wrapping-elements">Wrapping elements</h4>
+
+<p><u>wrap()</u> = wraps each of the selected elements</p>
+
+<p><u>wrapInner()</u> = wraps the content of each selected element</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// wrap all h1 element with i element</span>
+<span class="c1">// output: &lt;i&gt;&lt;h1&gt;...&lt;/h1&gt;&lt;/i&gt;</span>
+<span class="nx">$</span><span class="p">(</span><span class="s2">"h1"</span><span class="p">).</span><span class="nx">wrap</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"i"</span><span class="p">));</span>
+
+<span class="c1">// wrap the content of selected elment</span>
+<span class="c1">// output: &lt;li&gt;&lt;a href="#"&gt;&lt;/a&gt;&lt;/li&gt;</span>
+<span class="nx">$</span><span class="p">(</span><span class="s2">"li"</span><span class="p">).</span><span class="nx">wrapInner</span><span class="p">(</span><span class="s2">"&lt;a/&gt;"</span><span class="p">);</span> <span class="c1">// using a string argument is eaiser</span>
+<span class="nx">$</span><span class="p">(</span><span class="s2">"ul li a"</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"href"</span><span class="p">,</span> <span class="s2">"#"</span><span class="p">);</span></code></pre></figure>
+
+<h4 id="append-vs-appendto">append() vs appendTo()</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// $(target).append(content);
+$("h1").append("Hello World!");
+
+// $(content).appendTo(target);
+$("p").appendTo("h1");
+$("&lt;p&gt;hello&lt;/p&gt;").appendTo("h1");
+
+// If the selected this way is inserted into a single location 
+// elsewhere in the DOM, it will be moved into the targer (not clone) 
+// and new set consisting of the inserted elmement is returned.
+$("p").appendTo($(".class"));
+</code></pre>
+</div>
+
+<h4 id="resize-method">resize() method</h4>
+
+<p>Use resize() to detects and determines what to do at a specific page breakpoint</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">resize</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+	<span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">innerWidth</span> <span class="o">&gt;=</span> <span class="mi">550</span><span class="p">)</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="s2">"nav ul"</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
+		<span class="nx">$</span><span class="p">(</span><span class="s2">".hamburger"</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
+	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="s2">".hamburger"</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
+		<span class="nx">$</span><span class="p">(</span><span class="s2">"nav ul"</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
+	<span class="p">}</span>
+<span class="p">});</span></code></pre></figure>
+
+<h4 id="hover-method">hover() method</h4>
+
+<p>This method has in and out function</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// 1st handler is the inFunction (mouse hover) and the 2nd handler is outFunction (mouse out)</span>
+<span class="nx">$</span><span class="p">(</span><span class="s2">"a"</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">"color"</span><span class="p">,</span> <span class="s2">"#ffffff"</span><span class="p">);</span>
+<span class="p">},</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">"color"</span><span class="p">,</span> <span class="s2">""</span><span class="p">);</span>
+<span class="p">});</span></code></pre></figure>
+

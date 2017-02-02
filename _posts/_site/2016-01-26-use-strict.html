@@ -1,0 +1,103 @@
+<h1 id="use-strict">Use Strict</h1>
+
+<p>Results in cleaner JavaScript, with fewer unsafe features, more warnings, and more logical behavior. The normal (nonstrict) mode is sometimes called “sloppy mode.”</p>
+
+<h4 id="strict-mode-on">“strict mode on”</h4>
+
+<p>To turn on the strict mode, in JavaScript include this.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>"use strict";
+</code></pre>
+</div>
+
+<p>Or you can turn on the strict mode per function. Switch strict mode on a global scale will break the legacy code.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>function strict() { 
+  "use strict";
+
+  // code here... 
+}
+</code></pre>
+</div>
+
+<h4 id="variable-must-be-declared">Variable must be declared</h4>
+
+<p>In strict mode, all variables must be declared or you’ll get a reference error.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// wrong
+function sloppyMode() {
+  "use strict";
+
+  sloppy = 123;
+  console.log(sloppy); // reference error
+}
+
+// right
+function strictMode() {
+  "use strict"
+  
+  var strict = 123;
+  console.log(strict); // 123
+}
+</code></pre>
+</div>
+
+<h4 id="functions-must-be-declared-at-the-top">Functions must be declared at the top</h4>
+
+<p>In strict mode, you can’t put a function declaration inside a “block”. You’ll get a <u>syntax error</u> if you do. Function can only declared at the top or immediately within outer function.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// wrong
+function sloppyMode() {
+  "use strict";
+
+  if (true) {
+    function innerSloppyMode() {
+      // code here...
+    }
+  }
+}
+
+// right
+function strictMode() {
+  "use strict";
+
+  function innerStrictMode() {
+    // code here...
+  }
+}
+</code></pre>
+</div>
+
+<p>From the above you can’t create function within a “block”. However, there is a workaround. Create your function in named expression.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// OK
+function strictMode() {
+  "use strict";
+
+  if (true) {
+    var innerStrictMode = function() {
+      // code here...
+    }
+  }
+}
+</code></pre>
+</div>
+
+<h4 id="illegal-manipulations-of-properties">Illegal manipulations of properties</h4>
+
+<p>Attempting to set a value to a read-only perperty will give you an error.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var sloppy = "abc";
+function sloppyMode() {
+  sloppy.length = 4; // no effect, silent failure
+  console.log(sloppy.length); // 3
+}
+
+// strict mode
+var strict = "abc";
+function strictMode() {
+  "use strict";
+  strict.length = 10; // type error: can not assign to read-only property
+}
+</code></pre>
+</div>

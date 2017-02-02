@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | JavaScript execCommand</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">JavaScript execCommand</li>
+	</ol>
+	<h4 id="javascript-execcommand">JavaScript execCommand</h4>
+
+<p>Using the <code class="highlighter-rouge">document.execCommand('copy')</code> to copy the targetted string to clipboard.</p>
+
+<h3 id="example"><code class="highlighter-rouge">Example</code></h3>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">// constructing clipboard</span>
+<span class="kd">var</span> <span class="nx">copyToClipboard</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// whether or not the specified editor command is supported by the browser</span>
+    <span class="kd">var</span> <span class="nx">isCopySupported</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">queryCommandSupported</span><span class="p">(</span><span class="s2">"copy"</span><span class="p">);</span>
+
+    <span class="c1">// if "copy" command is supported. Copy the text to clipboard</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">isCopySupported</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// first we need to create a textarea element and assign the text to it</span>
+        <span class="kd">var</span> <span class="nx">copyTextArea</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"textarea"</span><span class="p">);</span>
+        <span class="nx">copyTextArea</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">text</span><span class="p">;</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">copyTextArea</span><span class="p">);</span>
+        <span class="nx">copyTextArea</span><span class="p">.</span><span class="nx">select</span><span class="p">();</span>
+
+        <span class="c1">// try...catch</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="c1">// check to see if execCommand("copy") is supported</span>
+            <span class="kd">var</span> <span class="nx">successful</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">execCommand</span><span class="p">(</span><span class="s2">"copy"</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="nx">successful</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// code here...</span>
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="p">{</span>
+                <span class="c1">// code here...</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// fallback if browser doesn't support .execCommand("copy")</span>
+            <span class="c1">// code here...</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// listening to click event</span>
+<span class="nx">$</span><span class="p">(</span><span class="s2">".copyText"</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">copyToClipboard</span><span class="p">(</span><span class="s2">"Text to copy"</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>

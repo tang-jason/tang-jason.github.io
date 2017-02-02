@@ -1,0 +1,72 @@
+<h1 id="c-three-pillars">C# Three Pillars</h1>
+
+<h3 id="encapsulation"><code class="highlighter-rouge">Encapsulation</code></h3>
+
+<p>Encapsulation helps hide complexity. There are five access modifier.</p>
+
+<ul>
+  <li><b>Public</b>: Any public member can be accessed from outside the class.</li>
+  <li><b>Private</b>: Only functions of the same class can access its private members.</li>
+  <li><b>Protected</b>: Allows a child class to access the members of its base class. (Inheritance)</li>
+  <li><b>Internal</b>: Allows a class to expose its members to other functions and objects in the current assembly.</li>
+  <li><b>Protected internal</b>: Allows a class to hide its members from other class, except a child class within the same application.</li>
+</ul>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="k">public</span> <span class="nf">HelloWorld</span><span class="p">()</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+
+<span class="k">private</span> <span class="kt">string</span> <span class="n">_name</span><span class="p">;</span>
+
+<span class="k">private</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">float</span><span class="p">&gt;</span> <span class="n">names</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<h3 id="inheritance"><code class="highlighter-rouge">Inheritance</code></h3>
+
+<p>Inheritance is a technique where you can define a relationship between two classes such that one class takes on or inherites the memebers of another class. so if class <code class="highlighter-rouge">A</code> has one method, DoWork, then class B can also have that same method, just by inheriting from class A and not writing any additional code, but reusing the code already in the first class. If class B wanted to have an additional method, it can.</p>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">A</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="n">DoWork</span>
+    <span class="p">{</span>
+        <span class="c1">// code here...
+</span>    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">B</span> <span class="p">:</span> <span class="n">A</span>
+<span class="p">{</span>
+    <span class="c1">// code here...
+</span><span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">C</span> <span class="p">:</span> <span class="n">B</span>
+<span class="p">{</span>
+    <span class="c1">// code here...
+</span><span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="polymorphism"><code class="highlighter-rouge">Polymorphism</code></h3>
+
+<p>Polymorphism == many sharpes.</p>
+<ul>
+  <li>One variable can point to different types of objects</li>
+  <li>Objects can behave differently depending on their types</li>
+</ul>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">A</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">virtual</span> <span class="k">void</span> <span class="nf">DoWork</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// code here...
+</span>    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">B</span> <span class="p">:</span> <span class="n">A</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">DoWork</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// optionally call into base...
+</span>        <span class="k">base</span><span class="p">.</span><span class="nf">DoWork</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>

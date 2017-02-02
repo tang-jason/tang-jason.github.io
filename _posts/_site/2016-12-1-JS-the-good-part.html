@@ -1,0 +1,181 @@
+<h1 id="book-js-the-good-part">Book: JS The Good Part</h1>
+
+<h4 id="string"><code class="highlighter-rouge">String</code></h4>
+
+<p>Strings are immutable. Once it is made, a string can never be changed.</p>
+
+<p>Strings containing exactly the sdame characters in the same order are considered to be the same string.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// true
+"d" + "o" + "g" === "dog"
+</code></pre>
+</div>
+
+<h4 id="forin"><code class="highlighter-rouge">for...in</code></h4>
+
+<p>It is usually neccessary to test object.hasOwnProperty(variable) to determine whether the property name is truly a member of the object or was found instead on the prototype chain</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>for (var prop in obj) {
+  if (obj.hasOwnProperty(prop)) {
+    ...
+  }
+}
+</code></pre>
+</div>
+
+<h4 id="throw"><code class="highlighter-rouge">throw</code></h4>
+
+<p>Throw an error in the console</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code> throw new Error("You have an error...");
+</code></pre>
+</div>
+
+<h4 id="object-literals"><code class="highlighter-rouge">Object Literals</code></h4>
+
+<p>Quotes around a property’s name in an object literal are optional if the name would be a legal JavaScript name and not a reserved word.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var empty_obj = {};
+
+var names = {
+  "first-name": "John",
+  "last-name": "Smith"
+}
+</code></pre>
+</div>
+
+<h4 id="or-"><code class="highlighter-rouge">OR ||</code></h4>
+
+<table>
+  <tbody>
+    <tr>
+      <td>The</td>
+      <td> </td>
+      <td>operator can be used to fill in default values.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var middle = stooge["middle-name"] || "(none)";
+var status = flight.status || "unknown";
+</code></pre>
+</div>
+
+<h4 id="reference"><code class="highlighter-rouge">Reference</code></h4>
+
+<p>Objects are passed around by reference. They are never copied.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var x = stooge;
+x.nickname = "Curly";
+
+// nick is 'Curly' because x and stooge are references to the same object
+var nick = stooge.nickname; 
+
+// a, b, and c each refer to a different empty object 
+var a = {}, b = {}, c = {};
+
+// a, b, and c all refer to the same empty object
+a = b = c = {};
+</code></pre>
+</div>
+
+<h4 id="prototype"><code class="highlighter-rouge">Prototype</code></h4>
+
+<p>Every object is linked to a prototype object from which it can inherit properties. All objects created from object literals are linked to object.prototype.</p>
+
+<h4 id="global-abatement"><code class="highlighter-rouge">Global Abatement</code></h4>
+
+<p>single global variable for your application. This significantly reduce the chance of bad interactions with other application., widges, or libraries.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>MyApp = {};
+
+MyApp.names = {
+  "first-name": "John",
+  "last-name": "Smith"
+};
+</code></pre>
+</div>
+
+<h4 id="arguments"><code class="highlighter-rouge">arguments</code></h4>
+
+<p>If a function is called with too many arguments (more than declared), these arguments can be reached using the arguments object.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>function add() {
+  for (var i = 0; i &lt; arguments.length; i++) {
+    // output: 1, 2, 3, 4
+    console.log(arguments[i]);
+  }
+}
+
+add(1, 2, 3, 4);
+</code></pre>
+</div>
+
+<h4 id="the-method-invocation-pattern"><code class="highlighter-rouge">The method invocation pattern</code></h4>
+
+<p>When a function is stored as property in an object, it’s called <code class="highlighter-rouge">method</code>. When method is invoked, this is bound to that object.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var obj = {
+  value: 0,
+  increment: function(inc) {
+    this.value += typeof inc === "number" ? inc : 1;
+  }
+}
+
+// output: 1
+obj.increment();
+
+// output: 20
+console.log(obj.increment(20));
+</code></pre>
+</div>
+
+<h4 id="the-constructor-invocation-pattern"><code class="highlighter-rouge">The constructor invocation pattern</code></h4>
+
+<p>JavaScript is a <code class="highlighter-rouge">prototypal</code> inheritance language. That means that objects can inherit properties directly from other objects. The language is class-free.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// create a constructor function call Quo.
+// it makes an object with a status property.
+var Quo = function (string) {
+  this.status = string;
+}
+
+// give all instances of Quo a public method
+// called get_status
+Quo.prototype.get_status = function() {
+  return this.status;
+}
+
+// make an instance of Quo
+var myQuo = new Quo("superman");
+
+// output: superman
+console.log(myQuo.get_status());
+</code></pre>
+</div>
+
+<p>Use of this style of constructor functions is not recommended.</p>
+
+<h4 id="arguments-1"><code class="highlighter-rouge">Arguments</code></h4>
+
+<p>this is not a particularly useful pattern and because of a design error, arguments is not really an array. It’s an array-link object.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var sum = function() {
+  var total = 0;
+  
+  for (var i = 0; i &lt; arguments.length; i++) {
+    total += arguments[i]
+  }
+
+  return total;
+}
+
+// output: 15
+console.log(sum(1, 2, 3, 4, 5));
+</code></pre>
+</div>
+
+<h4 id="return"><code class="highlighter-rouge">Return</code></h4>
+
+<p>The return statement can be used to cause the function to return early. A function always returns a value. If the return value is not specified, the undefined is returned.</p>
+
