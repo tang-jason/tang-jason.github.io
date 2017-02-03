@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | C# Static Keyword</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">C# Static Keyword</li>
+	</ol>
+	<h4 id="c-static-keyword">C# Static Keyword</h4>
+
+<p>What is the difference between a static class and a static member varialbe or method?</p>
+
+<h3 id="what-is-static"><code class="highlighter-rouge">What is static?</code></h3>
+
+<p>Static methods and variables which don’t need an instance of a class to be created are defined as being static. In C#, we use the <code class="highlighter-rouge">static</code> keyword to label such members as static.</p>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Demo</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">DoSomething</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>These member variables and methods can be called without creating an instance of the enclosing class. We can call the static method <code class="highlighter-rouge">DoSomething()</code> as:</p>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="n">Demo</span><span class="p">.</span><span class="nf">DoSomething</span><span class="p">();</span>
+</code></pre>
+</div>
+
+<p>We don’t need to create an instance to use this static method.</p>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="n">Demo</span> <span class="n">d</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Demo</span><span class="p">();</span>
+<span class="n">d</span><span class="p">.</span><span class="nf">DoSomething</span><span class="p">();</span>
+<span class="c1">// This will result in compilation error
+</span></code></pre>
+</div>
+
+<p><code class="highlighter-rouge">Important</code>: Static methods inside a class can only use static member variables of that class. Example below.</p>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Demo</span>
+<span class="p">{</span>
+    <span class="c1">// non-static instance member variables
+</span>    <span class="k">private</span> <span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+
+    <span class="c1">// static member variable
+</span>    <span class="k">private</span> <span class="k">static</span> <span class="kt">int</span> <span class="n">b</span><span class="p">;</span>
+
+    <span class="c1">// static method
+</span>    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">DoSomething</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// this will result in error as 'a' has no memory
+</span>        <span class="n">a</span> <span class="p">+=</span> <span class="m">1</span><span class="p">;</span>
+
+        <span class="c1">// this works fine since 'b' is static
+</span>        <span class="n">b</span> <span class="p">+=</span> <span class="m">1</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Note that we have no created any instance of the class, so the private variable ‘a’ has no memobry as when we call a static method for a class, only the static variables are present in the memory. Instance variables, such as ‘a’ in the above example, will only be created when we create an instance of the class using <code class="highlighter-rouge">new</code> keyword. E.g:</p>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="n">Demo</span> <span class="n">d</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Demo</span><span class="p">();</span> <span class="c1">// now 'a' will get some memory
+</span></code></pre>
+</div>
+
+<p>Since we haven’t created an instance yet, the variable ‘a’ is not there in the process memory but ‘b’ and ‘DoSomething()’. So when the program calls ‘a’ but the variable isn’t created therefore results in an error.</p>
+
+<h3 id="what-is-static-class"><code class="highlighter-rouge">What is static class?</code></h3>
+
+<p>When we use the <code class="highlighter-rouge">static</code> keyword before a class name, we specify that the class will only have static member variables and methods. Such classes cannot be instantiated as they don’t need to: they cannot have instance variable. Also, an important point to note is that such static classes are <code class="highlighter-rouge">sealed</code> by default, which means they cannot be inerited further.</p>
+
+<p>Because <code class="highlighter-rouge">static</code> classes have no behavior at all. There is no need to derive another class from a static class.</p>
+
+<h3 id="why-do-we-need-static-classes"><code class="highlighter-rouge">Why do we need static classes?</code></h3>
+
+<p>We need static classes when we know that our class will not have any behavior as such. So using the <code class="highlighter-rouge">static</code> keyword will make your code a bit faster since no object is involved.</p>
+
+<h3 id="const-and-readonly-keyword"><code class="highlighter-rouge">const and readonly keyword</code></h3>
+
+<p><code class="highlighter-rouge">const</code> variables are implicitly static and they need to be defined when declared. <code class="highlighter-rouge">readonly</code> variables are explicitly static and and can only be initialized once.</p>
+
+<p>E.g: A car racing program in which the racing track has a fixed length of 1000 Km. You can define a <code class="highlighter-rouge">const</code> variable to denote this as:</p>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="k">private</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">tracklength</span> <span class="p">=</span> <span class="m">1000</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>Now, you want the user to enter the number of cars to race with. Since this number would vary from users but would be constant throughout a game, you need to make it <code class="highlighter-rouge">readonly</code>. You cannot make it a <code class="highlighter-rouge">const</code> as you need to initialize it at runtime. Example below.</p>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">CarRace</span>
+<span class="p">{</span>
+    <span class="c1">// this is compile time constant
+</span>    <span class="k">private</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">_trackLength</span> <span class="p">=</span> <span class="m">1000</span><span class="p">;</span>
+
+    <span class="c1">// this value would be determined at runtime, but will not change
+</span>    <span class="c1">// after that till the class's instance is removed from memory
+</span>    <span class="k">private</span> <span class="k">readonly</span> <span class="kt">int</span> <span class="n">_noOfCars</span><span class="p">;</span>
+
+    <span class="c1">// constructor
+</span>    <span class="k">public</span> <span class="nf">CarRace</span><span class="p">(</span><span class="kt">int</span> <span class="n">noOfCars</span><span class="p">)</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="c1">// constructor
+</span>    <span class="k">public</span> <span class="nf">CarRace</span><span class="p">(</span><span class="kt">int</span> <span class="n">noOfCars</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Get the # of cars from the value.
+</span>        <span class="n">_noOfCars</span> <span class="p">=</span> <span class="n">noOfCars</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>

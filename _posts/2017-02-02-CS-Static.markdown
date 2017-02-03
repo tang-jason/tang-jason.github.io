@@ -1,0 +1,114 @@
+---
+layout: post
+title: "C# Static Keyword"
+date: 2017-02-02
+lang: en-us
+---
+
+#### {{ page.title }}
+
+What is the difference between a static class and a static member varialbe or method?
+
+### `What is static?`
+
+Static methods and variables which don't need an instance of a class to be created are defined as being static. In C#, we use the `static` keyword to label such members as static.
+
+```csharp
+class Demo
+{
+    public static int a;
+    public static void DoSomething();
+}
+```
+
+These member variables and methods can be called without creating an instance of the enclosing class. We can call the static method `DoSomething()` as:
+
+```csharp
+Demo.DoSomething();
+```
+
+We don't need to create an instance to use this static method.
+
+```csharp
+Demo d = new Demo();
+d.DoSomething();
+// This will result in compilation error
+```
+
+`Important`: Static methods inside a class can only use static member variables of that class. Example below.
+
+```csharp
+class Demo
+{
+    // non-static instance member variables
+    private int a;
+
+    // static member variable
+    private static int b;
+
+    // static method
+    public static void DoSomething()
+    {
+        // this will result in error as 'a' has no memory
+        a += 1;
+
+        // this works fine since 'b' is static
+        b += 1;
+    }
+}
+```
+
+Note that we have no created any instance of the class, so the private variable 'a' has no memobry as when we call a static method for a class, only the static variables are present in the memory. Instance variables, such as 'a' in the above example, will only be created when we create an instance of the class using `new` keyword. E.g:
+
+```csharp
+Demo d = new Demo(); // now 'a' will get some memory
+```
+
+Since we haven't created an instance yet, the variable 'a' is not there in the process memory but 'b' and 'DoSomething()'. So when the program calls 'a' but the variable isn't created therefore results in an error.
+
+### `What is static class?`
+
+When we use the `static` keyword before a class name, we specify that the class will only have static member variables and methods. Such classes cannot be instantiated as they don't need to: they cannot have instance variable. Also, an important point to note is that such static classes are `sealed` by default, which means they cannot be inerited further.
+
+Because `static` classes have no behavior at all. There is no need to derive another class from a static class.
+
+### `Why do we need static classes?`
+
+We need static classes when we know that our class will not have any behavior as such. So using the `static` keyword will make your code a bit faster since no object is involved.
+
+### `const and readonly keyword`
+
+`const` variables are implicitly static and they need to be defined when declared. `readonly` variables are explicitly static and and can only be initialized once.
+
+E.g: A car racing program in which the racing track has a fixed length of 1000 Km. You can define a `const` variable to denote this as:
+
+```csharp
+private const int tracklength = 1000;
+``` 
+
+Now, you want the user to enter the number of cars to race with. Since this number would vary from users but would be constant throughout a game, you need to make it `readonly`. You cannot make it a `const` as you need to initialize it at runtime. Example below.
+
+```csharp
+public class CarRace
+{
+    // this is compile time constant
+    private const int _trackLength = 1000;
+
+    // this value would be determined at runtime, but will not change
+    // after that till the class's instance is removed from memory
+    private readonly int _noOfCars;
+
+    // constructor
+    public CarRace(int noOfCars)
+    {
+
+    }
+
+    // constructor
+    public CarRace(int noOfCars)
+    {
+        // Get the # of cars from the value.
+        _noOfCars = noOfCars;
+    }
+}
+```
