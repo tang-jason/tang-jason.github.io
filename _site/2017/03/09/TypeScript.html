@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | TypeScript: Get Started</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">TypeScript: Get Started</li>
+	</ol>
+	<h3 id="typescript-get-started">TypeScript: Get Started</h3>
+
+<h4 id="what-is-typescript"><code class="highlighter-rouge">What is TypeScript</code>?</h4>
+
+<p>TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. Any browser. Any host. Any OS.</p>
+
+<h4 id="typescript-features"><code class="highlighter-rouge">TypeScript Features</code></h4>
+
+<p>TypeScript has these key features:</p>
+<ol>
+  <li>Supports standard JavaScript code</li>
+  <li>provides static typing</li>
+  <li>encapsulation through classes and namespaces</li>
+  <li>support for constructors, properties, functions</li>
+  <li>define interfaces</li>
+  <li>=&gt; function support (arrow function/lambdas)</li>
+  <li>intellisense and syntax checking</li>
+</ol>
+
+<h4 id="typescript-example"><code class="highlighter-rouge">TypeScript Example</code></h4>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="kr">class</span> <span class="nx">Greeter</span> <span class="p">{</span>
+        <span class="nl">greeting</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+        
+        <span class="nx">construtor</span> <span class="p">(</span><span class="nx">message</span><span class="err">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">greeting</span> <span class="o">=</span> <span class="nx">message</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nx">greet</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="s2">"Hello, "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">greeting</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="important-keywords-and-operators"><code class="highlighter-rouge">Important Keywords and Operators</code></h4>
+
+<p><code class="highlighter-rouge">class</code>: container for members such as properties and functions</p>
+
+<p><code class="highlighter-rouge">constructor</code>: provides initialization functionality in a class</p>
+
+<p><code class="highlighter-rouge">exports</code>: export a member from a module</p>
+
+<p><code class="highlighter-rouge">extends</code>: extend a class or interface (inheritance)</p>
+
+<p><code class="highlighter-rouge">implements</code>: implement an interface</p>
+
+<p><code class="highlighter-rouge">imports</code>: import a module</p>
+
+<p><code class="highlighter-rouge">interface</code>: defines code contract that can be implemented by types</p>
+
+<p><code class="highlighter-rouge">namespace</code>: container for classes and other code</p>
+
+<p><code class="highlighter-rouge">public / private</code>: member visibility modifiers</p>
+
+<p><code class="highlighter-rouge">...</code>: rest parameter syntax. Allow you to pass a comma separated list of objects or items</p>
+
+<p><code class="highlighter-rouge">=&gt;</code>: arrow syntax used with definitions and functions</p>
+
+<p><code class="highlighter-rouge">&lt;typeName</code>: &lt; &gt; characters use to cast / convert between types</p>
+
+<p><code class="highlighter-rouge">:</code>: separator between variable / parameter names and types</p>
+
+<h4 id="code-hierarchy"><code class="highlighter-rouge">Code Hierarchy</code></h4>
+
+<p><img src="/img/TypeScriptCodeHierarchy.png" alt="typescript code hierarchy" title="TypeScript Code Hierarchy" /></p>
+
+<h4 id="grammar-type-inference"><code class="highlighter-rouge">Grammar: Type Inference</code></h4>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="c1">// this using type inference to determine that num is going to be of typed 'number'</span>
+    <span class="c1">// because the initialize number is '2' which typescript will check the type for you. 'type: number'</span>
+    <span class="kd">var</span> <span class="nx">num</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+    <span class="c1">// the ':' is annotation and 'number' is the type of the variable. Clearly define this is typed number</span>
+    <span class="c1">// PREFERED WAY</span>
+    <span class="kd">var</span> <span class="nx">num</span><span class="err">:</span> <span class="kr">number</span> <span class="o">=</span> <span class="mi">2</span>
+
+    <span class="c1">// type could be any type (any). This could be anything, a number, object, string, etc...</span>
+    <span class="kd">var</span> <span class="nx">any1</span><span class="p">;</span>
+
+    <span class="c1">// type annotation</span>
+    <span class="kd">var</span> <span class="nx">num1</span><span class="err">:</span> <span class="kr">number</span><span class="p">;</span>
+
+    <span class="c1">// type annotation setting the value</span>
+    <span class="kd">var</span> <span class="nx">num2</span><span class="err">:</span> <span class="kr">number</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+    <span class="c1">// type inference (number)</span>
+    <span class="kd">var</span> <span class="nx">num3</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+
+    <span class="c1">// type inference (number)</span>
+    <span class="kd">var</span> <span class="nx">num4</span> <span class="o">=</span> <span class="nx">num3</span> <span class="o">+</span> <span class="mi">100</span><span class="p">;</span>
+
+    <span class="c1">// type inference (string)</span>
+    <span class="kd">var</span> <span class="nx">str1</span> <span class="o">=</span> <span class="nx">num1</span> <span class="o">+</span> <span class="s1">'some string'</span><span class="p">;</span>
+
+    <span class="c1">// error</span>
+    <span class="kd">var</span> <span class="nx">nothappy</span> <span class="err">:</span> <span class="kr">number</span> <span class="o">=</span> <span class="nx">num1</span> <span class="o">+</span> <span class="s1">'some string'</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<h4 id="definitely-typed"><code class="highlighter-rouge">Definitely Typed</code></h4>
+
+<p>You can find the list of definitely types in the locations below.</p>
+
+<ol>
+  <li><a href="https://github.com/DefinitelyTyped/DefinitelyTyped" target="_blank">GitHub</a></li>
+  <li><a href="https://www.nuget.org/profiles/DefinitelyTyped" target="_blank">Nuget</a></li>
+  <li>In Visual Studio =&gt; Tools =&gt; NuGet Package Manager =&gt; Manage NuGet Packages for Solution =&gt; Search definitely typed</li>
+</ol>
+
+<h4 id="using-the-defintely-typed-in-project"><code class="highlighter-rouge">Using the Defintely Typed in Project</code></h4>
+
+<p>If you download the definitely types into your project, it will create a folder named <code class="highlighter-rouge">typings</code> and you can drag and drop the filename.d.ts file to your file.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="c1">/// &lt;reference path="typings/knockout/knockout.d.ts" /&gt;</span>
+    <span class="kr">declare</span> <span class="kd">var</span> <span class="nx">ko</span><span class="err">:</span> <span class="nx">KnockoutStatic</span><span class="p">;</span>
+
+    <span class="kr">module</span> <span class="nx">test</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">ko</span><span class="p">.</span><span class="nx">observable</span><span class="p">(</span><span class="s2">"John Smith"</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">ko</span><span class="p">.</span><span class="nx">observable</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">guy</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="na">id</span><span class="p">:</span> <span class="nx">id</span><span class="p">,</span>
+            <span class="na">fullName</span><span class="p">:</span> <span class="nx">name</span>
+        <span class="p">}</span>
+
+        <span class="c1">// 'fullName' is a function so () is needed when invoke</span>
+        <span class="kd">var</span> <span class="nx">value</span><span class="err">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="nx">guy</span><span class="p">.</span><span class="nx">fullName</span><span class="p">();</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="any-and-primitive-type"><code class="highlighter-rouge">Any and Primitive Type</code></h4>
+
+<p>Any: Represents any JavaScript value</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="c1">// no static type checking</span>
+    <span class="kd">var</span> <span class="nx">data</span><span class="err">:</span> <span class="kr">any</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">info</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>Primitive Type: <code class="highlighter-rouge">number</code></p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="kd">var</span> <span class="nx">age</span><span class="err">:</span> <span class="kr">number</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// explicit typing</span>
+    <span class="kd">var</span> <span class="nx">rating</span> <span class="o">=</span> <span class="mf">98.32</span><span class="p">;</span> <span class="c1">// inference</span>
+</code></pre>
+</div>
+
+<p>Primitive Type: <code class="highlighter-rouge">boolean</code></p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="kd">var</span> <span class="nx">hasData</span><span class="err">:</span> <span class="kr">boolean</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span> <span class="c1">// explicit typing</span>
+    <span class="kd">var</span> <span class="nx">isReady</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span> <span class="c1">// inference</span>
+</code></pre>
+</div>
+
+<p>Primitive Type: <code class="highlighter-rouge">null</code></p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="kd">var</span> <span class="nx">num</span><span class="err">:</span> <span class="kr">number</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">str</span><span class="err">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">isNull</span><span class="err">:</span> <span class="kr">boolean</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">customer</span><span class="err">:</span> <span class="p">{}</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>Primitive Type: <code class="highlighter-rouge">undefined</code></p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="kd">var</span> <span class="nx">age</span><span class="err">:</span> <span class="kr">number</span><span class="p">;</span> <span class="c1">// this is a typed number but also 'undefined' because it hasn't set anything yet</span>
+    <span class="kd">var</span> <span class="nx">customer</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<h4 id="array-and-indexers"><code class="highlighter-rouge">Array and Indexers</code></h4>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="kd">var</span> <span class="nx">names</span><span class="err">:</span> <span class="kr">string</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'John'</span><span class="p">,</span> <span class="s1">'Michael'</span><span class="p">,</span> <span class="s1">'Tom'</span><span class="p">];</span>
+    <span class="kd">var</span> <span class="nx">firstPerson</span><span class="err">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nx">firstPerson</span> <span class="o">=</span> <span class="nx">names</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="c1">// indexer</span>
+</code></pre>
+</div>
+
+<h4 id="applying-string-array"><code class="highlighter-rouge">Applying String Array</code></h4>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="kd">function</span> <span class="nx">getArrayLength</span><span class="p">(</span><span class="nx">x</span><span class="err">:</span> <span class="kr">string</span><span class="p">[])</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">len</span> <span class="o">=</span> <span class="nx">x</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nx">len</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">var</span> <span class="nx">names</span><span class="err">:</span> <span class="kr">string</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'John'</span><span class="p">,</span> <span class="s1">'Michael'</span><span class="p">,</span> <span class="s1">'Tom'</span><span class="p">];</span>
+
+    <span class="kd">var</span> <span class="nx">firstPerson</span><span class="err">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="nx">names</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">getArrayLength</span><span class="p">(</span><span class="nx">firstPerson</span><span class="p">));</span>
+</code></pre>
+</div>
+
+<h4 id="object-types"><code class="highlighter-rouge">Object Types</code></h4>
+
+<p>Examples: Functions, class, module, interface, and literal types</p>
+
+<p>May contain:</p>
+
+<ol>
+  <li>Properties
+    <ul>
+      <li>public or private</li>
+      <li>required or optional</li>
+    </ul>
+  </li>
+  <li>Call signatures</li>
+  <li>Construct signatures</li>
+  <li>Index signatures</li>
+</ol>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="c1">// object literal</span>
+    <span class="kd">var</span> <span class="nx">square</span> <span class="o">=</span> <span class="p">{</span> <span class="na">h</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="na">w</span><span class="p">:</span> <span class="mi">20</span> <span class="p">};</span> <span class="c1">// inference</span>
+    <span class="kd">var</span> <span class="nx">shape</span><span class="err">:</span> <span class="nx">object</span> <span class="o">=</span> <span class="p">{</span> <span class="na">x</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="na">y</span><span class="p">:</span> <span class="mi">20</span> <span class="p">};</span> <span class="c1">// explicit typed</span>
+
+    <span class="c1">// function also become object</span>
+    <span class="kd">var</span> <span class="nx">multiply</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">x</span><span class="err">:</span> <span class="kr">number</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">x</span> <span class="o">*</span> <span class="nx">x</span><span class="p">;</span>
+    <span class="p">};</span>
+</code></pre>
+</div>
+
+<h4 id="functions"><code class="highlighter-rouge">Functions</code></h4>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="c1">// '?' mark next to the w means optional</span>
+    <span class="kd">var</span> <span class="nx">square</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">rect</span> <span class="err">:</span> <span class="p">{</span> <span class="nl">h</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span> <span class="nx">w</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span> <span class="p">})</span> <span class="p">{</span>
+        <span class="c1">// check if w is there</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">rect</span><span class="p">.</span><span class="nx">w</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">rect</span><span class="p">.</span><span class="nx">h</span> <span class="o">*</span> <span class="nx">rect</span><span class="p">.</span><span class="nx">h</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="k">return</span> <span class="nx">rect</span><span class="p">.</span><span class="nx">h</span> <span class="o">*</span> <span class="nx">rect</span><span class="p">.</span><span class="nx">w</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// explicit set sq1 to number typed</span>
+    <span class="kd">var</span> <span class="nx">sq1</span><span class="err">:</span> <span class="kr">number</span> <span class="o">=</span> <span class="nx">square</span><span class="p">({</span><span class="na">x</span><span class="p">:</span> <span class="mi">10</span><span class="p">});</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sq1</span><span class="p">);</span> <span class="c1">// output: 100</span>
+
+    <span class="kd">var</span> <span class="nx">sq2</span><span class="err">:</span> <span class="kr">number</span> <span class="o">=</span> <span class="nx">square</span><span class="p">({</span><span class="na">x</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="na">y</span><span class="p">:</span> <span class="mi">40</span><span class="p">});</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sq2</span><span class="p">);</span> <span class="c1">// output: 400</span>
+</code></pre>
+</div>
+
+<h4 id="arrow-function"><code class="highlighter-rouge">Arrow Function</code></h4>
+
+<p>Arrow function expression</p>
+
+<ul>
+  <li>compact form of function expression</li>
+  <li>omit the function keyword</li>
+  <li>have scropt of <code class="highlighter-rouge">this</code></li>
+</ul>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="kd">var</span> <span class="nx">myFunc</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">h</span><span class="err">:</span> <span class="kr">number</span><span class="p">,</span> <span class="nx">w</span><span class="err">:</span> <span class="kr">number</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">h</span> <span class="o">*</span> <span class="nx">w</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// arrow function example</span>
+    <span class="kd">var</span> <span class="nx">myFunc</span> <span class="o">=</span> <span class="p">(</span><span class="nx">h</span><span class="err">:</span> <span class="kr">number</span><span class="p">,</span> <span class="nx">w</span><span class="err">:</span> <span class="kr">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">h</span> <span class="o">*</span> <span class="nx">w</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>Void</p>
+
+<ul>
+  <li>used as return type for function that returns no value</li>
+</ul>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="c1">// return void</span>
+    <span class="kd">var</span> <span class="nx">greetMe</span> <span class="err">:</span> <span class="p">(</span><span class="nx">msg</span><span class="err">:</span> <span class="kr">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">;</span>
+</code></pre>
+</div>
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>
