@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | TypeScript VSCode Setup</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">TypeScript VSCode Setup</li>
+	</ol>
+	<h3 id="typescript-vscode-setup">TypeScript VSCode Setup</h3>
+
+<h4 id="set-up-typescript-in-vs-code"><code class="highlighter-rouge">Set Up TypeScript in VS Code</code></h4>
+
+<p>There are two <code class="highlighter-rouge">json</code> files that need to get created first. More info can be found <a href="https://code.visualstudio.com/docs/languages/typescript" target="_blank">TypeScript SetUP in VS Code</a></p>
+
+<h4 id="create-tsconfigjson">Create <code class="highlighter-rouge">tsconfig.json</code></h4>
+
+<p>The first step in any new TypeScript project is to add in a <code class="highlighter-rouge">tsconfig.json</code> file. This defines the TypeScript project setting such as the compiler options and the files that should be included.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="c1">// example</span>
+    <span class="p">{</span>
+        <span class="s2">"compilerOptions"</span><span class="err">:</span> <span class="p">{</span>
+            <span class="s2">"target"</span><span class="err">:</span> <span class="s2">"es5"</span><span class="p">,</span>
+            <span class="s2">"module"</span><span class="err">:</span> <span class="s2">"commonjs"</span><span class="p">,</span>
+            <span class="s2">"sourceMap"</span><span class="err">:</span> <span class="kc">true</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="create-tasksjson">Create <code class="highlighter-rouge">tasks.json</code></h4>
+
+<p>Set up the task configuration. Open <code class="highlighter-rouge">Command Palette</code> with <code class="highlighter-rouge">Ctrl + Shift + P</code> and type in <code class="highlighter-rouge">Configure Task Runner</code> then select <code class="highlighter-rouge">TypeScript - tsconfig.json</code>. This will create a <code class="highlighter-rouge">tasks.json</code> file in the workspace <code class="highlighter-rouge">.vscode</code> folders.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="c1">// example</span>
+    <span class="p">{</span>
+        <span class="c1">// See http://go.microsoft.com/fwlink/?LinkId=733558</span>
+        <span class="c1">// for the documentation about the tasks.json format</span>
+        <span class="s2">"version"</span><span class="err">:</span> <span class="s2">"0.1.0"</span><span class="p">,</span>
+        <span class="s2">"command"</span><span class="err">:</span> <span class="s2">"tsc"</span><span class="p">,</span>
+        <span class="s2">"isShellCommand"</span><span class="err">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">"args"</span><span class="err">:</span> <span class="p">[</span><span class="s2">"-p"</span><span class="p">,</span> <span class="s2">"."</span><span class="p">],</span>
+        <span class="s2">"showOutput"</span><span class="err">:</span> <span class="s2">"silent"</span><span class="p">,</span>
+        <span class="s2">"problemMatcher"</span><span class="err">:</span> <span class="s2">"$tsc"</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="run-the-build-task">Run the <code class="highlighter-rouge">Build Task</code></h4>
+
+<p>As this is the only task in the file, you can execute it by simply pressing <code class="highlighter-rouge">Ctrl + Shift + B (Run Build Task)</code>. Once ran, you’ll see your <code class="highlighter-rouge">.js</code> and <code class="highlighter-rouge">.js.map</code> files were created in your workspace.</p>
+
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>
