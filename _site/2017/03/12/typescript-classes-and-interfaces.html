@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | TypeScript: Classes & Interfaces</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">TypeScript: Classes & Interfaces</li>
+	</ol>
+	<h3 id="typescript-classes--interfaces">TypeScript: Classes &amp; Interfaces</h3>
+
+<h4 id="defining-the-class"><code class="highlighter-rouge">Defining the Class</code></h4>
+
+<p>Classes act as a containers that encapsulate code.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="kr">class</span> <span class="nx">Car</span> <span class="p">{</span>
+        <span class="c1">// fields</span>
+
+        <span class="c1">// consturctor</span>
+
+        <span class="c1">// properties</span>
+
+        <span class="c1">// functions</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="defining-constructor"><code class="highlighter-rouge">Defining Constructor</code></h4>
+
+<p>Constructor are used to initialize fields.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="kr">class</span> <span class="nx">Car</span> <span class="p">{</span>
+        <span class="c1">// field</span>
+        <span class="nl">engine</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+
+        <span class="c1">// constructor</span>
+        <span class="kd">constructor</span><span class="p">(</span><span class="nx">engine</span><span class="err">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">engine</span> <span class="o">=</span> <span class="nx">engine</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="c1">// shortway to declare a field</span>
+    <span class="kr">class</span> <span class="nx">Car</span> <span class="p">{</span>
+        <span class="kd">constructor</span><span class="p">(</span><span class="k">public</span> <span class="nx">engine</span><span class="err">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span> <span class="p">};</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="defining-functions"><code class="highlighter-rouge">Defining Functions</code></h4>
+
+<p>Class members are public by default.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="kr">class</span> <span class="nx">Car</span> <span class="p">{</span>
+        <span class="c1">// fields</span>
+        <span class="nl">engine</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+
+        <span class="c1">// constructor</span>
+        <span class="kd">constructor</span><span class="p">(</span><span class="nx">engine</span><span class="err">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">engine</span> <span class="o">=</span> <span class="nx">engine</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// functions. No 'function' keyword require in typescript</span>
+        <span class="nx">start</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="s2">"Started "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">engine</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nx">stop</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="s2">"Stopped "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">engine</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="defining-properties"><code class="highlighter-rouge">Defining Properties</code></h4>
+
+<p>Properties act as filters and can have get or set blocks.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="kr">class</span> <span class="nx">Car</span> <span class="p">{</span>
+        <span class="c1">// private field</span>
+        <span class="k">private</span> <span class="nx">_engine</span><span class="err">:</span> <span class="kr">string</span><span class="p">;</span>
+
+        <span class="c1">// constructor</span>
+        <span class="kd">constructor</span><span class="p">(</span><span class="nx">engine</span><span class="err">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">_engine</span> <span class="o">=</span> <span class="nx">engine</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// properties</span>
+        <span class="nx">get</span> <span class="nx">engine</span><span class="p">()</span><span class="err">:</span> <span class="kr">string</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_engine</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nx">set</span> <span class="nx">engine</span><span class="p">(</span><span class="nx">value</span><span class="err">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">==</span> <span class="kc">undefined</span><span class="p">)</span> <span class="k">throw</span> <span class="s2">"Supply an Engine!"</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">_engine</span> <span class="o">=</span> <span class="nx">engine</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="using-complex-types"><code class="highlighter-rouge">Using Complex Types</code></h4>
+
+<p>We can define complex types and use those inside of classes. <code class="highlighter-rouge">Complex type</code> is just a class that has its own set of members inside of it. It can be fields, properties, functions.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="c1">// define a complex type</span>
+    <span class="kr">class</span> <span class="nx">Engine</span> <span class="p">{</span>
+        <span class="kd">constructor</span><span class="p">(</span><span class="k">public</span> <span class="nx">horsePower</span><span class="err">:</span> <span class="kr">number</span><span class="p">,</span> <span class="k">public</span> <span class="nx">engineType</span><span class="err">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// use inside the class</span>
+    <span class="kr">class</span> <span class="nx">Car</span> <span class="p">{</span>
+        <span class="c1">// private field</span>
+        <span class="k">private</span> <span class="nx">_engine</span><span class="err">:</span> <span class="nx">Engine</span><span class="p">;</span>
+
+        <span class="c1">// constructor with complex type</span>
+        <span class="kd">constructor</span><span class="p">(</span><span class="nx">engine</span><span class="err">:</span> <span class="nx">Engine</span><span class="p">)</span> <span class="p">{</span> 
+            <span class="k">this</span><span class="p">.</span><span class="nx">_engine</span> <span class="o">=</span> <span class="nx">engine</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// 'GET' property</span>
+        <span class="nx">get</span> <span class="nx">engine</span><span class="p">()</span><span class="err">:</span> <span class="nx">Engine</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_engine</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// 'SET' property</span>
+        <span class="nx">set</span> <span class="nx">engine</span><span class="p">(</span><span class="nx">value</span><span class="err">:</span> <span class="nx">Engine</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">==</span> <span class="kc">undefined</span><span class="p">)</span> <span class="k">throw</span> <span class="s2">"Please supply an engine"</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">_engine</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// method</span>
+        <span class="nx">start</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Engine started: "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">_engine</span><span class="p">.</span><span class="nx">engine</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// to use, we need to 'new' up the 'Engine' complex type class</span>
+        <span class="kd">var</span> <span class="nx">engine</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Engine</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="s2">"V8"</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">car</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Car</span><span class="p">(</span><span class="nx">engine</span><span class="p">);</span>
+
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">car</span><span class="p">.</span><span class="nx">engine</span><span class="p">.</span><span class="nx">engine</span><span class="p">);</span> <span class="c1">// output: V8</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">car</span><span class="p">.</span><span class="nx">engine</span><span class="p">.</span><span class="nx">horsePower</span><span class="p">);</span> <span class="c1">// output: 300</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">car</span><span class="p">.</span><span class="nx">engine</span><span class="p">.</span><span class="nx">start</span><span class="p">());</span> <span class="c1">// output: Engine started: V8</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>
