@@ -357,6 +357,125 @@
 </code></pre>
 </div>
 
+<h4 id="interface"><code class="highlighter-rouge">Interface</code></h4>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="kr">module</span> <span class="nx">test</span> <span class="p">{</span>
+        <span class="c1">// define interface</span>
+        <span class="kr">interface</span> <span class="nx">SquareFunction</span> <span class="p">{</span>
+            <span class="c1">// accept a value that being passed in which is a 'number' and return a 'number'</span>
+            <span class="p">(</span><span class="nx">x</span><span class="err">:</span> <span class="kr">number</span><span class="p">)</span><span class="err">:</span> <span class="kr">number</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kd">var</span> <span class="nx">squareBasic</span><span class="err">:</span> <span class="nx">SqaureFunction</span> <span class="o">=</span> <span class="p">(</span><span class="nx">num</span><span class="err">:</span> <span class="kr">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">num</span> <span class="o">*</span> <span class="nx">num</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Interface can accept ‘option’</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="c1">// interface rectangle</span>
+    <span class="kr">interface</span> <span class="nx">Rectangle</span> <span class="p">{</span>
+        <span class="nl">h</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+        <span class="nx">w</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// define a function that uses interface and return a number</span>
+    <span class="kd">var</span> <span class="nx">square</span><span class="err">:</span> <span class="p">(</span><span class="nx">rect</span><span class="err">:</span> <span class="nx">Rectangle</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="kr">number</span><span class="p">;</span>
+
+    <span class="c1">// define a rectangle object with properties</span>
+    <span class="kd">var</span> <span class="nx">rectA</span> <span class="o">=</span> <span class="p">{</span> <span class="na">h</span><span class="p">:</span> <span class="mi">10</span> <span class="p">};</span>
+    <span class="kd">var</span> <span class="nx">rectB</span> <span class="o">=</span> <span class="p">{</span> <span class="na">h</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="na">w</span><span class="p">:</span> <span class="mi">40</span> <span class="p">};</span>
+
+    <span class="nx">square</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">rect</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">rect</span><span class="p">.</span><span class="nx">w</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">rect</span><span class="p">.</span><span class="nx">h</span> <span class="o">*</span> <span class="nx">rect</span><span class="p">.</span><span class="nx">h</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="nx">rect</span><span class="p">.</span><span class="nx">h</span> <span class="o">*</span> <span class="nx">rect</span><span class="p">.</span><span class="nx">w</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">square</span><span class="p">(</span><span class="nx">rectA</span><span class="p">));</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">square</span><span class="p">(</span><span class="nx">rectB</span><span class="p">));</span>
+</code></pre>
+</div>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="c1">// define a 'Person' interface </span>
+    <span class="kr">interface</span> <span class="nx">Person</span> <span class="p">{</span>
+        <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+        <span class="nx">age</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span>
+        <span class="nl">kids</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+        <span class="nl">calcPets</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="kr">number</span><span class="p">;</span>
+        <span class="nl">makeYounger</span><span class="p">:</span> <span class="p">(</span><span class="nx">years</span><span class="err">:</span> <span class="kr">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">;</span>
+        <span class="nl">greeting</span><span class="p">:</span> <span class="p">(</span><span class="nx">msg</span><span class="err">:</span> <span class="kr">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// create an instance</span>
+    <span class="kd">var</span> <span class="nx">p</span><span class="err">:</span> <span class="nx">Person</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">name</span><span class="p">:</span> <span class="s2">"John"</span><span class="p">,</span>
+        <span class="na">age</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+        <span class="na">kids</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="na">calcPets</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">kids</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="p">},</span>
+        <span class="na">makeYounger</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="na">years</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">ages</span> <span class="o">-=</span> <span class="nx">years</span><span class="p">;</span>
+        <span class="p">},</span>
+        <span class="na">greeting</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="na">msg</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">msg</span> <span class="o">+</span> <span class="s2">", "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kd">var</span> <span class="nx">pets</span> <span class="o">=</span> <span class="nx">p</span><span class="p">.</span><span class="nx">calcPets</span><span class="p">();</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">pets</span><span class="p">);</span> <span class="c1">// output: 0</span>
+
+    <span class="nx">p</span><span class="p">.</span><span class="nx">makeYounger</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">newAge</span> <span class="o">=</span> <span class="nx">p</span><span class="p">.</span><span class="nx">age</span><span class="p">;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">newAge</span><span class="p">);</span> <span class="c1">// output: 15</span>
+
+    <span class="kd">var</span> <span class="nx">msg</span> <span class="o">=</span> <span class="nx">p</span><span class="p">.</span><span class="nx">greeting</span><span class="p">(</span><span class="s2">"Good day to you"</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span> <span class="c1">// output: Good day to you, John</span>
+</code></pre>
+</div>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="c1">// interface</span>
+    <span class="kr">interface</span> <span class="nx">SessionEval</span> <span class="p">{</span>
+        <span class="nl">addRating</span><span class="p">:</span> <span class="p">(</span><span class="nx">rating</span><span class="err">:</span> <span class="kr">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">;</span>
+        <span class="nl">calcRating</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nx">sessionEvaluator</span><span class="p">()</span><span class="err">:</span> <span class="nx">SessionEval</span> <span class="p">{</span>
+        <span class="c1">// create array variable</span>
+        <span class="kd">var</span> <span class="nx">ratings</span><span class="err">:</span> <span class="kr">number</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[];</span>
+        
+        <span class="c1">// create function expression</span>
+        <span class="kd">var</span> <span class="nx">addRating</span> <span class="o">=</span> <span class="p">(</span><span class="nx">rating</span><span class="err">:</span> <span class="kr">number</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">ratings</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">rating</span><span class="p">);</span>
+        <span class="p">};</span>
+
+        <span class="c1">// create function expression</span>
+        <span class="kd">var</span> <span class="nx">calcRating</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="na">sum</span><span class="p">:</span> <span class="kr">number</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="nx">ratings</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">score</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">score</span><span class="p">;</span>
+            <span class="p">});</span>
+            <span class="k">return</span> <span class="nx">sum</span> <span class="o">/</span> <span class="nx">ratings</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+        <span class="p">};</span>
+
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="na">addRating</span><span class="p">:</span> <span class="nx">addRating</span><span class="p">,</span>
+            <span class="na">calcRating</span><span class="p">:</span> <span class="nx">calcRating</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="nx">sessionEvaluator</span><span class="p">();</span>
+    <span class="nx">s</span><span class="p">.</span><span class="nx">addRating</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+    <span class="nx">s</span><span class="p">.</span><span class="nx">addRating</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+    <span class="nx">s</span><span class="p">.</span><span class="nx">addRating</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+    <span class="nx">s</span><span class="p">.</span><span class="nx">addRating</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">calcRating</span><span class="p">());</span> <span class="c1">// output: 4.75</span>
+</code></pre>
+</div>
+
 </div>
 					</div>
 				</div>

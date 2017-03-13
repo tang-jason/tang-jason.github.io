@@ -266,3 +266,122 @@ Void
     // return void
     var greetMe : (msg: string) => void;
 ```
+
+#### `Interface`
+
+```typescript
+    module test {
+        // define interface
+        interface SquareFunction {
+            // accept a value that being passed in which is a 'number' and return a 'number'
+            (x: number): number;
+        }
+
+        var squareBasic: SqaureFunction = (num: number) => num * num;
+    }
+```
+
+Interface can accept 'option'
+
+```typescript
+    // interface rectangle
+    interface Rectangle {
+        h: number;
+        w?: number;
+    }
+
+    // define a function that uses interface and return a number
+    var square: (rect: Rectangle) => number;
+
+    // define a rectangle object with properties
+    var rectA = { h: 10 };
+    var rectB = { h: 10, w: 40 };
+
+    square = function (rect) {
+        if (rect.w !== undefined) {
+            return rect.h * rect.h;
+        }
+
+        return rect.h * rect.w;
+    }
+
+    console.log(square(rectA));
+    console.log(square(rectB));
+```
+
+```typescript
+    // define a 'Person' interface 
+    interface Person {
+        name: string;
+        age?: number;
+        kids: number;
+        calcPets: () => number;
+        makeYounger: (years: number) => void;
+        greeting: (msg: string) => string;
+    }
+
+    // create an instance
+    var p: Person = {
+        name: "John",
+        age: 30,
+        kids: 0,
+        calcPets: function () {
+            return this.kids * 2;
+        },
+        makeYounger: function (years: number) {
+            this.ages -= years;
+        },
+        greeting: function (msg: string) {
+            return msg + ", " + this.name;
+        }
+    }
+
+    var pets = p.calcPets();
+    console.log(pets); // output: 0
+
+    p.makeYounger(15);
+    var newAge = p.age;
+    console.log(newAge); // output: 15
+
+    var msg = p.greeting("Good day to you");
+    console.log(msg); // output: Good day to you, John
+```
+
+```typescript
+    // interface
+    interface SessionEval {
+        addRating: (rating: number) => void;
+        calcRating: () => number;
+    }
+
+    function sessionEvaluator(): SessionEval {
+        // create array variable
+        var ratings: number[] = [];
+        
+        // create function expression
+        var addRating = (rating: number = 5) => {
+            ratings.push(rating);
+        };
+
+        // create function expression
+        var calcRating () => {
+            var sum: number = 0;
+            ratings.forEach(function (score) {
+                sum += score;
+            });
+            return sum / ratings.length;
+        };
+
+        return {
+            addRating: addRating,
+            calcRating: calcRating
+        }
+    }
+
+    var s = sessionEvaluator();
+    s.addRating(4);
+    s.addRating(5);
+    s.addRating(5);
+    s.addRating(5);
+    console.log(s.calcRating()); // output: 4.75
+```
