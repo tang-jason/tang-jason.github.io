@@ -222,6 +222,605 @@
 </code></pre>
 </div>
 
+<h4 id="casting-types"><code class="highlighter-rouge">Casting Types</code></h4>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="c1">// we need to convert the 'HTMLTableElement'</span>
+    <span class="kd">var</span> <span class="nx">table</span> <span class="err">:</span> <span class="nx">HTMLTableElement</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">HTMLTableElement</span><span class="o">&gt;</span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"table"</span><span class="p">);</span>
+
+    <span class="c1">// this will fail</span>
+    <span class="kd">var</span> <span class="nx">table</span> <span class="err">:</span> <span class="nx">HTMLTableElement</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"table"</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<h4 id="extending-types-with-typescript"><code class="highlighter-rouge">Extending Types with TypeScript</code></h4>
+
+<p>Types can be extended using the TypeScript “extends” keyword.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="kr">class</span> <span class="nx">ChildClass</span> <span class="k">extends</span> <span class="nx">ParentClass</span> <span class="p">{</span>
+        <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">super</span><span class="p">();</span> <span class="c1">// child class constructor must call base class (super) constructor</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Type Extension Example</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="c1">// complex type</span>
+    <span class="kr">class</span> <span class="nx">Engine</span> <span class="p">{</span>
+        <span class="kd">constructor</span><span class="p">(</span><span class="k">public</span> <span class="nx">engine</span><span class="err">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// parent class </span>
+    <span class="kr">class</span> <span class="nx">Auto</span> <span class="p">{</span>
+        <span class="nl">engine</span><span class="p">:</span> <span class="nx">Engine</span><span class="p">;</span>
+        <span class="kd">constructor</span><span class="p">(</span><span class="nx">engine</span><span class="err">:</span> <span class="nx">Engine</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">engine</span> <span class="o">=</span> <span class="nx">engine</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// truck derives from Auto</span>
+    <span class="kr">class</span> <span class="nx">Truck</span> <span class="k">extends</span> <span class="nx">Auto</span> <span class="p">{</span>
+        <span class="nl">fourByFour</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span>
+        <span class="kd">constructor</span><span class="p">(</span><span class="nx">engine</span><span class="err">:</span> <span class="nx">Engine</span><span class="p">,</span> <span class="nx">fourByFour</span><span class="err">:</span> <span class="kr">boolean</span><span class="p">){</span>
+            <span class="c1">// call base class constructor</span>
+            <span class="k">super</span><span class="p">(</span><span class="nx">engine</span><span class="p">);</span>
+
+            <span class="k">this</span><span class="p">.</span><span class="nx">fourByFour</span> <span class="o">=</span> <span class="nx">fourByFour</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="demon-extending-types"><code class="highlighter-rouge">Demon: Extending Types</code></h4>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="c1">// complex type</span>
+    <span class="kr">class</span> <span class="nx">Engine</span> <span class="p">{</span>
+        <span class="c1">// this will create two fields because of the public keyword</span>
+        <span class="kd">constructor</span><span class="p">(</span><span class="k">public</span> <span class="nx">horsePower</span><span class="err">:</span> <span class="kr">number</span><span class="p">,</span> <span class="k">public</span> <span class="nx">engineType</span><span class="err">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+
+        <span class="c1">// start function with 'callback' function inside</span>
+        <span class="nx">start</span><span class="p">(</span><span class="nx">callback</span><span class="err">:</span> <span class="p">(</span><span class="nx">startStatus</span><span class="err">:</span> <span class="kr">boolean</span><span class="p">,</span> <span class="nx">engineType</span><span class="err">:</span> <span class="kr">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// code here for start()</span>
+            <span class="nb">window</span><span class="p">.</span><span class="nx">setTimeOut</span><span class="p">(</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">callback</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">engineType</span><span class="p">);</span>
+            <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// stop function with 'callback'</span>
+        <span class="nx">stop</span><span class="p">(</span><span class="na">callback</span><span class="p">:</span> <span class="p">(</span><span class="na">stopStatus</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">,</span> <span class="na">engineType</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nb">window</span><span class="p">.</span><span class="nx">setTimeOut</span><span class="p">(</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">callback</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">engineType</span><span class="p">);</span>
+            <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// </span>
+    <span class="kr">class</span> <span class="nx">Accessory</span> <span class="p">{</span>
+        <span class="kd">constructor</span><span class="p">(</span><span class="k">public</span> <span class="na">accessoryNumber</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span> <span class="k">public</span> <span class="na">title</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">//</span>
+    <span class="kr">class</span> <span class="nx">Auto</span> <span class="p">{</span>
+        <span class="k">private</span> <span class="na">_basePrice</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+        <span class="k">private</span> <span class="na">_engine</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+        <span class="nl">make</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+        <span class="nl">model</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+        <span class="nl">accessoryList</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+
+        <span class="c1">// allow user to pass in these values when we "new' up the instance</span>
+        <span class="kd">constructor</span><span class="p">(</span><span class="na">basePrice</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span> <span class="na">engine</span><span class="p">:</span> <span class="nx">Engine</span><span class="p">,</span> <span class="na">make</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="na">model</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">_basePrice</span> <span class="o">=</span> <span class="nx">basePrice</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">_engine</span> <span class="o">=</span> <span class="nx">engine</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">make</span> <span class="o">=</span> <span class="nx">make</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">model</span> <span class="o">=</span> <span class="nx">model</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// a method return a number type</span>
+        <span class="nx">calculateTotal</span><span class="p">():</span> <span class="kr">number</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">taxRate</span> <span class="o">=</span> <span class="p">.</span><span class="mi">08</span><span class="p">;</span>
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_basePrice</span> <span class="o">+</span> <span class="p">(</span><span class="nx">taxRate</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">_basePrice</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// '...' is rest parameter that acts as array. e.g: addAccessories(new Accessory(), new Accessory(...)) { ... }</span>
+        <span class="nx">addAccessories</span><span class="p">(...</span><span class="na">accessories</span><span class="p">:</span> <span class="nx">Accessory</span><span class="p">[])</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">accessoryList</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">accessories</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                <span class="kd">var</span> <span class="nx">ac</span> <span class="o">=</span> <span class="nx">accessories</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">accessoryList</span> <span class="o">+=</span> <span class="nx">ac</span><span class="p">.</span><span class="nx">accessoryNumber</span> <span class="o">+</span> <span class="s2">" "</span> <span class="o">+</span> <span class="nx">ac</span><span class="p">.</span><span class="nx">title</span> <span class="o">+</span> <span class="s2">"&lt;br /&gt;"</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="c1">// get the accessory list </span>
+        <span class="nx">getAccessoryList</span><span class="p">():</span> <span class="kr">string</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">accessoryList</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// get the base price</span>
+        <span class="nx">get</span> <span class="nx">basePrice</span><span class="p">():</span> <span class="kr">number</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_basePrice</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// set the base price and we do the check before assign the value to _basePrice field</span>
+        <span class="nx">set</span> <span class="nx">basePrice</span><span class="p">(</span><span class="na">value</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">throw</span> <span class="s2">"Price must be &gt;= 0"</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">_basePrice</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// get engine</span>
+        <span class="nx">get</span> <span class="nx">engine</span><span class="p">():</span> <span class="nx">Engine</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">this_</span><span class="p">.</span><span class="nx">engine</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// set engine</span>
+        <span class="nx">set</span> <span class="nx">engine</span><span class="p">(</span><span class="na">value</span><span class="p">:</span> <span class="nx">Engine</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">==</span> <span class="kc">undefined</span><span class="p">)</span> <span class="k">throw</span> <span class="s2">"Please supply an engine"</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">_engine</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// extends from auto</span>
+    <span class="kr">class</span> <span class="nx">Truck</span> <span class="k">extends</span> <span class="nx">Auto</span> <span class="p">{</span>
+        <span class="na">bedLength</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+        <span class="nl">fourbyFour</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span>
+
+        <span class="kd">constructor</span><span class="p">(</span><span class="na">basePrice</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span> <span class="na">engine</span><span class="p">:</span> <span class="nx">Engine</span><span class="p">,</span> <span class="na">make</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="na">model</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="na">bedLength</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="na">fourByFour</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">){</span>
+            <span class="c1">// need to call super constructor here</span>
+            <span class="k">super</span><span class="p">(</span><span class="nx">basePrice</span><span class="p">,</span> <span class="nx">engine</span><span class="p">,</span> <span class="nx">make</span><span class="p">,</span> <span class="nx">model</span><span class="p">);</span>
+
+            <span class="k">this</span><span class="p">.</span><span class="nx">bedLength</span> <span class="o">=</span> <span class="nx">bedLength</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">fourByFour</span> <span class="o">=</span> <span class="nx">fourByFour</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// on page load</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// 'new' up the Truck instance</span>
+        <span class="kd">var</span> <span class="nx">truck</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Truck</span><span class="p">(</span><span class="mi">40000</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Engine</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="s2">"v8"</span><span class="p">),</span> <span class="s2">"Chevy"</span><span class="p">,</span> <span class="s2">"Silverado"</span><span class="p">,</span> <span class="s2">"Long Bed"</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+        
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">truck</span><span class="p">.</span><span class="nx">engine</span><span class="p">.</span><span class="nx">engineType</span><span class="p">);</span> <span class="c1">// output: v8</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">truck</span><span class="p">.</span><span class="nx">bedLength</span><span class="p">);</span> <span class="c1">// output: Long Bed</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">truck</span><span class="p">.</span><span class="nx">calculateTotal</span><span class="p">().</span><span class="nx">toString</span><span class="p">());</span> <span class="c1">// output: 43200</span>
+
+        <span class="c1">// rest params</span>
+        <span class="nx">truck</span><span class="p">.</span><span class="nx">addAccessories</span><span class="p">(</span><span class="k">new</span> <span class="nx">Accessory</span><span class="p">(</span><span class="mi">1234</span><span class="p">,</span> <span class="s2">"Sunroof"</span><span class="p">),</span> <span class="k">new</span> <span class="nx">Accessory</span><span class="p">(</span><span class="mi">4321</span><span class="p">,</span> <span class="s2">"Towing Package"</span><span class="p">))</span>
+
+        <span class="c1">// call the engine start function. In the body we just print out the message</span>
+        <span class="nx">truck</span><span class="p">.</span><span class="nx">engine</span><span class="p">.</span><span class="nx">start</span><span class="p">(</span> <span class="p">(</span><span class="na">status</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">,</span> <span class="na">engineType</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">engineType</span> <span class="o">+</span> <span class="s2">" was started"</span><span class="p">);</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="defining-interface"><code class="highlighter-rouge">Defining Interface</code></h4>
+
+<p>Interfaces provide a way to define a <code class="highlighter-rouge">contract</code> that other objects must implement.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="c1">// IEngine Interface defines 2 memebers</span>
+    <span class="kr">interface</span> <span class="nx">IEngine</span> <span class="p">{</span>
+        <span class="c1">// start() accepts a single parameter named 'callback' and doesn't return any data</span>
+        <span class="c1">// 'callback' param must be a function that accepts a boolean and a string as params</span>
+        <span class="nx">start</span><span class="p">(</span><span class="nx">callback</span><span class="err">:</span> <span class="p">(</span><span class="nx">startStatus</span><span class="err">:</span> <span class="kr">boolean</span><span class="p">,</span> <span class="nx">engineType</span><span class="err">:</span> <span class="kr">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">)</span> <span class="err">:</span> <span class="k">void</span><span class="p">;</span>
+
+        <span class="nx">stop</span><span class="p">(</span><span class="nx">callback</span><span class="err">:</span> <span class="p">(</span><span class="nx">stopStatus</span><span class="err">:</span> <span class="kr">boolean</span><span class="p">,</span> <span class="nx">engineType</span><span class="err">:</span> <span class="kr">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">)</span> <span class="err">:</span> <span class="k">void</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Optional Members in an Interface</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="kr">interface</span> <span class="nx">IAutoOptions</span> <span class="p">{</span>
+        <span class="nl">engine</span><span class="p">:</span> <span class="nx">IEngine</span><span class="p">;</span>
+        <span class="nl">basePrice</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+        <span class="nl">state</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+        <span class="nx">make</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span> <span class="c1">// optional</span>
+        <span class="nx">model</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span> <span class="c1">// optional</span>
+        <span class="nx">year</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span> <span class="c1">// optional</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="implementing-an-interface"><code class="highlighter-rouge">Implementing an Interface</code></h4>
+
+<p>Interface provide a way to enforce a “contract”</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="c1">// make sure we implents all the properties in the interface. </span>
+    <span class="kr">class</span> <span class="nx">Engine</span> <span class="k">implements</span> <span class="nx">IEngine</span> <span class="p">{</span>
+        <span class="c1">// constructor</span>
+        <span class="kd">constructor</span><span class="p">(</span><span class="k">public</span> <span class="nx">horsePower</span><span class="err">:</span> <span class="kr">number</span><span class="p">,</span> <span class="k">public</span> <span class="nx">engineType</span><span class="err">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+
+        <span class="c1">// methods</span>
+        <span class="nx">start</span><span class="p">(</span><span class="nx">callback</span><span class="err">:</span> <span class="p">(</span><span class="nx">startStatus</span><span class="err">:</span> <span class="kr">boolean</span><span class="p">,</span> <span class="nx">engineType</span><span class="err">:</span> <span class="kr">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nb">window</span><span class="p">.</span><span class="nx">setTimeOut</span><span class="p">(</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">callback</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">engineType</span><span class="p">);</span>
+            <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="nx">stop</span><span class="p">(</span><span class="na">callback</span><span class="p">:</span> <span class="p">(</span><span class="na">stopStatus</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">,</span> <span class="na">engineType</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nb">window</span><span class="p">.</span><span class="nx">setTimeOut</span><span class="p">(</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">callback</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">engineType</span><span class="p">);</span>
+            <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="using-an-interface-as-a-type"><code class="highlighter-rouge">Using an Interface as a Type</code></h4>
+
+<p>Interfaces help ensure that proper data is passed.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="kr">class</span> <span class="nx">Auto</span> <span class="p">{</span>
+        <span class="nl">engine</span><span class="p">:</span> <span class="nx">IEngine</span><span class="p">;</span>
+        <span class="nl">basePrice</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+        <span class="c1">// more fields</span>
+
+        <span class="kd">constructor</span><span class="p">(</span><span class="nx">data</span><span class="err">:</span> <span class="nx">IAutoOptions</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">engine</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">engine</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">basePrice</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">basePrice</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="use-interface-to-simplify-our-code"><code class="highlighter-rouge">Use Interface to Simplify our Code</code></h4>
+
+<p>Code with the [ADDED] is where we added the new code in.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="c1">// [ADDED]</span>
+    <span class="c1">// interface: a contract defines things but not implementation level. The implementation level will be up to the class</span>
+    <span class="kr">interface</span> <span class="nx">IEngine</span> <span class="p">{</span>
+        <span class="nx">start</span><span class="p">(</span><span class="nx">callback</span><span class="err">:</span> <span class="p">(</span><span class="nx">startStatus</span><span class="err">:</span> <span class="kr">boolean</span><span class="p">,</span> <span class="nx">engineType</span><span class="err">:</span> <span class="kr">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">)</span> <span class="err">:</span> <span class="k">void</span><span class="p">;</span>
+        <span class="nx">stop</span><span class="p">(</span><span class="nx">callback</span><span class="err">:</span> <span class="p">(</span><span class="nx">stopStatus</span><span class="err">:</span> <span class="kr">boolean</span><span class="p">,</span> <span class="nx">engineType</span><span class="err">:</span> <span class="kr">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">)</span> <span class="err">:</span> <span class="k">void</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// complex type</span>
+    <span class="kr">class</span> <span class="nx">Engine</span> <span class="err">:</span> <span class="nx">IEngine</span> <span class="p">{</span>
+        <span class="c1">// this will create two fields because of the public keyword</span>
+        <span class="kd">constructor</span><span class="p">(</span><span class="k">public</span> <span class="nx">horsePower</span><span class="err">:</span> <span class="kr">number</span><span class="p">,</span> <span class="k">public</span> <span class="nx">engineType</span><span class="err">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+
+        <span class="c1">// start function with 'callback' function inside</span>
+        <span class="nx">start</span><span class="p">(</span><span class="nx">callback</span><span class="err">:</span> <span class="p">(</span><span class="nx">startStatus</span><span class="err">:</span> <span class="kr">boolean</span><span class="p">,</span> <span class="nx">engineType</span><span class="err">:</span> <span class="kr">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// code here for start()</span>
+            <span class="nb">window</span><span class="p">.</span><span class="nx">setTimeOut</span><span class="p">(</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">callback</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">engineType</span><span class="p">);</span>
+            <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// stop function with 'callback'</span>
+        <span class="nx">stop</span><span class="p">(</span><span class="na">callback</span><span class="p">:</span> <span class="p">(</span><span class="na">stopStatus</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">,</span> <span class="na">engineType</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nb">window</span><span class="p">.</span><span class="nx">setTimeOut</span><span class="p">(</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">callback</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">engineType</span><span class="p">);</span>
+            <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// [ADDED]</span>
+    <span class="kr">class</span> <span class="nx">CustomEngine</span> <span class="k">implements</span> <span class="nx">IEngine</span> <span class="p">{</span>
+        <span class="c1">// start function with 'callback' function inside</span>
+        <span class="nx">start</span><span class="p">(</span><span class="na">callback</span><span class="p">:</span> <span class="p">(</span><span class="na">startStatus</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">,</span> <span class="na">engineType</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// code here for start()</span>
+            <span class="nb">window</span><span class="p">.</span><span class="nx">setTimeOut</span><span class="p">(</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">callback</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="s2">"Custom Engine"</span><span class="p">);</span>
+            <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// stop function with 'callback'</span>
+        <span class="nx">stop</span><span class="p">(</span><span class="na">callback</span><span class="p">:</span> <span class="p">(</span><span class="na">stopStatus</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">,</span> <span class="na">engineType</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nb">window</span><span class="p">.</span><span class="nx">setTimeOut</span><span class="p">(</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">callback</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="s2">"Custom Engine"</span><span class="p">);</span>
+            <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// </span>
+    <span class="kr">class</span> <span class="nx">Accessory</span> <span class="p">{</span>
+        <span class="kd">constructor</span><span class="p">(</span><span class="k">public</span> <span class="na">accessoryNumber</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span> <span class="k">public</span> <span class="na">title</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">//</span>
+    <span class="kr">class</span> <span class="nx">Auto</span> <span class="p">{</span>
+        <span class="k">private</span> <span class="na">_basePrice</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+        <span class="k">private</span> <span class="na">_engine</span><span class="p">:</span> <span class="nx">IEngine</span><span class="p">;</span> <span class="c1">// [ADDED]</span>
+        <span class="nl">make</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+        <span class="nl">model</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+        <span class="nl">accessoryList</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+
+        <span class="c1">// allow user to pass in these values when we "new' up the instance</span>
+        <span class="kd">constructor</span><span class="p">(</span><span class="na">basePrice</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span> <span class="na">engine</span><span class="p">:</span> <span class="nx">IEngine</span><span class="p">,</span> <span class="na">make</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="na">model</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">_basePrice</span> <span class="o">=</span> <span class="nx">basePrice</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">_engine</span> <span class="o">=</span> <span class="nx">engine</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">make</span> <span class="o">=</span> <span class="nx">make</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">model</span> <span class="o">=</span> <span class="nx">model</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// a method return a number type</span>
+        <span class="nx">calculateTotal</span><span class="p">():</span> <span class="kr">number</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">taxRate</span> <span class="o">=</span> <span class="p">.</span><span class="mi">08</span><span class="p">;</span>
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_basePrice</span> <span class="o">+</span> <span class="p">(</span><span class="nx">taxRate</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">_basePrice</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// '...' is rest parameter that acts as array. e.g: addAccessories(new Accessory(), new Accessory(...)) { ... }</span>
+        <span class="nx">addAccessories</span><span class="p">(...</span><span class="na">accessories</span><span class="p">:</span> <span class="nx">Accessory</span><span class="p">[])</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">accessoryList</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">accessories</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                <span class="kd">var</span> <span class="nx">ac</span> <span class="o">=</span> <span class="nx">accessories</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">accessoryList</span> <span class="o">+=</span> <span class="nx">ac</span><span class="p">.</span><span class="nx">accessoryNumber</span> <span class="o">+</span> <span class="s2">" "</span> <span class="o">+</span> <span class="nx">ac</span><span class="p">.</span><span class="nx">title</span> <span class="o">+</span> <span class="s2">"&lt;br /&gt;"</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="c1">// get the accessory list </span>
+        <span class="nx">getAccessoryList</span><span class="p">():</span> <span class="kr">string</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">accessoryList</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// get the base price</span>
+        <span class="nx">get</span> <span class="nx">basePrice</span><span class="p">():</span> <span class="kr">number</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_basePrice</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// set the base price and we do the check before assign the value to _basePrice field</span>
+        <span class="nx">set</span> <span class="nx">basePrice</span><span class="p">(</span><span class="na">value</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">throw</span> <span class="s2">"Price must be &gt;= 0"</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">_basePrice</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// get engine</span>
+        <span class="nx">get</span> <span class="nx">engine</span><span class="p">():</span> <span class="nx">IEngine</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">this_</span><span class="p">.</span><span class="nx">engine</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// set engine</span>
+        <span class="nx">set</span> <span class="nx">engine</span><span class="p">(</span><span class="na">value</span><span class="p">:</span> <span class="nx">IEngine</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">==</span> <span class="kc">undefined</span><span class="p">)</span> <span class="k">throw</span> <span class="s2">"Please supply an engine"</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">_engine</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// extends from auto</span>
+    <span class="kr">class</span> <span class="nx">Truck</span> <span class="k">extends</span> <span class="nx">Auto</span> <span class="p">{</span>
+        <span class="na">bedLength</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+        <span class="nl">fourbyFour</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span>
+
+        <span class="kd">constructor</span><span class="p">(</span><span class="na">basePrice</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span> <span class="na">engine</span><span class="p">:</span> <span class="nx">Engine</span><span class="p">,</span> <span class="na">make</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="na">model</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="na">bedLength</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="na">fourByFour</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">){</span>
+            <span class="c1">// need to call super constructor here</span>
+            <span class="k">super</span><span class="p">(</span><span class="nx">basePrice</span><span class="p">,</span> <span class="nx">engine</span><span class="p">,</span> <span class="nx">make</span><span class="p">,</span> <span class="nx">model</span><span class="p">);</span>
+
+            <span class="k">this</span><span class="p">.</span><span class="nx">bedLength</span> <span class="o">=</span> <span class="nx">bedLength</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">fourByFour</span> <span class="o">=</span> <span class="nx">fourByFour</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// on page load</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// 'new' up the Truck instance</span>
+        <span class="kd">var</span> <span class="nx">truck</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Truck</span><span class="p">(</span><span class="mi">40000</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Engine</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="s2">"v8"</span><span class="p">),</span> <span class="s2">"Chevy"</span><span class="p">,</span> <span class="s2">"Silverado"</span><span class="p">,</span> <span class="s2">"Long Bed"</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+        
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">truck</span><span class="p">.</span><span class="nx">engine</span><span class="p">.</span><span class="nx">engineType</span><span class="p">);</span> <span class="c1">// output: v8</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">truck</span><span class="p">.</span><span class="nx">bedLength</span><span class="p">);</span> <span class="c1">// output: Long Bed</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">truck</span><span class="p">.</span><span class="nx">calculateTotal</span><span class="p">().</span><span class="nx">toString</span><span class="p">());</span> <span class="c1">// output: 43200</span>
+
+        <span class="c1">// rest params</span>
+        <span class="nx">truck</span><span class="p">.</span><span class="nx">addAccessories</span><span class="p">(</span><span class="k">new</span> <span class="nx">Accessory</span><span class="p">(</span><span class="mi">1234</span><span class="p">,</span> <span class="s2">"Sunroof"</span><span class="p">),</span> <span class="k">new</span> <span class="nx">Accessory</span><span class="p">(</span><span class="mi">4321</span><span class="p">,</span> <span class="s2">"Towing Package"</span><span class="p">))</span>
+
+        <span class="c1">// call the engine start function. In the body we just print out the message</span>
+        <span class="nx">truck</span><span class="p">.</span><span class="nx">engine</span><span class="p">.</span><span class="nx">start</span><span class="p">(</span> <span class="p">(</span><span class="na">status</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">,</span> <span class="na">engineType</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">engineType</span> <span class="o">+</span> <span class="s2">" was started"</span><span class="p">);</span>
+        <span class="p">});</span>
+
+        <span class="c1">// [ADDED]</span>
+        <span class="kd">var</span> <span class="nx">auto</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Auto</span><span class="p">(</span><span class="mi">40000</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Engine</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span> <span class="s2">"Type"</span><span class="p">),</span> <span class="s2">"Make"</span><span class="p">,</span> <span class="s2">"Model"</span><span class="p">,</span> <span class="s2">"AZ"</span><span class="p">,</span> <span class="mi">2010</span><span class="p">);</span>
+        <span class="c1">// IEngine only have start() and stop(). We need to cast from interface (IEngine) to Engine type to get the horsePower</span>
+        <span class="kd">var</span> <span class="nx">myEngine</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">Engine</span><span class="o">&gt;</span><span class="nx">auto</span><span class="p">.</span><span class="nx">engine</span><span class="p">;</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myEngine</span><span class="p">.</span><span class="nx">horsePower</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="extending-an-interface"><code class="highlighter-rouge">Extending an Interface</code></h4>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="kr">interface</span> <span class="nx">IAutoOptions</span> <span class="p">{</span>
+        <span class="nl">engine</span><span class="p">:</span> <span class="nx">IEngine</span><span class="p">;</span>
+        <span class="nl">basePrice</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+        <span class="nl">state</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+        <span class="nx">make</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+        <span class="nx">model</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+        <span class="nx">year</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// extending an interface: Defines IAutoOptions members plus custom members</span>
+    <span class="kr">interface</span> <span class="nx">ITruckOptions</span> <span class="k">extends</span> <span class="nx">IAutoOptions</span> <span class="p">{</span>
+        <span class="nx">bedLength</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+        <span class="nl">fourByFour</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="using-an-extended-interface"><code class="highlighter-rouge">Using an Extended Interface</code></h4>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="kr">class</span> <span class="nx">Truck</span> <span class="k">extends</span> <span class="nx">Auto</span> <span class="p">{</span>
+        <span class="nl">bedLength</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+        <span class="nl">fourByFour</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span>
+
+        <span class="c1">// extended interface</span>
+        <span class="kd">constructor</span><span class="p">(</span><span class="nx">data</span><span class="err">:</span> <span class="nx">ITruckOptions</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">super</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">bedLength</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">bedLength</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">fourByFour</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">fourByFour</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="demo-extending-an-interface"><code class="highlighter-rouge">Demo: Extending an Interface</code></h4>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>    <span class="c1">// interface: a contract defines things but not implementation level. The implementation level will be up to the class</span>
+    <span class="kr">interface</span> <span class="nx">IEngine</span> <span class="p">{</span>
+        <span class="nx">start</span><span class="p">(</span><span class="nx">callback</span><span class="err">:</span> <span class="p">(</span><span class="nx">startStatus</span><span class="err">:</span> <span class="kr">boolean</span><span class="p">,</span> <span class="nx">engineType</span><span class="err">:</span> <span class="kr">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">)</span> <span class="err">:</span> <span class="k">void</span><span class="p">;</span>
+        <span class="nx">stop</span><span class="p">(</span><span class="nx">callback</span><span class="err">:</span> <span class="p">(</span><span class="nx">stopStatus</span><span class="err">:</span> <span class="kr">boolean</span><span class="p">,</span> <span class="nx">engineType</span><span class="err">:</span> <span class="kr">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">)</span> <span class="err">:</span> <span class="k">void</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// [ADDED]</span>
+    <span class="kr">interface</span> <span class="nx">IAutoOptions</span> <span class="p">{</span>
+        <span class="nl">basePrice</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+        <span class="nl">engine</span><span class="p">:</span> <span class="nx">IEngine</span><span class="p">;</span>
+        <span class="nl">state</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+        <span class="nl">make</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+        <span class="nl">model</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+        <span class="nl">year</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// [ADDED]</span>
+    <span class="kr">interface</span> <span class="nx">ITruckOptions</span> <span class="k">extends</span> <span class="nx">IAutoOptions</span> <span class="p">{</span>
+        <span class="nl">bedLength</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+        <span class="nl">fourByFour</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// complex type</span>
+    <span class="kr">class</span> <span class="nx">Engine</span> <span class="err">:</span> <span class="nx">IEngine</span> <span class="p">{</span>
+        <span class="c1">// this will create two fields because of the public keyword</span>
+        <span class="kd">constructor</span><span class="p">(</span><span class="k">public</span> <span class="nx">horsePower</span><span class="err">:</span> <span class="kr">number</span><span class="p">,</span> <span class="k">public</span> <span class="nx">engineType</span><span class="err">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+
+        <span class="c1">// start function with 'callback' function inside</span>
+        <span class="nx">start</span><span class="p">(</span><span class="nx">callback</span><span class="err">:</span> <span class="p">(</span><span class="nx">startStatus</span><span class="err">:</span> <span class="kr">boolean</span><span class="p">,</span> <span class="nx">engineType</span><span class="err">:</span> <span class="kr">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// code here for start()</span>
+            <span class="nb">window</span><span class="p">.</span><span class="nx">setTimeOut</span><span class="p">(</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">callback</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">engineType</span><span class="p">);</span>
+            <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// stop function with 'callback'</span>
+        <span class="nx">stop</span><span class="p">(</span><span class="na">callback</span><span class="p">:</span> <span class="p">(</span><span class="na">stopStatus</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">,</span> <span class="na">engineType</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nb">window</span><span class="p">.</span><span class="nx">setTimeOut</span><span class="p">(</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">callback</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">engineType</span><span class="p">);</span>
+            <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// [ADDED]</span>
+    <span class="kr">class</span> <span class="nx">CustomEngine</span> <span class="k">implements</span> <span class="nx">IEngine</span> <span class="p">{</span>
+        <span class="c1">// start function with 'callback' function inside</span>
+        <span class="nx">start</span><span class="p">(</span><span class="na">callback</span><span class="p">:</span> <span class="p">(</span><span class="na">startStatus</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">,</span> <span class="na">engineType</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// code here for start()</span>
+            <span class="nb">window</span><span class="p">.</span><span class="nx">setTimeOut</span><span class="p">(</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">callback</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="s2">"Custom Engine"</span><span class="p">);</span>
+            <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// stop function with 'callback'</span>
+        <span class="nx">stop</span><span class="p">(</span><span class="na">callback</span><span class="p">:</span> <span class="p">(</span><span class="na">stopStatus</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">,</span> <span class="na">engineType</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nb">window</span><span class="p">.</span><span class="nx">setTimeOut</span><span class="p">(</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">callback</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="s2">"Custom Engine"</span><span class="p">);</span>
+            <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// </span>
+    <span class="kr">class</span> <span class="nx">Accessory</span> <span class="p">{</span>
+        <span class="kd">constructor</span><span class="p">(</span><span class="k">public</span> <span class="na">accessoryNumber</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span> <span class="k">public</span> <span class="na">title</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">//</span>
+    <span class="kr">class</span> <span class="nx">Auto</span> <span class="p">{</span>
+        <span class="k">private</span> <span class="na">_basePrice</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+        <span class="k">private</span> <span class="na">_engine</span><span class="p">:</span> <span class="nx">IEngine</span><span class="p">;</span>
+        <span class="nl">make</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+        <span class="nl">model</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+        <span class="nl">accessoryList</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+
+        <span class="c1">// [ADDED] IAutoOptions</span>
+        <span class="c1">// allow user to pass in these values when we "new' up the instance</span>
+        <span class="kd">constructor</span><span class="p">(</span><span class="na">options</span><span class="p">:</span> <span class="nx">IAutoOptions</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">_basePrice</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">basePrice</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">_engine</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">engine</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">make</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">make</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">model</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">model</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// a method return a number type</span>
+        <span class="nx">calculateTotal</span><span class="p">():</span> <span class="kr">number</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">taxRate</span> <span class="o">=</span> <span class="p">.</span><span class="mi">08</span><span class="p">;</span>
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_basePrice</span> <span class="o">+</span> <span class="p">(</span><span class="nx">taxRate</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">_basePrice</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// '...' is rest parameter that acts as array. e.g: addAccessories(new Accessory(), new Accessory(...)) { ... }</span>
+        <span class="nx">addAccessories</span><span class="p">(...</span><span class="na">accessories</span><span class="p">:</span> <span class="nx">Accessory</span><span class="p">[])</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">accessoryList</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">accessories</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                <span class="kd">var</span> <span class="nx">ac</span> <span class="o">=</span> <span class="nx">accessories</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">accessoryList</span> <span class="o">+=</span> <span class="nx">ac</span><span class="p">.</span><span class="nx">accessoryNumber</span> <span class="o">+</span> <span class="s2">" "</span> <span class="o">+</span> <span class="nx">ac</span><span class="p">.</span><span class="nx">title</span> <span class="o">+</span> <span class="s2">"&lt;br /&gt;"</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="c1">// get the accessory list </span>
+        <span class="nx">getAccessoryList</span><span class="p">():</span> <span class="kr">string</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">accessoryList</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// get the base price</span>
+        <span class="nx">get</span> <span class="nx">basePrice</span><span class="p">():</span> <span class="kr">number</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_basePrice</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// set the base price and we do the check before assign the value to _basePrice field</span>
+        <span class="nx">set</span> <span class="nx">basePrice</span><span class="p">(</span><span class="na">value</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">throw</span> <span class="s2">"Price must be &gt;= 0"</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">_basePrice</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// get engine</span>
+        <span class="nx">get</span> <span class="nx">engine</span><span class="p">():</span> <span class="nx">IEngine</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">this_</span><span class="p">.</span><span class="nx">engine</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// set engine</span>
+        <span class="nx">set</span> <span class="nx">engine</span><span class="p">(</span><span class="na">value</span><span class="p">:</span> <span class="nx">IEngine</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">==</span> <span class="kc">undefined</span><span class="p">)</span> <span class="k">throw</span> <span class="s2">"Please supply an engine"</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">_engine</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// extends from auto</span>
+    <span class="kr">class</span> <span class="nx">Truck</span> <span class="k">extends</span> <span class="nx">Auto</span> <span class="p">{</span>
+        <span class="na">bedLength</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+        <span class="nl">fourbyFour</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span>
+
+        <span class="kd">constructor</span><span class="p">(</span><span class="na">options</span><span class="p">:</span> <span class="nx">ITruckOptions</span><span class="p">){</span>
+            <span class="c1">// need to call super constructor here</span>
+            <span class="k">super</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
+
+            <span class="k">this</span><span class="p">.</span><span class="nx">bedLength</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">bedLength</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">fourByFour</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">fourByFour</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// on page load</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// [ADDED]</span>
+        <span class="kd">var</span> <span class="nx">truck</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Truck</span><span class="p">({</span>
+            <span class="na">engine</span><span class="p">:</span> <span class="k">new</span> <span class="nx">Engine</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span> <span class="s2">"v6),
+            basePrice: 45000,
+            state: "</span><span class="nx">Washington</span><span class="s2">",
+            make: "</span><span class="nx">Ford</span><span class="s2">",
+            model: "</span><span class="nx">F</span><span class="o">-</span><span class="mi">150</span><span class="s2">",
+            year: 2013,
+            bedLength: "</span><span class="nx">Short</span> <span class="nx">bed</span><span class="err">"</span><span class="p">,</span>
+            <span class="na">fourByFour</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">});</span>
+
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">truck</span><span class="p">.</span><span class="nx">bedLength</span><span class="p">);</span> <span class="c1">// output: Short bed</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="summary"><code class="highlighter-rouge">Summary</code></h4>
+
+<ul>
+  <li>TypeScript provides code encapsulation through classes.</li>
+  <li>Classes can inherit from other classes.</li>
+  <li>Interfaces provide a “code contract” to ensure consistency across objects.</li>
+  <li>Interface can extend other interfaces</li>
+</ul>
 
 </div>
 					</div>
