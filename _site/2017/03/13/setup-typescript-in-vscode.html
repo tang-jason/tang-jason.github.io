@@ -126,6 +126,37 @@
 
 <p>As this is the only task in the file, you can execute it by simply pressing <code class="highlighter-rouge">Ctrl + Shift + B (Run Build Task)</code>. Once ran, you’ll see your <code class="highlighter-rouge">.js</code> and <code class="highlighter-rouge">.js.map</code> files were created in your workspace.</p>
 
+<h4 id="how-to-run"><code class="highlighter-rouge">How to Run</code></h4>
+
+<p>Simply <code class="highlighter-rouge">CTRL + SHIFT + B</code> to build the .ts file and it will generate a .js file and the source map. If it doesn’t build then you probably don’t have the typescript compiler. Just run <code class="highlighter-rouge">npm install -g typescript</code>.</p>
+
+<h4 id="install-and-use-dt-definitely-typed"><code class="highlighter-rouge">Install and Use DT (Definitely Typed)</code></h4>
+
+<ol>
+  <li>install <code class="highlighter-rouge">typings</code>
+    <ul>
+      <li>simply run <code class="highlighter-rouge">npm install -g typings</code></li>
+    </ul>
+  </li>
+  <li>init typings
+    <ul>
+      <li>run <code class="highlighter-rouge">typings init</code>. This will create a typings.json and which holds all your DTs</li>
+    </ul>
+  </li>
+  <li>install <code class="highlighter-rouge">jQuery</code>
+    <ul>
+      <li>simply run <code class="highlighter-rouge">typings install dt~jquery --save --global</code></li>
+    </ul>
+  </li>
+  <li>use definitely types
+    <ul>
+      <li>on your .ts file just <code class="highlighter-rouge">import</code> the definitely type.</li>
+      <li><code class="highlighter-rouge">import $ from "jquery"</code> or <code class="highlighter-rouge">import $ = require("jquery")</code>. Both of these require to reboot the editor.</li>
+    </ul>
+  </li>
+</ol>
+
+<p>You can also search DTs via typings. e.g. <code class="highlighter-rouge">typings search jquery</code></p>
 
 </div>
 					</div>

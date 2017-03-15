@@ -48,4 +48,23 @@ Set up the task configuration. Open `Command Palette` with `Ctrl + Shift + P` an
 
 As this is the only task in the file, you can execute it by simply pressing `Ctrl + Shift + B (Run Build Task)`. Once ran, you'll see your `.js` and `.js.map` files were created in your workspace. 
 
+#### `How to Run`
 
+Simply `CTRL + SHIFT + B` to build the .ts file and it will generate a .js file and the source map. If it doesn't build then you probably don't have the typescript compiler. Just run `npm install -g typescript`.
+
+#### `Install and Use DT (Definitely Typed)`
+
+1. install `typings`
+    - simply run `npm install -g typings`
+
+2. init typings
+    - run `typings init`. This will create a typings.json and which holds all your DTs
+
+3. install `jQuery`
+    - simply run `typings install dt~jquery --save --global`
+
+4. use definitely types
+    - on your .ts file just `import` the definitely type.
+    - `import $ from "jquery"` or `import $ = require("jquery")`. Both of these require to reboot the editor.
+
+You can also search DTs via typings. e.g. `typings search jquery`
