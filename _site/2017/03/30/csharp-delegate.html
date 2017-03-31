@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | Understand C# Delegate</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">Understand C# Delegate</li>
+	</ol>
+	<h3 id="understand-c-delegate">Understand C# Delegate</h3>
+
+<p>A delegate is a type that represents references to methods with a particular parameter list and return type. When you instantiate a delegate, you can associate its instance with any method with a compatible signature and return type. You can invoke (or call) the method through the delegate instance.</p>
+
+<h4 id="delegate-declaration"><code class="highlighter-rouge">Delegate Declaration</code></h4>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code>    <span class="c1">// example
+</span>    <span class="k">public</span> <span class="k">delegate</span> <span class="k">void</span> <span class="nf">CreateFullName</span><span class="p">(</span><span class="kt">string</span> <span class="n">firstName</span><span class="p">,</span> <span class="kt">string</span> <span class="n">lastName</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<h4 id="full-example"><code class="highlighter-rouge">Full Example</code></h4>
+
+<p>If you’re coming from a JavaScript background, C# delegate is pretty much like <code class="highlighter-rouge">function expression</code> but in C# way.</p>
+
+<p>JavaScript Function Expression Example:</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>    <span class="kd">var</span> <span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">num1</span><span class="p">,</span> <span class="nx">num2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">num1</span> <span class="o">+</span> <span class="nx">num2</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>C# Delegate Example:</p>
+
+<p>Follow the steps</p>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code>    <span class="c1">// step 1: delegate declaration
+</span>    <span class="k">public</span> <span class="k">delegate</span> <span class="kt">double</span> <span class="nf">AddSumDelegate</span><span class="p">(</span><span class="kt">int</span> <span class="n">num1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">num2</span><span class="p">);</span>
+
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">// step 3: create a delegate instance and pass in the method
+</span>            <span class="n">AddSumDelegate</span> <span class="n">addSum</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">AddSumDelegate</span><span class="p">(</span><span class="n">AddMethod</span><span class="p">);</span>
+
+            <span class="c1">// step 4: invoke addSum method and assign the returned value to 'result'.
+</span>            <span class="c1">// similar to JavaScript function expression. It assigns the function to variable.
+</span>            <span class="kt">double</span> <span class="n">result</span> <span class="p">=</span> <span class="nf">addSum</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="m">5</span><span class="p">);</span>
+
+            <span class="c1">// step 5: print out the result
+</span>            <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">result</span><span class="p">);</span> <span class="c1">// output: 9
+</span>        <span class="p">}</span>
+
+        <span class="c1">// step 2: create a method
+</span>        <span class="k">static</span> <span class="kt">double</span> <span class="nf">AddMethod</span><span class="p">(</span><span class="kt">int</span> <span class="n">n1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n2</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">n1</span> <span class="p">+</span> <span class="n">n2</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>
