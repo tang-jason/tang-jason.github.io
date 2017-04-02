@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ".change() vs .on()"
+title: "jQuery: .change() vs .on()"
 date: 2016-01-27
 lang: en-us
 ---

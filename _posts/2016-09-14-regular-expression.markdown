@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Regular Expression"
+title: "JS: Regular Expression"
 date: 2016-09-19
 lang: en-us
 ---

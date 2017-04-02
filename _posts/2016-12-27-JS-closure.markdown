@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "JavaScript Closure"
+title: "JS: Closure"
 date: 2016-12-27
 lang: en-us
 ---

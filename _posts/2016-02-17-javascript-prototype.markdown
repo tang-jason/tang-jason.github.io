@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "JavaScript Prototype"
+title: "JS: Prototype"
 date: 2016-02-17
 lang: en-us
 ---

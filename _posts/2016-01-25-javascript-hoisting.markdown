@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "JavaScript Hoisting"
+title: "JS: Hoisting"
 date: 2016-01-25
 lang: en-us
 ---

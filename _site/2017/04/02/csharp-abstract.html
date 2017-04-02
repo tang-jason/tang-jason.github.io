@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<title>Jason Tang | JS: Use Strict</title>
+	<title>Jason Tang | C#: Abstract</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="">
@@ -81,111 +81,44 @@
 						<div class="col-xs-12">
 	<ol class="breadcrumb">
 		<li><a href="/index.html">Home</a></li>
-		<li class="active">JS: Use Strict</li>
+		<li class="active">C#: Abstract</li>
 	</ol>
-	<h1 id="js-use-strict">JS: Use Strict</h1>
+	<h3 id="c-abstract">C#: Abstract</h3>
 
-<p>Results in cleaner JavaScript, with fewer unsafe features, more warnings, and more logical behavior. The normal (nonstrict) mode is sometimes called “sloppy mode.”</p>
+<h4 id="abstract-characteristics"><code class="highlighter-rouge">Abstract Characteristics</code></h4>
 
-<h4 id="strict-mode-on">“strict mode on”</h4>
+<ol>
+  <li>Abstract classes cannot be instantiated
+    <ul>
+      <li>Cannot be instantiated because it’s not fully implemented.</li>
+      <li>Can contain abstract members.</li>
+    </ul>
+  </li>
+</ol>
 
-<p>To turn on the strict mode, in JavaScript include this.</p>
+<h4 id="abstract-example"><code class="highlighter-rouge">Abstract Example</code></h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>"use strict";
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code>    <span class="k">public</span> <span class="k">abstract</span> <span class="k">class</span> <span class="nc">Window</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">virtual</span> <span class="kt">string</span> <span class="n">Title</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">virtual</span> <span class="k">void</span> <span class="nf">Draw</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="c1">// code here...
+</span>        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">abstract</span> <span class="k">void</span> <span class="nf">Open</span><span class="p">();</span>
+    <span class="p">}</span>
 </code></pre>
 </div>
 
-<p>Or you can turn on the strict mode per function. Switch strict mode on a global scale will break the legacy code.</p>
+<p>if the method marked <code class="highlighter-rouge">abstract</code>, meaning this method has no implementation, it ends with a semicolon, and there is no body defined.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>function strict() { 
-  "use strict";
+<p>To instantiate, you’ll need to derive from the class and provide an implementation for the <code class="highlighter-rouge">Open</code> method. if you don’t provide an implementation, you’ll be building another abstract class that you cannot instantiate.</p>
 
-  // code here... 
-}
-</code></pre>
-</div>
+<h4 id="abstract-concrete-type"><code class="highlighter-rouge">Abstract Concrete Type</code></h4>
 
-<h4 id="variable-must-be-declared">Variable must be declared</h4>
-
-<p>In strict mode, all variables must be declared or you’ll get a reference error.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>// wrong
-function sloppyMode() {
-  "use strict";
-
-  sloppy = 123;
-  console.log(sloppy); // reference error
-}
-
-// right
-function strictMode() {
-  "use strict"
-  
-  var strict = 123;
-  console.log(strict); // 123
-}
-</code></pre>
-</div>
-
-<h4 id="functions-must-be-declared-at-the-top">Functions must be declared at the top</h4>
-
-<p>In strict mode, you can’t put a function declaration inside a “block”. You’ll get a <u>syntax error</u> if you do. Function can only declared at the top or immediately within outer function.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>// wrong
-function sloppyMode() {
-  "use strict";
-
-  if (true) {
-    function innerSloppyMode() {
-      // code here...
-    }
-  }
-}
-
-// right
-function strictMode() {
-  "use strict";
-
-  function innerStrictMode() {
-    // code here...
-  }
-}
-</code></pre>
-</div>
-
-<p>From the above you can’t create function within a “block”. However, there is a workaround. Create your function in named expression.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>// OK
-function strictMode() {
-  "use strict";
-
-  if (true) {
-    var innerStrictMode = function() {
-      // code here...
-    }
-  }
-}
-</code></pre>
-</div>
-
-<h4 id="illegal-manipulations-of-properties">Illegal manipulations of properties</h4>
-
-<p>Attempting to set a value to a read-only perperty will give you an error.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>var sloppy = "abc";
-function sloppyMode() {
-  sloppy.length = 4; // no effect, silent failure
-  console.log(sloppy.length); // 3
-}
-
-// strict mode
-var strict = "abc";
-function strictMode() {
-  "use strict";
-  strict.length = 10; // type error: can not assign to read-only property
-}
-</code></pre>
-</div>
+<p>A class that derives from base abstract class, and provides a definition for <code class="highlighter-rouge">Open</code>, that will be a concrete type, it’s something that can instantiate.</p>
 
 </div>
 					</div>

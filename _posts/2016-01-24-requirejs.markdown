@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Require JS
+title: "RequireJS: Setup"
 date: 2016-01-24
 lang: en-us
 ---

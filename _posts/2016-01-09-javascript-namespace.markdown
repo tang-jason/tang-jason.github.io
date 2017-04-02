@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "JavaScript Namespacing"
+title: "JS: Namespacing"
 date: 2016-01-09
 lang: en-us
 ---

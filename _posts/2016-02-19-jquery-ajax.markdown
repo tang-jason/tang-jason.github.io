@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "jQuery $.ajax"
+title: "jQuery: $.ajax"
 date: 2016-02-19
 lang: en-us
 ---

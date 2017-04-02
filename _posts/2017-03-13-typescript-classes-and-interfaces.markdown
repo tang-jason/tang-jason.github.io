@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "TypeScript: Classes & Interfaces"
+title: "TS: Classes & Interfaces"
 date: 2017-03-12
 lang: en-us
 ---

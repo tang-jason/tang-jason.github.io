@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "C# Three Pillars"
+title: "C#: Three Pillars"
 date: 2017-01-31
 lang: en-us
 ---

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "C# Struct"
+title: "C#: Struct"
 date: 2017-01-31
 lang: en-us
 ---

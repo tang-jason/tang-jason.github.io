@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "JavaScript execCommand"
+title: "JS: execCommand"
 date: 2017-02-02
 lang: en-us
 ---

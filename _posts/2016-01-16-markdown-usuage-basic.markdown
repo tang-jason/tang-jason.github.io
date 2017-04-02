@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Markdown Usage Basic"
+title: "Markdown: Usage Basic"
 date: 2016-01-16
 lang: en-us
 ---

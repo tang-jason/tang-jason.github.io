@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "C# interfaces"
+title: "C#: interfaces"
 date: 2017-01-31
 lang: en-us
 ---

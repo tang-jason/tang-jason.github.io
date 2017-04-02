@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "TypeScript VSCode Setup"
+title: "TS: VSCode Setup"
 date: 2017-03-13
 lang: en-us
 ---

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "TypeScript: Get Started"
+title: "TS: Get Started"
 date: 2017-03-09
 lang: en-us
 ---

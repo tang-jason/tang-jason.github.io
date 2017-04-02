@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Basic jQuery usages"
+title: "jQuery: Basic jQuery usages"
 date: 2016-01-17
 lang: en-us
 ---

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Use Strict"
+title: "JS: Use Strict"
 date: 2016-01-26
 lang: en-us
 ---

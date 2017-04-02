@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Understand C# Delegate"
+title: "C#: Delegate"
 date: 2017-03-30
 lang: en-us
 ---
