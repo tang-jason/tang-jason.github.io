@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | TS: Basics</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">TS: Basics</li>
+	</ol>
+	<h3 id="ts-basics">TS: Basics</h3>
+
+<p>Basics things like Boolean, Number, String, Array, Enum, Any, Void, var, let, and const.</p>
+
+<h4 id="var"><code class="highlighter-rouge">var</code></h4>
+<ul>
+  <li>Globally available in the function in which it is declared.</li>
+  <li>Hoisted to the top of the function.</li>
+</ul>
+
+<h4 id="let-and-const"><code class="highlighter-rouge">let and const</code></h4>
+<ul>
+  <li>Only available in the block in which it is declared.</li>
+  <li>Not hoisted to the top of the block.</li>
+</ul>
+
+<h4 id="var-vs-let"><code class="highlighter-rouge">var vs. let</code></h4>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">ScopeTest</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="s2">"use anywhere"</span><span class="p">;</span>
+        <span class="kd">let</span> <span class="nx">bar</span> <span class="o">=</span> <span class="s2">"use in this block"</span><span class="p">;</span>        
+    <span class="p">}</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span> <span class="c1">// works</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">bar</span><span class="p">);</span> <span class="c1">// error!!!</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="type-inference"><code class="highlighter-rouge">Type Inference</code></h4>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">myString</span> <span class="o">=</span> <span class="s2">"hello world"</span><span class="p">;</span>
+<span class="nx">myString</span> <span class="o">=</span> <span class="mi">40</span><span class="p">;</span> <span class="c1">// Error!!!</span>
+</code></pre>
+</div>
+
+<h4 id="adding-type-annotations"><code class="highlighter-rouge">Adding Type Annotations</code></h4>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">myString</span><span class="err">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="s2">"hello world"</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">ReturnNumber</span><span class="p">()</span><span class="err">:</span> <span class="kr">number</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">40</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">anotherMyString</span><span class="err">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="s2">"hello seattle"</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<h4 id="enums"><code class="highlighter-rouge">Enums</code></h4>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="c1">// 0, 1, 2</span>
+<span class="kr">enum</span> <span class="nx">Category</span> <span class="p">{</span> <span class="nx">Biography</span><span class="p">,</span> <span class="nx">Poetry</span><span class="p">,</span> <span class="nx">Fiction</span> <span class="p">};</span>
+</code></pre>
+</div>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="c1">// 1, 2, 3</span>
+<span class="kr">enum</span> <span class="nx">Category</span> <span class="p">{</span> <span class="nx">Biography</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">Poetry</span><span class="p">,</span> <span class="nx">Fiction</span> <span class="p">};</span>
+</code></pre>
+</div>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="c1">// 5, 8, 9</span>
+<span class="kr">enum</span> <span class="nx">Category</span> <span class="p">{</span> <span class="nx">Biography</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="nx">Poetry</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span> <span class="nx">Fiction</span> <span class="o">=</span> <span class="mi">9</span> <span class="p">};</span>
+</code></pre>
+</div>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="c1">// get enum key or value</span>
+<span class="kr">enum</span> <span class="nx">Category</span> <span class="p">{</span> <span class="nx">Biography</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="nx">Poetry</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span> <span class="nx">Fiction</span> <span class="o">=</span> <span class="mi">9</span> <span class="p">};</span>
+
+<span class="kd">let</span> <span class="nx">favoriteCategory</span><span class="err">:</span> <span class="nx">Category</span> <span class="o">=</span> <span class="nx">Category</span><span class="p">.</span><span class="nx">Biography</span><span class="p">;</span>
+
+<span class="c1">// 5</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">favoriteCategory</span><span class="p">);</span>
+
+<span class="c1">// Biography</span>
+<span class="kd">let</span> <span class="nx">categoryString</span> <span class="o">=</span> <span class="nx">Category</span><span class="p">[</span><span class="nx">favoriteCategory</span><span class="p">];</span>
+</code></pre>
+</div>
+
+<h4 id="arrays"><code class="highlighter-rouge">Arrays</code></h4>
+
+<p>Can be declared two different ways. Accessed and used much like JavaScript arrays. Declare as an array of “any” to store any type in the same array.</p>
+
+<p>#1:</p>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">strArray</span><span class="err">:</span> <span class="kr">string</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"hello"</span><span class="p">,</span> <span class="s2">"world"</span><span class="p">];</span>
+</code></pre>
+</div>
+
+<p>#2:</p>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">strArray2</span><span class="err">:</span> <span class="nb">Array</span><span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"hello"</span><span class="p">,</span> <span class="s2">"world"</span><span class="p">];</span>
+</code></pre>
+</div>
+
+<h4 id="tuples"><code class="highlighter-rouge">Tuples</code></h4>
+
+<p>Tuples are the special type of array. Array where types for first few elements are specified. Types do not have to be the same. Addtional elements can be any type from those previously specified.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">myTuple</span><span class="err">:</span> <span class="p">[</span><span class="kr">number</span><span class="p">,</span> <span class="kr">string</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">24</span><span class="p">,</span> <span class="s2">"hello"</span><span class="p">];</span>
+
+<span class="kd">let</span> <span class="nx">firstElement</span> <span class="o">=</span> <span class="nx">myTuple</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="c1">// 24</span>
+<span class="kd">let</span> <span class="nx">secondElement</span> <span class="o">=</span> <span class="nx">myTuple</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span> <span class="c1">// hello</span>
+
+<span class="c1">// other elements can have numbers or strings</span>
+<span class="nx">myTuple</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+<span class="nx">myTuple</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"string here"</span><span class="p">;</span>
+</code></pre>
+</div>
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>
