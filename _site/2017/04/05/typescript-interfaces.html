@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | TS: Interfaces</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">TS: Interfaces</li>
+	</ol>
+	<h3 id="ts-interfaces">TS: Interfaces</h3>
+
+<p>An itnerface is a contract without the implementation details.</p>
+
+<p>Contracts that define types. Compiler enforces the contract via type checking. Collection of property and method definitions.</p>
+
+<h4 id="duck-typing"><code class="highlighter-rouge">Duck Typing</code></h4>
+
+<p>Duck typing is that as long as an object has the shape of an expected type, then it can be used as if it were that type even if it was not explicitly declared to be so.</p>
+
+<p>Examples:</p>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">Duck</span> <span class="p">{</span>
+    <span class="nl">walk</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">;</span>
+    <span class="nl">swim</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">;</span>
+    <span class="nl">quack</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">probablyADuck</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">walk</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"walking like a duck"</span><span class="p">);</span>
+    <span class="nl">swim</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"swimming like a duck"</span><span class="p">);</span>
+    <span class="nl">quack</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"quacking like a duck"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">FlyOverWater</span><span class="p">(</span><span class="na">bird</span><span class="p">:</span> <span class="nx">Duck</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+
+<span class="nx">FlyOverWater</span><span class="p">(</span><span class="nx">probablyADuck</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<h4 id="defining-an-interface"><code class="highlighter-rouge">Defining an Interface</code></h4>
+
+<p>It defined with the “interface” keyword. A list properties with their types.</p>
+
+<p>Example:</p>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">Book</span> <span class="p">{</span>
+    <span class="nl">id</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="nl">title</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">author</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nx">pages</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">markDamaged</span><span class="p">:</span> <span class="p">(</span><span class="nx">reason</span><span class="err">:</span> <span class="kr">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">PrintBook</span><span class="p">(</span><span class="nx">book</span><span class="err">:</span> <span class="nx">Book</span><span class="p">)</span><span class="err">:</span> <span class="k">void</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">book</span><span class="p">.</span><span class="nx">title</span> <span class="o">+</span> <span class="s2">" by "</span> <span class="o">+</span> <span class="nx">book</span><span class="p">.</span><span class="nx">author</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="na">myBook</span><span class="p">:</span> <span class="nx">Book</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">id</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="na">title</span><span class="p">:</span> <span class="s2">"book 5"</span><span class="p">,</span>
+    <span class="na">author</span><span class="p">:</span> <span class="s2">"author 5"</span><span class="p">,</span>
+    <span class="na">available</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="na">category</span><span class="p">:</span> <span class="nx">Category</span><span class="p">.</span><span class="nx">Fiction</span><span class="p">,</span>
+    <span class="na">pages</span><span class="p">:</span> <span class="mi">350</span><span class="p">,</span>
+    <span class="na">markDamaged</span><span class="p">:</span> <span class="p">(</span><span class="na">reason</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Damaged: "</span> <span class="o">+</span> <span class="nx">reason</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// example of `duck typing` in action</span>
+<span class="nx">PrintBook</span><span class="p">(</span><span class="nx">myBook</span><span class="p">);</span>
+<span class="nx">myBook</span><span class="p">.</span><span class="nx">markDamaged</span><span class="p">(</span><span class="s2">"Missing back cover"</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<h4 id="interfaces-for-function-types"><code class="highlighter-rouge">Interfaces for Function Types</code></h4>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">CreateCustomerID</span><span class="p">(</span><span class="nx">name</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">id</span><span class="err">:</span> <span class="kr">number</span><span class="p">)</span><span class="err">:</span> <span class="kr">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">name</span> <span class="o">+</span> <span class="nx">id</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// to use in multiple places it would be better to have the type defined in single place.</span>
+<span class="c1">// function type declaration is a bit different.</span>
+<span class="kr">interface</span> <span class="nx">StringGenerator</span> <span class="p">{</span>
+    <span class="p">(</span><span class="nx">chars</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">nums</span><span class="err">:</span> <span class="kr">number</span><span class="p">)</span><span class="err">:</span> <span class="kr">string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// need to match the type signature</span>
+<span class="kd">let</span> <span class="nx">IdGenerator</span><span class="err">:</span> <span class="p">(</span><span class="nx">chars</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">nums</span><span class="err">:</span> <span class="kr">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="kr">string</span><span class="p">;</span>
+
+<span class="c1">// the above line can be rewrite to below since they have same function type.</span>
+<span class="kd">let</span> <span class="nx">IdGenerator</span> <span class="o">=</span> <span class="nx">StringGenerator</span><span class="p">;</span>
+
+<span class="nx">IdGenerator</span> <span class="o">=</span> <span class="nx">CreateCustomerID</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>Note: when defining a <code class="highlighter-rouge">function interface</code> you specify the return type by placing a <code class="highlighter-rouge">colon</code> rather than <code class="highlighter-rouge">arrow</code>. Reason to use function type to give you ability to use in multiple places.</p>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">DamageLogger</span> <span class="p">{</span>
+    <span class="p">(</span><span class="nx">reason</span><span class="err">:</span> <span class="kr">string</span><span class="p">)</span><span class="err">:</span> <span class="k">void</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="extending-interface"><code class="highlighter-rouge">Extending Interface</code></h4>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">LibraryResource</span> <span class="p">{</span>
+    <span class="nl">catalogNumber</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">interface</span> <span class="nx">Book</span> <span class="p">{</span>
+    <span class="nl">title</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">interface</span> <span class="nx">Encyclopedia</span> <span class="k">extends</span> <span class="nx">LibraryResource</span><span class="p">,</span> <span class="nx">Book</span> <span class="p">{</span>
+    <span class="nl">volume</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// declare a new variable and give it the type Encyclopedia, it will have all three properties.</span>
+<span class="kd">let</span> <span class="nx">refBook</span><span class="err">:</span> <span class="nx">Encyclopedia</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">catalogNumber</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
+    <span class="na">title</span><span class="p">:</span> <span class="s2">"The book of everything"</span><span class="p">,</span>
+    <span class="na">volume</span><span class="p">:</span> <span class="mi">1</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="class-types"><code class="highlighter-rouge">Class Types</code></h4>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">Librarian</span> <span class="p">{</span>
+    <span class="nl">doWork</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// the class will provide the implementation details for the librarian interface.</span>
+<span class="kr">class</span> <span class="nx">ElementarySchoolLibrarian</span> <span class="k">implements</span> <span class="nx">Librarian</span> <span class="p">{</span>
+    <span class="nx">doWork</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Reading to and teaching children..."</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// create an instace from the ElementarySchoolLibrarian class</span>
+<span class="kd">let</span> <span class="nx">kidsLibrarian</span><span class="err">:</span> <span class="nx">Librarian</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ElementarySchoolLibrarian</span><span class="p">();</span>
+
+<span class="nx">kidsLibrarian</span><span class="p">.</span><span class="nx">doWork</span><span class="p">();</span>
+</code></pre>
+</div>
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>

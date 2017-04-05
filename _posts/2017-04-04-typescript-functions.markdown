@@ -98,6 +98,9 @@ let publishFunc: (someYear: number) => string;
 
 publishFunc = PublicationMessage;
 
+// it can be written in this way
+publishFunc = (year: number): string => { return "Date published: " + year };
+
 let message: string = PublicationMessage(2017);
 ```
 
@@ -106,7 +109,7 @@ let message: string = PublicationMessage(2017);
 Optional parameters denoted with "?" after parameter name. Must appear after all required parameters. Default parameters may be set to a literal value or an expression.
 
 Optional parameter
-```typscript
+```typescript
 function CreateCustomer(name: string, age?: number) {  }
 ```
 

@@ -184,6 +184,9 @@
 
 <span class="nx">publishFunc</span> <span class="o">=</span> <span class="nx">PublicationMessage</span><span class="p">;</span>
 
+<span class="c1">// it can be written in this way</span>
+<span class="nx">publishFunc</span> <span class="o">=</span> <span class="p">(</span><span class="nx">year</span><span class="err">:</span> <span class="kr">number</span><span class="p">)</span><span class="err">:</span> <span class="kr">string</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="k">return</span> <span class="s2">"Date published: "</span> <span class="o">+</span> <span class="nx">year</span> <span class="p">};</span>
+
 <span class="kd">let</span> <span class="nx">message</span><span class="err">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="nx">PublicationMessage</span><span class="p">(</span><span class="mi">2017</span><span class="p">);</span>
 </code></pre>
 </div>
@@ -193,8 +196,9 @@
 <p>Optional parameters denoted with “?” after parameter name. Must appear after all required parameters. Default parameters may be set to a literal value or an expression.</p>
 
 <p>Optional parameter</p>
-<pre><code class="language-typscript">function CreateCustomer(name: string, age?: number) {  }
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">CreateCustomer</span><span class="p">(</span><span class="nx">name</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">age</span><span class="p">?:</span> <span class="kr">number</span><span class="p">)</span> <span class="p">{</span>  <span class="p">}</span>
 </code></pre>
+</div>
 
 <p>Default parameter: literal value</p>
 <div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">GetBookByTitle</span><span class="p">(</span><span class="nx">title</span><span class="err">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="s2">"Learning TypeScript"</span><span class="p">)</span> <span class="p">{</span>  <span class="p">}</span>
