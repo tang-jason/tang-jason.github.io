@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | TS: Modules & Namespaces</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">TS: Modules & Namespaces</li>
+	</ol>
+	<h3 id="ts-modules--namespaces">TS: Modules &amp; Namespaces</h3>
+
+<h4 id="changes-in-typescript-15"><code class="highlighter-rouge">Changes in TypeScript 1.5</code></h4>
+
+<p>Prior to version 1.5, TypeScript had both <code class="highlighter-rouge">internal</code> and <code class="highlighter-rouge">external</code> modules. They were used for different things, but because they were both called modules, it was easy to get confused about the differences and when t ouse each kind.</p>
+
+<p>Beginning with TypeScript 1.5, internal modules became known as <code class="highlighter-rouge">namespaces</code> and external modules became known as <code class="highlighter-rouge">moudles</code></p>
+
+<h4 id="modules-vs-namespaces"><code class="highlighter-rouge">Modules Vs. Namespaces</code></h4>
+
+<p>Modules:</p>
+<ul>
+  <li>Tool for organizing code.</li>
+  <li>Native support in Node.js</li>
+  <li>Browsers supported with module loader.</li>
+  <li>Supports ES2015 module syntax.</li>
+  <li>Facilitates code reuse.</li>
+  <li>Modules are the future!</li>
+</ul>
+
+<p>Namespaces:</p>
+<ul>
+  <li>Tool for organizing code.</li>
+  <li>No special loader required.</li>
+  <li>Prevents global namespace pollution.</li>
+  <li>Best for smaller applications.</li>
+</ul>
+
+<h4 id="defining-namespaces"><code class="highlighter-rouge">Defining Namespaces</code></h4>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="k">namespace</span> <span class="nx">Membership</span> <span class="p">{</span>
+    <span class="k">export</span> <span class="kd">function</span> <span class="nx">AddMember</span><span class="p">(</span><span class="nx">name</span><span class="err">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// add a new member...</span>
+    <span class="p">}</span>
+
+    <span class="c1">// nested namespace</span>
+    <span class="k">export</span> <span class="k">namespace</span> <span class="nx">Cards</span> <span class="p">{</span>
+        <span class="k">export</span> <span class="kd">function</span> <span class="nx">IssueCard</span><span class="p">(</span><span class="nx">memberNumber</span><span class="err">:</span> <span class="kr">number</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// issue new card</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">Membership</span><span class="p">.</span><span class="nx">AddMember</span><span class="p">(</span><span class="s2">"John"</span><span class="p">);</span>
+
+<span class="nx">Membership</span><span class="p">.</span><span class="nx">Cards</span><span class="p">.</span><span class="nx">IssueCard</span><span class="p">(</span><span class="mi">1234</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<h4 id="triple-slash-references"><code class="highlighter-rouge">Triple-Slash References</code></h4>
+
+<p>When organizing your application with namespaces, you specify that one file is dependent on items defined in another file by using what are know as <code class="highlighter-rouge">Triple-Slash References</code>.</p>
+
+<ul>
+  <li>Enhances editor support for referenced files.</li>
+  <li>TypeScript compiler will compile all required references.</li>
+  <li>Use -outFile compiler option to generate a single JS output file.</li>
+</ul>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="c1">// &lt;reference path="membership.ts" /&gt;</span>
+
+<span class="kd">let</span> <span class="nx">memberName</span><span class="err">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="s2">"Elaine"</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">memberNumber</span><span class="err">:</span> <span class="kr">number</span> <span class="o">=</span> <span class="mi">3824</span><span class="p">;</span>
+
+<span class="nx">membership</span><span class="p">.</span><span class="nx">AddMember</span><span class="p">(</span><span class="nx">memberName</span><span class="p">);</span>
+<span class="nx">membership</span><span class="p">.</span><span class="nx">Cards</span><span class="p">.</span><span class="nx">IssueCard</span><span class="p">(</span><span class="nx">memberNumber</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<h4 id="creating-app-with-namespaces"><code class="highlighter-rouge">Creating App with Namespaces</code></h4>
+
+<p>‘utilityFunctions.ts’ file</p>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="c1">// namespace to avoid global polution</span>
+<span class="k">namespace</span> <span class="nx">Utility</span> <span class="p">{</span>
+    <span class="c1">// nested namespace</span>
+    <span class="k">export</span> <span class="k">namespace</span> <span class="nx">Fees</span> <span class="p">{</span>
+        <span class="c1">// public function</span>
+        <span class="k">export</span> <span class="kd">function</span> <span class="nx">CalculateLateFee</span><span class="p">(</span><span class="nx">daysLate</span><span class="err">:</span> <span class="kr">number</span><span class="p">)</span><span class="err">:</span> <span class="kr">number</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">daysLate</span> <span class="o">*</span> <span class="p">.</span><span class="mi">25</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// public function </span>
+    <span class="k">export</span> <span class="kd">function</span> <span class="nx">MaxBooksAllowed</span><span class="p">(</span><span class="nx">age</span><span class="err">:</span> <span class="kr">number</span><span class="p">)</span><span class="err">:</span> <span class="kr">number</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">age</span> <span class="o">&lt;</span> <span class="mi">12</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="mi">3</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// private function</span>
+    <span class="kd">function</span> <span class="nx">privateFunc</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"This is private..."</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>‘app.ts’ file</p>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="c1">/// &lt;reference path="utilityFunctions.ts" /&gt;</span>
+
+<span class="k">import</span> <span class="nx">util</span> <span class="o">=</span> <span class="nx">Utility</span><span class="p">.</span><span class="nx">Fees</span><span class="p">;</span>
+
+<span class="kd">let</span> <span class="nx">fee</span> <span class="o">=</span> <span class="nx">util</span><span class="p">.</span><span class="nx">CalculateLateFee</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">fee</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>In your <code class="highlighter-rouge">cmd</code>, type <code class="highlighter-rouge">tsc --target es5 app.ts --outFile js/out.js</code>. This will create a JS file that contains both TypeScript file in proper order.</p>
+
+<h4 id="reasons-to-use-modules"><code class="highlighter-rouge">Reasons to Use Modules</code></h4>
+
+<ul>
+  <li>They’re modular!!!</li>
+  <li>Maintainable</li>
+  <li>Reusable</li>
+  <li>Native to Node and ES2015</li>
+  <li>Organized simply in files and folders</li>
+</ul>
+
+<h4 id="typescript-supported-module-formats"><code class="highlighter-rouge">TypeScript Supported Module Formats</code></h4>
+
+<ul>
+  <li>CommonJS</li>
+  <li>AMD (Asynchronous Module Definition)</li>
+  <li>UMD (Universal Module Definition)</li>
+  <li>System</li>
+  <li>ES2015</li>
+</ul>
+
+<h4 id="module-loaders"><code class="highlighter-rouge">Module Loaders</code></h4>
+
+<ul>
+  <li>Require.js (supports AMD format)</li>
+  <li>Systems (supports AMD, CommonJS, Es2015, and its own system format)</li>
+</ul>
+
+<h4 id="exporting-from-a-module-using-export-declaration"><code class="highlighter-rouge">Exporting from a Module Using Export Declaration</code></h4>
+
+<p>In order to make this file a module is export something from it.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="c1">// periodicals.ts</span>
+<span class="k">export</span> <span class="kr">interface</span> <span class="nx">Periodical</span> <span class="p">{</span>
+    <span class="nl">issueNumber</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">Magazine</span> <span class="k">implements</span> <span class="nx">Periodical</span> <span class="p">{</span>
+    <span class="nl">issueNumber</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="kd">function</span> <span class="nx">GetMagazineByIssueNumber</span><span class="p">(</span><span class="nx">issue</span><span class="err">:</span> <span class="kr">number</span><span class="p">)</span><span class="err">:</span> <span class="nx">Magazine</span> <span class="p">{</span>
+    <span class="c1">// retrieve and return a magazine</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="exporting-from-a-module-using-export-statement"><code class="highlighter-rouge">Exporting from a Module Using Export Statement</code></h4>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="c1">// periodicals.ts</span>
+<span class="kr">interface</span> <span class="nx">Periodical</span> <span class="p">{</span>
+    <span class="nl">issueNumber</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">class</span> <span class="nx">Magazine</span> <span class="k">implements</span> <span class="nx">Periodical</span> <span class="p">{</span>
+    <span class="nl">issueNumber</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">GetMagazineByIssueNumber</span><span class="p">(</span><span class="nx">issue</span><span class="err">:</span> <span class="kr">number</span><span class="p">)</span><span class="err">:</span> <span class="nx">Magazine</span> <span class="p">{</span>
+    <span class="c1">// retrieve and return a magazine</span>
+<span class="p">}</span>
+
+<span class="c1">// export statement</span>
+<span class="k">export</span> <span class="p">{</span> <span class="nx">Periodical</span><span class="p">,</span> <span class="nx">Magazine</span><span class="p">,</span> <span class="nx">GetMagazineByIssueNumber</span> <span class="k">as</span> <span class="nx">GetMag</span> <span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="import-from-a-module"><code class="highlighter-rouge">Import from a Module</code></h4>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="c1">//news.ts</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Magazine</span><span class="p">,</span> <span class="nx">GetMag</span> <span class="k">as</span> <span class="nx">GetMagazine</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"./periodicals"</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">newsMag</span><span class="err">:</span> <span class="nx">Magazine</span> <span class="o">=</span> <span class="nx">GetMagazine</span><span class="p">(</span><span class="s2">"Weekly news"</span><span class="p">);</span>
+
+<span class="c1">// you can import the whole module by using the *</span>
+<span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">mag</span> <span class="k">from</span> <span class="s2">"./periodicals"</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">kidMag</span><span class="err">:</span> <span class="nx">mag</span><span class="p">.</span><span class="nx">Magazine</span> <span class="o">=</span> <span class="nx">mag</span><span class="p">.</span><span class="nx">GetMag</span><span class="p">(</span><span class="s2">"Games"</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<h4 id="default-exports"><code class="highlighter-rouge">Default Exports</code></h4>
+
+<p>Default exports are most useful when you only want to export one item from a module. Once you’ve specified that item as the default export, other modules can import it without even knowing its name.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="c1">// movie.ts</span>
+<span class="k">export</span> <span class="k">default</span> <span class="kr">class</span> <span class="p">{</span>
+    <span class="nl">title</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">director</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// kids.ts</span>
+<span class="k">import</span> <span class="nx">AnimatedMovie</span> <span class="k">from</span> <span class="s2">"./movie"</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">cartoon</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AnimatedMovie</span><span class="p">();</span>
+</code></pre>
+</div>
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>
