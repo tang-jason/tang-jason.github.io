@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | TS: Classes</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">TS: Classes</li>
+	</ol>
+	<h3 id="ts-classes">TS: Classes</h3>
+
+<p>Class is template for creating objects (blueprint). Provides state storage and behavior. Encapsulates resuable functionality.</p>
+
+<ul>
+  <li>Define types</li>
+  <li>Properties and methods</li>
+  <li>constructors</li>
+  <li>Access modifiers</li>
+  <li>inheritance</li>
+  <li>Abstract Classes</li>
+</ul>
+
+<h4 id="constructors"><code class="highlighter-rouge">Constructors</code></h4>
+
+<ul>
+  <li>In typescript there only be one <code class="highlighter-rouge">constructor</code> per class.</li>
+  <li>Use optional parameters to call different ways.</li>
+  <li>Executed by using the “new” keyword.</li>
+</ul>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kr">class</span> <span class="nx">ReferenceItem</span> <span class="p">{</span>
+    <span class="kd">constructor</span><span class="p">(</span><span class="nx">title</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">publisher</span><span class="p">?:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// perform initialization here...</span>
+     <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// instantiate</span>
+<span class="kd">let</span> <span class="nx">encyclopedia</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ReferenceItem</span><span class="p">(</span><span class="s2">"WorldPedia"</span><span class="p">,</span> <span class="s2">"WorldPUb"</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<h4 id="properties-and-methods"><code class="highlighter-rouge">Properties and Methods</code></h4>
+
+<p>There are different ways of define properties.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kr">class</span> <span class="nx">ReferenceItem</span> <span class="p">{</span>
+    <span class="c1">// #1</span>
+    <span class="nl">numberOfPages</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+
+    <span class="c1">// #2: custom accessors (getter and setter)</span>
+    <span class="nx">get</span> <span class="nx">editor</span><span class="p">()</span><span class="err">:</span> <span class="kr">string</span> <span class="p">{</span>
+        <span class="c1">// custom getter logic hoes here, should return a value</span>
+    <span class="p">}</span>
+
+    <span class="nx">set</span> <span class="nx">editor</span><span class="p">(</span><span class="nx">newEditor</span><span class="err">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// custom setter logic here...</span>
+    <span class="p">}</span>
+
+    <span class="nx">printChapterTitle</span><span class="p">(</span><span class="nx">chapterNum</span><span class="err">:</span> <span class="kr">number</span><span class="p">)</span><span class="err">:</span> <span class="k">void</span> <span class="p">{</span>
+        <span class="c1">// print title here...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="parameter-properties"><code class="highlighter-rouge">Parameter Properties</code></h4>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kr">class</span> <span class="nx">Author</span> <span class="p">{</span>
+    <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="kd">constructor</span><span class="p">(</span><span class="nx">authorName</span><span class="err">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">name</span> <span class="o">=</span> <span class="nx">authorName</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// shorthand for creating constructor</span>
+<span class="kr">class</span> <span class="nx">Author</span> <span class="p">{</span>
+    <span class="kd">constructor</span><span class="p">(</span><span class="k">public</span> <span class="nx">name</span><span class="err">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="static-properties"><code class="highlighter-rouge">Static Properties</code></h4>
+
+<p>static members only available on the class, and not on instances of the class. To reference the static members, it has to reference the class itself.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kr">class</span> <span class="nx">Library</span> <span class="p">{</span>
+    <span class="kd">constructor</span><span class="p">(</span><span class="k">public</span> <span class="nx">name</span><span class="err">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+
+    <span class="k">static</span> <span class="nx">description</span><span class="err">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="s2">"A source of knowledge"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">lib</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Library</span><span class="p">(</span><span class="s2">"NY Public Library"</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">lib</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span> <span class="c1">// available on instances of the class</span>
+<span class="kd">let</span> <span class="nx">desc</span> <span class="o">=</span> <span class="nx">Library</span><span class="p">.</span><span class="nx">description</span><span class="p">;</span> <span class="c1">// available on the class</span>
+</code></pre>
+</div>
+
+<h4 id="access-modifiers"><code class="highlighter-rouge">Access Modifiers</code></h4>
+
+<p>By default, all members are public of the class. If you have a Java or C# background, because public is not the default.</p>
+
+<ul>
+  <li>Public: Accessible everywhere</li>
+  <li>Private: Accessible inside the class</li>
+  <li>Protected: Accessible on any subclasses of that class</li>
+</ul>
+
+<h4 id="string-format"><code class="highlighter-rouge">String Format</code></h4>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kr">class</span> <span class="nx">ReferenceItem</span> <span class="p">{</span>
+    <span class="nl">title</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">year</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+
+    <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Creating a new ReferenceItem..."</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// must use 'this' keyword when referring to properties and methods in the same class</span>
+    <span class="nx">printItem</span><span class="p">()</span><span class="err">:</span> <span class="k">void</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span> <span class="nx">was</span> <span class="nx">published</span> <span class="k">in</span> <span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">year</span><span class="p">}</span><span class="err">`</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="inheritance"><code class="highlighter-rouge">Inheritance</code></h4>
+
+<p>Inheritance is a means for one class to share its member definitions with one or more subclasses.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kr">class</span> <span class="nx">ReferenceItem</span> <span class="p">{</span>
+    <span class="nl">title</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nx">printItem</span><span class="p">()</span><span class="err">:</span> <span class="k">void</span> <span class="p">{</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">class</span> <span class="nx">Journal</span> <span class="k">extends</span> <span class="nx">ReferenceItem</span> <span class="p">{</span>
+    <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="nl">constributors</span><span class="p">:</span> <span class="kr">string</span><span class="p">[];</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="abstract-classes"><code class="highlighter-rouge">Abstract Classes</code></h4>
+
+<ul>
+  <li>Created with the “abstract” keyword.</li>
+  <li>Base classes that may not be instantiated.</li>
+  <li>May contain implementation details.</li>
+  <li>Abstract methods are not implemented. Methods must implemented in subclasses.</li>
+</ul>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kd">abstract</span> <span class="kr">class</span> <span class="nx">ReferenceItem</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="nx">_publisher</span><span class="err">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="k">static</span> <span class="nx">department</span><span class="err">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="s2">"Research"</span><span class="p">;</span>
+
+    <span class="kd">constructor</span><span class="p">(</span><span class="k">public</span> <span class="nx">title</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span> <span class="k">protected</span> <span class="nx">year</span><span class="err">:</span> <span class="kr">number</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Creating a new ReferenceItem..."</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// must use 'this' keyword when referring to properties and methods in the same class</span>
+    <span class="nx">printItem</span><span class="p">()</span><span class="err">:</span> <span class="k">void</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span> <span class="nx">was</span> <span class="nx">published</span> <span class="k">in</span> <span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">year</span><span class="p">}.</span><span class="err">`</span><span class="p">);</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="err">`</span><span class="na">Department</span><span class="p">:</span> <span class="nx">$</span><span class="p">{</span><span class="nx">ReferenceItem</span><span class="p">.</span><span class="nx">department</span><span class="p">}</span><span class="err">`</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">get</span> <span class="nx">publisher</span><span class="p">():</span> <span class="kr">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_publisher</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="nx">set</span> <span class="nx">publisher</span><span class="p">(</span><span class="na">newPublisher</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">_publisher</span> <span class="o">=</span> <span class="nx">newPublisher</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">abstract</span> <span class="nx">printCitation</span><span class="p">():</span> <span class="k">void</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">class</span> <span class="nx">Encyclopedia</span> <span class="k">extends</span> <span class="nx">ReferenceItem</span> <span class="p">{</span>
+    <span class="kd">constructor</span><span class="p">(</span><span class="na">newTitle</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="na">newYear</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span> <span class="k">public</span> <span class="na">edition</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">(</span><span class="nx">newTitle</span><span class="p">,</span> <span class="nx">newYear</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="nx">printItem</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
+        <span class="c1">// call the 'printItem' method from parent</span>
+        <span class="k">super</span><span class="p">.</span><span class="nx">printItem</span><span class="p">();</span>
+
+        <span class="c1">// Encyclopedia printItem method</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="err">`</span><span class="na">Edition</span><span class="p">:</span> <span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">edition</span><span class="p">}</span> <span class="p">(</span><span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">year</span><span class="p">})</span><span class="err">`</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">printCitation</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span> <span class="o">-</span> <span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">year</span><span class="p">}</span><span class="err">`</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="class-expressions"><code class="highlighter-rouge">Class Expressions</code></h4>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">Newspaper</span> <span class="o">=</span> <span class="kr">class</span> <span class="k">extends</span> <span class="nx">ReferenceItem</span> <span class="p">{</span>
+    <span class="nx">printCitation</span><span class="p">()</span><span class="err">:</span> <span class="k">void</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="err">`</span><span class="na">Newspaper</span><span class="p">:</span> <span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span><span class="err">`</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">myPaper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Newspaper</span><span class="p">(</span><span class="s2">"The Gazette"</span><span class="p">,</span> <span class="mi">2014</span><span class="p">);</span>
+<span class="nx">myPaper</span><span class="p">.</span><span class="nx">printCitation</span><span class="p">();</span>
+</code></pre>
+</div>
+
+<p>Different way to create class expression anywhere a class is expected.</p>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kr">class</span> <span class="nx">Novel</span> <span class="k">extends</span> <span class="kr">class</span> <span class="p">{</span> <span class="nl">title</span><span class="p">:</span> <span class="kr">string</span> <span class="p">}</span> <span class="p">{</span>
+    <span class="nl">mainCharacter</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">favoriteNovel</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Novel</span><span class="p">();</span>
+<span class="nx">favoriteNovel</span><span class="p">.</span><span class="nx">mainCharacter</span><span class="p">;</span>
+</code></pre>
+</div>
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>
