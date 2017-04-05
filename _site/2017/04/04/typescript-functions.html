@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | TS: Functions</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">TS: Functions</li>
+	</ol>
+	<h3 id="ts-functions">TS: Functions</h3>
+
+<p>Examples covered:</p>
+<ul>
+  <li>Functions in TS vs. JS</li>
+  <li>Parameter types and return types</li>
+  <li>Arrow functions</li>
+  <li>Function types</li>
+  <li>Parameters
+    <ul>
+      <li>Optional parameters</li>
+      <li>Default parameters</li>
+      <li>Rest parameters</li>
+    </ul>
+  </li>
+  <li>Overloaded functions</li>
+</ul>
+
+<h4 id="functions-in-ts-vs-js"><code class="highlighter-rouge">Functions in TS vs. JS</code></h4>
+
+<p>TypeScript:</p>
+<ul>
+  <li>Types</li>
+  <li>Arrow functions</li>
+  <li>Function types</li>
+  <li>Required and optional parameters</li>
+  <li>Default parameters</li>
+  <li>Rest parameters</li>
+  <li>Overloaded functions</li>
+</ul>
+
+<p>JavaScript:</p>
+<ul>
+  <li>No types</li>
+  <li>Arrow functions (ES2015)</li>
+  <li>No function types</li>
+  <li>All parameters are optional</li>
+  <li>Default parameters (ES2015)</li>
+  <li>Rest parameters (ES2015)</li>
+  <li>No overloaded function</li>
+</ul>
+
+<h4 id="parameter-types-and-return-types"><code class="highlighter-rouge">Parameter Types and Return Types</code></h4>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">CreateCustomerID</span><span class="p">(</span><span class="nx">name</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">id</span><span class="err">:</span> <span class="kr">number</span><span class="p">)</span><span class="err">:</span> <span class="kr">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">name</span> <span class="o">+</span> <span class="nx">id</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="arrow-functions"><code class="highlighter-rouge">Arrow Functions</code></h4>
+<p>concise syntax for anonymous functions. “this” is captured at function creation - not invocation.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="c1">// normal function</span>
+<span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="nx">allBooks</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">book</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">book</span><span class="p">.</span><span class="nx">author</span> <span class="o">==</span> <span class="s2">"john smith"</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="c1">// arrow function</span>
+<span class="c1">// left: parameter(s). right: function body</span>
+<span class="kd">let</span> <span class="nx">arry</span> <span class="o">=</span> <span class="nx">allBooks</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span> <span class="nx">book</span> <span class="o">=&gt;</span> <span class="nx">book</span><span class="p">.</span><span class="nx">author</span> <span class="o">===</span> <span class="s2">"john smith"</span> <span class="p">);</span>
+</code></pre>
+</div>
+
+<h4 id="arrow-function-syntax"><code class="highlighter-rouge">Arrow Function Syntax</code></h4>
+
+<p>Function will not accept any parameters, must add an empty set of parentheses.</p>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="nx">myBooks</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"done reading"</span><span class="p">)</span> <span class="p">);</span>
+</code></pre>
+</div>
+
+<p>Function accept one parameter.</p>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="nx">myBook</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span> <span class="nx">title</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">title</span><span class="p">)</span> <span class="p">);</span>
+</code></pre>
+</div>
+
+<p>Function accept multiple parameters.</p>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="nx">myBook</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span> <span class="p">(</span><span class="nx">title</span><span class="p">,</span> <span class="nx">idx</span><span class="p">,</span> <span class="nx">arr</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">idx</span> <span class="o">+</span> <span class="s2">" - "</span> <span class="o">+</span> <span class="nx">title</span><span class="p">)</span> <span class="p">);</span>
+</code></pre>
+</div>
+
+<p>Function accept multiple parameters and has more than one line in function body.</p>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="nx">myBook</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">title</span><span class="p">,</span> <span class="nx">idx</span><span class="p">,</span> <span class="nx">arr</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">idx</span> <span class="o">+</span> <span class="s2">" - "</span> <span class="o">+</span> <span class="nx">title</span><span class="p">);</span>
+    <span class="c1">// do more thing here...</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+<h4 id="function-types"><code class="highlighter-rouge">Function Types</code></h4>
+
+<p>Combination of parameter types and return type. Variables may be declared with function types</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">PublicationMessage</span><span class="p">(</span><span class="nx">year</span><span class="err">:</span> <span class="kr">number</span><span class="p">)</span><span class="err">:</span> <span class="kr">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s2">"Date published: "</span> <span class="o">+</span> <span class="nx">year</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// this is just a type definition for a function</span>
+<span class="kd">let</span> <span class="nx">publishFunc</span><span class="err">:</span> <span class="p">(</span><span class="nx">someYear</span><span class="err">:</span> <span class="kr">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="kr">string</span><span class="p">;</span>
+
+<span class="nx">publishFunc</span> <span class="o">=</span> <span class="nx">PublicationMessage</span><span class="p">;</span>
+
+<span class="kd">let</span> <span class="nx">message</span><span class="err">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="nx">PublicationMessage</span><span class="p">(</span><span class="mi">2017</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<h4 id="optional-and-default-parameters"><code class="highlighter-rouge">Optional and Default Parameters</code></h4>
+
+<p>Optional parameters denoted with “?” after parameter name. Must appear after all required parameters. Default parameters may be set to a literal value or an expression.</p>
+
+<p>Optional parameter</p>
+<pre><code class="language-typscript">function CreateCustomer(name: string, age?: number) {  }
+</code></pre>
+
+<p>Default parameter: literal value</p>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">GetBookByTitle</span><span class="p">(</span><span class="nx">title</span><span class="err">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="s2">"Learning TypeScript"</span><span class="p">)</span> <span class="p">{</span>  <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Default parameter: expression</p>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">GetBookByTitle</span><span class="p">(</span><span class="nx">title</span><span class="err">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="nx">GetMostPopularBook</span><span class="p">())</span> <span class="p">{</span>  <span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="rest-parameters"><code class="highlighter-rouge">Rest Parameters</code></h4>
+
+<p>Collects a group of parameters into a single array.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">GetBooksReadForCust</span><span class="p">(</span><span class="nx">name</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span> <span class="p">...</span><span class="nx">bookIDs</span><span class="err">:</span> <span class="kr">number</span><span class="p">[])</span> <span class="p">{</span>  <span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">books</span> <span class="o">=</span> <span class="nx">GetBooksReadForCust</span><span class="p">(</span><span class="s2">"john"</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<h4 id="function-overloads"><code class="highlighter-rouge">Function Overloads</code></h4>
+
+<p>One symbol name. Multiple function types. One implementation with type guards.</p>
+
+<p>Function for author</p>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">GetTitles</span><span class="p">(</span><span class="nx">author</span><span class="err">:</span> <span class="kr">string</span><span class="p">)</span><span class="err">:</span> <span class="kr">string</span><span class="p">[];</span>
+</code></pre>
+</div>
+
+<p>Function for available</p>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">GetTitles</span><span class="p">(</span><span class="nx">available</span><span class="err">:</span> <span class="kr">boolean</span><span class="p">)</span><span class="err">:</span> <span class="kr">string</span><span class="p">[];</span>
+</code></pre>
+</div>
+
+<p>Function for object property</p>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">GetTitles</span><span class="p">(</span><span class="nx">bookProperty</span><span class="err">:</span> <span class="kr">any</span><span class="p">)</span><span class="err">:</span> <span class="kr">string</span><span class="p">[]</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">bookProperty</span> <span class="o">==</span> <span class="s2">"string"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// get books by author, add to foundTitles</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">bookProperty</span> <span class="o">==</span> <span class="s2">"bolean"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// get books by availability, add to foundTitles</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">foundTitles</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>
