@@ -132,10 +132,69 @@
     <span class="p">)</span>
     <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
         <span class="nx">$</span><span class="p">(</span><span class="s2">"#proceed"</span><span class="p">).</span><span class="nx">removeAttr</span><span class="p">(</span><span class="s2">"disabled"</span><span class="p">);</span>   
+    <span class="p">},</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
     <span class="p">});</span>
 <span class="p">});</span>
 </code></pre>
 </div>
+
+<h4 id="deferred-methods"><code class="highlighter-rouge">Deferred Methods</code></h4>
+
+<p>Some methods available on deferred objects.</p>
+
+<ul>
+  <li>Return deferred object for a process flow
+    <ul>
+      <li>when</li>
+      <li>promise</li>
+    </ul>
+  </li>
+  <li>Attach handler functions to deferred object
+    <ul>
+      <li>then</li>
+      <li>done</li>
+      <li>fail</li>
+      <li>progress</li>
+      <li>always</li>
+    </ul>
+  </li>
+  <li>Change state of deferred object
+    <ul>
+      <li>resolve</li>
+      <li>reject</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="example-using-promise-fail-always"><code class="highlighter-rouge">Example Using promise(), .fail(), .always()</code></h4>
+
+<p>It is better to use <code class="highlighter-rouge">$.when()</code> and <code class="highlighter-rouge">$.then()</code> in cases where we’re only interested in success processing.</p>
+
+<p>It’s better to use <code class="highlighter-rouge">$.when()</code> <code class="highlighter-rouge">$.done()</code> <code class="highlighter-rouge">$.fail()</code> in cases when we need to handle failures along with success.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="s2">"#load"</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">when</span><span class="p">(</span>
+        <span class="nx">loadSection</span><span class="p">({</span> <span class="na">selector</span><span class="p">:</span> <span class="s2">"#section1"</span><span class="p">,</span> <span class="na">url</span><span class="p">:</span> <span class="s2">"content1.html"</span> <span class="p">}),</span>
+        <span class="nx">loadSection</span><span class="p">({</span> <span class="na">selector</span><span class="p">:</span> <span class="s2">"#section2"</span><span class="p">,</span> <span class="na">url</span><span class="p">:</span> <span class="s2">"content2.html"</span> <span class="p">}),</span>
+        <span class="nx">loadSection</span><span class="p">({</span> <span class="na">selector</span><span class="p">:</span> <span class="s2">"#section3"</span><span class="p">,</span> <span class="na">url</span><span class="p">:</span> <span class="s2">"content3.html"</span> <span class="p">})</span>
+    <span class="p">)</span>
+    <span class="p">.</span><span class="nx">promise</span><span class="p">()</span>
+    <span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s2">"#proceed"</span><span class="p">).</span><span class="nx">removeAttr</span><span class="p">(</span><span class="s2">"disabled"</span><span class="p">);</span>   
+    <span class="p">})</span>
+    <span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"error"</span> <span class="o">+</span> <span class="nx">error</span><span class="p">);</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"always show this msg"</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<p>Noticed <code class="highlighter-rouge">$.promise()</code> is chained after <code class="highlighter-rouge">$.when()</code>. The $.when() method returns a full deferred object that can have its state changed. PUtting the <code class="highlighter-rouge">$.promise()</code> method in the chain makes sure nothing we do accidentally changes the state.</p>
+
 
 </div>
 					</div>
