@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | C#: Async and Await</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">C#: Async and Await</li>
+	</ol>
+	<h3 id="c-async-and-await">C#: Async and Await</h3>
+
+<p>Async and parallel</p>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">ActionResult</span><span class="p">&gt;</span> <span class="nf">Index</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">model</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">HomePageViewModel</span><span class="p">();</span>
+
+    <span class="n">model</span><span class="p">.</span><span class="nf">AddMessage</span><span class="p">(</span><span class="s">"Starting action"</span><span class="p">);</span>
+
+    <span class="c1">// kicking off both async 
+</span>    <span class="kt">var</span> <span class="n">headlineTask</span> <span class="p">=</span> <span class="nf">GetHeadlineAsync</span><span class="p">(</span><span class="n">model</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">temperatureTask</span> <span class="p">=</span> <span class="nf">GetCurrentTemperatureAsync</span><span class="p">(</span><span class="n">model</span><span class="p">);</span>
+
+    <span class="c1">// suspended untill all of these tasks are completed
+</span>    <span class="k">await</span> <span class="n">Task</span><span class="p">.</span><span class="nf">WhenAll</span><span class="p">(</span><span class="n">headlineTask</span><span class="p">,</span> <span class="n">temperatureTask</span><span class="p">);</span>
+
+    <span class="n">model</span><span class="p">.</span><span class="nf">AddMessage</span><span class="p">(</span><span class="s">"Finished action"</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="n">model</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">async</span> <span class="n">Task</span> <span class="nf">GetHeadlineAsync</span><span class="p">(</span><span class="n">HomePageViewModel</span> <span class="n">model</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// get headline code here...
+</span><span class="p">}</span>
+
+<span class="k">async</span> <span class="n">Task</span> <span class="nf">GetCurrentTemperatureAsync</span><span class="p">(</span><span class="n">HomePageViewModel</span> <span class="n">model</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// get current temparature code here...
+</span><span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="async-timeouts"><code class="highlighter-rouge">Async Timeouts</code></h4>
+
+<p>If the process is taken too long. Redirect to a custom page.</p>
+
+<p>Add two attributes to handle the timeouts and error.</p>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="c1">// set time out to 1.2s
+</span><span class="na">[AsyncTimeout(1200)]</span>
+<span class="c1">// if exceeded 1.2s render 'Timeout' page
+</span><span class="na">[HandleError(ExceptionType=typeof(TimeoutException), View="Timeout")]</span>
+<span class="c1">// Go to webConfig and change the error to 'on'
+</span><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">ActionResult</span><span class="p">&gt;</span> <span class="nf">Index</span><span class="p">(</span><span class="n">CancellationToken</span> <span class="n">ctk</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// code here...
+</span><span class="p">}</span>
+</code></pre>
+</div>
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>
