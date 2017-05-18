@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | XAML: Get Started</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">XAML: Get Started</li>
+	</ol>
+	<h3 id="xaml-get-started">XAML: Get Started</h3>
+
+<h4 id="what-is-xaml"><code class="highlighter-rouge">What is XAML</code></h4>
+<p>E<code class="highlighter-rouge">x</code>tensible <code class="highlighter-rouge">A</code>pplication <code class="highlighter-rouge">M</code>markup <code class="highlighter-rouge">L</code>anguage (XAML) is the language used to define your app’s user interface. It can be entered manually, or created using the VS design tools. A <code class="highlighter-rouge">.xaml</code> file has a <code class="highlighter-rouge">.xaml.cs</code> code-behind file which contains the logic. Together, the XAML and code-behind make a completed class.</p>
+
+<h4 id="build-weather-panel"><code class="highlighter-rouge">Build Weather Panel</code></h4>
+
+<p><code class="highlighter-rouge">MainPage.xaml</code> is the designer window and <code class="highlighter-rouge">MainPage.xaml.cs</code> is the code-behind.</p>
+
+<p>To start creating a layout, open <code class="highlighter-rouge">MainPage.xaml</code></p>
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;Grid&gt;</span>
+    <span class="nt">&lt;Grid.ColumnDefinitions&gt;</span>
+        <span class="nt">&lt;ColumnDefinition</span> <span class="na">Width=</span><span class="s">"3*"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;ColumnDefinition</span> <span class="na">Width=</span><span class="s">"5*"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/Grid.ColumnDefinitions&gt;</span>
+
+    <span class="nt">&lt;Grid.RowDefinitions&gt;</span>
+        <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">"2*"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">"*"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/Grid.RowDefinitions&gt;</span>
+<span class="nt">&lt;/Grid&gt;</span>
+</code></pre>
+</div>
+
+<h4 id="color-the-grid"><code class="highlighter-rouge">Color the Grid</code></h4>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;Border</span> <span class="na">Background=</span><span class="s">"#111111"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;Border</span> <span class="na">Grid.Column=</span><span class="s">"1"</span> <span class="na">Background=</span><span class="s">"#222222"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;Border</span> <span class="na">Grid.Row=</span><span class="s">"1"</span> <span class="na">Grid.ColumnSpan=</span><span class="s">"2"</span> <span class="na">Background=</span><span class="s">"#333333"</span> <span class="nt">/&gt;</span>
+</code></pre>
+</div>
+
+<h4 id="orgaize-content-by-using-stackpanel-element"><code class="highlighter-rouge">Orgaize content by using StackPanel element</code></h4>
+
+<p><code class="highlighter-rouge">StackPanel</code> allowing you to stack element vertically or horizontally.</p>
+
+<p>In the 1st StackPanel, each TextBlock stacks vertically. This is the default behavior of a StackPanel. In the 2nd StackPanel, the “Orientation” attribute to Horizontal.</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="c">&lt;!-- Organize content by using stackPanel elements --&gt;</span>
+<span class="nt">&lt;StackPanel</span> <span class="na">Grid.Column=</span><span class="s">"1"</span> <span class="na">Margin=</span><span class="s">"40,0,0,0"</span> <span class="na">VerticalAlignment=</span><span class="s">"Center"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;TextBlock</span> <span class="na">Foreground=</span><span class="s">"White"</span> <span class="na">FontSize=</span><span class="s">"25"</span> <span class="na">Text=</span><span class="s">"Today - 64F"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;TextBlock</span> <span class="na">Foreground=</span><span class="s">"White"</span> <span class="na">FontSize=</span><span class="s">"25"</span> <span class="na">Text=</span><span class="s">"Partially Cloudy"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;TextBlock</span> <span class="na">Foreground=</span><span class="s">"White"</span> <span class="na">FontSize=</span><span class="s">"25"</span> <span class="na">Text=</span><span class="s">"Precipitation: 25%"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/StackPanel&gt;</span>
+
+<span class="nt">&lt;StackPanel</span> <span class="na">Grid.Row=</span><span class="s">"1"</span> <span class="na">Grid.ColumnSpan=</span><span class="s">"2"</span> <span class="na">Orientation=</span><span class="s">"Horizontal"</span> <span class="na">HorizontalAlignment=</span><span class="s">"Center"</span> <span class="na">VerticalAlignment=</span><span class="s">"Center"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;TextBlock</span> <span class="na">Foreground=</span><span class="s">"White"</span> <span class="na">FontSize=</span><span class="s">"25"</span> <span class="na">Text=</span><span class="s">"High: 66"</span> <span class="na">Margin=</span><span class="s">"0,0,20,0"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;TextBlock</span> <span class="na">Foreground=</span><span class="s">"White"</span> <span class="na">FontSize=</span><span class="s">"25"</span> <span class="na">Text=</span><span class="s">"Low: 43"</span> <span class="na">Margin=</span><span class="s">"0,0,20,0"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;TextBlock</span> <span class="na">Foreground=</span><span class="s">"White"</span> <span class="na">FontSize=</span><span class="s">"25"</span> <span class="na">Text=</span><span class="s">"Feels like: 63"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/StackPanel&gt;</span>
+</code></pre>
+</div>
+
+<h4 id="add-an-image-icon"><code class="highlighter-rouge">Add an image icon</code></h4>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;Image</span> <span class="na">Margin=</span><span class="s">"20"</span> <span class="na">Source=</span><span class="s">"Assets/partially-cloudy.png"</span><span class="nt">/&gt;</span>
+</code></pre>
+</div>
+
+<h4 id="resource"><code class="highlighter-rouge">Resource</code></h4>
+<p><a href="https://docs.microsoft.com/en-us/windows/uwp/layout/grid-tutorial" target="_blank">https://docs.microsoft.com/en-us/windows/uwp/layout/grid-tutorial</a></p>
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>
