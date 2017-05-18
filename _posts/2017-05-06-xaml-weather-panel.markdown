@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "XAML: Get Started"
+title: "XAML: Weather Demo"
 date: 2017-05-06
 lang: en-us
 ---
