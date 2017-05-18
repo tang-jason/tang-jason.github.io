@@ -145,6 +145,115 @@
 <h4 id="resource"><code class="highlighter-rouge">Resource</code></h4>
 <p><a href="https://docs.microsoft.com/en-us/windows/uwp/layout/grid-tutorial" target="_blank">https://docs.microsoft.com/en-us/windows/uwp/layout/grid-tutorial</a></p>
 
+<h4 id="improved-weather-panel"><code class="highlighter-rouge">Improved Weather Panel</code></h4>
+<p>Below is the improved version of weather panel demo that using <code class="highlighter-rouge">ResourceDictionary</code> to separate the common styles and strings.</p>
+
+<h4 id="create-stylesxaml"><code class="highlighter-rouge">Create Styles.xaml</code></h4>
+<p>This xaml file contains common styles for the application.</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="c">&lt;!-- Style.xaml --&gt;</span>
+<span class="nt">&lt;ResourceDictionary</span>
+    <span class="na">xmlns=</span><span class="s">"http://schemas.microsoft.com/winfx/2006/xaml/presentation"</span> 
+    <span class="na">xmlns:x=</span><span class="s">"http://schemas.microsoft.com/winfx/2006/xaml"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;Style</span> <span class="na">x:Key=</span><span class="s">"TextBlockStyle1"</span> <span class="na">TargetType=</span><span class="s">"TextBlock"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;Setter</span> <span class="na">Property=</span><span class="s">"Foreground"</span> <span class="na">Value=</span><span class="s">"White"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Setter</span> <span class="na">Property=</span><span class="s">"FontSize"</span> <span class="na">Value=</span><span class="s">"25"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/Style&gt;</span>
+<span class="nt">&lt;/ResourceDictionary&gt;</span>
+</code></pre>
+</div>
+
+<h4 id="create-stringsxaml"><code class="highlighter-rouge">Create Strings.xaml</code></h4>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ResourceDictionary</span> <span class="na">xmlns=</span><span class="s">"http://schemas.microsoft.com/winfx/2006/xaml/presentation"</span> <span class="na">xmlns:x=</span><span class="s">"http://schemas.microsoft.com/winfx/2006/xaml"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- STRING CONTROL PROPERTIES --&gt;</span>
+    <span class="nt">&lt;x:String</span> <span class="na">x:Key=</span><span class="s">"TodayTemp"</span><span class="nt">&gt;</span>Today - 64F<span class="nt">&lt;/x:String&gt;</span>
+    <span class="nt">&lt;x:String</span> <span class="na">x:Key=</span><span class="s">"WeatherStatus"</span><span class="nt">&gt;</span>Partially Cloudy<span class="nt">&lt;/x:String&gt;</span>
+    <span class="nt">&lt;x:String</span> <span class="na">x:Key=</span><span class="s">"Precipitation"</span><span class="nt">&gt;</span>Precipitation: 25%<span class="nt">&lt;/x:String&gt;</span>
+    <span class="nt">&lt;x:String</span> <span class="na">x:Key=</span><span class="s">"HighTemp"</span><span class="nt">&gt;</span>High: 66<span class="nt">&lt;/x:String&gt;</span>
+    <span class="nt">&lt;x:String</span> <span class="na">x:Key=</span><span class="s">"LowTemp"</span><span class="nt">&gt;</span>Low: 43<span class="nt">&lt;/x:String&gt;</span>
+    <span class="nt">&lt;x:String</span> <span class="na">x:Key=</span><span class="s">"FeelingTemp"</span><span class="nt">&gt;</span>Feels like: 63<span class="nt">&lt;/x:String&gt;</span>
+<span class="nt">&lt;/ResourceDictionary&gt;</span>
+</code></pre>
+</div>
+
+<h4 id="reference-external-files-stylesxaml--stringsxaml"><code class="highlighter-rouge">Reference External Files (Styles.xaml &amp; Strings.xaml)</code></h4>
+
+<p>These references should be at the top of your application.</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;Page.Resources&gt;</span>
+    <span class="nt">&lt;ResourceDictionary&gt;</span>
+        <span class="nt">&lt;ResourceDictionary.MergedDictionaries&gt;</span>
+            <span class="nt">&lt;ResourceDictionary</span> <span class="na">Source=</span><span class="s">"Common/Styles.xaml"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;ResourceDictionary</span> <span class="na">Source=</span><span class="s">"Common/Strings.xaml"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/ResourceDictionary.MergedDictionaries&gt;</span>
+    <span class="nt">&lt;/ResourceDictionary&gt;</span>
+<span class="nt">&lt;/Page.Resources&gt;</span>
+</code></pre>
+</div>
+
+<h4 id="full-example"><code class="highlighter-rouge">Full Example</code></h4>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;Page</span>
+    <span class="na">x:Class=</span><span class="s">"XAML_WeatherApp.MainPage"</span>
+    <span class="na">xmlns=</span><span class="s">"http://schemas.microsoft.com/winfx/2006/xaml/presentation"</span>
+    <span class="na">xmlns:x=</span><span class="s">"http://schemas.microsoft.com/winfx/2006/xaml"</span>
+    <span class="na">xmlns:local=</span><span class="s">"using:XAML_WeatherApp"</span>
+    <span class="na">xmlns:d=</span><span class="s">"http://schemas.microsoft.com/expression/blend/2008"</span>
+    <span class="na">xmlns:mc=</span><span class="s">"http://schemas.openxmlformats.org/markup-compatibility/2006"</span>
+    <span class="na">mc:Ignorable=</span><span class="s">"d"</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- External style reference --&gt;</span>
+    <span class="nt">&lt;Page.Resources&gt;</span>
+        <span class="nt">&lt;ResourceDictionary&gt;</span>
+            <span class="nt">&lt;ResourceDictionary.MergedDictionaries&gt;</span>
+                <span class="nt">&lt;ResourceDictionary</span> <span class="na">Source=</span><span class="s">"Common/Styles.xaml"</span> <span class="nt">/&gt;</span>
+                <span class="nt">&lt;ResourceDictionary</span> <span class="na">Source=</span><span class="s">"Common/Strings.xaml"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;/ResourceDictionary.MergedDictionaries&gt;</span>
+        <span class="nt">&lt;/ResourceDictionary&gt;</span>
+    <span class="nt">&lt;/Page.Resources&gt;</span>
+
+    <span class="c">&lt;!-- main grid --&gt;</span>
+    <span class="nt">&lt;Grid</span> <span class="na">Background=</span><span class="s">"{ThemeResource ApplicationPageBackgroundThemeBrush}"</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!-- Define grid column --&gt;</span>
+        <span class="nt">&lt;Grid.ColumnDefinitions&gt;</span>
+            <span class="nt">&lt;ColumnDefinition</span> <span class="na">Width=</span><span class="s">"3*"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;ColumnDefinition</span> <span class="na">Width=</span><span class="s">"5*"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/Grid.ColumnDefinitions&gt;</span>
+
+        <span class="c">&lt;!-- Define grid row --&gt;</span>
+        <span class="nt">&lt;Grid.RowDefinitions&gt;</span>
+            <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">"2*"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">"*"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/Grid.RowDefinitions&gt;</span>
+
+        <span class="c">&lt;!-- color the grid --&gt;</span>
+        <span class="nt">&lt;Border</span> <span class="na">Background=</span><span class="s">"#2f5cb6"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;Border</span> <span class="na">Grid.Column=</span><span class="s">"1"</span> <span class="na">Background=</span><span class="s">"#1f3d7a"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;Border</span> <span class="na">Grid.Row=</span><span class="s">"1"</span> <span class="na">Grid.ColumnSpan=</span><span class="s">"2"</span> <span class="na">Background=</span><span class="s">"#152951"</span> <span class="nt">/&gt;</span>
+
+        <span class="c">&lt;!-- Organize content by using stackPanel elements --&gt;</span>
+        <span class="nt">&lt;StackPanel</span> <span class="na">Grid.Column=</span><span class="s">"1"</span> <span class="na">Margin=</span><span class="s">"40,0,0,0"</span> <span class="na">VerticalAlignment=</span><span class="s">"Center"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">"{StaticResource TodayTemp}"</span> <span class="na">Style=</span><span class="s">"{StaticResource TextBlockStyle1}"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">"{StaticResource WeatherStatus}"</span> <span class="na">Style=</span><span class="s">"{StaticResource TextBlockStyle1}"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">"{StaticResource Precipitation}"</span> <span class="na">Style=</span><span class="s">"{StaticResource TextBlockStyle1}"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/StackPanel&gt;</span>
+
+        <span class="nt">&lt;StackPanel</span> <span class="na">Grid.Row=</span><span class="s">"1"</span> <span class="na">Grid.ColumnSpan=</span><span class="s">"2"</span> <span class="na">Orientation=</span><span class="s">"Horizontal"</span> <span class="na">HorizontalAlignment=</span><span class="s">"Center"</span> <span class="na">VerticalAlignment=</span><span class="s">"Center"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">"{StaticResource HighTemp}"</span> <span class="na">Margin=</span><span class="s">"0,0,20,0"</span> <span class="na">Style=</span><span class="s">"{StaticResource TextBlockStyle1}"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">"{StaticResource LowTemp}"</span> <span class="na">Margin=</span><span class="s">"0,0,20,0"</span> <span class="na">Style=</span><span class="s">"{StaticResource TextBlockStyle1}"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">"{StaticResource FeelingTemp}"</span> <span class="na">Style=</span><span class="s">"{StaticResource TextBlockStyle1}"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/StackPanel&gt;</span>
+
+        <span class="c">&lt;!-- add an image icon --&gt;</span>
+        <span class="nt">&lt;Image</span> <span class="na">Margin=</span><span class="s">"20"</span> <span class="na">Source=</span><span class="s">"Assets/partially-cloudy.png"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/Grid&gt;</span>
+<span class="nt">&lt;/Page&gt;</span>
+
+</code></pre>
+</div>
+
 </div>
 					</div>
 				</div>
