@@ -68,9 +68,9 @@ public partial class MainWindow : Window
         // instantiation
         Person person = new Person()
         {
-            FirstName = "Jason",
-            LastName = "Tang",
-            Age = 30
+            FirstName = "John",
+            LastName = "Smith",
+            Age = 10
         };
 
         // assign the person instace to "DataContext"
