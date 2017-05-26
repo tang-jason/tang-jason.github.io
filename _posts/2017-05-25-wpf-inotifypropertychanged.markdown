@@ -1,82 +1,36 @@
 ---
 layout: post
-title: "WPF - DataContext"
+title: "WPF - INotifyPropertyChanged"
 date: 2017-05-25
 lang: en-us
 ---
 
 ### {{ page.title }}
 
-#### `DataContext`
+#### `INotifyPropertyChanged Interface`
 
-Gets or sets the data context for an element when it participates in data binding.
+The INotifyPropertyChanged interface is used to notify clients, typically binding clients, that a property value has changed. 
 
-`DataContext` property binds the data between the UI and code-behind. 
+For example, consider a `Person` object with a property called `FirstName`. To provide generic property-change notification, the `Person` type implements the `INotifyPropertyChanged` interface and raises a `PropertyChanged` event when `FirstName` is changed.
 
-#### `Simple example`
+For change notification to occur in a binding between a bound client and a data source, your bound type should either:
+- implement the INotifyPropertyChanged interface (preferred).
+- provide a change event for each property of the bound type.
 
-MainWindow.xaml
-```xml
-<Grid>
-    <!-- define 2 columns grid -->
-    <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="80"/>
-        <ColumnDefinition Width="*"/>
-    </Grid.ColumnDefinitions>
+DO NOT DO BOTH
 
-    <!-- define 3 row grid -->
-    <Grid.RowDefinitions>
-        <RowDefinition Height="30"/>
-        <RowDefinition Height="30"/>
-        <RowDefinition Height="30"/>
-    </Grid.RowDefinitions>
+#### `Example`
 
-    <!-- first name fields -->
-    <TextBlock Margin="4" Text="First Name: " VerticalAlignment="Center"/>
-    <TextBox Margin="4" Text="{Binding FirstName}" Grid.Column="1"/>
-
-    <!-- last name fields -->
-    <TextBlock Margin="4" Text="Last Name: " Grid.Row="1" VerticalAlignment="Center"/>
-    <TextBox Margin="4" Text="{Binding LastName}" Grid.Row="1" Grid.Column="1"/>
-
-    <!-- age fields -->
-    <TextBlock Margin="4" Text="First Name: " Grid.Row="2" VerticalAlignment="Center"/>
-    <TextBox Margin="4" Text="{Binding Age}" Grid.Row="2" Grid.Column="1"/>
-<Grid>
-```
-
-From the example above that the `TextBox` Text property has a WPF markup extension ( `{ }` ) which used for binding.
-
-    Text="{ Binding FirstName }"
-
-Person.cs
 ```csharp
-// properties
-public string FirstName { get; set; }
-public string LastName { get; set; }
-public int Age { get; set; }
-```
+public event PropertyChangedEventHandler PropertyChanged;
 
-MainWindow.xaml.cs (aka code-behind)
-```csharp
-public partial class MainWindow : Window
+private void OnPropertyChanged(string propertyName)
 {
-    public MainWindow()
+    if (PropertyChanged != null)
     {
-        InitializeComponent();
-
-        // instantiation
-        Person person = new Person()
-        {
-            FirstName = "John",
-            LastName = "Smith",
-            Age = 10
-        };
-
-        // assign the person instace to "DataContext"
-        this.DataContext = person;
+        PropertyChanged(this, new PropertyChangedEventArgs(propertyName))
     }
 }
 ```
 
-By default the `DataContext` is null. Once assigned the object to DataContext then you can interact with the data binding. 
+The `PropertyChangedEventArgs` will raise an event when property value changed.
