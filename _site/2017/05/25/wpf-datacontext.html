@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | WPF - DataContext</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">WPF - DataContext</li>
+	</ol>
+	<h3 id="wpf---datacontext">WPF - DataContext</h3>
+
+<h4 id="datacontext"><code class="highlighter-rouge">DataContext</code></h4>
+
+<p>Gets or sets the data context for an element when it participates in data binding.</p>
+
+<p><code class="highlighter-rouge">DataContext</code> property binds the data between the UI and code-behind.</p>
+
+<h4 id="simple-example"><code class="highlighter-rouge">Simple example</code></h4>
+
+<p>MainWindow.xaml</p>
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;Grid&gt;</span>
+    <span class="c">&lt;!-- define 2 columns grid --&gt;</span>
+    <span class="nt">&lt;Grid.ColumnDefinitions&gt;</span>
+        <span class="nt">&lt;ColumnDefinition</span> <span class="na">Width=</span><span class="s">"80"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;ColumnDefinition</span> <span class="na">Width=</span><span class="s">"*"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/Grid.ColumnDefinitions&gt;</span>
+
+    <span class="c">&lt;!-- define 3 row grid --&gt;</span>
+    <span class="nt">&lt;Grid.RowDefinitions&gt;</span>
+        <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">"30"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">"30"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">"30"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/Grid.RowDefinitions&gt;</span>
+
+    <span class="c">&lt;!-- first name fields --&gt;</span>
+    <span class="nt">&lt;TextBlock</span> <span class="na">Margin=</span><span class="s">"4"</span> <span class="na">Text=</span><span class="s">"First Name: "</span> <span class="na">VerticalAlignment=</span><span class="s">"Center"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;TextBox</span> <span class="na">Margin=</span><span class="s">"4"</span> <span class="na">Text=</span><span class="s">"{Binding FirstName}"</span> <span class="na">Grid.Column=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+
+    <span class="c">&lt;!-- last name fields --&gt;</span>
+    <span class="nt">&lt;TextBlock</span> <span class="na">Margin=</span><span class="s">"4"</span> <span class="na">Text=</span><span class="s">"Last Name: "</span> <span class="na">Grid.Row=</span><span class="s">"1"</span> <span class="na">VerticalAlignment=</span><span class="s">"Center"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;TextBox</span> <span class="na">Margin=</span><span class="s">"4"</span> <span class="na">Text=</span><span class="s">"{Binding LastName}"</span> <span class="na">Grid.Row=</span><span class="s">"1"</span> <span class="na">Grid.Column=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+
+    <span class="c">&lt;!-- age fields --&gt;</span>
+    <span class="nt">&lt;TextBlock</span> <span class="na">Margin=</span><span class="s">"4"</span> <span class="na">Text=</span><span class="s">"First Name: "</span> <span class="na">Grid.Row=</span><span class="s">"2"</span> <span class="na">VerticalAlignment=</span><span class="s">"Center"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;TextBox</span> <span class="na">Margin=</span><span class="s">"4"</span> <span class="na">Text=</span><span class="s">"{Binding Age}"</span> <span class="na">Grid.Row=</span><span class="s">"2"</span> <span class="na">Grid.Column=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;Grid&gt;</span>
+</code></pre>
+</div>
+
+<p>From the example above that the <code class="highlighter-rouge">TextBox</code> Text property has a WPF markup extension ( <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="p">}</span></code> ) which used for binding.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Text="{ Binding FirstName }"
+</code></pre>
+</div>
+
+<p>Person.cs</p>
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="c1">// properties
+</span><span class="k">public</span> <span class="kt">string</span> <span class="n">FirstName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="k">public</span> <span class="kt">string</span> <span class="n">LastName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="k">public</span> <span class="kt">int</span> <span class="n">Age</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>MainWindow.xaml.cs (aka code-behind)</p>
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="k">public</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">MainWindow</span> <span class="p">:</span> <span class="n">Window</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nf">MainWindow</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nf">InitializeComponent</span><span class="p">();</span>
+
+        <span class="c1">// instantiation
+</span>        <span class="n">Person</span> <span class="n">person</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Person</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">FirstName</span> <span class="p">=</span> <span class="s">"John"</span><span class="p">,</span>
+            <span class="n">LastName</span> <span class="p">=</span> <span class="s">"Smith"</span><span class="p">,</span>
+            <span class="n">Age</span> <span class="p">=</span> <span class="m">10</span>
+        <span class="p">};</span>
+
+        <span class="c1">// assign the person instace to "DataContext"
+</span>        <span class="k">this</span><span class="p">.</span><span class="n">DataContext</span> <span class="p">=</span> <span class="n">person</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>By default the <code class="highlighter-rouge">DataContext</code> is null. Once assigned the object to DataContext then you can interact with the data binding.</p>
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>
