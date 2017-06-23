@@ -30,7 +30,7 @@ var bmws = myCars.Where(p => p.Make == "BMW" && p.Year == 2010);
 var orderedCars = myCars.OrderByDescending(p => p.Year);
 
 // using First()
-var firstBMW = myCars.OrderByDescending(p = > p.Year).First(p => p.Make == "BMW");
+var firstBMW = myCars.OrderByDescending(p => p.Year).First(p => p.Make == "BMW");
 
 // using TrueForAll()
 Console.WriteLine(myCars.TrueForAll(p => p.Year > 2007)); // output: true / false

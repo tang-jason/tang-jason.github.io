@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | C# - LINQ</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">C# - LINQ</li>
+	</ol>
+	<h3 id="c---linq">C# - LINQ</h3>
+
+<p>Both below are return the same result.</p>
+
+<h4 id="linq-query"><code class="highlighter-rouge">LINQ Query</code></h4>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="kt">var</span> <span class="n">bmws</span> <span class="p">=</span> <span class="k">from</span> <span class="n">car</span> <span class="k">in</span> <span class="n">myCars</span>
+           <span class="k">where</span> <span class="n">car</span><span class="p">.</span><span class="n">Make</span> <span class="p">==</span> <span class="s">"BMW"</span> <span class="p">&amp;&amp;</span> <span class="n">car</span><span class="p">.</span><span class="n">Year</span> <span class="p">==</span> <span class="m">2010</span>
+           <span class="k">select</span> <span class="n">car</span><span class="p">;</span>
+
+<span class="kt">var</span> <span class="n">orderedCars</span> <span class="p">=</span> <span class="k">from</span> <span class="n">car</span> <span class="k">in</span> <span class="n">myCars</span>
+                  <span class="k">orderby</span> <span class="n">car</span><span class="p">.</span><span class="n">Year</span> <span class="k">descending</span>
+                  <span class="k">select</span> <span class="n">car</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<h4 id="linq-method"><code class="highlighter-rouge">LINQ Method</code></h4>
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="c1">// 'p' is each item in the collection
+</span><span class="kt">var</span> <span class="n">bmws</span> <span class="p">=</span> <span class="n">myCars</span><span class="p">.</span><span class="nf">Where</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">Make</span> <span class="p">==</span> <span class="s">"BMW"</span> <span class="p">&amp;&amp;</span> <span class="n">p</span><span class="p">.</span><span class="n">Year</span> <span class="p">==</span> <span class="m">2010</span><span class="p">);</span>
+
+<span class="c1">// using OrderByDescending()
+</span><span class="kt">var</span> <span class="n">orderedCars</span> <span class="p">=</span> <span class="n">myCars</span><span class="p">.</span><span class="nf">OrderByDescending</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">Year</span><span class="p">);</span>
+
+<span class="c1">// using First()
+</span><span class="kt">var</span> <span class="n">firstBMW</span> <span class="p">=</span> <span class="n">myCars</span><span class="p">.</span><span class="nf">OrderByDescending</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">Year</span><span class="p">).</span><span class="nf">First</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">Make</span> <span class="p">==</span> <span class="s">"BMW"</span><span class="p">);</span>
+
+<span class="c1">// using TrueForAll()
+</span><span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">myCars</span><span class="p">.</span><span class="nf">TrueForAll</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">Year</span> <span class="p">&gt;</span> <span class="m">2007</span><span class="p">));</span> <span class="c1">// output: true / false
+</span>
+<span class="c1">// ForEach()
+</span><span class="n">myCars</span><span class="p">.</span><span class="nf">ForEach</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"{0} {1:C}"</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">VIN</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">StickerPrice</span><span class="p">));</span>
+<span class="n">myCars</span><span class="p">.</span><span class="nf">ForEach</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">StickerPrice</span> <span class="p">-=</span> <span class="m">3000</span><span class="p">);</span>
+
+<span class="c1">// Exists()
+</span><span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">myCars</span><span class="p">.</span><span class="nf">Exists</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">Model</span> <span class="p">==</span> <span class="s">"745i"</span><span class="p">));</span> <span class="c1">// output: true / false
+</span>
+<span class="c1">// Sum();
+</span><span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">myCars</span><span class="p">.</span><span class="nf">Sum</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">StickerPrice</span><span class="p">));</span> <span class="c1">// output: add up all sticker price
+</span></code></pre>
+</div>
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>

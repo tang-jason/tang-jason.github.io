@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | C# - Collections</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">C# - Collections</li>
+	</ol>
+	<h3 id="c---collections">C# - Collections</h3>
+
+<h4 id="collection-summary"><code class="highlighter-rouge">Collection Summary</code></h4>
+
+<p>Name: <code class="highlighter-rouge">List&lt;T&gt;</code></p>
+
+<p>Strength: A growing array</p>
+
+<p>Name: <code class="highlighter-rouge">Queue&lt;T&gt;, Stack&lt;T&gt;</code></p>
+
+<p>Strength: For FIFO and LIFO</p>
+
+<p>Name: <code class="highlighter-rouge">HashSet&lt;T&gt;</code></p>
+
+<p>Strength: Unique items only</p>
+
+<p>Name: <code class="highlighter-rouge">LinkedList&lt;T&gt;</code></p>
+
+<p>Strength: Flexible inserts</p>
+
+<p>Name: <code class="highlighter-rouge">Dictionary&lt;Tkey, Tvalue&gt;</code></p>
+
+<p>Strength: Quick look up by key</p>
+
+<p>Name: <code class="highlighter-rouge">SortedSet&lt;T&gt;, SortedList&lt;Tkey, Tvalue&gt;, SortedDictionary&lt;Tkey, Tvalue&gt;</code></p>
+
+<p>Strength: Sorted &amp; unique, Sorted &amp; memory efficent, Sorted, fast insert and removals</p>
+
+<h4 id="listt-example"><code class="highlighter-rouge">List&lt;T&gt; Example</code></h4>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="n">List</span><span class="p">&lt;</span><span class="n">Employee</span><span class="p">&gt;</span> <span class="n">employee</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Employee</span><span class="p">&gt;();</span>
+<span class="n">employee</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">Employee</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"John"</span> <span class="p">});</span>
+<span class="n">employee</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">Employee</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"Alex"</span> <span class="p">});</span>
+</code></pre>
+</div>
+
+<h4 id="linkedlistt-example"><code class="highlighter-rouge">LinkedList&lt;T&gt; Example</code></h4>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="n">LinkedList</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">links</span> <span class="p">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;();</span>
+<span class="n">links</span><span class="p">.</span><span class="nf">AddFirst</span><span class="p">(</span><span class="m">2</span><span class="p">);</span>
+<span class="n">links</span><span class="p">.</span><span class="nf">AddFirst</span><span class="p">(</span><span class="m">3</span><span class="p">);</span>
+
+<span class="kt">var</span> <span class="n">first</span> <span class="p">=</span> <span class="n">links</span><span class="p">.</span><span class="n">First</span><span class="p">;</span>
+<span class="n">links</span><span class="p">.</span><span class="nf">AddBefore</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="m">5</span><span class="p">);</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">link</span> <span class="k">in</span> <span class="n">links</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">link</span><span class="p">);</span> <span class="c1">// output: 5 3 2
+</span><span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="queuet"><code class="highlighter-rouge">Queue&lt;T&gt;</code></h4>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="c1">// FIFO data structure
+</span><span class="n">Queue</span><span class="p">&lt;</span><span class="n">Employee</span><span class="p">&gt;</span> <span class="n">line</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Queue</span><span class="p">&lt;</span><span class="n">Employee</span><span class="p">&gt;();</span>
+<span class="n">line</span><span class="p">.</span><span class="nf">Enqueue</span><span class="p">(</span><span class="k">new</span> <span class="n">Employee</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"A"</span> <span class="p">});</span>
+<span class="n">line</span><span class="p">.</span><span class="nf">Enqueue</span><span class="p">(</span><span class="k">new</span> <span class="n">Employee</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"B"</span> <span class="p">});</span>
+<span class="n">line</span><span class="p">.</span><span class="nf">Enqueue</span><span class="p">(</span><span class="k">new</span> <span class="n">Employee</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"C"</span> <span class="p">});</span>
+
+<span class="k">while</span> <span class="p">(</span><span class="n">line</span><span class="p">.</span><span class="n">Count</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">employee</span> <span class="p">=</span> <span class="n">line</span><span class="p">.</span><span class="nf">Dequeue</span><span class="p">();</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">employee</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span> <span class="c1">// output: A B C
+</span><span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="stackt-example"><code class="highlighter-rouge">Stack&lt;T&gt; Example</code></h4>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="c1">// LIFO data structure
+</span><span class="n">Stack</span><span class="p">&lt;</span><span class="n">Employee</span><span class="p">&gt;</span> <span class="n">stack</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Stack</span><span class="p">&lt;</span><span class="n">Employee</span><span class="p">&gt;();</span>
+<span class="n">stack</span><span class="p">.</span><span class="nf">Push</span><span class="p">(</span><span class="k">new</span> <span class="n">Employee</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"A"</span> <span class="p">});</span>
+<span class="n">stack</span><span class="p">.</span><span class="nf">Push</span><span class="p">(</span><span class="k">new</span> <span class="n">Employee</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"B"</span> <span class="p">});</span>
+<span class="n">stack</span><span class="p">.</span><span class="nf">Push</span><span class="p">(</span><span class="k">new</span> <span class="n">Employee</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"C"</span> <span class="p">});</span>
+
+<span class="k">while</span> <span class="p">(</span><span class="n">stack</span><span class="p">.</span><span class="n">Count</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">employee</span> <span class="p">=</span> <span class="n">stack</span><span class="p">.</span><span class="nf">Pop</span><span class="p">();</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">employee</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span> <span class="c1">// output: C B A
+</span><span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="dictionarytkey-tvalue-example"><code class="highlighter-rouge">Dictionary&lt;Tkey, Tvalue&gt; Example</code></h4>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="kt">var</span> <span class="n">dict</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="n">Employee</span><span class="p">&gt;();</span>
+<span class="n">dict</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"A"</span><span class="p">,</span> <span class="k">new</span> <span class="n">Employee</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"A"</span> <span class="p">});</span>
+<span class="n">dict</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"B"</span><span class="p">,</span> <span class="k">new</span> <span class="n">Employee</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"B"</span> <span class="p">});</span>
+<span class="n">dict</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"C"</span><span class="p">,</span> <span class="k">new</span> <span class="n">Employee</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"C"</span> <span class="p">});</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">dict</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// output: A : A, B : B, C : C
+</span>    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"{0} : {1}"</span><span class="p">,</span> <span class="n">item</span><span class="p">.</span><span class="n">Key</span><span class="p">,</span> <span class="n">item</span><span class="p">.</span><span class="n">Value</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="dictionarytkey-tvalue-example-2"><code class="highlighter-rouge">Dictionary&lt;Tkey, Tvalue&gt; Example #2</code></h4>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="kt">var</span> <span class="n">dict</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Employee</span><span class="p">&gt;&gt;();</span>
+
+<span class="n">dict</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"Sales"</span><span class="p">,</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Employee</span><span class="p">&gt;</span>
+<span class="p">{</span>
+    <span class="k">new</span> <span class="n">Employee</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"A"</span> <span class="p">},</span>
+    <span class="k">new</span> <span class="n">Employee</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"B"</span> <span class="p">},</span>
+    <span class="k">new</span> <span class="n">Employee</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"C"</span> <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="n">dict</span><span class="p">[</span><span class="s">"Engineering"</span><span class="p">].</span><span class="nf">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">Employee</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"D"</span> <span class="p">});</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">department</span> <span class="k">in</span> <span class="n">dict</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">department</span><span class="p">.</span><span class="n">Value</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span> <span class="c1">// output: A B C D
+</span>    <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
+
+<h4 id="sorteddictionarytkey-tvalue-example"><code class="highlighter-rouge">SortedDictionary&lt;Tkey, Tvalue&gt; Example</code></h4>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="kt">var</span> <span class="n">sortedDict</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SortedDictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Employee</span><span class="p">&gt;&gt;();</span>
+
+<span class="n">sortedDict</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"Sales"</span><span class="p">,</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Employee</span><span class="p">&gt;</span>
+<span class="p">{</span>
+    <span class="k">new</span> <span class="n">Employee</span> <span class="p">{</span><span class="n">Name</span> <span class="p">=</span> <span class="s">"Tom"</span><span class="p">},</span>
+    <span class="k">new</span> <span class="n">Employee</span> <span class="p">{</span><span class="n">Name</span> <span class="p">=</span> <span class="s">"Jerry"</span><span class="p">},</span>
+    <span class="k">new</span> <span class="n">Employee</span> <span class="p">{</span><span class="n">Name</span> <span class="p">=</span> <span class="s">"Heather"</span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="n">sortedDict</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"Enginnering"</span><span class="p">,</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Employee</span><span class="p">&gt;</span>
+<span class="p">{</span>
+    <span class="k">new</span> <span class="n">Employee</span> <span class="p">{</span><span class="n">Name</span> <span class="p">=</span> <span class="s">"Vic"</span><span class="p">},</span>
+    <span class="k">new</span> <span class="n">Employee</span> <span class="p">{</span><span class="n">Name</span> <span class="p">=</span> <span class="s">"Chris"</span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">dep</span> <span class="k">in</span> <span class="n">sortedDict</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// output 1: The count for Engineering is 2
+</span>    <span class="c1">// output 2: The count for Sales is 3
+</span>    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"The count for {0} is {1}"</span><span class="p">,</span> <span class="n">dep</span><span class="p">.</span><span class="n">Key</span><span class="p">,</span> <span class="n">dep</span><span class="p">.</span><span class="n">Value</span><span class="p">.</span><span class="n">Count</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>
