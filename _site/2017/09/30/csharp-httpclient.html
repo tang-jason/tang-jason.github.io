@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | Py - Build image downloader</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">Py - Build image downloader</li>
+	</ol>
+	<h3 id="py---build-image-downloader">Py - Build image downloader</h3>
+
+<p>The python program below is demostrates how to bild a simple image downloader. It utilizes modules of <code class="highlighter-rouge">beautifulsup</code>, <code class="highlighter-rouge">urllib</code>, <code class="highlighter-rouge">re</code>, <code class="highlighter-rouge">os</code>.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># used it to scrape the website</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+
+<span class="c"># import the library to query the website</span>
+<span class="kn">import</span> <span class="nn">urllib</span>
+
+<span class="c"># import regular expression</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="c"># os module</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c"># download the url content</span>
+<span class="n">url</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s">"https://developer.microsoft.com/en-us/windows"</span><span class="p">)</span>
+
+<span class="c"># read the website content</span>
+<span class="n">content</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="c"># create a new BeautifulSoup class to take advantage of its simple API</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="s">"html5lib"</span><span class="p">)</span>
+
+<span class="c"># find all https img links that matched the regex</span>
+<span class="n">img_urls</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s">"img"</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s">"src"</span><span class="p">:</span> <span class="n">re</span><span class="o">.</span><span class="nb">compile</span><span class="p">(</span><span class="s">"^https?://(?:[a-z0-9</span><span class="err">\</span><span class="s">-]+</span><span class="err">\</span><span class="s">.)+[a-z]{2,6}(?:/[^/#?]+)+</span><span class="err">\</span><span class="s">.(?:jpg|gif|png)$"</span><span class="p">)})</span>
+
+<span class="c"># a defined function that download the image to /images folder</span>
+<span class="k">def</span> <span class="nf">download_img</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">img_name</span><span class="p">):</span>
+    <span class="c"># construct a full path to store an image</span>
+    <span class="n">full_path</span> <span class="o">=</span> <span class="n">file_path</span> <span class="o">+</span> <span class="n">img_name</span>
+
+    <span class="c"># download the image to the destinated location</span>
+    <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">full_path</span><span class="p">)</span>
+
+    <span class="c"># msg</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s">"{img_name} - downloaded"</span><span class="p">)</span>
+
+<span class="c"># download image</span>
+<span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">img_urls</span><span class="p">:</span>
+    <span class="c"># get the src attribute value from img tag</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"src"</span><span class="p">)</span>
+
+    <span class="c"># extract the image file name (e.g. https://www.someimage.com/image/console.png =&gt; console.png)</span>
+    <span class="n">img_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+    <span class="c"># invoke download_img function</span>
+    <span class="n">download_img</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s">"images/"</span><span class="p">,</span> <span class="n">img_name</span><span class="p">)</span>
+
+</code></pre>
+</div>
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>
