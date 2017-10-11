@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | Angular 2 - Getting Started</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">Angular 2 - Getting Started</li>
+	</ol>
+	<h3 id="angular-2---getting-started">Angular 2 - Getting Started</h3>
+
+<h4 id="install-angular-cli"><code class="highlighter-rouge">Install Angular CLI</code></h4>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">npm</span> <span class="nx">install</span> <span class="o">-</span><span class="nx">g</span> <span class="err">@</span><span class="nx">angular</span><span class="o">/</span><span class="nx">cli</span>
+</code></pre>
+</div>
+
+<h4 id="create-new-project"><code class="highlighter-rouge">Create New Project</code></h4>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">ng</span> <span class="k">new</span> <span class="nx">my</span><span class="o">-</span><span class="k">new</span><span class="o">-</span><span class="nx">app</span>
+</code></pre>
+</div>
+
+<h4 id="start-dev-server"><code class="highlighter-rouge">Start Dev Server</code></h4>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">ng</span> <span class="nx">serve</span>
+</code></pre>
+</div>
+
+<h4 id="two-ways-binding"><code class="highlighter-rouge">Two Ways Binding</code></h4>
+
+<p>Use <code class="highlighter-rouge">[(ngModel)]</code> for two ways binding</p>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"text"</span> <span class="p">[(</span><span class="nx">ngModel</span><span class="p">)]</span><span class="o">=</span><span class="s2">"name"</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">{</span> <span class="p">{</span> <span class="nx">name</span> <span class="p">}</span> <span class="p">}</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span></code></pre>
+</div>
+
+<h4 id="unlock-angular-forms-module-feature"><code class="highlighter-rouge">Unlock Angular Forms Module Feature</code></h4>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">// under /src/app/app.modules.ts</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">FormsModule</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/Forms'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">NgModule</span><span class="p">({</span>
+    <span class="na">imports</span><span class="p">:</span> <span class="p">[</span>
+        <span class="nx">FormsModule</span>
+    <span class="p">]</span>
+<span class="p">})</span>
+</code></pre>
+</div>
+
+<h4 id="add-bootstrap-for-styling"><code class="highlighter-rouge">Add Bootstrap for Styling</code></h4>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">// in your cmd, type...</span>
+<span class="nx">npm</span> <span class="nx">install</span> <span class="o">--</span><span class="nx">save</span> <span class="nx">bootstrap</span>
+
+<span class="c1">// to use it, in .angular-cli.json</span>
+<span class="s2">"style"</span><span class="err">:</span> <span class="p">[</span>
+    <span class="s2">"../node_modules/bootstrap/dist/css/bootstrap.min.css"</span>
+<span class="p">]</span>
+</code></pre>
+</div>
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>
