@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | Angular 2 - Component</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">Angular 2 - Component</li>
+	</ol>
+	<h3 id="angular-2---component">Angular 2 - Component</h3>
+
+<p>Component is the key feature of Angular.</p>
+
+<h4 id="create-component"><code class="highlighter-rouge">Create Component</code></h4>
+
+<p>Use the Angular CLI to generate a component for you. To do this, <code class="highlighter-rouge">ng generate component server</code> or a shorthand <code class="highlighter-rouge">ng g c server</code>, this will create a <code class="highlighter-rouge">server</code> folder inside <code class="highlighter-rouge">app</code> folder with needed files. The command also automatically added the custom component to the <code class="highlighter-rouge">app.module.ts</code>.</p>
+
+<h4 id="use-the-custom-component"><code class="highlighter-rouge">Use the Custom Component</code></h4>
+
+<p>In <code class="highlighter-rouge">app.component.html</code>, add the custom server component html tag</p>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">app</span><span class="o">-</span><span class="nx">server</span><span class="o">&gt;&lt;</span><span class="sr">/app-server</span><span class="err">&gt;
+</span></code></pre>
+</div>
+
+<h4 id="working-with-template-styles"><code class="highlighter-rouge">Working with Template Styles</code></h4>
+
+<p>If you have <code class="highlighter-rouge">bootstrap</code> installed to your project, you can use it to style your page. You can also write your own CSS by doing it inside the <code class="highlighter-rouge">app.component.css</code>.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"container"</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"row"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"col-xs-12"</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">h3</span><span class="o">&gt;</span><span class="nx">I</span><span class="err">'</span><span class="nx">m</span> <span class="k">in</span> <span class="nx">the</span> <span class="nx">AppComponent</span><span class="o">!&lt;</span><span class="sr">/h3</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="nx">hr</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">app</span><span class="o">-</span><span class="nx">servers</span><span class="o">&gt;&lt;</span><span class="sr">/app-servers</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span></code></pre>
+</div>
+
+<h4 id="understanding-component-selector"><code class="highlighter-rouge">Understanding Component Selector</code></h4>
+
+<p>Selector can be defined as <code class="highlighter-rouge">attribute</code> and <code class="highlighter-rouge">class</code> beside <code class="highlighter-rouge">element</code>. Below is 3 ways to define selector. Note that <code class="highlighter-rouge">id</code> and <code class="highlighter-rouge">pseudo</code> won’t work with angular selector.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+  <span class="na">selector</span><span class="p">:</span> <span class="s1">'app-servers'</span> <span class="c1">// html element selector</span>
+  <span class="na">selector</span><span class="p">:</span> <span class="s1">'[app-servers]'</span> <span class="c1">// attribute selector</span>
+  <span class="na">selector</span><span class="p">:</span> <span class="s1">'.app-servers'</span> <span class="c1">// class selctor</span>
+<span class="p">})</span>
+</code></pre>
+</div>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"container"</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"row"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"col-xs-12"</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">app</span><span class="o">-</span><span class="nx">servers</span><span class="o">&gt;&lt;</span><span class="sr">/app-servers&gt; /</span><span class="o">/</span> <span class="nx">html</span> <span class="nx">element</span> <span class="nx">selector</span>
+            <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">app</span><span class="o">-</span><span class="nx">servers</span><span class="o">&gt;&lt;</span><span class="sr">/div&gt; /</span><span class="o">/</span> <span class="nx">attribute</span> <span class="nx">selector</span>
+            <span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"app-servers"</span><span class="o">&gt;&lt;</span><span class="sr">/div&gt; /</span><span class="o">/</span> <span class="kr">class</span> <span class="nx">selector</span>
+        <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span></code></pre>
+</div>
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>
