@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | django - Create Project</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">django - Create Project</li>
+	</ol>
+	<h3 id="django---create-project">django - Create Project</h3>
+
+<h4 id="creating-a-project"><code class="highlighter-rouge">Creating a project</code></h4>
+
+<p><code class="highlighter-rouge">cd</code> into a director where you like to store your project/codes and run the command below</p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">django</span><span class="o">-</span><span class="n">admin</span> <span class="n">startproject</span> <span class="n">mysite</span>
+</code></pre>
+</div>
+
+<h4 id="run-server"><code class="highlighter-rouge">Run server</code></h4>
+<p>Run the command below to start the dev server</p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">runserver</span>
+</code></pre>
+</div>
+
+<h4 id="start-app"><code class="highlighter-rouge">Start app</code></h4>
+<p>In Python Django <code class="highlighter-rouge">app</code> means different section of your application. If you have a shop then it’s shop app. If you have a forum, then it’s a forum app. To start an app, call the command below and it will create a folder name called <code class="highlighter-rouge">music</code></p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">startapp</span> <span class="n">music</span>
+</code></pre>
+</div>
+
+<h4 id="create-a-home-page-view"><code class="highlighter-rouge">Create a home page view</code></h4>
+<p>Under <code class="highlighter-rouge">/music/views.py</code></p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+
+<span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s">'&lt;h1&gt;hello world&lt;/h1&gt;'</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>Under <code class="highlighter-rouge">/mysite/settings.py</code></p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="o">...</span>
+    <span class="s">'music.apps.MusicConfig'</span>
+<span class="p">]</span>
+</code></pre>
+</div>
+
+<p>Under <code class="highlighter-rouge">/mysite/urls.py</code></p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">include</span><span class="p">,</span> <span class="n">url</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r'^music/'</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s">'music.urls'</span><span class="p">))</span>
+<span class="p">]</span>
+</code></pre>
+</div>
+
+<h4 id="create-modeldatabase"><code class="highlighter-rouge">Create model/database</code></h4>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+
+<span class="c"># pk will be created</span>
+<span class="k">class</span> <span class="nc">Album</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">artist</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+    <span class="n">album_title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+    <span class="n">genre</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+    <span class="n">album_logo</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="c"># associate with any album. 'on_delete=models.CASCADE' is whenever album is deleted, song associate with it will be deleted as well</span>
+<span class="k">class</span> <span class="nc">Song</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">album</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Album</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
+    <span class="n">file_type</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">song_title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<h4 id="activiting-models"><code class="highlighter-rouge">Activiting models</code></h4>
+<p>Once you have defined or updated the model. Run the command below to ensure it works with the DB correctly.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">makemigrations</span> <span class="n">music</span>
+</code></pre>
+</div>
+
+<h4 id="sync-the-db"><code class="highlighter-rouge">Sync the DB</code></h4>
+<p>Run the following command once you successfully made the migration. This will sync up the changes with the DB</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">migrate</span>
+</code></pre>
+</div>
+
+<h4 id="django-shell"><code class="highlighter-rouge">DJango shell</code></h4>
+<p>You can open up django interactive shell in your terminal from the command below. With this shell, you can write database commnads.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">shell</span>
+
+<span class="c"># once you are in the shell, you can add album object via the commands below</span>
+<span class="c"># retreive all album objects</span>
+<span class="n">Album</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="nb">all</span><span class="p">()</span>
+
+<span class="c"># import Album and Song</span>
+<span class="kn">from</span> <span class="nn">music.models</span> <span class="kn">import</span> <span class="n">Album</span><span class="p">,</span> <span class="n">Song</span>
+
+<span class="c"># Add album</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">Album</span><span class="p">(</span><span class="n">artist</span><span class="o">=</span><span class="s">"artist_1"</span><span class="p">,</span> <span class="n">album_title</span><span class="o">=</span><span class="s">"title_1"</span><span class="p">,</span> <span class="n">genre</span><span class="o">=</span><span class="s">"genre_1"</span><span class="p">,</span> <span class="n">album_logo</span><span class="o">=</span><span class="s">"logo_1"</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">Album</span><span class="p">()</span>
+<span class="n">b</span><span class="o">.</span><span class="n">artist</span><span class="o">=</span><span class="s">"artist_2"</span>
+<span class="n">b</span><span class="o">.</span><span class="n">album_title</span><span class="o">=</span><span class="s">"title_2"</span>
+<span class="n">b</span><span class="o">.</span><span class="n">genre</span><span class="o">=</span><span class="s">"genre_2"</span>
+<span class="n">b</span><span class="o">.</span><span class="n">album_logo</span><span class="o">=</span><span class="s">"logo_2"</span>
+
+<span class="c"># Save the changes</span>
+<span class="n">a</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+<span class="n">b</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<h4 id="special-representation-of-an-instance"><code class="highlighter-rouge">Special representation of an instance</code></h4>
+<p>When you type in <code class="highlighter-rouge">Album.objects.all()</code> you’ll always see something like <code class="highlighter-rouge">Query[objects]</code>. This is not useful. To change that in your Album class add the following def</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">album_title</span> <span class="o">+</span> <span class="s">' - '</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">artist</span>
+</code></pre>
+</div>
+
+<h4 id="filter"><code class="highlighter-rouge">Filter</code></h4>
+<p>You can use filter method to filter through the albums</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># return first album</span>
+<span class="n">Album</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="nb">filter</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c"># return an album that has artist name starts with 'my'</span>
+<span class="c"># output: [&lt;Album: Punk - Myth&gt;]</span>
+<span class="n">Album</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="nb">filter</span><span class="p">(</span><span class="n">artist__startswith</span><span class="o">=</span><span class="s">"my"</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<h4 id="admin-interface"><code class="highlighter-rouge">Admin interface</code></h4>
+<p>To create an admin, use the commands below</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">createsuperuser</span>
+</code></pre>
+</div>
+
+<p>Once you filled up the info, go to your admin path. (e.g. 127.0.0.1/admin)</p>
+
+<h4 id="how-to-add-music-to-the-admin-site"><code class="highlighter-rouge">How to add music to the admin site</code></h4>
+<p>We want to able to make CRUD operation to the ablum</p>
+
+<p>Under <code class="highlighter-rouge">music/admin.py</code></p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Album</span>
+
+<span class="c"># Register your models here.</span>
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Album</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<h4 id="add-view"><code class="highlighter-rouge">Add view</code></h4>
+<p>We want to add another view after music url. Something like <code class="highlighter-rouge">/music/80</code></p>
+
+<p>In your <code class="highlighter-rouge">music/urls.py</code> add a detail view</p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">urls</span><span class="p">(</span><span class="s">r'^(?P&lt;album_id&gt;[0-9]+)/$'</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">detail</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'detail'</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>In your <code class="highlighter-rouge">music/views.py</code></p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">detail</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">album_id</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">f</span><span class="s">"&lt;h2&gt;Details for album id { album_id }&lt;/h2&gt;"</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>Go to your <code class="highlighter-rouge">http://127.0.0.1:8000/music/1/</code></p>
+
+<h4 id="connecting-to-the-database"><code class="highlighter-rouge">Connecting to the database</code></h4>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Album</span>
+
+<span class="c"># Album.objects.all() will return all album objects</span>
+<span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">all_album</span> <span class="o">=</span> <span class="n">Album</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="nb">all</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<h4 id="templates"><code class="highlighter-rouge">Templates</code></h4>
+
+<p>Create a <code class="highlighter-rouge">templates/music/index.html</code> index file under <code class="highlighter-rouge">music</code> folder</p>
+
+<p>In the <code class="highlighter-rouge">views.py</code> file</p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Album</span>
+
+<span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="c"># get all albums from the DB</span>
+    <span class="n">all_album</span> <span class="o">=</span> <span class="n">Album</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="nb">all</span><span class="p">()</span>
+    
+    <span class="c"># data context</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span> <span class="s">'all_album'</span><span class="p">:</span> <span class="n">all_album</span> <span class="p">}</span>
+
+    <span class="c"># note that we don't need to pass in templates path as django already mapped behind the code</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">'music/index.html'</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>in the <code class="highlighter-rouge">index.html</code> file</p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code>
+    <span class="o">&lt;</span><span class="n">h3</span><span class="o">&gt;</span><span class="n">You</span> <span class="n">do</span> <span class="ow">not</span> <span class="n">have</span> <span class="nb">any</span> <span class="n">albums</span><span class="o">&lt;/</span><span class="n">h3</span><span class="o">&gt;</span>
+
+</code></pre>
+</div>
+
+<h4 id="related-ojbects-set"><code class="highlighter-rouge">Related Ojbects Set</code></h4>
+<p>This is faster better way to add related objects.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># fire up your django interactive shell</span>
+<span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">shell</span>
+
+<span class="c"># import Album and Song</span>
+<span class="kn">from</span> <span class="nn">music.models</span> <span class="kn">import</span> <span class="n">Album</span><span class="p">,</span> <span class="n">Song</span>
+
+<span class="c"># add songs to a specific album</span>
+<span class="n">album1</span> <span class="o">=</span> <span class="n">Album</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c"># add song</span>
+<span class="n">album1</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">song_title</span> <span class="o">=</span> <span class="s">'song 1'</span><span class="p">,</span> <span class="n">file_type</span> <span class="o">=</span> <span class="s">'mp3'</span><span class="p">)</span>
+
+<span class="c"># to see all the songs we've added</span>
+<span class="n">album1</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="nb">all</span><span class="p">()</span>
+</code></pre>
+</div>
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>
