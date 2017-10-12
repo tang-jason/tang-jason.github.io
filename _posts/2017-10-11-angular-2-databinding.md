@@ -92,7 +92,7 @@ For two-way binding, you use `[(ngModel)]`.
 ```typescript
 // html
 <label>Server Name</label>
-<input type="text" class="form-control" [(ngModel)]="serverName"> // $event is the reserved event obj
+<input type="text" class="form-control" [(ngModel)]="serverName">
 <p>{ { serverName } }</p>
 
 // ts
