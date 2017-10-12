@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | Angular 2 - Data Binding</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">Angular 2 - Data Binding</li>
+	</ol>
+	<h3 id="angular-2---data-binding">Angular 2 - Data Binding</h3>
+
+<h4 id="interpolation"><code class="highlighter-rouge">Interpolation</code></h4>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="c1">// html</span>
+<span class="nx">The</span> <span class="nx">server</span> <span class="nx">id</span> <span class="p">{</span> <span class="p">{</span> <span class="nx">serverId</span> <span class="p">}</span> <span class="p">}</span> <span class="k">is</span> <span class="p">{</span> <span class="p">{</span> <span class="nx">getServerStatus</span><span class="p">()</span> <span class="p">}</span> <span class="p">}</span>
+
+<span class="c1">// server.component.ts</span>
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">ServerComponent</span> <span class="p">{</span>
+    <span class="na">serverId</span><span class="p">:</span> <span class="kr">number</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="nl">serverStatus</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="s1">'offline'</span><span class="p">;</span>
+    <span class="nx">getServerStatus</span><span class="p">():</span> <span class="kr">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">serverStatus</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="property-binding"><code class="highlighter-rouge">Property Binding</code></h4>
+
+<p>To do <code class="highlighter-rouge">prperty binding</code>, you use <code class="highlighter-rouge">[property]</code>.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="c1">// html</span>
+<span class="c1">// the button will change from disabled to enable in 3 seconds</span>
+<span class="o">&lt;</span><span class="nx">button</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"btn btn-primary"</span> <span class="p">[</span><span class="nx">disabled</span><span class="p">]</span><span class="o">=</span><span class="s2">"!allowNewServer"</span><span class="o">&gt;&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>
+<span class="c1">// server.component.ts</span>
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">ServerComponenet</span> <span class="p">{</span>
+    <span class="nx">allowNewServer</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+    <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">allowNewServer</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="p">},</span> <span class="mi">3000</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="event-binding"><code class="highlighter-rouge">Event Binding</code></h4>
+
+<p>To do <code class="highlighter-rouge">event binding</code>, you use <code class="highlighter-rouge">(event)</code>.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="c1">// html</span>
+<span class="c1">// click is javascript event handler just without the on (onClick)</span>
+<span class="o">&lt;</span><span class="nx">button</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"btn btn-primary"</span> <span class="p">(</span><span class="nx">click</span><span class="p">)</span><span class="o">=</span><span class="s2">"onCreateServer()"</span><span class="o">&gt;&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">{</span> <span class="p">{</span> <span class="nx">serverCreationStatus</span> <span class="p">}</span> <span class="p">}</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>
+<span class="c1">// ts</span>
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">ServersComponenet</span> <span class="p">{</span>
+    <span class="nx">serverCreationStatus</span> <span class="o">=</span> <span class="s2">"Server is not created!"</span><span class="p">;</span>
+
+    <span class="nx">onCreateServer</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">serverCreationStatus</span> <span class="o">=</span> <span class="s2">"Server has been created!"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="passing-and-using-data-with-event-binding"><code class="highlighter-rouge">Passing and Using Data with Event Binding</code></h4>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="c1">// html</span>
+<span class="o">&lt;</span><span class="nx">label</span><span class="o">&gt;</span><span class="nx">Server</span> <span class="nx">Name</span><span class="o">&lt;</span><span class="sr">/label</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="nx">input</span> <span class="kd">type</span><span class="o">=</span><span class="s2">"text"</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"form-control"</span> <span class="p">(</span><span class="nx">input</span><span class="p">)</span><span class="o">=</span><span class="s2">"onUpdateServerName($event)"</span><span class="o">&gt;</span> <span class="c1">// $event is the reserved event obj</span>
+<span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">{</span> <span class="p">{</span> <span class="nx">serverName</span> <span class="p">}</span> <span class="p">}</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>
+<span class="c1">// ts</span>
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">serversComponent</span> <span class="p">{</span>
+    <span class="nx">serverName</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+
+    <span class="nx">onUpdateServerName</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// you can be explict casting. E.g: (&lt;HTMLInputElement&gt;event.target).value</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">serverName</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="two-way-binding"><code class="highlighter-rouge">Two-Way Binding</code></h4>
+
+<p>Important: To be able to use <code class="highlighter-rouge">ngModel</code>, the <code class="highlighter-rouge">FormsModule</code> (from @angular/forms) needs to be added to your import[] array in the <code class="highlighter-rouge">AppModule</code> (should be there by default in a CLI project)</p>
+
+<p>For two-way binding, you use <code class="highlighter-rouge">[(ngModel)]</code>.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="c1">// html</span>
+<span class="o">&lt;</span><span class="nx">label</span><span class="o">&gt;</span><span class="nx">Server</span> <span class="nx">Name</span><span class="o">&lt;</span><span class="sr">/label</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="nx">input</span> <span class="kd">type</span><span class="o">=</span><span class="s2">"text"</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"form-control"</span> <span class="p">[(</span><span class="nx">ngModel</span><span class="p">)]</span><span class="o">=</span><span class="s2">"serverName"</span><span class="o">&gt;</span> <span class="c1">// $event is the reserved event obj</span>
+<span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">{</span> <span class="p">{</span> <span class="nx">serverName</span> <span class="p">}</span> <span class="p">}</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>
+<span class="c1">// ts</span>
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">serversComponent</span> <span class="p">{</span>
+    <span class="nx">serverName</span> <span class="o">=</span> <span class="s2">"test server"</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>
