@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | Angular 2 - Directive</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">Angular 2 - Directive</li>
+	</ol>
+	<h3 id="angular-2---directive">Angular 2 - Directive</h3>
+
+<h4 id="what-is-directive"><code class="highlighter-rouge">What is directive?</code></h4>
+
+<p>Directives are instructions in the DOM.</p>
+
+<h4 id="ngif"><code class="highlighter-rouge">*ngIf</code></h4>
+<p>Note: The ‘*’ idicated thi is the structutral that change (add/remove) the DOM. <code class="highlighter-rouge">ngIf</code> is structural directive.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="c1">// html</span>
+<span class="o">&lt;</span><span class="nx">p</span> <span class="o">*</span><span class="nx">ngIf</span><span class="o">=</span><span class="s2">"isServerCreated"</span><span class="o">&gt;</span><span class="nx">Server</span> <span class="nx">has</span> <span class="nx">been</span> <span class="nx">created</span><span class="p">.</span> <span class="nx">The</span> <span class="nx">server</span> <span class="nx">name</span> <span class="k">is</span> <span class="p">{</span> <span class="p">{</span> <span class="nx">serverName</span> <span class="p">}</span> <span class="p">}</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>
+<span class="c1">// ts</span>
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">ServersComponent</span> <span class="p">{</span>
+  <span class="nx">isServerCreated</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+  <span class="nx">onCreateServer</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">isServerCreated</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="enchance-ngif-with-else-condition"><code class="highlighter-rouge">Enchance ngIf with else condition</code></h4>
+<p>Note: The ‘#’ is the local reference.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="c1">// html</span>
+<span class="o">&lt;</span><span class="nx">p</span> <span class="o">*</span><span class="nx">ngIf</span><span class="o">=</span><span class="s2">"isServerCreated; else noServer"</span><span class="o">&gt;</span><span class="nx">Server</span> <span class="nx">has</span> <span class="nx">been</span> <span class="nx">created</span><span class="p">.</span> <span class="nx">The</span> <span class="nx">server</span> <span class="nx">name</span> <span class="k">is</span> <span class="p">{</span> <span class="p">{</span> <span class="nx">serverName</span> <span class="p">}</span> <span class="p">}</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>
+<span class="o">&lt;</span><span class="nx">ng</span><span class="o">-</span><span class="nx">template</span> <span class="err">#</span><span class="nx">noServer</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">No</span> <span class="nx">server</span> <span class="nx">was</span> <span class="nx">created</span><span class="o">!&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/ng-template</span><span class="err">&gt;
+</span></code></pre>
+</div>
+
+<h4 id="styling-elements-dynamically-with-ngstyle"><code class="highlighter-rouge">Styling Elements Dynamically with ngStyle</code></h4>
+<p>Note: ngStyle is attribute directive which is oppose to structural diretives. They don’t add/remove elements. They only change the element they were placed on.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="c1">// html</span>
+<span class="o">&lt;</span><span class="nx">h4</span><span class="o">&gt;</span><span class="nx">The</span> <span class="nx">server</span> <span class="nx">id</span>  <span class="k">is</span> <span class="o">&lt;</span><span class="nx">span</span> <span class="p">[</span><span class="nx">ngStyle</span><span class="p">]</span><span class="o">=</span><span class="s2">"{color: getColor()}"</span><span class="o">&gt;&lt;</span><span class="sr">/span&gt;&lt;/</span><span class="nx">h4</span><span class="o">&gt;</span>
+
+<span class="c1">// ts</span>
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">ServerComponent</span> <span class="p">{</span>
+    <span class="nl">serverId</span><span class="p">:</span> <span class="kr">number</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+
+    <span class="nl">serverStatus</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mf">0.5</span> <span class="p">?</span> <span class="s1">'online'</span> <span class="p">:</span> <span class="s1">'offline'</span><span class="p">;</span>
+
+    <span class="nx">getColor</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">serverStatus</span> <span class="o">===</span> <span class="s1">'online'</span> <span class="p">?</span> <span class="s1">'green'</span> <span class="p">:</span> <span class="s1">'red'</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="ngclass"><code class="highlighter-rouge">[ngClass]</code></h4>
+<p>If a condition is true show the class else nothing.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="c1">// html</span>
+<span class="o">&lt;</span><span class="nx">h4</span> 
+    <span class="p">[</span><span class="nx">ngStyle</span><span class="p">]</span><span class="o">=</span><span class="s2">"{backgroundColor: getColor()}"</span>
+    <span class="p">[</span><span class="nx">ngClass</span><span class="p">]</span><span class="o">=</span><span class="s2">"{online: serverStatus === 'online'}"</span><span class="o">&gt;</span><span class="nx">The</span> <span class="nx">server</span> <span class="nx">id</span>  <span class="k">is</span> <span class="p">{</span> <span class="p">{</span> <span class="nx">getServerStatus</span><span class="p">()</span> <span class="p">}</span> <span class="p">}</span><span class="o">&lt;</span><span class="sr">/h4</span><span class="err">&gt;
+</span>
+<span class="c1">// ts</span>
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+    <span class="na">selector</span><span class="p">:</span> <span class="s1">'app-server'</span><span class="p">,</span> <span class="c1">// html tag</span>
+    <span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'./server.component.html'</span><span class="p">,</span> <span class="c1">// html component file</span>
+    <span class="na">styles</span><span class="p">:</span> <span class="p">[</span><span class="err">`</span><span class="p">.</span><span class="nx">online</span> <span class="p">{</span> <span class="na">color</span><span class="p">:</span> <span class="nx">white</span><span class="p">;</span> <span class="p">}</span><span class="err">`</span><span class="p">]</span>
+<span class="p">})</span>
+</code></pre>
+</div>
+
+<h4 id="ngfor-index"><code class="highlighter-rouge">*ngFor Index</code></h4>
+<p>For each current item there is a reserved index.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="c1">// html</span>
+<span class="o">&lt;</span><span class="nx">button</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"btn btn-primary"</span> <span class="p">(</span><span class="nx">click</span><span class="p">)</span><span class="o">=</span><span class="s2">"onToggleDetails()"</span><span class="o">&gt;</span><span class="nx">Display</span> <span class="nx">Details</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="nx">p</span> <span class="o">*</span><span class="nx">ngIf</span><span class="o">=</span><span class="s2">"showSecret"</span><span class="o">&gt;</span><span class="nx">The</span> <span class="nx">secret</span> <span class="k">is</span> <span class="nx">tuna</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>
+<span class="c1">// index is a reserved keyword</span>
+<span class="o">&lt;</span><span class="nx">div</span> <span class="o">*</span><span class="nx">ngFor</span><span class="o">=</span><span class="s2">"let logItem of log; let i = index"</span>
+     <span class="p">[</span><span class="nx">ngStyle</span><span class="p">]</span><span class="o">=</span><span class="s2">"{backgroundColor: i &gt;= 4 ? 'blue' : 'transparent'}"</span>
+     <span class="p">[</span><span class="nx">ngClass</span><span class="p">]</span><span class="o">=</span><span class="s2">"{'white-color': i &gt;=4 }"</span><span class="o">&gt;</span><span class="p">{</span> <span class="p">{</span> <span class="nx">logItem</span> <span class="p">}</span> <span class="p">}</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>
+<span class="c1">// ts</span>
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">DeatilsComponent</span> <span class="p">{</span>
+  <span class="nx">showSecret</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+  <span class="nx">log</span> <span class="o">=</span> <span class="p">[];</span>
+
+  <span class="nx">onToggleDetails</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">showSecret</span> <span class="o">=</span> <span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">showSecret</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">log</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">());</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>
