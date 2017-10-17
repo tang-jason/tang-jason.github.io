@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | Angular 2 - The Basic</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">Angular 2 - The Basic</li>
+	</ol>
+	<h3 id="angular-2---the-basic">Angular 2 - The Basic</h3>
+
+<h4 id="create-nested-components"><code class="highlighter-rouge">Create Nested Components</code></h4>
+<p>Create recipe-item component under recipe-list componenet. The <code class="highlighter-rouge">--spec false</code> tells angular don’t create this file.</p>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="nx">ng</span> <span class="nx">g</span> <span class="nx">c</span> <span class="nx">recipe</span><span class="o">-</span><span class="nx">list</span><span class="o">/</span><span class="nx">recipe</span><span class="o">-</span><span class="nx">item</span> <span class="o">--</span><span class="nx">spec</span> <span class="kc">false</span>
+</code></pre>
+</div>
+
+<h4 id="create-model"><code class="highlighter-rouge">Create Model</code></h4>
+<p>Simply create the <code class="highlighter-rouge">model.ts</code> file within your project. (e.g: recipe.model.ts)</p>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="k">export</span> <span class="kr">class</span> <span class="nx">Recipe</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="nx">name</span><span class="err">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nx">description</span><span class="err">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nx">imagePath</span><span class="err">:</span> <span class="kr">string</span><span class="p">;</span>
+
+    <span class="kd">constructor</span><span class="p">(</span><span class="nx">name</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">desc</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">imagePath</span><span class="err">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">description</span> <span class="o">=</span> <span class="nx">desc</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">imagePath</span> <span class="o">=</span> <span class="nx">imagePath</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="how-to-use-model"><code class="highlighter-rouge">How to Use Model</code></h4>
+<p>Within your component.ts file (e.g: recipe-list.component.ts)</p>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="k">export</span> <span class="kr">class</span> <span class="nx">RecipeListComponent</span> <span class="p">{</span>
+    <span class="nl">recipes</span><span class="p">:</span> <span class="nx">Recipe</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="k">new</span> <span class="nx">recipe</span><span class="p">(</span><span class="s1">'recipe name'</span><span class="p">,</span> <span class="s1">'recipe description'</span><span class="p">,</span> <span class="s1">'recipe image path'</span><span class="p">);</span>
+    <span class="p">];</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
+
+<p>To loop through the recipe. In your HTML file.</p>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">div</span> <span class="o">*</span><span class="nx">ngFor</span><span class="o">=</span><span class="s2">"let recipe of recipes"</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="p">{</span> <span class="p">{</span> <span class="nx">recipe</span><span class="p">.</span><span class="nx">name</span> <span class="p">}</span> <span class="p">}</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="p">{</span> <span class="p">{</span> <span class="nx">recipe</span><span class="p">.</span><span class="nx">description</span> <span class="p">}</span> <span class="p">}</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">img</span> <span class="p">[</span><span class="nx">src</span><span class="p">]</span><span class="o">=</span><span class="s2">"recipe.imagePath"</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span></code></pre>
+</div>
+
+<h4 id="augury"><code class="highlighter-rouge">Augury</code></h4>
+
+<p>Download this Chrome extension to understand your Angular app better. Just search Angular augury on your browser. You may need to restar your dev tool.</p>
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>
