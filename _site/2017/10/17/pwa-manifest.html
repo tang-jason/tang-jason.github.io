@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | PWA - Manifest</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">PWA - Manifest</li>
+	</ol>
+	<h3 id="pwa---manifest">PWA - Manifest</h3>
+
+<h4 id="manifest"><code class="highlighter-rouge">Manifest</code></h4>
+<p>You’ll need to create a <code class="highlighter-rouge">manifest</code> JSON file to tell the browser this is an extra info for the web app.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="p">{</span>
+    <span class="s2">"name"</span><span class="err">:</span> <span class="s2">"Sweaty - Activity Tracker"</span><span class="p">,</span> <span class="c1">// Long name of app (e.g. on Splashscreen)</span>
+    <span class="s2">"short_name"</span><span class="err">:</span> <span class="s2">"Sweaty"</span><span class="p">,</span> <span class="c1">// Short name of app (g.g. below icon)</span>
+    <span class="s2">"start_url"</span><span class="err">:</span> <span class="s2">"/index.html"</span><span class="p">,</span> <span class="c1">// Which page to load on startup</span>
+    <span class="s2">"scope"</span><span class="err">:</span> <span class="s2">"."</span><span class="p">,</span> <span class="c1">// Whcih pages are included in "PWA experience"</span>
+    <span class="s2">"display"</span><span class="err">:</span> <span class="s2">"standalone"</span><span class="p">,</span> <span class="c1">// Standalone makes your app looks like native app</span>
+    <span class="s2">"background_color"</span><span class="err">:</span> <span class="s2">"#fff"</span><span class="p">,</span> <span class="c1">// Background while loading &amp; on Splashscreen</span>
+    <span class="s2">"theme_color"</span><span class="err">:</span> <span class="s2">"#3F51B5"</span><span class="p">,</span> <span class="c1">// Theme color (e.g. on top bar in task switcher)</span>
+    <span class="s2">"description"</span> <span class="err">:</span> <span class="s2">"Keep running until you're super sweaty"</span><span class="p">,</span> <span class="c1">// Description (e.g. as favorite)</span>
+    <span class="s2">"dir"</span><span class="err">:</span> <span class="s2">"ltr"</span><span class="p">,</span> <span class="c1">// read direction of your app</span>
+    <span class="s2">"lang"</span><span class="err">:</span> <span class="s2">"en-US"</span><span class="p">,</span> <span class="c1">// Main language of app</span>
+    <span class="s2">"orientation"</span><span class="err">:</span> <span class="s2">"portrait-primary"</span><span class="p">,</span> <span class="c1">// Set (and enforce) default orientation</span>
+    <span class="s2">"icons"</span><span class="err">:</span> <span class="s2">"[...]"</span> <span class="c1">// Config icons (e.g. homescreen)</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Example for <code class="highlighter-rouge">icons</code></p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="p">{</span>
+    <span class="s2">"icons"</span><span class="err">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">"src"</span><span class="p">:</span> <span class="s2">"/src/images/icons/app-icon-48x48.png"</span><span class="p">,</span> <span class="c1">// icon path</span>
+            <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"image/png"</span><span class="p">,</span> <span class="c1">// image type</span>
+            <span class="s2">"sizes"</span><span class="p">:</span> <span class="s2">"48x48"</span> <span class="c1">// Icon size, browser chooses best one for given device</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">"src"</span><span class="p">:</span> <span class="s2">"/src/images/icons/app-icon96x96.png"</span><span class="p">,</span> <span class="c1">// icon path</span>
+            <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"image/png"</span><span class="p">,</span> <span class="c1">// image type</span>
+            <span class="s2">"sizes"</span><span class="p">:</span> <span class="s2">"96x96"</span> <span class="c1">// image size</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="meta-properties-for-safari--ie"><code class="highlighter-rouge">Meta Properties for Safari &amp; IE</code></h4>
+
+<p>Manifest only support for Chrome 49+ and Opera 47+. You can add the meta tags below to enchant Safari and IE. MS Edge and Firefox also have this feature in development. Check <a href="https://caniuse.com/#search=manifest">manifest</a> for more info.</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="c">&lt;!-- safari --&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"apple-mobile-web-app-capable"</span> <span class="na">content=</span><span class="s">"yes"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"apple-mobile-web-app-status-bar-style"</span> <span class="na">content=</span><span class="s">"black"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"apple-mobile-web-app-title"</span> <span class="na">title=</span><span class="s">"PWAGram"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"apple-touch-icon"</span> <span class="na">href=</span><span class="s">"/src/images/icons/apple-icon-57x57.png"</span> <span class="na">sizes=</span><span class="s">"57x57"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"apple-touch-icon"</span> <span class="na">href=</span><span class="s">"/src/images/icons/apple-icon-60x60.png"</span> <span class="na">sizes=</span><span class="s">"60x60"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"apple-touch-icon"</span> <span class="na">href=</span><span class="s">"/src/images/icons/apple-icon-72x72.png"</span> <span class="na">sizes=</span><span class="s">"72x72"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"apple-touch-icon"</span> <span class="na">href=</span><span class="s">"/src/images/icons/apple-icon-76x76.png"</span> <span class="na">sizes=</span><span class="s">"76x76"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"apple-touch-icon"</span> <span class="na">href=</span><span class="s">"/src/images/icons/apple-icon-144x144.png"</span> <span class="na">sizes=</span><span class="s">"144x144"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"apple-touch-icon"</span> <span class="na">href=</span><span class="s">"/src/images/icons/apple-icon-120x120.png"</span> <span class="na">sizes=</span><span class="s">"120x120"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"apple-touch-icon"</span> <span class="na">href=</span><span class="s">"/src/images/icons/apple-icon-144x144.png"</span> <span class="na">sizes=</span><span class="s">"144x144"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"apple-touch-icon"</span> <span class="na">href=</span><span class="s">"/src/images/icons/apple-icon-152x152.png"</span> <span class="na">sizes=</span><span class="s">"152x152"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"apple-touch-icon"</span> <span class="na">href=</span><span class="s">"/src/images/icons/apple-icon-180x180.png"</span> <span class="na">sizes=</span><span class="s">"180x180"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- IE --&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"msapplication-TileImage"</span> <span class="na">content=</span><span class="s">"/src/images/icons/app-icon-144x144.png"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"msapplication-TitleColor"</span> <span class="na">content=</span><span class="s">"#fff"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"theme-color"</span> <span class="na">content=</span><span class="s">"#3f51b5"</span><span class="nt">&gt;</span>
+</code></pre>
+</div>
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>
