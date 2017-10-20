@@ -122,11 +122,11 @@
 <p>Note: ngStyle is attribute directive which is oppose to structural diretives. They don’t add/remove elements. They only change the element they were placed on.</p>
 
 <div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="c1">// html</span>
-<span class="o">&lt;</span><span class="nx">h4</span><span class="o">&gt;</span><span class="nx">The</span> <span class="nx">server</span> <span class="nx">id</span>  <span class="k">is</span> <span class="o">&lt;</span><span class="nx">span</span> <span class="p">[</span><span class="nx">ngStyle</span><span class="p">]</span><span class="o">=</span><span class="s2">"{color: getColor()}"</span><span class="o">&gt;&lt;</span><span class="sr">/span&gt;&lt;/</span><span class="nx">h4</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">h4</span><span class="o">&gt;</span><span class="nx">The</span> <span class="nx">server</span> <span class="nx">id</span>  <span class="k">is</span> <span class="o">&lt;</span><span class="nx">span</span> <span class="p">[</span><span class="nx">ngStyle</span><span class="p">]</span><span class="o">=</span><span class="s2">"{color: getColor()}"</span><span class="o">&gt;</span><span class="p">{</span> <span class="p">{</span> <span class="nx">getServerStatus</span><span class="p">()</span> <span class="p">}</span> <span class="p">}</span><span class="o">&lt;</span><span class="sr">/span&gt;&lt;/</span><span class="nx">h4</span><span class="o">&gt;</span>
 
 <span class="c1">// ts</span>
 <span class="k">export</span> <span class="kr">class</span> <span class="nx">ServerComponent</span> <span class="p">{</span>
-    <span class="nl">serverId</span><span class="p">:</span> <span class="kr">number</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="na">serverId</span><span class="p">:</span> <span class="kr">number</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
 
     <span class="nl">serverStatus</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mf">0.5</span> <span class="p">?</span> <span class="s1">'online'</span> <span class="p">:</span> <span class="s1">'offline'</span><span class="p">;</span>
 

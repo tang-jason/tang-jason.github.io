@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | PWA - Service Workers</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">PWA - Service Workers</li>
+	</ol>
+	<h3 id="pwa---service-workers">PWA - Service Workers</h3>
+
+<h4 id="what-is-service-workers"><code class="highlighter-rouge">What is Service Workers</code></h4>
+
+<p>Service workers doing a lot of work behind the scenes. They allow our application for offline cache, push notification, background sync.</p>
+
+<p>Service worker runs on addtional thread, decoupled from HTML pages.</p>
+
+<p>Manages <code class="highlighter-rouge">all pages</code> of given scope (e.g.all pages of a domain).</p>
+
+<p>Lives on even after pages have been closed.</p>
+
+<p>Service workers are background processor. they are good at reacting to events. Like showing notification to the user. You can think of SW as a network proxy.</p>
+
+<h4 id="listenable---events-in-service-worker"><code class="highlighter-rouge">Listenable - Events (in service worker)</code></h4>
+
+<p><code class="highlighter-rouge">Fetch</code> - Browser or page-related JS initiates a Fetch (http request)</p>
+
+<p><code class="highlighter-rouge">Push Notifications</code> - Service worker receives web push notification (from server)</p>
+
+<p><code class="highlighter-rouge">Notification interaction</code> - User interacts with displayed notification</p>
+
+<p><code class="highlighter-rouge">Background sync</code> - Service worker receives background sync event (e.g. itnernet connection was restored)</p>
+
+<p><code class="highlighter-rouge">Service worker lifecycle</code> - Service worker phase changes</p>
+
+<h4 id="service-worker-lifecycle"><code class="highlighter-rouge">Service Worker Lifecycle</code></h4>
+
+<p>index.html <code class="highlighter-rouge">loads</code> app.js <code class="highlighter-rouge">registers</code> sw.js then installation and activation</p>
+
+<h4 id="registering-a-service-worker"><code class="highlighter-rouge">Registering a Service Worker</code></h4>
+
+<p>Service worker must reside in your web root folder which allow SW to control all page and resources.</p>
+
+<p>In your app.js file</p>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">// Check if service worker is supported in user's browser</span>
+<span class="k">if</span> <span class="p">(</span><span class="s2">"serviceWorker"</span> <span class="k">in</span> <span class="nx">navigator</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">navigator</span><span class="p">.</span><span class="nx">serviceWorker</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="s2">"/sw.js"</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Service worker registered!"</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="service-wroker-scope"><code class="highlighter-rouge">Service Wroker Scope</code></h4>
+<p>Scope can be defined to only control the targeted files.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">serviceWorker</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">navigator</span><span class="p">.</span><span class="nx">serviceWorker</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="s2">"/sw.js"</span><span class="p">,</span> <span class="p">{</span><span class="na">scope</span><span class="p">:</span> <span class="s2">"/help/"</span><span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="err">"</span><span class="nx">SW</span> <span class="nx">registered</span><span class="o">!</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Another important note that <code class="highlighter-rouge">Service Worker</code> only works in <code class="highlighter-rouge">HTTPS</code> protocol.</p>
+
+<h4 id="reacting-to-incoming-events-in-sw"><code class="highlighter-rouge">Reacting to Incoming Events (in SW)</code></h4>
+
+<p>In your sw.js file</p>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">// Listening to install event</span>
+<span class="nx">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"install"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"[Service Worker] Install Service Worker ..."</span><span class="p">,</span> <span class="nx">event</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// Listening to activate event</span>
+<span class="nx">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"activate"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"[Service Worker] Activating Service Worker ..."</span><span class="p">,</span> <span class="nx">event</span><span class="p">);</span>
+
+    <span class="c1">// Ensure SW is loaded &amp; activated correctly</span>
+    <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">clients</span><span class="p">.</span><span class="nx">claim</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="c1">// Listening to fetch event. This triggered by your application.</span>
+<span class="nx">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"fetch"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"[Service Worker] Fetch something ..."</span><span class="p">,</span> <span class="nx">event</span><span class="p">);</span>
+
+    <span class="c1">// Override the data that get send back</span>
+    <span class="nx">event</span><span class="p">.</span><span class="nx">respondWith</span><span class="p">(</span><span class="nx">fetch</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">));</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>

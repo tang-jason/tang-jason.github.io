@@ -45,7 +45,7 @@ Note: ngStyle is attribute directive which is oppose to structural diretives. Th
 
 ```typescript
 // html
-<h4>The server id {{ serverId }} is <span [ngStyle]="{color: getColor()}">{{ getServerStatus() }}</span></h4>
+<h4>The server id {{ serverId }} is <span [ngStyle]="{color: getColor()}">{ { getServerStatus() } }</span></h4>
 
 // ts
 export class ServerComponent {
