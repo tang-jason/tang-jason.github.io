@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | PWA - Offline Cache</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">PWA - Offline Cache</li>
+	</ol>
+	<h3 id="pwa---offline-cache">PWA - Offline Cache</h3>
+
+<h4 id="implementing-pre-cache"><code class="highlighter-rouge">Implementing Pre-Cache</code></h4>
+<p>In sw.js file, you can precache the resources.</p>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">// listening to install event</span>
+<span class="nx">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"install"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">cosnole</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"[SW] Installing Service worker ..."</span><span class="p">,</span> <span class="nx">event</span><span class="p">);</span>
+    
+    <span class="c1">// 'static' is the name that we given to store our cached files in 'cache storage' in the browser</span>
+    <span class="nx">event</span><span class="p">.</span><span class="nx">waitUntil</span><span class="p">(</span><span class="nx">caches</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">"static"</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">cache</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"[SW] Precaching App Shell ..."</span><span class="p">);</span>
+        <span class="nx">cache</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">"/"</span><span class="p">);</span> <span class="c1">// cache the root</span>
+        <span class="nx">cache</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">"/index.html"</span><span class="p">);</span> <span class="c1">// cache the index file</span>
+        <span class="nx">cache</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">"/src/js/app.js"</span><span class="p">);</span> <span class="c1">// cache the app js file</span>
+    <span class="p">}));</span>
+<span class="p">});</span>
+
+<span class="c1">// listening to activate event</span>
+<span class="nx">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"activate"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">cosnole</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"[SW: ] Activating Service worker ..."</span><span class="p">,</span> <span class="nx">event</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">clients</span><span class="p">.</span><span class="nx">claim</span><span class="p">();</span> <span class="c1">// ensure the SW is loaded &amp; activated correctly</span>
+<span class="p">});</span>
+
+<span class="c1">// listening to fetch event</span>
+<span class="nx">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"fetch"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// listening to all fetch events.</span>
+    <span class="c1">// 'caches.match' looks at the cache storage first, if not found then web server</span>
+    <span class="nx">event</span><span class="p">.</span><span class="nx">respondWith</span><span class="p">(</span><span class="nx">caches</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// return a response from cache storage</span>
+            <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">// return a server response</span>
+            <span class="k">return</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}));</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<h4 id="addall"><code class="highlighter-rouge">addAll</code></h4>
+
+<p>You can add all the resources that you wanted to precache.</p>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"install"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">event</span><span class="p">.</span><span class="nx">waitUntil</span><span class="p">(</span><span class="nx">caches</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">"static"</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">cache</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">cache</span><span class="p">.</span><span class="nx">addAll</span><span class="p">([</span>
+            <span class="s2">"/"</span><span class="p">,</span>
+            <span class="s2">"/index.html"</span><span class="p">,</span>
+            <span class="s2">"/src/js/app.js"</span>
+        <span class="p">]);</span>
+    <span class="p">}));</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<h4 id="implementing-dynamic-cache"><code class="highlighter-rouge">Implementing Dynamic Cache</code></h4>
+
+<p>When user browser the page while they have internet, the page they visted will dynamically cached the page resources.</p>
+
+<p>In sw.js file</p>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"fetch"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">event</span><span class="p">.</span><span class="nx">respondWith</span><span class="p">(</span><span class="nx">caches</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">// this is where you implement the dynamic caching</span>
+            <span class="k">return</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// you'll need to place a return here as well so that it return to the html</span>
+                <span class="k">return</span> <span class="nx">caches</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">"dynamic"</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">cache</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="c1">// Note: response only used once, here we need to clone it then return it.</span>
+                    <span class="nx">cache</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span> <span class="nx">res</span><span class="p">.</span><span class="nx">clone</span><span class="p">());</span> 
+                    <span class="k">return</span> <span class="nx">res</span><span class="p">;</span>
+                <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                    <span class="c1">// without this catch, you might get a lot error. Just leave it empty.</span>
+                <span class="p">});</span>
+            <span class="p">});</span>
+        <span class="p">}</span>
+    <span class="p">}));</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<h4 id="add-cache-version"><code class="highlighter-rouge">Add Cache Version</code></h4>
+
+<p>Cache storage usually for <code class="highlighter-rouge">images, js, css</code> but not really for <code class="highlighter-rouge">json</code> file that change so frequently from the server.</p>
+
+<p>Your pre-cached files only get updated if the <code class="highlighter-rouge">service worker</code> file get updated. Let say, you updated your <code class="highlighter-rouge">feed.js</code>, the pre-cached <code class="highlighter-rouge">feed.js</code> won’t get updated because the <code class="highlighter-rouge">service worker</code> file didn’t get updated. And using the different cache won’t mess up the old cache that is being used in the application. To fix this, you must use <code class="highlighter-rouge">cache version</code>. Implement it is pretty simple. Just add a <code class="highlighter-rouge">-v2</code> to your <code class="highlighter-rouge">service worker</code> file to trigger the update.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"install"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">event</span><span class="p">.</span><span class="nx">waitUntil</span><span class="p">(</span><span class="nx">caches</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">"static-v2"</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">cache</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">cache</span><span class="p">.</span><span class="nx">addAll</span><span class="p">([</span>
+            <span class="s2">"/"</span><span class="p">,</span>
+            <span class="s2">"/index.html"</span><span class="p">,</span>
+            <span class="s2">"/src/js/app.js"</span><span class="p">,</span>
+            <span class="s2">"/src/js/feed.js"</span> <span class="c1">// change was made to this file</span>
+        <span class="p">]);</span>
+    <span class="p">}));</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<h4 id="cache-version-clean-up"><code class="highlighter-rouge">Cache Version Clean-up</code></h4>
+
+<p>Now, by adding the <code class="highlighter-rouge">version</code>, your cache storage should cached both <code class="highlighter-rouge">static</code> and <code class="highlighter-rouge">static-v2</code>. However, when you reload the page this won’t get updated as your service worker is detecting two caches, hence, it uses the <code class="highlighter-rouge">static</code> resources instead of <code class="highlighter-rouge">static-v2</code>. To fix this, in your <code class="highlighter-rouge">activate</code> event code.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">// This is where you update the cache version</span>
+<span class="kd">var</span> <span class="nx">CACHE_STATIC_NAME</span> <span class="o">=</span> <span class="s2">"static-v3"</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">CACHE_DYNAMIC_NAME</span> <span class="o">=</span> <span class="s2">"dynamic-v2"</span><span class="p">;</span>
+
+<span class="nx">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"activate"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Wait for the clean up to be done before activate</span>
+    <span class="nx">event</span><span class="p">.</span><span class="nx">waitUntil</span><span class="p">(</span><span class="nx">caches</span><span class="p">.</span><span class="nx">key</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">keylist</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="nx">keylist</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">key</span> <span class="o">!==</span> <span class="nx">CACHE_STATIC_NAME</span> <span class="o">&amp;&amp;</span> <span class="nx">key</span> <span class="o">!==</span> <span class="nx">CACHE_DYNAMIC_NAME</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nx">caches</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}));</span>
+    <span class="p">}));</span>
+
+    <span class="c1">// Ensure service worker loaded &amp; activated correctly</span>
+    <span class="k">return</span> <span class="nx">event</span><span class="p">.</span><span class="nx">clients</span><span class="p">.</span><span class="nx">claim</span><span class="p">();</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>
