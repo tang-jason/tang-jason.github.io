@@ -85,55 +85,40 @@
 	</ol>
 	<h3 id="c-delegate">C#: Delegate</h3>
 
-<p>A delegate is a type that represents references to methods with a particular parameter list and return type. When you instantiate a delegate, you can associate its instance with any method with a compatible signature and return type. You can invoke (or call) the method through the delegate instance.</p>
+<h4 id="what-is-delegate"><code class="highlighter-rouge">What is Delegate?</code></h4>
 
-<h4 id="delegate-declaration"><code class="highlighter-rouge">Delegate Declaration</code></h4>
+<p>A delegate is a type safe function pointer. That is, it holds a reference (pointer) to a function.</p>
 
-<div class="language-csharp highlighter-rouge"><pre class="highlight"><code>    <span class="c1">// example
-</span>    <span class="k">public</span> <span class="k">delegate</span> <span class="k">void</span> <span class="nf">CreateFullName</span><span class="p">(</span><span class="kt">string</span> <span class="n">firstName</span><span class="p">,</span> <span class="kt">string</span> <span class="n">lastName</span><span class="p">);</span>
-</code></pre>
-</div>
+<p>The signature of the delegate must match the signature of the function the delegate points to, otherwise you get a compiler error. This is a reason delgates are called as type safe function pointers.</p>
 
-<h4 id="full-example"><code class="highlighter-rouge">Full Example</code></h4>
+<p>A delegate is similar to a class. You can create an instance of it, and when you do so, you pass in the function name as a parameter to the delegate consturctor, and it is to this function the delegate will point to.</p>
 
-<p>If you’re coming from a JavaScript background, C# delegate is pretty much like <code class="highlighter-rouge">function expression</code> but in C# way.</p>
+<p>Tip to remember delegate syntax: Delegates syntax look very much similar to a method with a delegate keyword.</p>
 
-<p>JavaScript Function Expression Example:</p>
-
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>    <span class="kd">var</span> <span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">num1</span><span class="p">,</span> <span class="nx">num2</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">num1</span> <span class="o">+</span> <span class="nx">num2</span><span class="p">;</span>
-    <span class="p">}</span>
-</code></pre>
-</div>
-
-<p>C# Delegate Example:</p>
-
-<p>Follow the steps</p>
-
-<div class="language-csharp highlighter-rouge"><pre class="highlight"><code>    <span class="c1">// step 1: delegate declaration
-</span>    <span class="k">public</span> <span class="k">delegate</span> <span class="kt">double</span> <span class="nf">AddSumDelegate</span><span class="p">(</span><span class="kt">int</span> <span class="n">num1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">num2</span><span class="p">);</span>
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="c1">// A delegate just a type safe function pointer. Using delegate gives developers a lot of flexibilites
+</span><span class="k">namespace</span> <span class="nn">Delegates</span>
+<span class="p">{</span>
+    <span class="c1">// delegate function
+</span>    <span class="k">public</span> <span class="k">delegate</span> <span class="k">void</span> <span class="nf">HelloFunctionDelegate</span><span class="p">(</span><span class="kt">string</span> <span class="n">message</span><span class="p">);</span>
 
     <span class="k">class</span> <span class="nc">Program</span>
     <span class="p">{</span>
-        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="c1">// method
+</span>        <span class="k">static</span> <span class="k">void</span> <span class="nf">Hello</span><span class="p">(</span><span class="kt">string</span> <span class="n">message</span><span class="p">)</span>
         <span class="p">{</span>
-            <span class="c1">// step 3: create a delegate instance and pass in the method
-</span>            <span class="n">AddSumDelegate</span> <span class="n">addSum</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">AddSumDelegate</span><span class="p">(</span><span class="n">AddMethod</span><span class="p">);</span>
-
-            <span class="c1">// step 4: invoke addSum method and assign the returned value to 'result'.
-</span>            <span class="c1">// similar to JavaScript function expression. It assigns the function to variable.
-</span>            <span class="kt">double</span> <span class="n">result</span> <span class="p">=</span> <span class="nf">addSum</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="m">5</span><span class="p">);</span>
-
-            <span class="c1">// step 5: print out the result
-</span>            <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">result</span><span class="p">);</span> <span class="c1">// output: 9
-</span>        <span class="p">}</span>
-
-        <span class="c1">// step 2: create a method
-</span>        <span class="k">static</span> <span class="kt">double</span> <span class="nf">AddMethod</span><span class="p">(</span><span class="kt">int</span> <span class="n">n1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n2</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="k">return</span> <span class="n">n1</span> <span class="p">+</span> <span class="n">n2</span><span class="p">;</span>
+            <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
         <span class="p">}</span>
+
+        <span class="c1">// Entry point
+</span>        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">// Instantiate delegate
+</span>            <span class="c1">// Signature must match the method
+</span>            <span class="n">HelloFunctionDelegate</span> <span class="n">del</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">HelloFunctionDelegate</span><span class="p">(</span><span class="n">Hello</span><span class="p">);</span>
+            <span class="nf">del</span><span class="p">(</span><span class="s">"Hello from delegates"</span><span class="p">);</span> <span class="c1">// output: Hello from delegates
+</span>        <span class="p">}</span>
     <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
 </div>
 

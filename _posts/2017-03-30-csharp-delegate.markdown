@@ -7,54 +7,39 @@ lang: en-us
 
 ### {{ page.title }}
 
-A delegate is a type that represents references to methods with a particular parameter list and return type. When you instantiate a delegate, you can associate its instance with any method with a compatible signature and return type. You can invoke (or call) the method through the delegate instance.
+#### `What is Delegate?`
 
-#### `Delegate Declaration`
+A delegate is a type safe function pointer. That is, it holds a reference (pointer) to a function.
 
-```csharp
-    // example
-    public delegate void CreateFullName(string firstName, string lastName);
-```
+The signature of the delegate must match the signature of the function the delegate points to, otherwise you get a compiler error. This is a reason delgates are called as type safe function pointers.
 
-#### `Full Example`
+A delegate is similar to a class. You can create an instance of it, and when you do so, you pass in the function name as a parameter to the delegate consturctor, and it is to this function the delegate will point to.
 
-If you're coming from a JavaScript background, C# delegate is pretty much like `function expression` but in C# way.
-
-JavaScript Function Expression Example:
-
-```javascript
-    var add = function (num1, num2) {
-        return num1 + num2;
-    }
-```
-
-C# Delegate Example:
-
-Follow the steps
+Tip to remember delegate syntax: Delegates syntax look very much similar to a method with a delegate keyword.
 
 ```csharp
-    // step 1: delegate declaration
-    public delegate double AddSumDelegate(int num1, int num2);
+// A delegate just a type safe function pointer. Using delegate gives developers a lot of flexibilites
+namespace Delegates
+{
+    // delegate function
+    public delegate void HelloFunctionDelegate(string message);
 
     class Program
     {
+        // method
+        static void Hello(string message)
+        {
+            Console.WriteLine(message);
+        }
+
+        // Entry point
         static void Main(string[] args)
         {
-            // step 3: create a delegate instance and pass in the method
-            AddSumDelegate addSum = new AddSumDelegate(AddMethod);
-
-            // step 4: invoke addSum method and assign the returned value to 'result'.
-            // similar to JavaScript function expression. It assigns the function to variable.
-            double result = addSum(4, 5);
-
-            // step 5: print out the result
-            Console.WriteLine(result); // output: 9
-        }
-
-        // step 2: create a method
-        static double AddMethod(int n1, int n2)
-        {
-            return n1 + n2;
+            // Instantiate delegate
+            // Signature must match the method
+            HelloFunctionDelegate del = new HelloFunctionDelegate(Hello);
+            del("Hello from delegates"); // output: Hello from delegates
         }
     }
+}
 ```
