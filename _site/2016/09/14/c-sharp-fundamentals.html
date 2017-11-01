@@ -85,6 +85,19 @@
 	</ol>
 	<h1 id="c-fundamentals">C#: Fundamentals</h1>
 
+<h4 id="c-vs-net"><code class="highlighter-rouge">C# vs .NET</code></h4>
+<p>C# is a programming language, while .NET is a framework. It consists of a run-time environment (CLR) and a class library that we use for building application.</p>
+
+<h4 id="clr"><code class="highlighter-rouge">CLR</code></h4>
+<p>When you compile an application, C# compiler compiles your code to IL (Intermediate Language) code. IL code is platform agnostics, which makes it possible to a take a C# program on a different computer with different hardware architecture and OS and run it. For this to happen, we need CLR. When you run a C# application, CLR compiles the IL code into the native machine code for the computer on which it is running. This process is called Just-in-time Compilation (JIT).</p>
+
+<h4 id="architecture-of-net-application"><code class="highlighter-rouge">Architecture of .NET Application</code></h4>
+<p>In terms of architecture, an application written with C# consists of building blocks called classes. A class is a container for data (attributes) and method (functions). Attributes represent the state of the application. Method include code. They have logic.</p>
+
+<p>A namespace is a container for related classes. So as your application grows in size, you may want to group the related classes into various namespaces for better maintainability.</p>
+
+<p>As the number of classes and namesapces even grow further, you may want to physically separate related namesapces into separate assembilies. An assembly is a file (DLL or EXE) that contains one or more namespaces and classes. An EXE file represents a program that can be executed. A DLL is a file that includes code that can be re-used across different programs.</p>
+
 <h3 id="methods">Methods</h3>
 
 <ol>
