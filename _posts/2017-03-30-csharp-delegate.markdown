@@ -43,3 +43,48 @@ namespace Delegates
     }
 }
 ```
+
+#### `Delegate Usage Example`
+
+```csharp
+namespace Delegate_Demo
+{
+    // Delegate function
+    public delegate bool IsPromotable(Employee emp);
+
+    // Employee class
+    class Employee
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public int Salary { get; set; }
+        public int Experience { get; set; }
+
+        public static void Promote(List<employee> empList, IsPromotable IsEligibleToPromote)
+        {
+            foreach (var employee in empList)
+            {
+                if (IsEligibleToPromote(employee))
+                {
+                    Console.WriteLine(employeeList.Name + " promoted");
+                }
+            }
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Employee employee = new Employee
+            {
+                new Employee() { ID = 101, Name = "John", Salary = 50000, Experience = 5 },
+                new Employee() { ID = 102, Name = "Mary", Salary = 40000, Experience = 4 },
+                new Employee() { ID = 103, Name = "Jose", Salary = 30000, Experience = 3 }
+            };
+
+            Employee.Promote(employee, emp => emp.Experience >= 5);
+        }
+    }
+}
+```
