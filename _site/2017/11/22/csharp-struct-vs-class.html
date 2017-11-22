@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | C# - Struct vs class</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">C# - Struct vs class</li>
+	</ol>
+	<h3 id="c---struct-vs-class">C# - Struct vs class</h3>
+
+<p>Difference between <code class="highlighter-rouge">struct</code> and class.</p>
+
+<ol>
+  <li>Struct is a <code class="highlighter-rouge">value</code> type and class is a <code class="highlighter-rouge">reference</code> type.</li>
+  <li>Struct stores on the <code class="highlighter-rouge">stack</code> and whereas class stores on the <code class="highlighter-rouge">heap</code>.</li>
+  <li>Value type hold their value in memory and whereas reference type hold the refernece to the object in memeory.</li>
+  <li>Value type destroyed immediately after scope is lost and whereas the object reference variable is destroyed when its scope is lost. The actual class object get destroyed later in garbage collector.</li>
+  <li>When you copy a strcut to another struct, a new copy is created and modifications won’t affect one another.</li>
+  <li>When you copy a class to another class, it is pointing to the same object in memory. Modifications will be affected one another.</li>
+  <li>Struct cannot have destructor and class can.</li>
+  <li>Struct cannot have parameterless constructor but class can.</li>
+  <li>Struct cannot inherit from another class but class can. Both struct and class can inherit an interface.</li>
+  <li>Use <code class="highlighter-rouge">sealed</code> type to prevent class being inherited.</li>
+</ol>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="c1">// Base class
+</span><span class="k">public</span> <span class="k">class</span> <span class="nc">Parent</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">Print</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Hello world!"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Derived class
+</span><span class="k">public</span> <span class="k">class</span> <span class="nc">Customer</span> <span class="p">:</span> <span class="n">Parent</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">ID</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="c1">// class can have destructor
+</span>    <span class="p">~</span><span class="nf">Customer</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+
+    <span class="c1">// class can have parameterless constructor
+</span>    <span class="k">public</span> <span class="nf">Customer</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">Program</span>
+<span class="p">{</span>
+    <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// int is vlaue type and stores in memory but get destroyed when its scope is lost.
+</span>        <span class="c1">// update 'j' will not affect i as they're two different copy in memory.
+</span>        <span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">10</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">j</span> <span class="p">=</span> <span class="n">i</span>
+        <span class="n">j</span> <span class="p">=</span> <span class="n">j</span> <span class="p">+</span> <span class="m">1</span><span class="p">;</span>
+
+        <span class="c1">// Object reference variable 
+</span>        <span class="n">Customer</span> <span class="n">C1</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Customer</span>
+        <span class="p">{</span>
+            <span class="n">ID</span> <span class="p">=</span> <span class="m">101</span><span class="p">,</span>
+            <span class="n">Name</span> <span class="p">=</span> <span class="s">"Amelia"</span>
+        <span class="p">};</span>
+
+        <span class="c1">// Both C1 &amp; C2 pointing to the same memory location in heap.
+</span>        <span class="n">Customer</span> <span class="n">C2</span> <span class="p">=</span> <span class="n">C1</span><span class="p">;</span>
+
+        <span class="c1">// Update its property will afect one another.
+</span>        <span class="n">C2</span><span class="p">.</span><span class="n">Name</span> <span class="p">=</span> <span class="s">"Jaythan"</span><span class="p">;</span>
+
+        <span class="c1">// output: C1 name: Jaythan, C2 anme: Jaythan
+</span>        <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="err">$</span><span class="s">"C1 name: {C1.Name}, C2 anme: {C2.Name}"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>
