@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | C# - Abstract vs interface</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">C# - Abstract vs interface</li>
+	</ol>
+	<h3 id="c---abstract-vs-interface">C# - Abstract vs interface</h3>
+
+<h4 id="difference-between-abstract-and-interface"><code class="highlighter-rouge">Difference between abstract and interface</code>.</h4>
+
+<ol>
+  <li>Abstract can have access modifiers whereas interface cannot.</li>
+  <li>Abstract can have field whereas interface cannot.</li>
+  <li>Abstract can have implementation details whereas interface cannot.</li>
+  <li>Abstract can inherit from an abstract class and interface whereas interface can inherit from an interface but not abstract.</li>
+</ol>
+
+<h4 id="example"><code class="highlighter-rouge">Example</code></h4>
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="c1">// abstract class
+</span><span class="k">public</span> <span class="k">abstract</span> <span class="k">class</span> <span class="nc">Customer</span>
+<span class="p">{</span>
+    <span class="c1">// Abstract method (note: Not allow implementation detail)
+</span>    <span class="k">public</span> <span class="k">abstract</span> <span class="k">void</span> <span class="nf">AbstractPrint</span><span class="p">();</span>
+
+    <span class="c1">// Non-abstract method
+</span>    <span class="k">public</span> <span class="k">void</span> <span class="nf">NonAbstractPrint</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"I am a non-abstract method."</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">Program</span> <span class="p">:</span> <span class="n">Customer</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Must provide implementation for 'AbstractPrint' method. Override keyword is needed
+</span>        <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">AbstractPrint</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"I am an abstract method."</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="extra-for-abstract"><code class="highlighter-rouge">Extra for abstract</code></h4>
+
+<ol>
+  <li>The ‘abstract’ keyword is used to create abstract class.</li>
+  <li>An ‘abstract’ class is incomplete and hence cannot be instantiated.</li>
+  <li>An ‘abstract’ class can only be used as base class. (becos it’s incomplete which make sense it can only be a base class)</li>
+  <li>An ‘abstract’ class cannot be sealed (sealed = prevent from being inherited).</li>
+  <li>An ‘abstract’ class may contains abstract memeber (field, property, method, etc…) but not mandatory.</li>
+  <li>A non-abstract class derived from abstract class must provide implementation detail.</li>
+</ol>
+
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>
