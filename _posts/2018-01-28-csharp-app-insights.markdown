@@ -49,7 +49,7 @@ class Program
     }
 ```
 
-`How to check trace messages`
+#### `How to check trace messages`
 
 1. Go to Azure web portal
 2. Application Insights
