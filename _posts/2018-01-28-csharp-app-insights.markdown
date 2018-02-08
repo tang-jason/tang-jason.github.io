@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "C# - Application Insights"
+title: "C# - Application Insight"
 date: 2018-01-28
 lang: en-us
 ---

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | C# - Application Insight</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">C# - Application Insight</li>
+	</ol>
+	<h3 id="c---application-insight">C# - Application Insight</h3>
+
+<h4 id="create-application-insights-in-azure"><code class="highlighter-rouge">Create Application Insights in Azure</code></h4>
+
+<p>Go to Azure web portal and create application insights under targeted project.</p>
+
+<h4 id="install-application-insights-to-console-app"><code class="highlighter-rouge">Install Application Insights to Console App</code></h4>
+
+<p>In your console application, open up Package Manager Console and type <code class="highlighter-rouge">Install-Package Microsoft.ApplicationInsights -Version 2.4.0</code> or go to <a href="https://www.nuget.org/packages/Microsoft.ApplicationInsights">Application Insights</a> for the latest.</p>
+
+<h4 id="code"><code class="highlighter-rouge">Code</code>.</h4>
+
+<p>Messages are buffered internally and send once in awhile to Application Insights. At the end of the application call the <code class="highlighter-rouge">Flush()</code> method to send the events.</p>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">// Set up App Insights telemetry
+</span>            <span class="n">TelemetryConfiguration</span><span class="p">.</span><span class="n">Active</span><span class="p">.</span><span class="n">InstrumentationKey</span> <span class="p">=</span> <span class="s">"&lt;INSTRUMENTION_KEY&gt;"</span><span class="p">;</span>
+            <span class="kt">var</span> <span class="n">telemetryClient</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TelemetryClient</span><span class="p">();</span>
+
+            <span class="c1">// Get the object used to communicate with the FTP server
+</span>            <span class="n">FtpWebRequest</span> <span class="n">request</span> <span class="p">=</span> <span class="p">(</span><span class="n">FtpWebRequest</span><span class="p">)</span><span class="n">WebRequest</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="n">Properties</span><span class="p">.</span><span class="n">Settings</span><span class="p">.</span><span class="n">Default</span><span class="p">.</span><span class="n">FtpEndpoint</span><span class="p">);</span>
+
+            <span class="c1">// FTP credentials
+</span>            <span class="n">request</span><span class="p">.</span><span class="n">Credentials</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">NetworkCredential</span><span class="p">(</span><span class="n">Properties</span><span class="p">.</span><span class="n">Settings</span><span class="p">.</span><span class="n">Default</span><span class="p">.</span><span class="n">FtpUserName</span><span class="p">,</span> <span class="n">Properties</span><span class="p">.</span><span class="n">Settings</span><span class="p">.</span><span class="n">Default</span><span class="p">.</span><span class="n">FtpPassword</span><span class="p">);</span>
+
+            <span class="c1">// FTP request method
+</span>            <span class="n">request</span><span class="p">.</span><span class="n">Method</span> <span class="p">=</span> <span class="n">WebRequestMethods</span><span class="p">.</span><span class="n">Ftp</span><span class="p">.</span><span class="n">ListDirectoryDetails</span><span class="p">;</span>
+
+            <span class="k">using</span> <span class="p">(</span><span class="n">FtpWebResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="p">(</span><span class="n">FtpWebResponse</span><span class="p">)</span><span class="n">request</span><span class="p">.</span><span class="nf">GetResponse</span><span class="p">())</span>
+            <span class="k">using</span> <span class="p">(</span><span class="n">Stream</span> <span class="n">responseStream</span> <span class="p">=</span> <span class="n">response</span><span class="p">.</span><span class="nf">GetResponseStream</span><span class="p">())</span>
+            <span class="k">using</span> <span class="p">(</span><span class="n">StreamReader</span> <span class="n">reader</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">responseStream</span><span class="p">))</span>
+            <span class="p">{</span>
+                <span class="n">telemetryClient</span><span class="p">.</span><span class="nf">TrackTrace</span><span class="p">(</span><span class="s">"Successfully retrieved a list of FTP directories"</span><span class="p">);</span>
+                <span class="n">telemetryClient</span><span class="p">.</span><span class="nf">Flush</span><span class="p">();</span>
+                <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">reader</span><span class="p">.</span><span class="nf">ReadToEnd</span><span class="p">());</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="how-to-check-trace-messages"><code class="highlighter-rouge">How to check trace messages</code></h4>
+
+<ol>
+  <li>Go to Azure web portal</li>
+  <li>Application Insights</li>
+  <li>Under Investigation, Search</li>
+  <li>You should see your traces there</li>
+</ol>
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>
