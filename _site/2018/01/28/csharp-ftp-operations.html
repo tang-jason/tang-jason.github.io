@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | C# - FTP Operations</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">C# - FTP Operations</li>
+	</ol>
+	<h3 id="c---ftp-operations">C# - FTP Operations</h3>
+
+<h4 id="ftp-common-commands"><code class="highlighter-rouge">FTP Common Commands</code></h4>
+<p>There are more commands than listed below. This post will provide <code class="highlighter-rouge">UploadFile</code> and <code class="highlighter-rouge">MakeDirectory</code> examples</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>1. UploadFile
+2. MakeDirectory
+3. DeleteFile
+4. DownloadFile
+5. ListDirectory
+</code></pre>
+</div>
+
+<h4 id="step-1-build-request-object"><code class="highlighter-rouge">Step 1: Build request object</code></h4>
+<div class="highlighter-rouge"><pre class="highlight"><code>FtpWebRequest request = (FtpWebRequest)WebRequest.Create(ftpDirPath);
+</code></pre>
+</div>
+
+<h4 id="step-2-define-ftp-command"><code class="highlighter-rouge">Step 2: Define FTP Command</code></h4>
+<div class="highlighter-rouge"><pre class="highlight"><code>request.Method = WebRequestMethods.Ftp.MakeDirectory;
+OR
+request.Method = WebRequestMethods.Ftp.UploadFile;
+</code></pre>
+</div>
+
+<h4 id="step-3-credentials"><code class="highlighter-rouge">Step 3: Credentials</code></h4>
+<div class="highlighter-rouge"><pre class="highlight"><code>request.Credentials = new NetworkCredential(FtpUser, FtpPass);
+</code></pre>
+</div>
+
+<h4 id="step-4-ftp-get-response"><code class="highlighter-rouge">Step 4: FTP Get Response</code></h4>
+<div class="highlighter-rouge"><pre class="highlight"><code>FtpWebResponse response = (FtpWebResponse)request.GetResponse();
+</code></pre>
+</div>
+
+<h4 id="upload-example"><code class="highlighter-rouge">Upload Example</code></h4>
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="k">private</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Upload</span><span class="p">(</span><span class="kt">string</span> <span class="n">ftpFilePath</span><span class="p">,</span> <span class="kt">string</span> <span class="n">file</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">try</span>
+    <span class="p">{</span>
+        <span class="c1">// Create request object
+</span>        <span class="n">FtpWebRequest</span> <span class="n">request</span> <span class="p">=</span> <span class="p">(</span><span class="n">FtpWebRequest</span><span class="p">)</span><span class="n">WebRequest</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="n">ftpFilePath</span><span class="p">);</span>
+
+        <span class="c1">// Define request command
+</span>        <span class="n">request</span><span class="p">.</span><span class="n">Method</span> <span class="p">=</span> <span class="n">WebRequestMethods</span><span class="p">.</span><span class="n">Ftp</span><span class="p">.</span><span class="n">UploadFile</span><span class="p">;</span>
+
+        <span class="c1">// FTP Credential
+</span>        <span class="n">request</span><span class="p">.</span><span class="n">Credentials</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">NetworkCredential</span><span class="p">(</span><span class="n">Properties</span><span class="p">.</span><span class="n">Settings</span><span class="p">.</span><span class="n">Default</span><span class="p">.</span><span class="n">FtpUser</span><span class="p">,</span> <span class="n">Properties</span><span class="p">.</span><span class="n">Settings</span><span class="p">.</span><span class="n">Default</span><span class="p">.</span><span class="n">FtpPass</span><span class="p">);</span>
+
+        <span class="c1">// Open and read file, then get the stream used to data to an FTP server
+</span>        <span class="k">using</span> <span class="p">(</span><span class="n">Stream</span> <span class="n">fileStream</span> <span class="p">=</span> <span class="n">File</span><span class="p">.</span><span class="nf">OpenRead</span><span class="p">(</span><span class="n">file</span><span class="p">))</span>
+        <span class="k">using</span> <span class="p">(</span><span class="n">Stream</span> <span class="n">ftpStream</span> <span class="p">=</span> <span class="n">request</span><span class="p">.</span><span class="nf">GetRequestStream</span><span class="p">())</span>
+        <span class="p">{</span>
+            <span class="c1">// Use 'CopyTo' to avoid failure if the file is larger than 2GB (and even on 64-bit systems, System.Array cannot exceed 4 billion elements).
+</span>            <span class="n">fileStream</span><span class="p">.</span><span class="nf">CopyTo</span><span class="p">(</span><span class="n">ftpStream</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="n">FtpWebResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+
+        <span class="k">try</span>
+        <span class="p">{</span>
+            <span class="c1">// Send request
+</span>            <span class="n">response</span> <span class="p">=</span> <span class="p">(</span><span class="n">FtpWebResponse</span><span class="p">)</span><span class="n">request</span><span class="p">.</span><span class="nf">GetResponse</span><span class="p">();</span>
+
+            <span class="c1">// Output message on screen
+</span>            <span class="n">Log</span><span class="p">.</span><span class="nf">Write</span><span class="p">(</span><span class="err">$</span><span class="s">"{request.Method} {ftpFilePath}"</span><span class="p">,</span> <span class="n">Log</span><span class="p">.</span><span class="n">Status</span><span class="p">.</span><span class="n">UPLOADED</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">// Output message on screen
+</span>            <span class="n">Log</span><span class="p">.</span><span class="nf">Write</span><span class="p">(</span><span class="err">$</span><span class="s">"FTP UPLOAD: {response.StatusCode} - {ex.Message}"</span><span class="p">,</span> <span class="n">Log</span><span class="p">.</span><span class="n">Status</span><span class="p">.</span><span class="n">ERROR</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Output message on screen
+</span>        <span class="n">Log</span><span class="p">.</span><span class="nf">Write</span><span class="p">(</span><span class="err">$</span><span class="s">"ERROR: {ex.Message}"</span><span class="p">,</span> <span class="n">Log</span><span class="p">.</span><span class="n">Status</span><span class="p">.</span><span class="n">ERROR</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="make-directory-example"><code class="highlighter-rouge">Make Directory Example</code></h4>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="k">private</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">CreateDirectory</span><span class="p">(</span><span class="kt">string</span> <span class="n">ftpDirPath</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">FtpWebRequest</span> <span class="n">request</span> <span class="p">=</span> <span class="p">(</span><span class="n">FtpWebRequest</span><span class="p">)</span><span class="n">WebRequest</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="n">ftpDirPath</span><span class="p">);</span>
+
+    <span class="n">request</span><span class="p">.</span><span class="n">Method</span> <span class="p">=</span> <span class="n">WebRequestMethods</span><span class="p">.</span><span class="n">Ftp</span><span class="p">.</span><span class="n">MakeDirectory</span><span class="p">;</span>
+
+    <span class="n">request</span><span class="p">.</span><span class="n">Credentials</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">NetworkCredential</span><span class="p">(</span><span class="n">Properties</span><span class="p">.</span><span class="n">Settings</span><span class="p">.</span><span class="n">Default</span><span class="p">.</span><span class="n">FtpUser</span><span class="p">,</span> <span class="n">Properties</span><span class="p">.</span><span class="n">Settings</span><span class="p">.</span><span class="n">Default</span><span class="p">.</span><span class="n">FtpPass</span><span class="p">);</span>
+
+    <span class="n">FtpWebResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+
+    <span class="k">try</span>
+    <span class="p">{</span>
+        <span class="n">response</span> <span class="p">=</span> <span class="p">(</span><span class="n">FtpWebResponse</span><span class="p">)</span><span class="n">request</span><span class="p">.</span><span class="nf">GetResponse</span><span class="p">();</span>
+
+        <span class="c1">// Output message on screen
+</span>        <span class="n">Log</span><span class="p">.</span><span class="nf">Write</span><span class="p">(</span><span class="err">$</span><span class="s">"{request.Method} {ftpDirPath}"</span><span class="p">,</span> <span class="n">Log</span><span class="p">.</span><span class="n">Status</span><span class="p">.</span><span class="n">CREATED</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">catch</span> <span class="p">(</span><span class="n">WebException</span> <span class="n">webEx</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">response</span> <span class="p">=</span> <span class="p">(</span><span class="n">FtpWebResponse</span><span class="p">)</span><span class="n">webEx</span><span class="p">.</span><span class="n">Response</span><span class="p">;</span>
+
+        <span class="c1">// 550 Cannot create a file when that file already existed
+</span>        <span class="k">if</span> <span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">StatusCode</span> <span class="p">==</span> <span class="n">FtpStatusCode</span><span class="p">.</span><span class="n">ActionNotTakenFileUnavailable</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">// Output message on screen
+</span>            <span class="n">Log</span><span class="p">.</span><span class="nf">Write</span><span class="p">(</span><span class="err">$</span><span class="s">"{ftpDirPath}"</span><span class="p">,</span> <span class="n">Log</span><span class="p">.</span><span class="n">Status</span><span class="p">.</span><span class="n">EXISTED</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Output message on screen
+</span>        <span class="n">Log</span><span class="p">.</span><span class="nf">Write</span><span class="p">(</span><span class="err">$</span><span class="s">"FTP CREATE: {response.StatusCode} - {ex.Message}"</span><span class="p">,</span> <span class="n">Log</span><span class="p">.</span><span class="n">Status</span><span class="p">.</span><span class="n">ERROR</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="recursive-operation"><code class="highlighter-rouge">Recursive operation</code></h4>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">RecursiveUpload</span><span class="p">(</span><span class="kt">string</span> <span class="n">dirPath</span><span class="p">,</span> <span class="kt">string</span> <span class="n">uploadPath</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">string</span><span class="p">[]</span> <span class="n">files</span> <span class="p">=</span> <span class="n">Directory</span><span class="p">.</span><span class="nf">GetFiles</span><span class="p">(</span><span class="n">dirPath</span><span class="p">,</span> <span class="s">"*.*"</span><span class="p">);</span>
+    <span class="kt">string</span><span class="p">[]</span> <span class="n">subDirs</span> <span class="p">=</span> <span class="n">Directory</span><span class="p">.</span><span class="nf">GetDirectories</span><span class="p">(</span><span class="n">dirPath</span><span class="p">);</span>
+
+    <span class="k">foreach</span> <span class="p">(</span><span class="kt">string</span> <span class="n">file</span> <span class="k">in</span> <span class="n">files</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nf">Upload</span><span class="p">(</span><span class="n">uploadPath</span> <span class="p">+</span> <span class="s">"/"</span> <span class="p">+</span> <span class="n">Path</span><span class="p">.</span><span class="nf">GetFileName</span><span class="p">(</span><span class="n">file</span><span class="p">),</span> <span class="n">file</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">foreach</span> <span class="p">(</span><span class="kt">string</span> <span class="n">subDir</span> <span class="k">in</span> <span class="n">subDirs</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nf">CreateDirectory</span><span class="p">(</span><span class="n">uploadPath</span> <span class="p">+</span> <span class="s">"/"</span> <span class="p">+</span> <span class="n">Path</span><span class="p">.</span><span class="nf">GetFileName</span><span class="p">(</span><span class="n">subDir</span><span class="p">));</span>
+
+        <span class="nf">RecursiveUpload</span><span class="p">(</span><span class="n">subDir</span><span class="p">,</span> <span class="n">uploadPath</span> <span class="p">+</span> <span class="s">"/"</span> <span class="p">+</span> <span class="n">Path</span><span class="p">.</span><span class="nf">GetFileName</span><span class="p">(</span><span class="n">subDir</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="main"><code class="highlighter-rouge">Main</code></h4>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="c1">// Upload files recursively
+</span><span class="n">Uploader</span><span class="p">.</span><span class="nf">RecursiveUpload</span><span class="p">(</span><span class="n">siteDir</span><span class="p">,</span> <span class="n">Properties</span><span class="p">.</span><span class="n">Settings</span><span class="p">.</span><span class="n">Default</span><span class="p">.</span><span class="n">FtpEndpoint</span><span class="p">);</span>
+</code></pre>
+</div>
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>
