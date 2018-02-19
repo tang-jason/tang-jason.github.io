@@ -97,6 +97,74 @@
 
 <p>Remove the version <code class="highlighter-rouge">@2.5.13</code>, you’ll always received the latest version.</p>
 
+<h4 id="create-vue-instance"><code class="highlighter-rouge">Create Vue Instance</code></h4>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">v-on:input=</span><span class="s">"changeTitle"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;h1&gt;</span>{ { title } }<span class="nt">&lt;/h1&gt;</span>
+</code></pre>
+</div>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">vue</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+    <span class="na">el</span><span class="p">:</span> <span class="s1">'#app'</span><span class="p">,</span>
+    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">title</span><span class="p">:</span> <span class="s1">'Hello world!'</span>
+    <span class="p">},</span>
+    <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">changeTitle</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<h4 id="directive"><code class="highlighter-rouge">Directive</code></h4>
+
+<p>Directive starts with <code class="highlighter-rouge">v-</code>. For example.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>v-on:input="changeTitle"
+</code></pre>
+</div>
+
+<h4 id="vue-rendering-concept"><code class="highlighter-rouge">Vue Rendering Concept</code></h4>
+
+<p>Vue takes the html and store it as a template in memory, then update the template and render the final form in browser.</p>
+
+<h4 id="attribute-binding"><code class="highlighter-rouge">Attribute Binding</code></h4>
+
+<p>Using the <code class="highlighter-rouge">v-bind</code> directive to bind any html element attribute.</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;a</span> <span class="na">v-bind:href=</span><span class="s">"link"</span> <span class="nt">/&gt;</span>
+</code></pre>
+</div>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">data</span><span class="err">:</span> <span class="p">{</span>
+    <span class="nl">link</span><span class="p">:</span> <span class="s1">'https://google.com'</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="v-once"><code class="highlighter-rouge">v-once</code></h4>
+
+<p>Only render once. Property can be changed/updated down the execution road. Using <code class="highlighter-rouge">v-once</code> to only render the initial execution.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;h1 v-once&gt;{ { title } }&lt;/h1&gt;
+</code></pre>
+</div>
+
+<h4 id="v-html"><code class="highlighter-rouge">v-html</code></h4>
+
+<p>Render the raw html by using the <code class="highlighter-rouge">v-html</code>. Keep in mind that this could introduce cross-site attack.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">data</span><span class="err">:</span> <span class="p">{</span>
+    <span class="nl">finishedLink</span><span class="p">:</span> <span class="s2">"&lt;a href='https://google.com' /&gt;"</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;p&gt;</span>{ { finishedLInk } }<span class="nt">&lt;/p&gt;</span>
+</code></pre>
+</div>
 
 </div>
 					</div>
