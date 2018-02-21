@@ -166,6 +166,164 @@
 </code></pre>
 </div>
 
+<h4 id="modifying-the-event---with-event-modifier"><code class="highlighter-rouge">Modifying the event - with event modifier</code></h4>
+
+<p>You can attach the event modifier or attach mutiple event modifiers.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>v-on:mousemove.stop
+v-on:mousemove.stop.prevent
+</code></pre>
+</div>
+
+<h4 id="listening-to-keyboard-event"><code class="highlighter-rouge">Listening to keyboard event</code></h4>
+
+<p>Event fired when keyboard ‘enter’ and/or ‘space’</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>v-on:keyup.enter.space
+
+methods: {
+    alertMe: function() {
+        alert('Alert!);
+    }
+}
+</code></pre>
+</div>
+
+<h4 id="update-the-value"><code class="highlighter-rouge">Update the value</code></h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>v-on:keydown="value = $event.target.value"
+v-on:keydown.enter="value = $event.target.value"
+</code></pre>
+</div>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>//HTML
+&lt;input type="text" v-on:keydown="value = $event.target.value"/&gt;
+&lt;p&gt;{ { value } }&lt;/p&gt;
+
+&lt;input type="text" v-on:keydown.enter="value = $event.target.value"/&gt;
+&lt;p&gt;{ { value } }&lt;/p&gt;
+
+//JS
+new Vue({
+    el: '#app',
+    data: {
+        value: ''
+    }
+});
+</code></pre>
+</div>
+
+<h4 id="two-way-binding"><code class="highlighter-rouge">Two way binding</code></h4>
+
+<p>Use <code class="highlighter-rouge">v-model</code> for two binding.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>//HTML
+&lt;input type="text" v-model="anme" /&gt;
+&lt;p&gt;{ { name } }&lt;/p&gt;
+
+// JS
+data: {
+    name: "John"
+}
+</code></pre>
+</div>
+
+<h4 id="reacting-to-changes-with-computed-properties"><code class="highlighter-rouge">Reacting to changes with computed properties</code></h4>
+
+<p>The computed just used like a property inside data object. <code class="highlighter-rouge">Computed</code> and <code class="highlighter-rouge">methods</code> are indeed exactly the same. However, the difference is that computed properties are cached based on their dependencies.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// JS
+computed: {
+    output: function() {
+        return this.counter &gt; 5 ? 'Greater 5' : 'Smaller 5'
+    }
+}
+</code></pre>
+</div>
+
+<h4 id="saving-time-with-shorthand"><code class="highlighter-rouge">Saving time with shorthand</code></h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// Event
+@click=""
+&lt;button @click="ChangeLink"&gt;&lt;/button&gt;
+
+// Bind
+:href=""
+&lt;a :href="link"&gt;Link&lt;/a&gt;
+</code></pre>
+</div>
+
+<h4 id="exercise-with-computed-and-watch"><code class="highlighter-rouge">Exercise with computed and watch</code></h4>
+
+<p>Show a ‘result’ of ‘not there yet’ as long as ‘value’ is not equal to 37. Watch for changes in the ‘result’ and reset the ‘value’ after 5 second.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// HTML
+&lt;p&gt;Current value: { { value } }&lt;/p&gt;
+&lt;button @click="value += 5"&gt;Add 5&lt;/button&gt;
+&lt;button @click="value += 2"&gt;Add 5&lt;/button&gt;
+&lt;p&gt;{ { result } }&lt;/p&gt;
+
+// JS
+new Vue({
+    el: '#app',
+    data: {
+        value: 0
+    },
+    computed: {
+        result: function() {
+            return this.value &lt; 37 ? 'Not there yet' : 'Done';
+        }
+    },
+    watch: {
+        // watching result property from computed object. This can be non computed property.
+        result: function() {
+            let vm = this;
+            setTimeout(() =&gt; {
+                vm.value = 0;
+            }, 5000);
+        }
+    }
+});
+</code></pre>
+</div>
+
+<h4 id="dynamic-styling-with-css-classes---basic"><code class="highlighter-rouge">Dynamic styling with CSS classes - basic</code></h4>
+
+<p>Note: <code class="highlighter-rouge">class</code> binding here expects a JavaScript object with the CSS classes</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// CSS
+.demo {
+    width: 100px;
+    height: 100px;
+    background-color: grey;
+    display: inline-block;
+    margin: 10px;
+}
+.red { background-color: red; }
+.green { background-color: green }
+.blue { background-color: blue }
+
+// HTML
+&lt;div id="app"&gt;
+    &lt;div class="demo" :click="attachRed = !attachRed" :class="{red: attachRed}"&gt;&lt;/div&gt;
+    &lt;div class="demo" :click="attachGreen = !attachGreen" :class="{green: attachGreen}"&gt;&lt;/div&gt;
+    &lt;div class="demo" :click="attachBlue = !attachBlue" :class="{blue: attachBlue}"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+// JS
+new Vue({
+    el: '#app',
+    data: {
+        attachRed: false,
+        attachGreen: false,
+        attachBlue: false
+    }
+});
+</code></pre>
+</div>
+
 </div>
 					</div>
 				</div>
