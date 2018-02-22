@@ -221,3 +221,7 @@ Note: `class` binding here expects a JavaScript object with the CSS classes
             attachBlue: false
         }
     });
+
+#### `Example`
+
+<script async src="//jsfiddle.net/jtang227/kxrqpn71/65/embed/js,html,css,result/dark/"></script>
