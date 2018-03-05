@@ -324,10 +324,32 @@ new Vue({
 </code></pre>
 </div>
 
-<h4 id="example"><code class="highlighter-rouge">Example</code></h4>
+<h4 id="arrayisarray"><code class="highlighter-rouge">Array.isArray()</code></h4>
 
-<script async="" src="//jsfiddle.net/jtang227/kxrqpn71/65/embed/js,html,css,result/dark/"></script>
+<div class="highlighter-rouge"><pre class="highlight"><code>// HTML
+&lt;ul&gt;
+    &lt;li v-for="object in objects"&gt;
+        &lt;template v-if="Array.isArray(object)"&gt;
+            &lt;div v-for="value in object"&gt;{ { value } }&lt;/div&gt;
+        &lt;/template&gt;
+        &lt;template v-else&gt;
+            { { object } }
+        &lt;/template&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
 
+// Vue
+new Vue({
+    el: '#app',
+    data: {
+        objects: {
+            title: 'Vue is awesome!',
+            data: [1.11, 2.22, 3.33, 4.44, 5.55]
+        }
+    }
+});
+</code></pre>
+</div>
 
 </div>
 					</div>
