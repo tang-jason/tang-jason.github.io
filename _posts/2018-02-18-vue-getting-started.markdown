@@ -246,3 +246,72 @@ Note: `class` binding here expects a JavaScript object with the CSS classes
             }
         }
     });
+
+#### `Components`
+
+    // HTML
+    <div id="app">
+        <my-cmp></my-cmp>
+    </div>
+
+    // Vue
+    Vue.component('my-cmp', {
+        data: function() {
+            return {
+                status: 'Critical'
+            }
+        },
+        methods: {
+            // code here...
+        },
+        template: '<p>Server status: { { status } }</p>'
+    });
+
+    new Vue({
+        el: '#app'
+    });
+
+#### `Using Component Locally and Globally`
+
+Global use:
+
+    // Register component globally
+    Vue.component('my-cmp', { });
+
+Local use:
+
+    // HTML
+    <div id="app">
+        <my-cmp></my-cmp>
+    </div>
+    
+    // Register component locally
+    var cmp = {
+        data: function() {
+            return {
+                status: 'Hello world!'
+            };
+        },
+        template: '<p>Server status: { { status } } - (<button @click="changeStatus">change</button>)'
+        methods: {
+            changeStatus: function() {
+                this.status = 'Hello Earth!';
+            }
+        }
+    }
+
+    // Vue.js
+    new Vue({
+        el: '#app',
+        components: {
+            'my-cmp': cmp
+        }
+    });
+
+#### `Scope Component Style`
+
+Using 'scoped' to scope the style locally.
+
+    <style scoped>
+        div { border: 1px solid red; }
+    </style>

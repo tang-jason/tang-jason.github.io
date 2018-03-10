@@ -351,6 +351,83 @@ new Vue({
 </code></pre>
 </div>
 
+<h4 id="components"><code class="highlighter-rouge">Components</code></h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// HTML
+&lt;div id="app"&gt;
+    &lt;my-cmp&gt;&lt;/my-cmp&gt;
+&lt;/div&gt;
+
+// Vue
+Vue.component('my-cmp', {
+    data: function() {
+        return {
+            status: 'Critical'
+        }
+    },
+    methods: {
+        // code here...
+    },
+    template: '&lt;p&gt;Server status: { { status } }&lt;/p&gt;'
+});
+
+new Vue({
+    el: '#app'
+});
+</code></pre>
+</div>
+
+<h4 id="using-component-locally-and-globally"><code class="highlighter-rouge">Using Component Locally and Globally</code></h4>
+
+<p>Global use:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// Register component globally
+Vue.component('my-cmp', { });
+</code></pre>
+</div>
+
+<p>Local use:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// HTML
+&lt;div id="app"&gt;
+    &lt;my-cmp&gt;&lt;/my-cmp&gt;
+&lt;/div&gt;
+
+// Register component locally
+var cmp = {
+    data: function() {
+        return {
+            status: 'Hello world!'
+        };
+    },
+    template: '&lt;p&gt;Server status: { { status } } - (&lt;button @click="changeStatus"&gt;change&lt;/button&gt;)'
+    methods: {
+        changeStatus: function() {
+            this.status = 'Hello Earth!';
+        }
+    }
+}
+
+// Vue.js
+new Vue({
+    el: '#app',
+    components: {
+        'my-cmp': cmp
+    }
+});
+</code></pre>
+</div>
+
+<h4 id="scope-component-style"><code class="highlighter-rouge">Scope Component Style</code></h4>
+
+<p>Using ‘scoped’ to scope the style locally.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;style scoped&gt;
+    div { border: 1px solid red; }
+&lt;/style&gt;
+</code></pre>
+</div>
+
 </div>
 					</div>
 				</div>
