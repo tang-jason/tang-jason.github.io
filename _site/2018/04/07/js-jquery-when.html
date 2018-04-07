@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | JS - $.when</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">JS - $.when</li>
+	</ol>
+	<h3 id="js---when">JS - $.when</h3>
+
+<p>The example below is to finish all async operation before invoke a function by using <code class="highlighter-rouge">$.when</code>.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">url</span> <span class="k">in</span> <span class="nx">$urls</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">$urls</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">url</span><span class="p">))</span> <span class="k">continue</span><span class="p">;</span>
+   <span class="nx">feedUrls</span><span class="p">.</span><span class="nx">unshift</span><span class="p">(</span><span class="nx">$urls</span><span class="p">[</span><span class="nx">url</span><span class="p">]);</span>
+<span class="p">}</span>
+
+<span class="nx">feedUrls</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">url</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+   <span class="nx">ajaxRequests</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span>
+      <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+         <span class="na">method</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
+         <span class="na">url</span><span class="p">:</span> <span class="nx">url</span><span class="p">,</span>
+         <span class="na">success</span><span class="p">:</span> <span class="p">(</span><span class="nx">xml</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="kd">let</span> <span class="nx">channel</span> <span class="o">=</span> <span class="nx">xml</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">"channel"</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+            <span class="nx">xmlDocs</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">channel</span><span class="p">);</span>
+         <span class="p">},</span>
+         <span class="na">error</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="c1">// code here...</span>
+         <span class="p">}</span>
+      <span class="p">})</span>
+   <span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">$</span><span class="p">.</span><span class="nx">when</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">ajaxRequests</span><span class="p">).</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+   <span class="nx">createBlogEntry</span><span class="p">(</span><span class="nx">xmlDocs</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<p>If you don’t care about the rendering order. The above solution is perfectly fine. If you want to render your item in the order you wanted, use the solution below.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">requestIndex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="kd">let</span> <span class="nx">ajaxRequest</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
+   <span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">url</span><span class="p">).</span><span class="nx">done</span><span class="p">((</span><span class="nx">xml</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">let</span> <span class="nx">channel</span> <span class="o">=</span> <span class="nx">xml</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">"channel"</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+      <span class="nx">xmlDocs</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">channel</span><span class="p">);</span>
+
+      <span class="nx">requestIndex</span><span class="o">++</span><span class="p">;</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="nx">requestIndex</span> <span class="o">&lt;</span> <span class="nx">feedUrls</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> 
+         <span class="nx">ajaxRequest</span><span class="p">(</span><span class="nx">feedUrls</span><span class="p">[</span><span class="nx">requestIndex</span><span class="p">]);</span>
+      <span class="k">else</span>
+         <span class="nx">createBlogEntry</span><span class="p">(</span><span class="nx">xmlDocs</span><span class="p">);</span>
+   <span class="p">}).</span><span class="nx">fail</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="c1">// code here...</span>
+   <span class="p">});</span>
+<span class="p">};</span>
+
+<span class="c1">// Initialize the first ajax request</span>
+<span class="nx">ajaxRequest</span><span class="p">(</span><span class="nx">feedUrls</span><span class="p">[</span><span class="nx">requestIndex</span><span class="p">]);</span>
+</code></pre>
+</div>
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>
