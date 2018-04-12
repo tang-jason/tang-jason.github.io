@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | TS: Typescript with Webpack</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">TS: Typescript with Webpack</li>
+	</ol>
+	<h3 id="ts-typescript-with-webpack">TS: Typescript with Webpack</h3>
+
+<p>This post is mainly how to set up a web application project with typescript and webpack.</p>
+
+<h3 id="files-creation"><code class="highlighter-rouge">Files creation</code></h3>
+<ol>
+  <li>Create package.json</li>
+  <li>Create tsconfig.json</li>
+  <li>Create webpack.config.js</li>
+  <li>Install dependencies</li>
+  <li>Create index.html</li>
+  <li>Create index.ts</li>
+  <li>Create .gitignore</li>
+</ol>
+
+<h4 id="create-packagejson"><code class="highlighter-rouge">Create package.json</code></h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  npm init --yes
+</code></pre>
+</div>
+
+<h4 id="create-tsconfigjson"><code class="highlighter-rouge">Create tsconfig.json</code></h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  npm --init
+</code></pre>
+</div>
+
+<h4 id="create-webpackconfigjs"><code class="highlighter-rouge">Create webpack.config.js</code></h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  type nul &gt; webpack.config.js
+</code></pre>
+</div>
+
+<h4 id="install-dependencies"><code class="highlighter-rouge">Install dependencies</code></h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  npm install typescript ts-loader webpack webpack-cli http-server --save-dev
+</code></pre>
+</div>
+
+<h4 id="create-indexhtml"><code class="highlighter-rouge">Create index.html</code></h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  type nul &gt; index.html
+</code></pre>
+</div>
+
+<h4 id="create-typescript-files"><code class="highlighter-rouge">Create typescript files</code></h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  type nul &gt; index.ts
+  type nul &gt; helper.ts
+</code></pre>
+</div>
+
+<h4 id="create-gitignore"><code class="highlighter-rouge">Create .gitignore</code></h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  type nul &gt; .gitignore
+</code></pre>
+</div>
+
+<h4 id="config-packagejson"><code class="highlighter-rouge">Config package.json</code></h4>
+
+<p>Under the <code class="highlighter-rouge">scripts</code> object, add the following.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  "dev": "webpack --mode development"
+  "build": "webpack --mode production"
+  "serve": "http-server -c-1 -a localhost -p 9000"
+</code></pre>
+</div>
+
+<h4 id="config-tsconfigjson"><code class="highlighter-rouge">Config tsconfig.json</code></h4>
+
+<p>We’ll leave as it is (default) now.</p>
+
+<h4 id="config-webpackconfigjs"><code class="highlighter-rouge">Config webpack.config.js</code></h4>
+
+<p>This will tell how webpack compile our typescript files into a bundle file (.js)</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">entry</span><span class="p">:</span> <span class="s1">'./index.ts'</span><span class="p">,</span>
+  <span class="na">module</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">rules</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">tsx</span><span class="se">?</span><span class="sr">$/</span><span class="p">,</span>
+        <span class="na">use</span><span class="p">:</span> <span class="s1">'ts-loader'</span><span class="p">,</span>
+        <span class="na">exclude</span><span class="p">:</span> <span class="sr">/node_modules/</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="na">resolve</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">extensions</span><span class="p">:</span> <span class="p">[</span> <span class="s2">".tsx"</span><span class="p">,</span> <span class="s2">".ts"</span><span class="p">,</span> <span class="s2">".js"</span> <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="na">output</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">filename</span><span class="p">:</span> <span class="s1">'bundle.js'</span><span class="p">,</span>
+    <span class="na">path</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">'dist'</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+
+<h4 id="edit-indexts--helperts"><code class="highlighter-rouge">Edit index.ts &amp; helper.ts</code></h4>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">// index.ts</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Person</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">"./helper"</span><span class="p">;</span>
+
+<span class="kd">let</span> <span class="nx">person</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s2">"Amelia"</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">print</span><span class="p">());</span>
+
+<span class="kd">let</span> <span class="nx">person2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s2">"Jaythan"</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">person2</span><span class="p">.</span><span class="nx">print</span><span class="p">());</span>
+
+<span class="c1">// helper.ts</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">Person</span> <span class="p">{</span>
+    <span class="nx">constructor</span><span class="p">(</span><span class="kr">public</span> <span class="nx">name</span><span class="err">:</span> <span class="nx">string</span><span class="p">,</span> <span class="kr">public</span> <span class="nx">age</span><span class="err">:</span> <span class="nx">number</span><span class="p">)</span> <span class="p">{}</span>
+
+    <span class="nx">print</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span> <span class="nx">is</span> <span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="p">}</span> <span class="nx">years</span> <span class="nx">old</span><span class="err">`</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="compilation"><code class="highlighter-rouge">Compilation</code></h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  // uncrunched version
+  npm run dev
+
+  // minified version
+  npm run build
+</code></pre>
+</div>
+
+<h4 id="run-web-server"><code class="highlighter-rouge">Run web server</code></h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  npm run serve
+</code></pre>
+</div>
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>
