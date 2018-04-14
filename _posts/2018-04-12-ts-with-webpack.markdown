@@ -1,13 +1,13 @@
 ---
 layout: post
 title: "TS: Typescript with Webpack"
-date: 2018-04-07
+date: 2018-04-12
 lang: en-us
 ---
 
 ### {{ page.title }}
 
-This post is mainly how to set up a web application project with typescript and webpack.
+This post is mainly focusing on how to set up a web application project with typescript and webpack.
 
 ### `Files creation`
 1. Create package.json
@@ -32,13 +32,13 @@ This post is mainly how to set up a web application project with typescript and 
 
 #### `Install dependencies`
 
-      npm install typescript ts-loader webpack webpack-cli http-server --save-dev
+      npm install typescript concurrently ts-loader webpack webpack-cli lite-server --save-dev
 
 #### `Create index.html`
 
       type nul > index.html
 
-#### `Create typescript files`
+#### `Create typescript files under 'src' folder`
 
       type nul > index.ts
       type nul > helper.ts
@@ -51,9 +51,10 @@ This post is mainly how to set up a web application project with typescript and 
 
 Under the `scripts` object, add the following.
 
-      "dev": "webpack --mode development"
-      "build": "webpack --mode production"
-      "serve": "http-server -c-1 -a localhost -p 9000"
+      "build": "webpack --mode production",
+      "lite": "lite-server",
+      "webpack:W": "webpack --watch --mode development",
+      "start": "concurrently \"npm run webpack:w\" \"npm run lite\""
 
 #### `Config tsconfig.json`
 
@@ -67,7 +68,7 @@ This will tell how webpack compile our typescript files into a bundle file (.js)
 const path = require('path');
 
 module.exports = {
-  entry: './index.ts',
+  entry: './src/index.ts',
   module: {
     rules: [
       {
@@ -81,7 +82,7 @@ module.exports = {
     extensions: [ ".tsx", ".ts", ".js" ]
   },
   output: {
-    filename: 'bundle.js',
+    filename: 'bundle-min.js',
     path: path.resolve(__dirname, 'dist')
   }
 };
@@ -109,14 +110,12 @@ export class Person {
 }
 ```
 
-#### `Compilation`
+#### `Start up project`
 
-      // uncrunched version
-      npm run dev
+      // Start up a lite server and watching the file changes.
+      npm start
 
-      // minified version
+#### `Minify scripts`
+
+      // Minified the scripts
       npm run build
-
-#### `Run web server`
-
-      npm run serve

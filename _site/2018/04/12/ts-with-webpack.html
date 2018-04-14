@@ -85,7 +85,7 @@
 	</ol>
 	<h3 id="ts-typescript-with-webpack">TS: Typescript with Webpack</h3>
 
-<p>This post is mainly how to set up a web application project with typescript and webpack.</p>
+<p>This post is mainly focusing on how to set up a web application project with typescript and webpack.</p>
 
 <h3 id="files-creation"><code class="highlighter-rouge">Files creation</code></h3>
 <ol>
@@ -118,7 +118,7 @@
 
 <h4 id="install-dependencies"><code class="highlighter-rouge">Install dependencies</code></h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>  npm install typescript ts-loader webpack webpack-cli http-server --save-dev
+<div class="highlighter-rouge"><pre class="highlight"><code>  npm install typescript concurrently ts-loader webpack webpack-cli lite-server --save-dev
 </code></pre>
 </div>
 
@@ -128,7 +128,7 @@
 </code></pre>
 </div>
 
-<h4 id="create-typescript-files"><code class="highlighter-rouge">Create typescript files</code></h4>
+<h4 id="create-typescript-files-under-src-folder"><code class="highlighter-rouge">Create typescript files under 'src' folder</code></h4>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>  type nul &gt; index.ts
   type nul &gt; helper.ts
@@ -145,9 +145,10 @@
 
 <p>Under the <code class="highlighter-rouge">scripts</code> object, add the following.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>  "dev": "webpack --mode development"
-  "build": "webpack --mode production"
-  "serve": "http-server -c-1 -a localhost -p 9000"
+<div class="highlighter-rouge"><pre class="highlight"><code>  "build": "webpack --mode production",
+  "lite": "lite-server",
+  "webpack:W": "webpack --watch --mode development",
+  "start": "concurrently \"npm run webpack:w\" \"npm run lite\""
 </code></pre>
 </div>
 
@@ -162,7 +163,7 @@
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">);</span>
 
 <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">entry</span><span class="p">:</span> <span class="s1">'./index.ts'</span><span class="p">,</span>
+  <span class="na">entry</span><span class="p">:</span> <span class="s1">'./src/index.ts'</span><span class="p">,</span>
   <span class="na">module</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">rules</span><span class="p">:</span> <span class="p">[</span>
       <span class="p">{</span>
@@ -176,7 +177,7 @@
     <span class="na">extensions</span><span class="p">:</span> <span class="p">[</span> <span class="s2">".tsx"</span><span class="p">,</span> <span class="s2">".ts"</span><span class="p">,</span> <span class="s2">".js"</span> <span class="p">]</span>
   <span class="p">},</span>
   <span class="na">output</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">filename</span><span class="p">:</span> <span class="s1">'bundle.js'</span><span class="p">,</span>
+    <span class="na">filename</span><span class="p">:</span> <span class="s1">'bundle-min.js'</span><span class="p">,</span>
     <span class="na">path</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">'dist'</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">};</span>
@@ -205,19 +206,17 @@
 </code></pre>
 </div>
 
-<h4 id="compilation"><code class="highlighter-rouge">Compilation</code></h4>
+<h4 id="start-up-project"><code class="highlighter-rouge">Start up project</code></h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>  // uncrunched version
-  npm run dev
-
-  // minified version
-  npm run build
+<div class="highlighter-rouge"><pre class="highlight"><code>  // Start up a lite server and watching the file changes.
+  npm start
 </code></pre>
 </div>
 
-<h4 id="run-web-server"><code class="highlighter-rouge">Run web server</code></h4>
+<h4 id="minify-scripts"><code class="highlighter-rouge">Minify scripts</code></h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>  npm run serve
+<div class="highlighter-rouge"><pre class="highlight"><code>  // Minified the scripts
+  npm run build
 </code></pre>
 </div>
 
