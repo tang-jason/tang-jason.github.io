@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "JS: Understanding call, apply, bind"
+title: "JS: call(), apply(), bind()"
 date: 2018-05-19
 lang: en-us
 ---
