@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | JS: ES6 Tips and Tricks</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">JS: ES6 Tips and Tricks</li>
+	</ol>
+	<h3 id="js-es6-tips-and-tricks">JS: ES6 Tips and Tricks</h3>
+
+<h4 id="enforcing-required-parameter"><code class="highlighter-rouge">Enforcing Required Parameter</code></h4>
+
+<p>Throw an error if the function is called without parameter</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>   <span class="kd">let</span> <span class="nx">required</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">'Missing parameters'</span><span class="p">);</span>
+   <span class="p">}</span>
+
+   <span class="kd">let</span> <span class="nx">add</span> <span class="o">=</span> <span class="p">(</span><span class="na">a</span><span class="p">:</span> <span class="nx">required</span><span class="p">(),</span> <span class="na">b</span><span class="p">:</span> <span class="nx">required</span><span class="p">())</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+   <span class="p">}</span>
+
+   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="c1">// =&gt; 3</span>
+   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="c1">// =&gt; error! missing parameters</span>
+</code></pre>
+</div>
+
+<h4 id="using-reduce-to-map-and-filter-simultaneously"><code class="highlighter-rouge">Using Reduce to map and filter simultaneously</code></h4>
+
+<p>The benefit of using reduce comes into play when you want to ‘map’ and ‘filter’ together and you have a lot of data to go over.</p>
+
+<p>If you’re chaining the ‘map’ and ‘filter’together you’re doing the work twice.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>   <span class="kd">let</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">];</span>
+
+   <span class="kd">let</span> <span class="nx">doubledOver50</span> <span class="o">=</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">finaList</span><span class="p">,</span> <span class="kr">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="c1">// double each number (i.e: map method)</span>
+      <span class="kr">number</span> <span class="o">=</span> <span class="kr">number</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+
+      <span class="c1">// filter</span>
+      <span class="k">if</span> <span class="p">(</span><span class="kr">number</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">)</span>
+         <span class="nx">finalList</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="kr">number</span><span class="p">);</span>
+
+      <span class="k">return</span> <span class="nx">finalList</span><span class="p">;</span>
+   <span class="p">},</span> <span class="p">[]</span> <span class="k">as</span> <span class="kr">number</span><span class="p">[]);</span>
+
+   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">doubledOver50</span><span class="p">);</span> <span class="c1">// =&gt; [60, 80]</span>
+</code></pre>
+</div>
+
+<h4 id="counting-duplicate-array-items"><code class="highlighter-rouge">Counting Duplicate Array Items</code></h4>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>   <span class="kd">let</span> <span class="nx">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'banana'</span><span class="p">,</span> <span class="s1">'cherry'</span><span class="p">,</span> <span class="s1">'orange'</span><span class="p">,</span> <span class="s1">'apple'</span><span class="p">,</span> <span class="s1">'cherry'</span><span class="p">,</span> <span class="s1">'orange'</span><span class="p">,</span> <span class="s1">'apple'</span><span class="p">,</span> <span class="s1">'banana'</span><span class="p">,</span> <span class="s1">'cherry'</span><span class="p">,</span> <span class="s1">'orange'</span><span class="p">,</span> <span class="s1">'fig'</span><span class="p">];</span>
+
+   <span class="kd">let</span> <span class="nx">count</span> <span class="o">=</span> <span class="nx">fruits</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">tally</span><span class="p">,</span> <span class="nx">fruit</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">tally</span><span class="p">[</span><span class="nx">fruit</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="nx">tally</span><span class="p">[</span><span class="nx">fruit</span><span class="p">]</span> <span class="o">||</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="k">return</span> <span class="nx">tally</span><span class="p">;</span>
+   <span class="p">},</span> <span class="p">{});</span>
+
+   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">count</span><span class="p">);</span> <span class="c1">// =&gt; { banana: 2, cherry: 3, orange: 3, apple: 2, fig: 1 }</span>
+</code></pre>
+</div>
+
+<h4 id="object-destructuring-for-array-item"><code class="highlighter-rouge">Object Destructuring for Array Item</code></h4>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>   <span class="kr">const</span> <span class="nx">csvFile</span> <span class="o">=</span> <span class="s2">"2018,John Smith,US,john@email.com,Washington"</span><span class="p">;</span>
+   <span class="kr">const</span> <span class="p">{</span> <span class="mi">0</span><span class="err">:</span> <span class="nx">year</span><span class="p">,</span> <span class="mi">1</span><span class="err">:</span> <span class="nx">fullName</span><span class="p">,</span> <span class="mi">2</span><span class="err">:</span> <span class="nx">country</span><span class="p">,</span> <span class="mi">3</span><span class="err">:</span> <span class="nx">email</span><span class="p">,</span> <span class="mi">4</span><span class="err">:</span> <span class="nx">state</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">csvFile</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">","</span><span class="p">);</span>
+   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="err">`</span><span class="nx">state</span><span class="err">:</span> <span class="nx">$</span><span class="p">{</span><span class="nx">state</span><span class="p">}</span> <span class="o">-</span> <span class="nx">country</span><span class="err">:</span> <span class="nx">$</span><span class="p">{</span><span class="nx">country</span><span class="p">}</span><span class="err">`</span><span class="p">);</span> <span class="c1">// =&gt; state: Washington - country: US</span>
+</code></pre>
+</div>
+
+<h4 id="clearing-or-truncating-an-array"><code class="highlighter-rouge">Clearing or Truncating an Array</code></h4>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>   <span class="c1">// truncating an array</span>
+   <span class="kr">const</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">55</span><span class="p">];</span>
+   <span class="nx">numbers</span><span class="p">.</span><span class="nx">length</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">numbers</span><span class="p">);</span> <span class="c1">// =&gt; [11, 22]</span>
+
+   <span class="c1">// clearing an array</span>
+   <span class="nx">numbers</span><span class="p">.</span><span class="nx">length</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">numbers</span><span class="p">);</span> <span class="c1">// =&gt; []</span>
+   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">numbers</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span> <span class="c1">// =&gt; undefined</span>
+
+   <span class="c1">// similar to "number = []". This will create a grabage but in JS grabage collector is not expensive</span>
+   <span class="nx">number</span> <span class="o">=</span> <span class="p">[];</span>
+</code></pre>
+</div>
+
+<h4 id="formatting-json-code"><code class="highlighter-rouge">Formatting JSON Code</code></h4>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>   <span class="kr">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span> 
+      <span class="na">foo</span><span class="p">:</span> <span class="p">{</span> <span class="na">bar</span><span class="p">:</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">44</span><span class="p">],</span> <span class="na">baz</span><span class="p">:</span> <span class="p">{</span> <span class="na">bing</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="na">boom</span><span class="p">:</span> <span class="s1">'Hello'</span> <span class="p">}</span> <span class="p">}</span> 
+   <span class="p">};</span>
+
+   <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span> <span class="c1">// =&gt; formatted with indentiation</span>
+</code></pre>
+</div>
+
+<h4 id="remove-duplicate-items-from-an-array"><code class="highlighter-rouge">Remove Duplicate Items From an Array</code></h4>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>   <span class="kr">const</span> <span class="nx">removeDupItems</span> <span class="o">=</span> <span class="nx">arr</span> <span class="o">=&gt;</span> <span class="p">[...</span><span class="k">new</span> <span class="nx">Set</span><span class="p">(</span><span class="nx">arr</span><span class="p">)];</span>
+   <span class="nx">removeDupItems</span><span class="p">([</span><span class="mi">20</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="kc">true</span><span class="p">]);</span> <span class="c1">// =&gt; [20, 'bar', true]</span>
+</code></pre>
+</div>
+
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>

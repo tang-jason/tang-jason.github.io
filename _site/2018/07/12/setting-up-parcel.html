@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | Parcel - Set-up</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">Parcel - Set-up</li>
+	</ol>
+	<h3 id="parcel---set-up">Parcel - Set-up</h3>
+
+<p>Parcel is the build tool for front-end development. If you hate the hassel of setting the build environment with Webpack. Go with Parcel. It has zero configuration and hot-loading out-the-box. Parcel is suitable for small to medium project. Following the steps below to get it set up.</p>
+
+<h4 id="1-install-parcel"><code class="highlighter-rouge">#1: Install Parcel</code></h4>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">npm</span> <span class="nx">install</span> <span class="o">-</span><span class="nx">g</span> <span class="nx">parcel</span><span class="o">-</span><span class="nx">bundler</span>
+</code></pre>
+</div>
+
+<h4 id="2-packagejson"><code class="highlighter-rouge">#2: package.json</code></h4>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">npm</span> <span class="nx">init</span> <span class="o">-</span><span class="nx">y</span>
+</code></pre>
+</div>
+
+<h4 id="3-create-indexhtml-and-indexjs"><code class="highlighter-rouge">#3: Create index.html and index.js</code></h4>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">type</span> <span class="nx">nul</span> <span class="o">&gt;</span> <span class="nx">index</span><span class="p">.</span><span class="nx">html</span>
+<span class="nx">type</span> <span class="nx">nul</span> <span class="o">&gt;</span> <span class="nx">index</span><span class="p">.</span><span class="nx">js</span>
+</code></pre>
+</div>
+
+<h4 id="4-connecting-indexjs-and-indexhtml"><code class="highlighter-rouge">#4: Connecting index.js and index.html</code></h4>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+   <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"ie=edge"</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;title&gt;</span>Parcel build envronment set up<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+   <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"root"</span><span class="nt">&gt;&lt;/div&gt;</span>
+
+   <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"index.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre>
+</div>
+
+<h4 id="5-add-parcel-script-to-packagejson"><code class="highlighter-rouge">#5: Add Parcel script to package.json</code></h4>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="p">{</span>
+  <span class="s2">"name"</span><span class="err">:</span> <span class="s2">"demo"</span><span class="p">,</span>
+  <span class="s2">"version"</span><span class="err">:</span> <span class="s2">"1.0.0"</span><span class="p">,</span>
+  <span class="s2">"description"</span><span class="err">:</span> <span class="s2">""</span><span class="p">,</span>
+  <span class="s2">"main"</span><span class="err">:</span> <span class="s2">"index.js"</span><span class="p">,</span>
+  <span class="s2">"scripts"</span><span class="err">:</span> <span class="p">{</span>
+    <span class="s2">"start"</span><span class="err">:</span> <span class="s2">"parcel index.html"</span><span class="p">,</span>
+    <span class="s2">"build"</span><span class="err">:</span> <span class="s2">"parcel build index.js -d build"</span>
+  <span class="p">},</span>
+  <span class="s2">"keywords"</span><span class="err">:</span> <span class="p">[],</span>
+  <span class="s2">"author"</span><span class="err">:</span> <span class="s2">""</span><span class="p">,</span>
+  <span class="s2">"license"</span><span class="err">:</span> <span class="s2">"ISC"</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="6-start-up-server"><code class="highlighter-rouge">#6: Start up server</code></h4>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">npm</span> <span class="nx">start</span>
+</code></pre>
+</div>
+
+<h4 id="7-install-babel-and-react"><code class="highlighter-rouge">#7: Install babel and react</code></h4>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">npm</span> <span class="nx">install</span> <span class="o">-</span><span class="nx">S</span> <span class="nx">babel</span><span class="o">-</span><span class="nx">core</span> <span class="nx">babel</span><span class="o">-</span><span class="nx">preset</span><span class="o">-</span><span class="nx">env</span> <span class="nx">bable</span><span class="o">-</span><span class="nx">preset</span><span class="o">-</span><span class="nx">react</span> <span class="nx">react</span> <span class="nx">react</span><span class="o">-</span><span class="nx">dom</span>
+</code></pre>
+</div>
+
+<h4 id="8-create-babelrc"><code class="highlighter-rouge">#8: Create .babelrc</code></h4>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">type</span> <span class="nx">nul</span> <span class="o">&gt;</span> <span class="p">.</span><span class="nx">babelrc</span>
+</code></pre>
+</div>
+
+<h4 id="9-config-babelrc"><code class="highlighter-rouge">#9: Config .babelrc</code></h4>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="p">{</span>
+   <span class="s2">"presets"</span><span class="err">:</span> <span class="p">[</span>
+      <span class="s2">"env"</span><span class="p">,</span>
+      <span class="s2">"react"</span>
+   <span class="p">]</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="10-react-component"><code class="highlighter-rouge">#10: React component</code></h4>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s2">"react"</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">ReactDOM</span> <span class="nx">from</span> <span class="s2">"react-dom"</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=</span> <span class="p">(</span>
+   <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="p">,</span> <span class="nx">React</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span><span class="p">);</span>
+
+<span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">App</span> <span class="o">/&gt;</span><span class="p">,</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"root"</span><span class="p">));</span>
+</code></pre>
+</div>
+
+<h4 id="build-production-file"><code class="highlighter-rouge">Build production file</code></h4>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">npm</span> <span class="nx">run</span> <span class="nx">build</span>
+</code></pre>
+</div>
+
+<h3 id="done"><code class="highlighter-rouge">DONE!</code></h3>
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>

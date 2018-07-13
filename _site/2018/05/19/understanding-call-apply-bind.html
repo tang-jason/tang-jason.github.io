@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | JS: call(), apply(), bind()</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">JS: call(), apply(), bind()</li>
+	</ol>
+	<h3 id="js-call-apply-bind">JS: call(), apply(), bind()</h3>
+
+<p>Use <code class="highlighter-rouge">.bind()</code> when you want that function to later be called with a certain context, useful in events. Use <code class="highlighter-rouge">.call()</code> or <code class="highlighter-rouge">.apply()</code> when you want to invoke the function immediately, with modification of the context.</p>
+
+<h4 id="call"><code class="highlighter-rouge">call()</code></h4>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>   <span class="kr">const</span> <span class="nx">findArea</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">pi</span><span class="p">:</span> <span class="mf">3.14</span><span class="p">,</span>
+      <span class="na">area</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">r</span><span class="p">)</span> <span class="p">{</span>
+         <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">pi</span> <span class="o">*</span> <span class="nx">r</span> <span class="o">*</span> <span class="nx">r</span><span class="p">;</span>
+      <span class="p">}</span>
+   <span class="p">}</span>
+
+   <span class="nx">findArea</span><span class="p">.</span><span class="nx">area</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="c1">// =&gt; 12.56</span>
+
+   <span class="c1">// Instead of using pi 3.14, you want to use 3.14159.</span>
+   <span class="nx">findArea</span><span class="p">.</span><span class="nx">area</span><span class="p">.</span><span class="nx">call</span><span class="p">({</span><span class="na">pi</span><span class="p">:</span> <span class="mf">3.14159</span><span class="p">},</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// =&gt; 12.56636</span>
+</code></pre>
+</div>
+
+<h4 id="apply"><code class="highlighter-rouge">apply()</code></h4>
+
+<p>This is similar to <code class="highlighter-rouge">call()</code> except it’s accepting array.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>   <span class="kr">const</span> <span class="nx">cylinder</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">pi</span><span class="p">:</span> <span class="mf">3.14</span><span class="p">,</span>
+      <span class="na">volume</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">r</span><span class="p">,</span> <span class="nx">h</span><span class="p">)</span> <span class="p">{</span>
+         <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">pi</span> <span class="o">*</span> <span class="nx">r</span> <span class="o">*</span> <span class="nx">r</span> <span class="o">*</span> <span class="nx">h</span><span class="p">;</span>
+      <span class="p">}</span>
+   <span class="p">}</span>
+
+   <span class="nx">cylinder</span><span class="p">.</span><span class="nx">volume</span><span class="p">.</span><span class="nx">apply</span><span class="p">({</span><span class="na">pi</span><span class="p">:</span> <span class="mf">3.14159</span><span class="p">},</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">]);</span> <span class="c1">// =&gt; 75.39815999999999</span>
+
+   <span class="c1">// call() invoke like this</span>
+   <span class="nx">cylinder</span><span class="p">.</span><span class="nx">volume</span><span class="p">.</span><span class="nx">call</span><span class="p">({</span><span class="na">pi</span><span class="p">:</span> <span class="mf">3.14159</span><span class="p">},</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span> <span class="c1">// =&gt; 75.39815999999999</span>
+</code></pre>
+</div>
+
+<h4 id="bind"><code class="highlighter-rouge">bind()</code></h4>
+
+<p>Bind attaches a brand new this to a given function. In bind’s case, the function is not executed instantly like Call or Apply.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>   <span class="c1">//this is not a instant call</span>
+   <span class="kr">const</span> <span class="nx">newVol</span> <span class="o">=</span> <span class="nx">cylinder</span><span class="p">.</span><span class="nx">volume</span><span class="p">.</span><span class="nx">bind</span><span class="p">({</span><span class="na">pi</span><span class="p">:</span> <span class="mf">3.14159</span><span class="p">});</span>
+
+   <span class="nx">newVol</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span> <span class="c1">// =&gt; 75.39815999999999</span>
+</code></pre>
+</div>
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>
