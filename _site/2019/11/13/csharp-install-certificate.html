@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | C# - Install Certificate</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">C# - Install Certificate</li>
+	</ol>
+	<h3 id="c---install-certificate">C# - Install Certificate</h3>
+
+<p>How to install SSL certificate (.pfx) from project location. How to check if certficate is existed in user store.</p>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code>  <span class="k">public</span> <span class="k">void</span> <span class="nf">InstallCertificate</span><span class="p">()</span>
+  <span class="p">{</span>
+    <span class="kt">string</span> <span class="n">secret</span> <span class="p">=</span> <span class="n">ConfigurationManager</span><span class="p">.</span><span class="n">AppSettings</span><span class="p">[</span><span class="s">"CERT_SECRET"</span><span class="p">];</span>
+    <span class="kt">string</span> <span class="n">certFileLocation</span> <span class="p">=</span> <span class="s">@"Certs\whatever.pfx"</span><span class="p">;</span>
+
+    <span class="kt">string</span> <span class="n">certFilePath</span> <span class="p">=</span> <span class="n">Path</span><span class="p">.</span><span class="nf">Combine</span><span class="p">(</span><span class="n">Path</span><span class="p">.</span><span class="nf">getDirectoryName</span><span class="p">(</span><span class="n">Assembly</span><span class="p">.</span><span class="nf">GetExecutingAssembly</span><span class="p">().</span><span class="n">Location</span><span class="p">),</span> <span class="n">certFileLocation</span><span class="p">);</span>
+    <span class="n">X509Certificate2</span> <span class="n">cert</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">X509Certificate2</span><span class="p">(</span><span class="n">certFilePath</span><span class="p">,</span> <span class="n">secret</span><span class="p">,</span> <span class="n">X509KeyStorageFlags</span><span class="p">.</span><span class="n">PersistKeySet</span><span class="p">);</span>
+    <span class="n">X509Store</span> <span class="n">store</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">X509Store</span><span class="p">(</span><span class="n">StoreName</span><span class="p">.</span><span class="n">My</span><span class="p">,</span> <span class="n">StoreLocation</span><span class="p">.</span><span class="n">CurrentUser</span><span class="p">);</span>
+    <span class="n">Store</span><span class="p">.</span><span class="nf">Open</span><span class="p">(</span><span class="n">OpenFlags</span><span class="p">.</span><span class="n">ReadWrite</span><span class="p">);</span>
+    <span class="n">Store</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">cert</span><span class="p">);</span>
+    <span class="n">Store</span><span class="p">.</span><span class="nf">Close</span><span class="p">();</span>
+  <span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code>  <span class="k">public</span> <span class="kt">bool</span> <span class="nf">IsCertificateExisted</span><span class="p">()</span>
+  <span class="p">{</span>
+    <span class="kt">string</span> <span class="n">thumbprint</span> <span class="p">=</span> <span class="n">configurationManager</span><span class="p">.</span><span class="n">AppSettings</span><span class="p">[</span><span class="s">"CERT_THUMBPRINT"</span><span class="p">];</span>
+
+    <span class="n">X509Store</span> <span class="n">store</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">X509Store</span><span class="p">(</span><span class="n">StoreName</span><span class="p">.</span><span class="n">My</span><span class="p">,</span> <span class="n">StoreLocation</span><span class="p">.</span><span class="n">CurrentUser</span><span class="p">);</span>
+    <span class="n">Store</span><span class="p">.</span><span class="nf">Open</span><span class="p">(</span><span class="n">OpenFlags</span><span class="p">.</span><span class="n">ReadOnly</span><span class="p">);</span>
+    <span class="n">X509Certificate2Collection</span> <span class="n">certs</span> <span class="p">=</span> <span class="n">store</span><span class="p">.</span><span class="n">Certificates</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="n">X509FindType</span><span class="p">.</span><span class="n">FindByThumbprint</span><span class="p">,</span> <span class="n">thumbprint</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
+    <span class="n">store</span><span class="p">.</span><span class="nf">Close</span><span class="p">();</span>
+
+    <span class="k">return</span> <span class="n">certs</span><span class="p">.</span><span class="n">count</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">;</span>
+  <span class="p">}</span>
+</code></pre>
+</div>
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>
