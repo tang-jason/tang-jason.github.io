@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Jason Tang | C# - WCF Client Certificate</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Jason Tang">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src="/js/main.js"></script>
+	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</head>
+	<body>
+		<div class="jt-container">
+			<div class="jt-header-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<header>
+				<a href="/index.html">
+					<img class="img-responsive" src="/img/jasonCrop.jpg" alt="Picture of Jason Tang" />
+				</a>
+				<h1>Jason Tang</h1>
+				<p><i class="fa fa-windows"></i> Software Engineer</p>
+			</header>
+			<div class="hamburger">
+				<a href="#"><i class="fa fa-list-ul fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<nav>
+				<ul>
+					<li>
+						<a href="/index.html">
+							<i class="glyphicon glyphicon-home"></i>
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/profile.html">
+							<i class="glyphicon glyphicon-user"></i>
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/projects.html">
+							<i class="glyphicon glyphicon-list"></i>
+							Projects
+						</a>
+					</li>
+					<li>
+						<a href="/resume.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Resume
+						</a>
+					</li>
+					<li>
+						<a href="/library.html">
+							<i class="glyphicon glyphicon-book"></i>
+							Library
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+
+			</div>
+			<div class="jt-content-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+	<ol class="breadcrumb">
+		<li><a href="/index.html">Home</a></li>
+		<li class="active">C# - WCF Client Certificate</li>
+	</ol>
+	<h3 id="c---wcf-client-certificate">C# - WCF Client Certificate</h3>
+
+<p>How to load the SSL certificate (.pfx) from app.config</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code>  // In your 'App.config'
+  <span class="nt">&lt;behavior&gt;</span>
+    <span class="nt">&lt;endpointBehaviors&gt;</span>
+      <span class="nt">&lt;behavior</span> <span class="na">name=</span><span class="s">"BasicHttpBinding_DemoService"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;clientCredentials&gt;</span>
+          <span class="nt">&lt;clientCertificate</span> <span class="na">findValue=</span><span class="s">"thumbprint_value_here"</span> 
+                             <span class="na">storeLocation=</span><span class="s">"CurrentUser"</span> 
+                             <span class="na">StoreName=</span><span class="s">"My"</span> 
+                             <span class="na">x509FindType=</span><span class="s">"FindByThumbprint"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/clientCredentials&gt;</span>
+      <span class="nt">&lt;/behavior&gt;</span>
+    <span class="nt">&lt;/endpointBehaviors&gt;</span>
+  <span class="nt">&lt;/behavior&gt;</span>
+</code></pre>
+</div>
+
+<p>When you call your WCF service client, it will load the certificate from app.config and will be part of the request to the server.</p>
+
+<p>Extra validation check as if certificate is not found in user store, it will throw an exception. To catch that…</p>
+
+<div class="language-csharp highlighter-rouge"><pre class="highlight"><code>  <span class="n">IDemoService</span> <span class="n">client</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+
+  <span class="k">try</span>
+  <span class="p">{</span>
+    <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">DemoServiceClient</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="k">catch</span> <span class="p">(</span><span class="n">InvalidOperationException</span> <span class="n">ex</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// Log exception here...
+</span>  <span class="p">}</span>
+</code></pre>
+</div>
+
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="jt-footer-wrapper">
+				<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="footer">
+				<p>Copyright &copy; <span class="year"></span> Jason Tang, all right reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+			</div>
+		</div>
+	</body>
+</html>
